@@ -1,0 +1,491 @@
+﻿//INSTANT C# NOTE: Formerly VB project-level imports:
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Data;
+using System.Drawing;
+using System.Diagnostics;
+using System.Windows.Forms;
+using System.Linq;
+using System.Xml.Linq;
+using System.Threading.Tasks;
+using Microsoft.VisualBasic; // Install-Package Microsoft.VisualBasic
+using Microsoft.VisualBasic.CompilerServices; // Install-Package Microsoft.VisualBasic
+using Telerik.WinControls.UI;
+using ModelDB;
+using MedicalServiceSystem.SystemSetting;
+
+namespace MedicalServiceSystem
+{
+
+
+    public partial class FrmCenters : Telerik.WinControls.UI.RadForm
+    {
+
+
+        public int flag = 0;
+        public int CenterId = 0;
+        private string strC;
+        public int LocalityId = 0;
+        private void TXTSearch_TextChanged(object sender, EventArgs e)
+        {
+            //try
+            //{
+            //    var list1 = Module1.Con.ExecuteCenter.ToList();
+            //    var list2 = Module1.Con.ExecuteCenter.ToList();
+            //    if (!string.IsNullOrEmpty(TXTSearch.Text))
+            //    {
+
+            //        if (Locality.Text != "" & CenterType.Text != "")
+            //        {
+            //            int a = CenterType.SelectedIndex;
+            //            int b = Convert.ToInt32(Locality.SelectedValue.ToString());
+            //            list1 = Module1.Con.ExecuteCenter.Where((p) => p.LocalityId == b && p.CenterTypeId == a && p.InInsurance == true).OrderBy((o) => o.CenterName).ToList();
+            //            list2 = Module1.Con.ExecuteCenter.Where((p) => p.LocalityId == b && p.CenterTypeId == a && p.IsEnabled == false && p.InInsurance == true).ToList();
+            //        }
+            //        else if (!string.IsNullOrEmpty(Locality.Text) && string.IsNullOrEmpty(CenterType.Text))
+            //        {
+            //            int b = Convert.ToInt32(Locality.SelectedValue.ToString());
+            //            list1 = Module1.Con.ExecuteCenter.Where((p) => p.LocalityId == b && p.InInsurance == true).OrderBy((o) => o.CenterName).ToList();
+            //            list2 = Module1.Con.ExecuteCenter.Where((p) => p.LocalityId == b && p.IsEnabled == false && p.InInsurance == true).ToList();
+            //        }
+            //        else if (string.IsNullOrEmpty(Locality.Text) && !string.IsNullOrEmpty(CenterType.Text))
+            //        {
+            //            int a = CenterType.SelectedIndex;
+            //            list1 = Module1.Con.ExecuteCenter.Where((p) => p.CenterTypeId == a).OrderBy((o) => o.CenterName).ToList();
+            //            list2 = Module1.Con.ExecuteCenter.Where((p) => p.CenterTypeId == a && p.IsEnabled == false && p.InInsurance == true).ToList();
+            //        }
+            //        else
+            //        {
+            //            list1 = Module1.Con.ExecuteCenter.Where((p) => p.InInsurance == true).OrderBy((o) => o.CenterName).ToList();
+            //            list2 = Module1.Con.ExecuteCenter.Where((p) => p.IsEnabled == false && p.InInsurance == true).ToList();
+            //        }
+            //        // Dim gCenter =Module1.Con.ExecuteCenter.Where(Function(p) p.LocalityId = b And p.CenterTypeId= a And p.CenterName .Contains (TXTSearch.Text)).OrderBy(Function(o) o.CenterName).Select(Function(x) New With {Key .Id = x.Id, Key .CenterName = x.CenterName ,CenterBelongsTo=x.CenterBelongsTos.CenterBelongName ,CenterSort=x.CenterSorts.CenterSortName  ,ServiceState=x.ServiceStates.ServiceStateName  , Key .IsEnabled = x.IsEnabled}).ToList
+
+            //        GRDCenter.DataSource = list1;
+            //        if (GRDCenter.RowCount > 0)
+            //        {
+            //            for (int i = 0, loopTo = GRDCenter.RowCount - 1; i <= loopTo; i++)
+            //                // GRDCenter.Rows[i].Cells["BtnEdit").Value = "Edit"
+            //                // GRDCenter.Rows[i].Cells["BtnDelete").Value = "Enabel&Disable"
+            //                GRDCenter.Rows[i].Cells["Serial"].Value = i.ToString();
+            //        }
+
+
+            //        // lis =Module1.Con.ExecuteCenter.Where(Function(p) p.LocalityId = b And p.CenterTypeId= a And p.IsEnabled = False And p.CenterName .Contains (TXTSearch.Text)).ToList
+            //        if (list2.Count() > 0)
+            //        {
+            //            for (int j = 0, loopTo1 = list2.Count() - 1; j <= loopTo1; j++)
+            //            {
+            //                for (int i = 0, loopTo2 = GRDCenter.RowCount - 1; i <= loopTo2; i++)
+            //                {
+            //                    if (GRDCenter.Rows[i].Cells["Id"].Value.ToString() == list2[j].Id.ToString())
+            //                    {
+            //                        GRDCenter.Rows[i].DefaultCellStyle.BackColor = Color.Yellow;
+            //                        // Dim DisableImage As Gizmox.WebGUI.Common.Resources.ImageResourceHandle = New Gizmox.WebGUI.Common.Resources.ImageResourceHandle
+            //                        // DisableImage.File = "DisabldDelte.png"
+            //                        GRDCenter.Rows[i].Cells["BtnDeleting"].Value = global::My.Resources.DisabldDelte;
+            //                    }
+            //                }
+            //            }
+            //        }
+            //    }
+            //    else
+            //    {
+
+            //        if (Locality.Text != "" & CenterType.Text != "")
+            //        {
+            //            int a = CenterType.SelectedIndex;
+            //            int b = Convert.ToInt32(Locality.SelectedValue.ToString());
+            //            list1 = Module1.Con.ExecuteCenter.Where(p => (bool)Operators.AndObject(Operators.AndObject(Operators.ConditionalCompareObjectEqual(p.LocalityId, b, false), Operators.ConditionalCompareObjectEqual(p.CenterTypeId, a, false)), Operators.ConditionalCompareObjectEqual(p.InInsurance, true, false))).OrderBy(o => o.CenterName).Select(x => new { x.Id, x.CenterName, CenterBelongsTo = x.CenterBelongsTos.CenterBelongName, CenterSort = x.CenterSorts.CenterSortName, ServiceState = x.ServiceStates.ServiceStateName, x.IsEnabled }).ToList();
+            //            list2 = Module1.Con.ExecuteCenter.Where(p => (bool)Operators.AndObject(Operators.AndObject(Operators.AndObject(Operators.ConditionalCompareObjectEqual(p.LocalityId, b, false), Operators.ConditionalCompareObjectEqual(p.CenterTypeId, a, false)), Operators.ConditionalCompareObjectEqual(p.IsEnabled, false, false)), Operators.ConditionalCompareObjectEqual(p.InInsurance, true, false))).ToList;
+            //        }
+            //        else if (Locality.Text != "" & CenterType.Text == "")
+            //        {
+            //            int b = Convert.ToInt32(Locality.SelectedValue.ToString());
+            //            list1 = Module1.Con.ExecuteCenter.Where(p => (bool)Operators.AndObject(Operators.ConditionalCompareObjectEqual(p.LocalityId, b, false), Operators.ConditionalCompareObjectEqual(p.InInsurance, true, false))).OrderBy(o => o.CenterName).Select(x => new { x.Id, x.CenterName, CenterBelongsTo = x.CenterBelongsTos.CenterBelongName, CenterSort = x.CenterSorts.CenterSortName, ServiceState = x.ServiceStates.ServiceStateName, x.IsEnabled }).ToList;
+            //            list2 = Module1.Con.ExecuteCenter.Where(p => (bool)Operators.AndObject(Operators.AndObject(Operators.ConditionalCompareObjectEqual(p.LocalityId, b, false), Operators.ConditionalCompareObjectEqual(p.IsEnabled, false, false)), Operators.ConditionalCompareObjectEqual(p.InInsurance, true, false))).ToList;
+            //        }
+            //        else if (locality.Text == "" & CenterType.Text != "")
+            //        {
+            //            int a = CenterType.Selectedindex;
+            //            list1 = Module1.Con.ExecuteCenter.Where(p => (bool)Operators.AndObject(Operators.ConditionalCompareObjectEqual(p.CenterTypeId, a, false), Operators.ConditionalCompareObjectEqual(p.InInsurance, true, false))).OrderBy(o => o.CenterName).Select(x => new { x.Id, x.CenterName, CenterBelongsTo = x.CenterBelongsTos.CenterBelongName, CenterSort = x.CenterSorts.CenterSortName, ServiceState = x.ServiceStates.ServiceStateName, x.IsEnabled }).ToList;
+            //            list2 = Module1.Con.ExecuteCenter.Where(p => (bool)Operators.AndObject(Operators.AndObject(Operators.ConditionalCompareObjectEqual(p.CenterTypeId, a, false), Operators.ConditionalCompareObjectEqual(p.IsEnabled, false, false)), Operators.ConditionalCompareObjectEqual(p.InInsurance, true, false))).ToList;
+            //        }
+            //        else
+            //        {
+            //            list1 = Module1.Con.ExecuteCenter.Where(p => Operators.ConditionalCompareObjectEqual(p.InInsurance, true, false)).OrderBy(o => o.CenterName).Select(x => new { x.Id, x.CenterName, CenterBelongsTo = x.CenterBelongsTos.CenterBelongName, CenterSort = x.CenterSorts.CenterSortName, ServiceState = x.ServiceStates.ServiceStateName, x.IsEnabled }).ToList;
+            //            list2 = Module1.Con.ExecuteCenter.Where(p => (bool)Operators.AndObject(Operators.AndObject(Operators.ConditionalCompareObjectEqual(p.IsEnabled, false, false), Operators.ConditionalCompareObjectEqual(p.InInsurance, true, false)), Operators.ConditionalCompareObjectEqual(p.InInsurance, true, false))).ToList;
+            //        }
+
+            //        GRDCenter.DataSource = list1;
+            //        if (GRDCenter.RowCount > 0)
+            //        {
+            //            for (int i = 0, loopTo3 = GRDCenter.RowCount - 1; i <= loopTo3; i++)
+            //                // GRDCenter.Rows[i].Cells["BtnEdit").Value = "Edit"
+            //                // GRDCenter.Rows[i].Cells["BtnDelete").Value = "Enabel&Disable"
+            //                GRDCenter.Rows[i].Cells["Serial").Value = Operators.AddObject(i, 1);
+            //        }
+
+
+            //        // Dim sgrpe =Module1.Con.ExecuteCenter.Where(Function(p) p.LocalityId = b And p.CenterTypeId= a And p.IsEnabled = False).ToList
+            //        if (list2.Count() > 0)
+            //        {
+            //            for (int j = 0, loopTo4 = list2.Count() - 1; j <= loopTo4; j++)
+            //            {
+            //                for (int i = 0, loopTo5 = GRDCenter.RowCount - 1; i <= loopTo5; i++)
+            //                {
+            //                    if (GRDCenter.Rows[i].Cells["Id").Value.ToString == list2.ElementAtOrDefault(j).Id.ToString())
+            //                    {
+            //                        GRDCenter.Rows[i].DefaultCellStyle.BackColor = Color.Yellow;
+            //                        // Dim DisableImage As Gizmox.WebGUI.Common.Resources.ImageResourceHandle = New Gizmox.WebGUI.Common.Resources.ImageResourceHandle
+            //                        // DisableImage.File = "DisabldDelte.png"
+            //                        GRDCenter.Rows[i].Cells["BtnDeleting").Value = global::My.Resources.DisabldDelte;
+            //                    }
+            //                }
+            //            }
+            //        }
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //}
+        }
+
+        private void FrmGroup_Load(object sender, EventArgs e)
+        {
+
+            LocalityId = LoginForm.Default.LocalityId;
+            LoadData();
+
+        }
+
+        public void LoadData()
+        {
+            using (dbContext db = new dbContext())
+            {
+                var CInfo = db.CenterInfos.Where(p=>p.HasContract==false).Select(p => new { p.Id, p.CenterName, p.Level1, p.Level2, p.Level3, p.CenterTypeId, p.HasContract, p.IsEnabled }).ToList();
+                GRDCenter.DataSource = CInfo;
+                if (GRDCenter.RowCount > 0)
+                {
+                    for (int i = 0; i < GRDCenter.RowCount; i++)
+                    {
+                        GRDCenter.Rows[i].Cells["Serial"].Value = i + 1;
+                    }
+                }
+            }
+        }
+        private void Button1_Click(object sender, EventArgs e)
+        {
+            //if (GRDCenter.RowCount > 0)
+            //{
+            //    if (TXTSearch.Text != "")
+            //    {
+            //        strC = TXTSearch.Text;
+            //        if (GRDCenter.CurrentRow.Index != GRDCenter.RowCount - 1)
+            //        {
+            //            int a = GRDCenter.CurrentRow.Index;
+            //            for (int i = a + 1, loopTo = GRDCenter.RowCount - 1; i <= loopTo; i++)
+            //            {
+            //                if (GRDCenter.Rows[i].Cells["chk").Value == 1)
+            //                {
+            //                    GRDCenter.CurrentCell = GRDCenter.Rows[i].Cells[1);
+            //                    GRDCenter.Rows[i].Selected = true;
+            //                    break;
+            //                }
+            //            }
+            //        }
+            //    }
+            //}
+        }
+
+        private void Button2_Click(object sender, EventArgs e)
+        {
+
+            // If Len(CenterType.Text) = 0 Then
+            // MessageBox.Show("يجب اختيار نوع المركز أولاً", "النظام", MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Warning)
+            // Exit Sub
+            // End If
+            var fr = new FrmAddCenter();
+            flag = 1;
+            CenterId = 0;
+            fr.Locality.SelectedValue = LocalityId;
+            fr.CenterId = 0;
+            fr.ShowDialog();
+        }
+
+        private void GRDGroup_CellClick(object sender, GridViewCellEventArgs e)
+        {
+            using (dbContext db = new dbContext())
+            {
+                if (e.ColumnIndex == GRDCenter.Columns["BtnEditing"].Index)
+                {
+                    var FrmAddCenter = new FrmAddCenter();
+                    flag = 1;
+                    CenterId = Convert.ToInt32(e.Row.Cells["Id"].Value.ToString());
+
+                    var cti = db.CenterInfos.Where(p => p.Id == CenterId).ToList();
+                    if (cti.Count > 0)
+                    {
+                        FrmAddCenter.CenterName.Text = cti[0].CenterName;
+                        FrmAddCenter.CenterId = CenterId;
+                        FrmAddCenter.LocalityId.Text = cti[0].LocalityId.ToString();
+                        FrmAddCenter.CenterType.SelectedValue = cti[0].CenterTypeId;
+                        FrmAddCenter.ShowDialog();
+                    }
+                }
+                else if (e.ColumnIndex == GRDCenter.Columns["BtnDeleting"].Index)
+                {
+                    // Dim result As MsgBoxResult
+                    flag = 0;
+                    if ((bool)GRDCenter.CurrentRow.Cells["IsEnabled"].Value == true)
+                    {
+                        DialogResult msg;
+                        msg = MessageBox.Show("هل تريد إلغاء تفعيل هذه المؤسسة", "النظام", MessageBoxButtons.OKCancel, System.Windows.Forms.MessageBoxIcon.Warning, System.Windows.Forms.MessageBoxDefaultButton.Button2);
+                        if (msg == DialogResult.OK)
+                        {
+                            int a1 = Convert.ToInt32(GRDCenter.CurrentRow.Cells["Id"].Value);
+                            var chkFound = db.CenterInfos.Where(p => p.Id == CenterId).ToList();
+                            if (chkFound.Count > 0)
+                            {
+                                if (chkFound[0].IsEnabled == false)
+                                {
+                                    chkFound[0].IsEnabled = true;
+                                }
+                                else if (chkFound[0].IsEnabled == true)
+                                {
+                                    chkFound[0].IsEnabled = false;
+                                }
+
+                                db.SaveChanges();
+                                LoadData();
+                            }
+                        }
+                    }
+                    else if ((bool)GRDCenter.CurrentRow.Cells["IsEnabled"].Value == false)
+                    {
+                        DialogResult msg;
+                        msg = MessageBox.Show("هل تريد  تفعيل هذه المؤسسة", "النظام", MessageBoxButtons.OKCancel, System.Windows.Forms.MessageBoxIcon.Warning, System.Windows.Forms.MessageBoxDefaultButton.Button2);
+                        if (msg == DialogResult.OK)
+                        {
+                            var chkFound = db.CenterInfos.Where(p => p.Id == CenterId).ToList();
+                            if (chkFound.Count > 0)
+                            {
+
+                                if (chkFound[0].IsEnabled == true)
+                                {
+                                    chkFound[0].IsEnabled = false;
+                                }
+
+                                db.SaveChanges();
+                                LoadData();
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        private void Button4_Click(object sender, EventArgs e)
+        {
+            //try
+            //{
+            //    IEnumerable<object> list1;
+            //    IEnumerable<object> list2;
+            //    if (locality.Text != "" & CenterType.Text != "")
+            //    {
+            //        int a = CenterType.Selectedindex;
+            //        int b = Convert.ToInt32(Locality.SelectedValue.ToString());
+            //        list1 =Module1.Con.ExecuteCenter.Where(p => (bool)Operators.AndObject(Operators.AndObject(Operators.ConditionalCompareObjectEqual(p.LocalityId, b, false), Operators.ConditionalCompareObjectEqual(p.CenterTypeId, a, false)), Operators.ConditionalCompareObjectEqual(p.InInsurance, true, false))).OrderBy(o => o.CenterName).Select(x => new { x.Id, x.CenterName, CenterBelongsTo = x.CenterBelongsTos.CenterBelongName, CenterSort = x.CenterSorts.CenterSortName, ServiceState = x.ServiceStates.ServiceStateName, x.IsEnabled }).ToList;
+            //        list2 =Module1.Con.ExecuteCenter.Where(p => (bool)Operators.AndObject(Operators.AndObject(Operators.AndObject(Operators.ConditionalCompareObjectEqual(p.LocalityId, b, false), Operators.ConditionalCompareObjectEqual(p.CenterTypeId, a, false)), Operators.ConditionalCompareObjectEqual(p.IsEnabled, false, false)), Operators.ConditionalCompareObjectEqual(p.InInsurance, true, false))).ToList;
+            //    }
+            //    else if (locality.Text != "" & CenterType.Text == "")
+            //    {
+            //        int b = Convert.ToInt32(Locality.SelectedValue.ToString());
+            //        list1 =Module1.Con.ExecuteCenter.Where(p => (bool)Operators.AndObject(Operators.ConditionalCompareObjectEqual(p.LocalityId, b, false), Operators.ConditionalCompareObjectEqual(p.InInsurance, true, false))).OrderBy(o => o.CenterName).Select(x => new { x.Id, x.CenterName, CenterBelongsTo = x.CenterBelongsTos.CenterBelongName, CenterSort = x.CenterSorts.CenterSortName, ServiceState = x.ServiceStates.ServiceStateName, x.IsEnabled }).ToList;
+            //        list2 =Module1.Con.ExecuteCenter.Where(p => (bool)Operators.AndObject(Operators.AndObject(Operators.ConditionalCompareObjectEqual(p.LocalityId, b, false), Operators.ConditionalCompareObjectEqual(p.IsEnabled, false, false)), Operators.ConditionalCompareObjectEqual(p.InInsurance, true, false))).ToList;
+            //    }
+            //    else if (locality.Text == "" & CenterType.Text != "")
+            //    {
+            //        int a = CenterType.Selectedindex;
+            //        list1 =Module1.Con.ExecuteCenter.Where(p => (bool)Operators.AndObject(Operators.ConditionalCompareObjectEqual(p.CenterTypeId, a, false), Operators.ConditionalCompareObjectEqual(p.InInsurance, true, false))).OrderBy(o => o.CenterName).Select(x => new { x.Id, x.CenterName, CenterBelongsTo = x.CenterBelongsTos.CenterBelongName, CenterSort = x.CenterSorts.CenterSortName, ServiceState = x.ServiceStates.ServiceStateName, x.IsEnabled }).ToList;
+            //        list2 =Module1.Con.ExecuteCenter.Where(p => (bool)Operators.AndObject(Operators.AndObject(Operators.ConditionalCompareObjectEqual(p.CenterTypeId, a, false), Operators.ConditionalCompareObjectEqual(p.IsEnabled, false, false)), Operators.ConditionalCompareObjectEqual(p.InInsurance, true, false))).ToList;
+            //    }
+            //    else
+            //    {
+            //        list1 =Module1.Con.ExecuteCenter.Where(p => Operators.ConditionalCompareObjectEqual(p.InInsurance, true, false)).OrderBy(o => o.CenterName).Select(x => new { x.Id, x.CenterName, CenterBelongsTo = x.CenterBelongsTos.CenterBelongName, CenterSort = x.CenterSorts.CenterSortName, ServiceState = x.ServiceStates.ServiceStateName, x.IsEnabled }).ToList;
+            //        list2 =Module1.Con.ExecuteCenter.Where(p => (bool)Operators.AndObject(Operators.ConditionalCompareObjectEqual(p.IsEnabled, false, false), Operators.ConditionalCompareObjectEqual(p.InInsurance, true, false))).ToList;
+            //    }
+
+            //    GRDCenter.DataSource = list1;
+            //    if (GRDCenter.RowCount > 0)
+            //    {
+            //        for (int i = 0, loopTo = GRDCenter.RowCount - 1; i <= loopTo; i++)
+            //            // GRDCenter.Rows[i].Cells["BtnEdit").Value = "Edit"
+            //            // GRDCenter.Rows[i].Cells["BtnDelete").Value = "Enabel&Disable"
+            //            GRDCenter.Rows[i].Cells["Serial").Value = Operators.AddObject(i, 1);
+            //    }
+
+            //    if (list2.Count() > 0)
+            //    {
+            //        for (int j = 0, loopTo1 = list2.Count() - 1; j <= loopTo1; j++)
+            //        {
+            //            for (int i = 0, loopTo2 = GRDCenter.RowCount - 1; i <= loopTo2; i++)
+            //            {
+            //                if (GRDCenter.Rows[i].Cells["Id").Value.ToString == list2.ElementAtOrDefault(j).Id.ToString())
+            //                {
+            //                    GRDCenter.Rows[i].DefaultCellStyle.BackColor = Color.Yellow;
+            //                    // Dim DisableImage As Gizmox.WebGUI.Common.Resources.ImageResourceHandle = New Gizmox.WebGUI.Common.Resources.ImageResourceHandle
+            //                    // DisableImage.File = "DisabldDelte.png"
+            //                    GRDCenter.Rows[i].Cells["BtnDeleting").Value = global::My.Resources.DisabldDelte;
+            //                }
+            //            }
+            //        }
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //}
+        }
+
+        private void BindMessageHandler(object sender, EventArgs e)
+        {
+        }
+
+        private void FrmCenters_Activated(object sender, EventArgs e)
+        {
+            //try
+            //{
+            //    if (flag == 1)
+            //    {
+            //        IEnumerable<object> list1;
+            //        IEnumerable<object> list2;
+            //        if (locality.Text != "" & CenterType.Text != "")
+            //        {
+            //            int a = CenterType.Selectedindex;
+            //            int b = Convert.ToInt32(Locality.SelectedValue.ToString());
+            //            list1 =Module1.Con.ExecuteCenter.Where(p => (bool)Operators.AndObject(Operators.AndObject(Operators.ConditionalCompareObjectEqual(p.LocalityId, b, false), Operators.ConditionalCompareObjectEqual(p.CenterTypeId, a, false)), Operators.ConditionalCompareObjectEqual(p.InInsurance, true, false))).OrderBy(o => o.CenterName).Select(x => new { x.Id, x.CenterName, CenterBelongsTo = x.CenterBelongsTos.CenterBelongName, CenterSort = x.CenterSorts.CenterSortName, ServiceState = x.ServiceStates.ServiceStateName, x.IsEnabled }).ToList;
+            //            list2 =Module1.Con.ExecuteCenter.Where(p => (bool)Operators.AndObject(Operators.AndObject(Operators.AndObject(Operators.ConditionalCompareObjectEqual(p.LocalityId, b, false), Operators.ConditionalCompareObjectEqual(p.CenterTypeId, a, false)), Operators.ConditionalCompareObjectEqual(p.IsEnabled, false, false)), Operators.ConditionalCompareObjectEqual(p.InInsurance, true, false))).ToList;
+            //        }
+            //        else if (locality.Text != "" & CenterType.Text == "")
+            //        {
+            //            int b = Convert.ToInt32(Locality.SelectedValue.ToString());
+            //            list1 =Module1.Con.ExecuteCenter.Where(p => (bool)Operators.AndObject(Operators.ConditionalCompareObjectEqual(p.LocalityId, b, false), Operators.ConditionalCompareObjectEqual(p.InInsurance, true, false))).OrderBy(o => o.CenterName).Select(x => new { x.Id, x.CenterName, CenterBelongsTo = x.CenterBelongsTos.CenterBelongName, CenterSort = x.CenterSorts.CenterSortName, ServiceState = x.ServiceStates.ServiceStateName, x.IsEnabled }).ToList;
+            //            list2 =Module1.Con.ExecuteCenter.Where(p => (bool)Operators.AndObject(Operators.AndObject(Operators.ConditionalCompareObjectEqual(p.LocalityId, b, false), Operators.ConditionalCompareObjectEqual(p.IsEnabled, false, false)), Operators.ConditionalCompareObjectEqual(p.InInsurance, true, false))).ToList;
+            //        }
+            //        else if (locality.Text == "" & CenterType.Text != "")
+            //        {
+            //            int a = CenterType.Selectedindex;
+            //            list1 =Module1.Con.ExecuteCenter.Where(p => Operators.ConditionalCompareObjectEqual(p.CenterTypeId, a, false)).OrderBy(o => o.CenterName).Select(x => new { x.Id, x.CenterName, CenterBelongsTo = x.CenterBelongsTos.CenterBelongName, CenterSort = x.CenterSorts.CenterSortName, ServiceState = x.ServiceStates.ServiceStateName, x.IsEnabled }).ToList;
+            //            list2 =Module1.Con.ExecuteCenter.Where(p => (bool)Operators.AndObject(Operators.AndObject(Operators.ConditionalCompareObjectEqual(p.CenterTypeId, a, false), Operators.ConditionalCompareObjectEqual(p.IsEnabled, false, false)), Operators.ConditionalCompareObjectEqual(p.InInsurance, true, false))).ToList;
+            //        }
+            //        else
+            //        {
+            //            list1 =Module1.Con.ExecuteCenter.Where(p => Operators.ConditionalCompareObjectEqual(p.InInsurance, true, false)).OrderBy(o => o.CenterName).Select(x => new { x.Id, x.CenterName, CenterBelongsTo = x.CenterBelongsTos.CenterBelongName, CenterSort = x.CenterSorts.CenterSortName, ServiceState = x.ServiceStates.ServiceStateName, x.IsEnabled }).ToList;
+            //            list2 =Module1.Con.ExecuteCenter.Where(p => (bool)Operators.AndObject(Operators.ConditionalCompareObjectEqual(p.IsEnabled, false, false), Operators.ConditionalCompareObjectEqual(p.InInsurance, true, false))).ToList;
+            //        }
+
+            //        GRDCenter.DataSource = list1;
+            //        if (GRDCenter.RowCount > 0)
+            //        {
+            //            for (int i = 0, loopTo = GRDCenter.RowCount - 1; i <= loopTo; i++)
+            //                // GRDCenter.Rows[i].Cells["BtnEdit").Value = "Edit"
+            //                // GRDCenter.Rows[i].Cells["BtnDelete").Value = "Enabel&Disable"
+            //                GRDCenter.Rows[i].Cells["Serial").Value = Operators.AddObject(i, 1);
+            //            // Dim sgrpe =Module1.Con.ExecuteCenter.Where(Function(p) p.LocalityId = b And p.CenterType= a1 And p.IsEnabled = False).ToList
+            //            if (list2.Count() > 0)
+            //            {
+            //                for (int j = 0, loopTo1 = list2.Count() - 1; j <= loopTo1; j++)
+            //                {
+            //                    for (int i = 0, loopTo2 = GRDCenter.RowCount - 1; i <= loopTo2; i++)
+            //                    {
+            //                        if (GRDCenter.Rows[i].Cells["Id").Value.ToString == list2.ElementAtOrDefault(j).Id.ToString())
+            //                        {
+            //                            GRDCenter.Rows[i].DefaultCellStyle.BackColor = Color.Yellow;
+            //                            // Dim DisableImage As Gizmox.WebGUI.Common.Resources.ImageResourceHandle = New Gizmox.WebGUI.Common.Resources.ImageResourceHandle
+            //                            // DisableImage.File = "DisabldDelte.png"
+            //                            GRDCenter.Rows[i].Cells["BtnDeleting").Value = global::My.Resources.DisabldDelte;
+            //                        }
+            //                    }
+            //                }
+            //            }
+            //        }
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //}
+        }
+
+        private void UploadControl1_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void Button3_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void GroupBox1_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void Button1_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Locality_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //try
+            //{
+            //    if (Locality.Text != "")
+            //    {
+            //        int a = Convert.ToInt32(Locality.SelectedValue.ToString());
+            //        var gCenter =Module1.Con.ExecuteCenter.Where(p => (bool)Operators.AndObject(Operators.ConditionalCompareObjectEqual(p.LocalityId, a, false), Operators.ConditionalCompareObjectEqual(p.InInsurance, true, false))).OrderBy(o => o.CenterName).Select(x => new { x.Id, x.CenterName, CenterBelongsTo = x.CenterBelongsTos.CenterBelongName, CenterSort = x.CenterSorts.CenterSortName, ServiceState = x.ServiceStates.ServiceStateName, x.IsEnabled }).ToList;
+            //        GRDCenter.DataSource = gCenter;
+            //        if (GRDCenter.RowCount > 0)
+            //        {
+            //            for (int i = 0, loopTo = GRDCenter.RowCount - 1; i <= loopTo; i++)
+            //                // GRDCenter.Rows[i].Cells["BtnEdit").Value = "Edit"
+            //                // GRDCenter.Rows[i].Cells["BtnDelete").Value = "Enabel&Disable"
+            //                GRDCenter.Rows[i].Cells["Serial").Value = Operators.AddObject(i, 1);
+            //        }
+
+            //        var sgrpe =Module1.Con.ExecuteCenter.Where(p => (bool)Operators.AndObject(Operators.AndObject(Operators.ConditionalCompareObjectEqual(p.LocalityId, a, false), Operators.ConditionalCompareObjectEqual(p.IsEnabled, false, false)), Operators.ConditionalCompareObjectEqual(p.InInsurance, true, false))).ToList;
+            //        if (sgrpe.Count > 0)
+            //        {
+            //            for (int j = 0, loopTo1 = sgrpe.Count - 1; j <= loopTo1; j++)
+            //            {
+            //                for (int i = 0, loopTo2 = GRDCenter.RowCount - 1; i <= loopTo2; i++)
+            //                {
+            //                    if (GRDCenter.Rows[i].Cells["Id").Value.ToString == sgrpe(j).Id.ToString)
+            //                    {
+            //                        GRDCenter.Rows[i].DefaultCellStyle.BackColor = Color.Yellow;
+            //                        // Dim DisableImage As Gizmox.WebGUI.Common.Resources.ImageResourceHandle = New Gizmox.WebGUI.Common.Resources.ImageResourceHandle
+            //                        // DisableImage.File = "DisabldDelte.png"
+            //                        GRDCenter.Rows[i].Cells["BtnDeleting").Value = global::My.Resources.DisabldDelte;
+            //                    }
+            //                }
+            //            }
+            //        }
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //}
+        }
+
+        private void GRDCenter_CellFormatting(object sender, CellFormattingEventArgs e)
+        {
+            if (Convert.ToBoolean(e.Row.Cells["IsEnabled"].Value) == false)
+            {
+                e.CellElement.BackColor = System.Drawing.Color.Gray;
+            }
+            else
+            {
+                e.CellElement.BackColor = System.Drawing.Color.White;
+            }
+        }
+    }
+}

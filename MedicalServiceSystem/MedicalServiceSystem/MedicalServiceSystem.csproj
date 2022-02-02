@@ -1,0 +1,499 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{105334F5-1A49-4845-8889-1A64BABC79A9}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>MedicalServiceSystem</RootNamespace>
+    <AssemblyName>MedicalServiceSystem</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>\\192.168.100.2\InuranceSystem\MedicalInsurance\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Unc</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
+    <WebPage>publish.htm</WebPage>
+    <ApplicationRevision>17</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>64E0B44DB00E6C6DADE8DB5B632711B6022F6925</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>MedicalServiceSystem_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Office.Interop.Excel.15.0.4795.1000\lib\net20\Microsoft.Office.Interop.Excel.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="ModelDB">
+      <HintPath>..\ModelDB\bin\Debug\ModelDB.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Telerik.Reporting, Version=14.0.20.115, Culture=neutral, PublicKeyToken=a9d7983dfcc261be" />
+    <Reference Include="Telerik.WinControls, Version=2020.1.113.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
+      <HintPath>..\lib\RCWF\2020.1.113.40\Telerik.WinControls.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.WinControls.GridView, Version=2020.1.113.20, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.WinControls.Themes.Office2010Blue, Version=2020.1.113.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.WinControls.UI, Version=2020.1.113.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
+      <HintPath>..\lib\RCWF\2020.1.113.40\Telerik.WinControls.UI.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="TelerikCommon, Version=2020.1.113.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
+      <HintPath>..\lib\RCWF\2020.1.113.40\TelerikCommon.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Refunds\AllSupplierRPT.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Refunds\AllSupplierRPT.designer.cs">
+      <DependentUpon>AllSupplierRPT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Refunds\Estrdad.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Refunds\Estrdad.Designer.cs">
+      <DependentUpon>Estrdad.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Refunds\FrmAddCenter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Refunds\FrmAddCenter.designer.cs">
+      <DependentUpon>FrmAddCenter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Refunds\FrmCenters.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Refunds\FrmCenters.designer.cs">
+      <DependentUpon>FrmCenters.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Refunds\FrmAppMedicineTyp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Refunds\FrmAppMedicineTyp.Designer.cs">
+      <DependentUpon>FrmAppMedicineTyp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Refunds\FrmPharmacist.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Refunds\FrmPharmacist.Designer.cs">
+      <DependentUpon>FrmPharmacist.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Refunds\FrmGenericList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Refunds\FrmGenericList.Designer.cs">
+      <DependentUpon>FrmGenericList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Refunds\FrmGenerics.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Refunds\FrmGenerics.Designer.cs">
+      <DependentUpon>FrmGenerics.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Refunds\FRMmedical.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Refunds\FRMmedical.Designer.cs">
+      <DependentUpon>FRMmedical.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Refunds\FRMApproveMedicine.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Refunds\FRMApproveMedicine.Designer.cs">
+      <DependentUpon>FRMApproveMedicine.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Refunds\FrmDiagnosis.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Refunds\FrmDiagnosis.Designer.cs">
+      <DependentUpon>FrmDiagnosis.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Refunds\FrmMedicineOut.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Refunds\FrmMedicineOut.Designer.cs">
+      <DependentUpon>FrmMedicineOut.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Refunds\FrmTrades.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Refunds\FrmTrades.Designer.cs">
+      <DependentUpon>FrmTrades.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Refunds\FrmAddGroup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Refunds\FrmAddGroup.Designer.cs">
+      <DependentUpon>FrmAddGroup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Refunds\FrmAddSubGroup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Refunds\FrmAddSubGroup.Designer.cs">
+      <DependentUpon>FrmAddSubGroup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Refunds\FRMApproveWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Refunds\FRMApproveWindow.Designer.cs">
+      <DependentUpon>FRMApproveWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Refunds\FRMmedicalCoPay.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Refunds\FRMmedicalCoPay.Designer.cs">
+      <DependentUpon>FRMmedicalCoPay.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Refunds\FrmMedicalGroup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Refunds\FrmMedicalGroup.Designer.cs">
+      <DependentUpon>FrmMedicalGroup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Refunds\FRMMedicalSetting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Refunds\FRMMedicalSetting.Designer.cs">
+      <DependentUpon>FRMMedicalSetting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Refunds\FrmMedicalSubGroup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Refunds\FrmMedicalSubGroup.Designer.cs">
+      <DependentUpon>FrmMedicalSubGroup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Refunds\FRMmedicine.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Refunds\FRMmedicine.Designer.cs">
+      <DependentUpon>FRMmedicine.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Refunds\FRMMedicinePricing.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Refunds\FRMMedicinePricing.Designer.cs">
+      <DependentUpon>FRMMedicinePricing.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Refunds\FRMMedicineSetting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Refunds\FRMMedicineSetting.Designer.cs">
+      <DependentUpon>FRMMedicineSetting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Refunds\FRMpatienthistory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Refunds\FRMpatienthistory.Designer.cs">
+      <DependentUpon>FRMpatienthistory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Refunds\FRMReception.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Refunds\FRMReception.Designer.cs">
+      <DependentUpon>FRMReception.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Refunds\FRMSave.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Refunds\FRMSave.Designer.cs">
+      <DependentUpon>FRMSave.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Refunds\FrmSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Refunds\FrmSearch.Designer.cs">
+      <DependentUpon>FrmSearch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Refunds\FRMStopSubscriber.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Refunds\FRMStopSubscriber.Designer.cs">
+      <DependentUpon>FRMStopSubscriber.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SystemSetting\MainMenuForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SystemSetting\MainMenuForm.designer.cs">
+      <DependentUpon>MainMenuForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Refunds\PublicClass.cs" />
+    <Compile Include="SystemSetting\ChangePassFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SystemSetting\ChangePassFrm.Designer.cs">
+      <DependentUpon>ChangePassFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SystemSetting\CompanyConfig.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SystemSetting\CompanyConfig.Designer.cs">
+      <DependentUpon>CompanyConfig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SystemSetting\GroupPermissionsFRM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SystemSetting\GroupPermissionsFRM.Designer.cs">
+      <DependentUpon>GroupPermissionsFRM.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SystemSetting\LoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SystemSetting\LoginForm.Designer.cs">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SystemSetting\SystemSettingFRM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SystemSetting\SystemSettingFRM.Designer.cs">
+      <DependentUpon>SystemSettingFRM.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SystemSetting\UserFRM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SystemSetting\UserFRM.Designer.cs">
+      <DependentUpon>UserFRM.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SystemSetting\UserGroupFRM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SystemSetting\UserGroupFRM.designer.cs">
+      <DependentUpon>UserGroupFRM.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SystemSetting\UserPermissionsFRM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SystemSetting\UserPermissionsFRM.Designer.cs">
+      <DependentUpon>UserPermissionsFRM.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Refunds\AllSupplierRPT.resx">
+      <DependentUpon>AllSupplierRPT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Refunds\Estrdad.resx">
+      <DependentUpon>Estrdad.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Refunds\FrmAddCenter.resx">
+      <DependentUpon>FrmAddCenter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Refunds\FrmCenters.resx">
+      <DependentUpon>FrmCenters.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Refunds\FrmAppMedicineTyp.resx">
+      <DependentUpon>FrmAppMedicineTyp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Refunds\FrmPharmacist.resx">
+      <DependentUpon>FrmPharmacist.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Refunds\FrmGenericList.resx">
+      <DependentUpon>FrmGenericList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Refunds\FrmGenerics.resx">
+      <DependentUpon>FrmGenerics.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Refunds\FRMmedical.resx">
+      <DependentUpon>FRMmedical.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Refunds\FRMApproveMedicine.resx">
+      <DependentUpon>FRMApproveMedicine.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Refunds\FrmDiagnosis.resx">
+      <DependentUpon>FrmDiagnosis.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Refunds\FrmMedicineOut.resx">
+      <DependentUpon>FrmMedicineOut.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Refunds\FrmTrades.resx">
+      <DependentUpon>FrmTrades.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Refunds\FrmAddGroup.resx">
+      <DependentUpon>FrmAddGroup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Refunds\FrmAddSubGroup.resx">
+      <DependentUpon>FrmAddSubGroup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Refunds\FRMApproveWindow.resx">
+      <DependentUpon>FRMApproveWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Refunds\FRMmedicalCoPay.resx">
+      <DependentUpon>FRMmedicalCoPay.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Refunds\FrmMedicalGroup.resx">
+      <DependentUpon>FrmMedicalGroup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Refunds\FRMMedicalSetting.resx">
+      <DependentUpon>FRMMedicalSetting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Refunds\FrmMedicalSubGroup.resx">
+      <DependentUpon>FrmMedicalSubGroup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Refunds\FRMmedicine.resx">
+      <DependentUpon>FRMmedicine.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Refunds\FRMMedicinePricing.resx">
+      <DependentUpon>FRMMedicinePricing.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Refunds\FRMMedicineSetting.resx">
+      <DependentUpon>FRMMedicineSetting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Refunds\FRMpatienthistory.resx">
+      <DependentUpon>FRMpatienthistory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Refunds\FRMReception.resx">
+      <DependentUpon>FRMReception.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Refunds\FRMSave.resx">
+      <DependentUpon>FRMSave.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Refunds\FrmSearch.resx">
+      <DependentUpon>FrmSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Refunds\FRMStopSubscriber.resx">
+      <DependentUpon>FRMStopSubscriber.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SystemSetting\MainMenuForm.resx">
+      <DependentUpon>MainMenuForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SystemSetting\ChangePassFrm.resx">
+      <DependentUpon>ChangePassFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SystemSetting\CompanyConfig.resx">
+      <DependentUpon>CompanyConfig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SystemSetting\GroupPermissionsFRM.resx">
+      <DependentUpon>GroupPermissionsFRM.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SystemSetting\LoginForm.resx">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SystemSetting\SystemSettingFRM.resx">
+      <DependentUpon>SystemSettingFRM.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SystemSetting\UserFRM.resx">
+      <DependentUpon>UserFRM.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SystemSetting\UserGroupFRM.resx">
+      <DependentUpon>UserGroupFRM.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SystemSetting\UserPermissionsFRM.resx">
+      <DependentUpon>UserPermissionsFRM.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="MedicalServiceSystem_TemporaryKey.pfx" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Chronics\" />
+    <Folder Include="Claims\" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.6">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.6 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
+</Project>
