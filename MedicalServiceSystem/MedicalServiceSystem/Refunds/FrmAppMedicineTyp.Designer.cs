@@ -155,6 +155,7 @@
             this.GRDApproveType.ShowGroupPanel = false;
             this.GRDApproveType.Size = new System.Drawing.Size(776, 417);
             this.GRDApproveType.TabIndex = 15;
+            this.GRDApproveType.RowFormatting += new Telerik.WinControls.UI.RowFormattingEventHandler(this.GRDApproveType_RowFormatting);
             this.GRDApproveType.CellFormatting += new Telerik.WinControls.UI.CellFormattingEventHandler(this.GrdTrades_CellFormatting);
             this.GRDApproveType.CommandCellClick += new Telerik.WinControls.UI.CommandCellClickEventHandler(this.ItemGrid_CommandCellClick);
             this.GRDApproveType.Click += new System.EventHandler(this.GrdTrades_Click);

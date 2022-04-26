@@ -31,6 +31,7 @@ namespace MedicalServiceSystem.Reclaims
         public DateTime BirthDate = PLC.getdate();
         private void LoadData()
         {
+            SubscriberType.SelectedIndex = 0;
             ApprovementId.Text = "";
             Age.Clear();
             Sex.Text = "";
@@ -41,6 +42,7 @@ namespace MedicalServiceSystem.Reclaims
             OperationDate.Value = PLC.getdate();
             ServerName.Clear();
             quantity.Clear();
+            Atachment.Clear();
             ApprovedQuantity.Clear();
             ApproveType.SelectedIndex = -1;
             pharmacist.SelectedIndex = -1;
@@ -51,12 +53,13 @@ namespace MedicalServiceSystem.Reclaims
             GrdDwa.Rows.Clear();
             card_no.Clear();
             card_no.Focus();
+            ApproveDuration.Clear();
             ApproveNo = 0;
             insurId = 0;
             Saved = false;
             using (dbContext db = new dbContext())
             {
-                var ApproveToday = db.ApproveMedicines.Where(p => p.UserId == UserId && p.ApproveDate == OperationDate.Value).Select(p => new { p.Id, p.Subscriber.InsurName }).ToList();
+                var ApproveToday = db.ApproveMedicines.Where(p => p.UserId == UserId && p.ApproveDate == OperationDate.Value && p.RowStatus != RowStatus.Deleted).Select(p => new { p.Id, p.Subscriber.InsurName }).ToList();
                 GrdDailyWork.DataSource = ApproveToday;
                 if (GrdDailyWork.RowCount > 0)
                 {
@@ -75,7 +78,6 @@ namespace MedicalServiceSystem.Reclaims
 
         private void Button4_Click(object sender, EventArgs e)
         {
-
             if (card_no.Text.Length == 0)
             {
                 MessageBox.Show("لا توجد بيانات لهذه المماملة", "النظام", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -88,11 +90,13 @@ namespace MedicalServiceSystem.Reclaims
                 NewMedical();
                 return;
             }
-            using (dbContext db = new dbContext())
+
+
+            if (ApproveNo == 0)
             {
-                insurId = db.Subscribers.Where(p => p.InsurNo == card_no.Text).First().Id;
-                if (ApproveNo == 0)
+                using (dbContext db = new dbContext())
                 {
+                    insurId = db.Subscribers.Where(p => p.InsurNo == card_no.Text).First().Id;
                     ApproveMedicine apv = new ApproveMedicine();
                     apv.InsurId = insurId;
                     apv.ReqCenterId = Convert.ToInt32(RequistingParty.SelectedValue);
@@ -107,6 +111,7 @@ namespace MedicalServiceSystem.Reclaims
                     apv.DateIn = OperationDate.Value;
                     apv.RowStatus = RowStatus.NewRow;
                     apv.Status = Status.Active;
+                    apv.Atachment = Atachment.Text;
                     db.ApproveMedicines.Add(apv);
                     db.SaveChanges();
                     ApproveNo = db.ApproveMedicines.Where(p => p.InsurId == insurId && p.UserId == UserId).Max(p => p.Id);
@@ -150,31 +155,30 @@ namespace MedicalServiceSystem.Reclaims
                             aprd.ServiceId = ServiceId;
                             aprd.Quantity = Convert.ToInt32(GrdDwa.Rows[i].Cells["Quantity"].Value.ToString());
                             aprd.ApprovedQuantity = Convert.ToInt32(GrdDwa.Rows[i].Cells["ApprovedQuantity"].Value.ToString());
+                            aprd.ApproveDuration = Convert.ToInt32(GrdDwa.Rows[i].Cells["ApproveDuration"].Value.ToString());
                             db.ApproveMedicineDetails.Add(aprd);
                             db.SaveChanges();
 
                         }
 
                     }
+
+
                     var GetReclaim = db.ApproveMedicines.Where(p => p.Id == ApproveNo).ToList();
                     if (GetReclaim.Count > 0)
                     {
                         Saved = true;
                         ApprovementId.Text = "كود التصديق" + ":   " + GetReclaim[0].ApproveCode.ToString();
-                        var ApproveToday = db.ApproveMedicines.Where(p => p.UserId == UserId && p.ApproveDate == OperationDate.Value).Select(p => new { p.Id, p.Subscriber.InsurName }).ToList();
-                        GrdDailyWork.DataSource = ApproveToday;
-                        if (GrdDailyWork.RowCount > 0)
-                        {
-                            for (int i = 0; i < GrdDailyWork.RowCount; i++)
-                            {
-                                GrdDailyWork.Rows[i].Cells[0].Value = i + 1;
-                            }
-                        }
+
                     }
                 }
-                else if (ApproveNo > 0)
+            }
+            else if (ApproveNo > 0)
+            {
+                using (dbContext db = new dbContext())
                 {
                     var GetAppv = db.ApproveMedicines.Where(p => p.Id == ApproveNo).ToList();
+                    //   MessageBox.Show(GetAppv.Count.ToString());
                     if (GetAppv.Count > 0)
                     {
                         GetAppv[0].ReqCenterId = Convert.ToInt32(RequistingParty.SelectedValue);
@@ -184,6 +188,7 @@ namespace MedicalServiceSystem.Reclaims
                         GetAppv[0].pharmacistId = Convert.ToInt32(pharmacist.SelectedValue);
                         GetAppv[0].RouchitaNo = Convert.ToInt32(RouchitaNo.Text);
                         GetAppv[0].RowStatus = RowStatus.Edited;
+                        GetAppv[0].Atachment = Atachment.Text;
                         db.SaveChanges();
                     }
                     for (int i = 0; i < GrdDwa.RowCount; i++)
@@ -197,6 +202,7 @@ namespace MedicalServiceSystem.Reclaims
                             aprd.ServiceId = ServiceId;
                             aprd.Quantity = Convert.ToInt32(GrdDwa.Rows[i].Cells["Quantity"].Value.ToString());
                             aprd.ApprovedQuantity = Convert.ToInt32(GrdDwa.Rows[i].Cells["ApprovedQuantity"].Value.ToString());
+                            aprd.ApproveDuration = Convert.ToInt32(GrdDwa.Rows[i].Cells["ApproveDuration"].Value.ToString());
                             db.ApproveMedicineDetails.Add(aprd);
                             db.SaveChanges();
 
@@ -206,21 +212,37 @@ namespace MedicalServiceSystem.Reclaims
                             ChkApr[0].ServiceId = ServiceId;
                             ChkApr[0].Quantity = Convert.ToInt32(GrdDwa.Rows[i].Cells["Quantity"].Value.ToString());
                             ChkApr[0].ApprovedQuantity = Convert.ToInt32(GrdDwa.Rows[i].Cells["ApprovedQuantity"].Value.ToString());
+                            ChkApr[0].ApproveDuration = Convert.ToInt32(GrdDwa.Rows[i].Cells["ApproveDuration"].Value.ToString());
                             db.SaveChanges();
                         }
 
                     }
 
+
+                    var ApproveToday = db.ApproveMedicines.Where(p => p.UserId == UserId && p.ApproveDate == OperationDate.Value).Select(p => new { p.Id, p.Subscriber.InsurName }).ToList();
+                    GrdDailyWork.DataSource = ApproveToday;
+                    if (GrdDailyWork.RowCount > 0)
+                    {
+                        for (int i = 0; i < GrdDailyWork.RowCount; i++)
+                        {
+                            GrdDailyWork.Rows[i].Cells[0].Value = i + 1;
+                        }
+                        if (GrdDailyWork.RowCount > 0)
+                        {
+                            GrdDailyWork.Rows[GrdDailyWork.RowCount - 1].IsCurrent = true;
+                            GrdDailyWork.Rows[GrdDailyWork.RowCount - 1].IsSelected = true;
+
+                        }
+                    }
+                    db.SaveChanges();
+                    FillGrid();
                 }
-
-                db.SaveChanges();
-                FillGrid();
-
-
-                MessageBox.Show("لقد تم حفظ بيانات التصديق", "النظام", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
             }
+
+            MessageBox.Show("لقد تم حفظ بيانات التصديق", "النظام", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
         }
+
 
         private void Button7_Click(object sender, EventArgs e)
         {
@@ -248,20 +270,26 @@ namespace MedicalServiceSystem.Reclaims
                                 Sex.Text = ser[0].Gender;
                                 insurId = ser[0].Id;
                                 Age.Text = DateAndTime.DateDiff(DateInterval.Year, ser[0].BirthDate, PLC.getdate()).ToString();
-                                var FrHistoryMc = db.ReclaimMedicines.Where(p => p.Reclaim.SubscriberId == insurId).Select(p => new { p.Reclaim.ReclaimNo, ServiceName = p.MedicineForReclaim.Generic_name, p.Reclaim.ReclaimDate, Cost = p.ReclaimCost, Quantity = p.Quantity, ApprovedQuantity = 0, UserName = "", System = "الاسترداد" }).ToList();
+                                var FrHistoryMc = db.ReclaimMedicines.Where(p => p.Reclaim.SubscriberId == insurId).Select(p => new { p.Reclaim.ReclaimNo, ServiceName = p.MedicineForReclaim.Generic_name, p.Reclaim.ReclaimDate, Cost = p.ReclaimCost, Quantity = p.Quantity, ApprovedQuantity = 0, UserName = "", System = "الاسترداد", RequestParty = (int)p.Reclaim.RefMedicalReqCenterId, ExcuteParty = (int)p.Reclaim.RefMedicineExcCenterId, Note = p.Reclaim.Notes }).ToList();
                                 decimal Cost = 0;
-                                var FamHistory = db.ApproveMedicineDetails.Where(p => p.ApproveMedicine.InsurId == insurId).Select(p => new { ReclaimNo = p.ApproveMedicineId.ToString(), ServiceName = p.MedicineForReclaim.Generic_name, ReclaimDate = p.ApproveMedicine.ApproveDate, Cost = Cost, Quantity = p.Quantity, ApprovedQuantity = p.ApprovedQuantity, UserName = p.ApproveMedicine.Pharmacist.pharmacistName, System = "التصديق" }).ToList();
+                                var FamHistory = db.ApproveMedicineDetails.Where(p => p.ApproveMedicine.InsurId == insurId).Select(p => new { ReclaimNo = p.ApproveMedicineId.ToString(), ServiceName = p.MedicineForReclaim.Generic_name, ReclaimDate = p.ApproveMedicine.ApproveDate, Cost = Cost, Quantity = p.Quantity, ApprovedQuantity = p.ApprovedQuantity, UserName = p.ApproveMedicine.Pharmacist.pharmacistName, System = "التصديق", RequestParty = p.ApproveMedicine.ReqCenterId, ExcuteParty = p.ApproveMedicine.ExcCenterId, Note = p.ApproveMedicine.Atachment }).ToList();
                                 var Funion = FrHistoryMc.Union(FamHistory).ToList();
-                                FRMpatienthistory.Default.Grid_service.DataSource = Funion;
+                                FRMpatienthistory.Default.Grid_service.Rows.Clear();
                                 if (Funion.Count > 0)
                                 {
                                     var SumCost = Funion.Sum(p => p.Cost);
                                     for (int i = 0; i < Funion.Count; i++)
                                     {
-                                        FRMpatienthistory.Default.Grid_service.Rows[i].Cells[0].Value = i + 1;
+                                        int ReqCenId = Funion[i].RequestParty;
+                                        int ExcuCenter = Funion[i].ExcuteParty;
+                                        string ReqCenter = db.CenterInfos.Where(p => p.Id == ReqCenId).ToList()[0].CenterName;
+                                        string ExcCenter = db.CenterInfos.Where(p => p.Id == ExcuCenter).ToList()[0].CenterName;
+                                        FRMpatienthistory.Default.Grid_service.Rows.Add(i + 1, Funion[i].ReclaimNo, Funion[i].ServiceName, Funion[i].Quantity, Funion[i].ApprovedQuantity, Funion[i].Cost, Funion[i].ReclaimDate, Funion[i].UserName, Funion[i].System, ReqCenter, ExcCenter, Funion[i].Note);
                                     }
                                     FRMpatienthistory.Default.Totals.Text = SumCost.ToString();
                                     FRMpatienthistory.Default.ShowDialog();
+                                    this.Cursor = Cursors.Default;
+                                    return;
                                 }
 
 
@@ -270,10 +298,11 @@ namespace MedicalServiceSystem.Reclaims
                             else
                             {
                                 MessageBox.Show("هذا المشترك موقوف وسبب الايقاف هو :" + (char)13 + ser[0].Notes, "النظام", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                                this.Cursor = Cursors.Default;
                                 return;
                             }
                         }
-                        else
+                        if(SubscriberType.SelectedIndex==0)
                         {
                             string Gender;
                             string ClientId;
@@ -700,7 +729,7 @@ namespace MedicalServiceSystem.Reclaims
                                 ////    }
 
                                 //}
-                               
+
                                 else
                                 {
                                     MessageBox.Show("لا توجد بيانات لهذا المشترك", "النظام", MessageBoxButtons.OK, MessageBoxIcon.None);
@@ -713,12 +742,22 @@ namespace MedicalServiceSystem.Reclaims
 
                             }
                         }
+                        else
+                        {
+
+                            FRMAddStudent.Default.card_no.Text = card_no.Text;
+                            FRMAddStudent.Default.ful_name.Clear();
+                            FRMAddStudent.Default.Age.Clear();
+                            FRMAddStudent.Default.Sex.SelectedIndex = -1;
+                            FRMAddStudent.Default.University.SelectedIndex = -1;
+                            FRMAddStudent.Default.ShowDialog();
+                        }
                     }
                 }
                 catch (Exception ex)
                 {
 
-                    MessageBox.Show("توجد مشلكلة في جلب البيانات" + (char)13 + "تأكد من الرقم الصحيح" + (char)13 + ex.Message, "النظام" , MessageBoxButtons.OK, MessageBoxIcon.None);
+                    MessageBox.Show("توجد مشلكلة في جلب البيانات" + (char)13 + "تأكد من الرقم الصحيح" + (char)13 + ex.Message, "النظام", MessageBoxButtons.OK, MessageBoxIcon.None);
 
                     this.AcceptButton = null;
 
@@ -749,14 +788,14 @@ namespace MedicalServiceSystem.Reclaims
         {
             using (dbContext db = new dbContext())
             {
-                var FrefMl = db.ApproveMedicineDetails.Where(p => p.ApproveMedicineId == ApproveNo).Select(p => new { p.Id, p.MedicineForReclaim.Generic_name, p.ServiceId, p.Quantity, p.ApprovedQuantity }).ToList();
+                var FrefMl = db.ApproveMedicineDetails.Where(p => p.ApproveMedicineId == ApproveNo).Select(p => new { p.Id, p.MedicineForReclaim.Generic_name, p.ServiceId, p.Quantity, p.ApprovedQuantity, p.ApproveDuration }).ToList();
                 //GrdDwa.DataSource = FrefMl;
                 GrdDwa.Rows.Clear();
                 if (FrefMl.Count > 0)
                 {
                     for (int i = 0; i < FrefMl.Count; i++)
                     {
-                        GrdDwa.Rows.Add(i + 1, FrefMl[i].Generic_name, FrefMl[i].Quantity, FrefMl[i].ApprovedQuantity, FrefMl[i].Id, FrefMl[i].ServiceId);
+                        GrdDwa.Rows.Add(i + 1, FrefMl[i].Generic_name, FrefMl[i].Quantity, FrefMl[i].ApprovedQuantity, FrefMl[i].Id, FrefMl[i].ServiceId, FrefMl[i].ApproveDuration);
                     }
 
 
@@ -769,51 +808,52 @@ namespace MedicalServiceSystem.Reclaims
             quantity.Clear();
             ApprovedQuantity.Clear();
             dwalist.Focus();
-
+            ApproveDuration.Clear();
 
         }
         private void FRMmedicine_Load(object sender, EventArgs e)
         {
             UserId = LoginForm.Default.UserId;
             LocalityId = LoginForm.Default.LocalityId;
+
             LoadData();
 
             using (dbContext db = new dbContext())
             {
 
-                var pharm = db.Pharmacists.ToList();
+                var pharm = db.Pharmacists.Where(p => p.Activated == 1).ToList();
                 pharmacist.DataSource = pharm;
                 pharmacist.DisplayMember = "pharmacistName";
                 pharmacist.ValueMember = "Id";
                 pharmacist.DropDownListElement.AutoCompleteSuggest.SuggestMode = Telerik.WinControls.UI.SuggestMode.Contains;
                 pharmacist.SelectedIndex = -1;
-                var diagnos = db.Diagnoses.ToList();
+                var diagnos = db.Diagnoses.Where(p => p.Activated == 1).ToList();
                 Diagnosis.DataSource = diagnos;
                 Diagnosis.DisplayMember = "DiagnosisName";
                 Diagnosis.ValueMember = "Id";
                 Diagnosis.DropDownListElement.AutoCompleteSuggest.SuggestMode = Telerik.WinControls.UI.SuggestMode.Contains;
                 Diagnosis.SelectedIndex = -1;
-                var ReqCenter = db.CenterInfos.Where(p => (p.CenterTypeId == CenterType.مركز || p.CenterTypeId==CenterType.مركزوصيدلية) && p.HasContract == true).ToList();
+                var ReqCenter = db.CenterInfos.Where(p => (p.CenterTypeId == CenterType.مركز || p.CenterTypeId == CenterType.مركزوصيدلية) && p.HasContract == true && p.IsVisible==true).ToList();
                 RequistingParty.DataSource = ReqCenter;
                 RequistingParty.ValueMember = "Id";
                 RequistingParty.DisplayMember = "CenterName";
                 RequistingParty.DropDownListElement.AutoCompleteSuggest.SuggestMode = Telerik.WinControls.UI.SuggestMode.Contains;
                 RequistingParty.SelectedIndex = -1;
 
-                var ExcCenter = db.CenterInfos.Where(p => (p.CenterTypeId == CenterType.صيدلية || p.CenterTypeId==CenterType.مركزوصيدلية) && p.HasContract == true).ToList();
+                var ExcCenter = db.CenterInfos.Where(p => (p.CenterTypeId == CenterType.صيدلية || p.CenterTypeId == CenterType.مركزوصيدلية) && p.HasContract == true && p.IsVisible == true).ToList();
                 ExcutingParty.DataSource = ExcCenter;
                 ExcutingParty.ValueMember = "Id";
                 ExcutingParty.DisplayMember = "CenterName";
                 ExcutingParty.DropDownListElement.AutoCompleteSuggest.SuggestMode = Telerik.WinControls.UI.SuggestMode.Contains;
                 ExcutingParty.SelectedIndex = -1;
 
-                var EngSer = db.MedicineForReclaims.ToList();
+                var EngSer = db.MedicineForReclaims.Where(p=>p.InContract==true && p.IsVisible==true).ToList();
                 dwalist.DataSource = EngSer;
                 dwalist.ValueMember = "Id";
                 dwalist.DisplayMember = "Generic_name";
                 dwalist.DropDownListElement.AutoCompleteSuggest.SuggestMode = Telerik.WinControls.UI.SuggestMode.Contains;
                 dwalist.SelectedIndex = -1;
-                var GetReason = db.ApproveMedicineTypes.ToList();
+                var GetReason = db.ApproveMedicineTypes.Where(p => p.Activated == 1).ToList();
                 ApproveType.DataSource = GetReason;
                 ApproveType.ValueMember = "Id";
                 ApproveType.DisplayMember = "ApproveType";
@@ -821,7 +861,7 @@ namespace MedicalServiceSystem.Reclaims
                 ApproveType.SelectedIndex = -1;
                 // Diagnosis.DataSource = Enum.GetValues(typeof(ReclaimStatus));
 
-            
+
 
 
             }
@@ -896,11 +936,24 @@ namespace MedicalServiceSystem.Reclaims
                 ApprovedQuantity.Focus();
                 return;
             }
+            if (Convert.ToInt32(ApproveType.SelectedValue.ToString()) == 1)
+            {
+                if (ApproveDuration.Text.Length == 0)
+                {
+                    MessageBox.Show("يجب ادخال مدة التصديق", "النظام", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    ApprovedQuantity.Focus();
+                    return;
+                }
+            }
+            else
+            {
+                ApproveDuration.Text = "0";
+            }
 
             using (dbContext db = new dbContext())
             {
                 var ChkSub = db.Subscribers.Where(p => p.InsurNo == card_no.Text).ToList();
-                if (ChkSub.Count == 0 && card_no.Text.Length == 11 && !card_no.Text.Contains("/"))
+                if ( SubscriberType.SelectedIndex==0 && ChkSub.Count == 0 && card_no.Text.Length == 11 && !card_no.Text.Contains("/"))
                 {
                     if (CustName.Text.Length == 0)
                     {
@@ -948,7 +1001,7 @@ namespace MedicalServiceSystem.Reclaims
                 if (GrdDwa.RowCount == 0)
                 {
 
-                    GrdDwa.Rows.Add(GrdDwa.RowCount + 1, dwalist.Text, quantity.Text, ApprovedQuantity.Text, "0", dwalist.SelectedValue.ToString());
+                    GrdDwa.Rows.Add(GrdDwa.RowCount + 1, dwalist.Text, quantity.Text, ApprovedQuantity.Text, "0", dwalist.SelectedValue.ToString(), ApproveDuration.Text);
                 }
                 else
                 {
@@ -960,7 +1013,7 @@ namespace MedicalServiceSystem.Reclaims
                             return;
                         }
                     }
-                    GrdDwa.Rows.Add(GrdDwa.RowCount + 1, dwalist.Text, quantity.Text, ApprovedQuantity.Text, "0", dwalist.SelectedValue.ToString());
+                    GrdDwa.Rows.Add(GrdDwa.RowCount + 1, dwalist.Text, quantity.Text, ApprovedQuantity.Text, "0", dwalist.SelectedValue.ToString(), ApproveDuration.Text);
 
                 }
                 NewMedical();
@@ -986,9 +1039,12 @@ namespace MedicalServiceSystem.Reclaims
                         using (dbContext db = new dbContext())
                         {
                             var GetMed = db.ApproveMedicineDetails.Where(p => p.Id == ReclaimMedId).ToList();
-                            db.ApproveMedicineDetails.Remove(GetMed[0]);
-                            db.SaveChanges();
-                            FillGrid();
+                            if (GetMed.Count > 0)
+                            {
+                                db.ApproveMedicineDetails.Remove(GetMed[0]);
+                                db.SaveChanges();
+                                GrdDwa.Rows.RemoveAt(GrdDwa.CurrentRow.Index);
+                            }
                         }
                     }
                     else
@@ -1111,6 +1167,7 @@ namespace MedicalServiceSystem.Reclaims
                             Diagnosis.SelectedValue = GetApp[0].DiagnosisId;
                             pharmacist.SelectedValue = GetApp[0].pharmacistId;
                             ApproveType.SelectedValue = GetApp[0].ApproveTypeId;
+                            Atachment.Text = GetApp[0].Atachment;
                             Age.Text = DateAndTime.DateDiff(DateInterval.Year, GetApp[0].Subscriber.BirthDate, PLC.getdate()).ToString();
                             Saved = true;
                             ApprovementId.Text = "كود التصديق" + ":   " + GetApp[0].ApproveCode.ToString();
@@ -1155,7 +1212,7 @@ namespace MedicalServiceSystem.Reclaims
 
         private void Card_no_GotFocus(object sender, EventArgs e)
         {
-            
+
         }
 
         private void Card_no_TextChanged(object sender, EventArgs e)
@@ -1164,6 +1221,25 @@ namespace MedicalServiceSystem.Reclaims
             {
                 this.AcceptButton = BTNSearch;
             }
+        }
+
+        private void RadButton1_Click(object sender, EventArgs e)
+        {
+            if (card_no.Text.Length == 0)
+            {
+                MessageBox.Show("يجب ادخال بيانات المشترك", "النظام", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                card_no.Focus();
+                return;
+            }
+            if (CustName.Text.Length == 0)
+            {
+                MessageBox.Show("يجب ادخال بيانات المشترك", "النظام", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                card_no.Focus();
+                return;
+            }
+            FRMStopSubscriber.Default.card_no.Text = card_no.Text;
+            FRMStopSubscriber.Default.ful_name.Text = CustName.Text;
+            FRMStopSubscriber.Default.ShowDialog();
         }
     }
 }

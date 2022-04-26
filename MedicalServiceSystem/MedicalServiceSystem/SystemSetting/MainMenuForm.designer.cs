@@ -88,6 +88,12 @@
             this.FrmAppMedicineTyp = new Telerik.WinControls.UI.RadButtonElement();
             this.FrmPharmacist = new Telerik.WinControls.UI.RadButtonElement();
             this.ribbonTab7 = new Telerik.WinControls.UI.RibbonTab();
+            this.radRibbonBarGroup32 = new Telerik.WinControls.UI.RadRibbonBarGroup();
+            this.FRMBookInfo = new Telerik.WinControls.UI.RadButtonElement();
+            this.radRibbonBarGroup33 = new Telerik.WinControls.UI.RadRibbonBarGroup();
+            this.FRMreportChronics = new Telerik.WinControls.UI.RadButtonElement();
+            this.radRibbonBarGroup34 = new Telerik.WinControls.UI.RadRibbonBarGroup();
+            this.FrmChronics = new Telerik.WinControls.UI.RadButtonElement();
             this.radMenuComboItem1 = new Telerik.WinControls.UI.RadMenuComboItem();
             this.radMenuItem1 = new Telerik.WinControls.UI.RadMenuItem();
             this.radRibbonBarGroup1 = new Telerik.WinControls.UI.RadRibbonBarGroup();
@@ -291,7 +297,7 @@
             // 
             // ribbonTab1
             // 
-            this.ribbonTab1.IsSelected = true;
+            this.ribbonTab1.IsSelected = false;
             this.ribbonTab1.Items.AddRange(new Telerik.WinControls.RadItem[] {
             this.radRibbonBarGroup16,
             this.radRibbonBarGroup17,
@@ -578,9 +584,57 @@
             // 
             // ribbonTab7
             // 
+            this.ribbonTab7.IsSelected = true;
+            this.ribbonTab7.Items.AddRange(new Telerik.WinControls.RadItem[] {
+            this.radRibbonBarGroup32,
+            this.radRibbonBarGroup33,
+            this.radRibbonBarGroup34});
             this.ribbonTab7.Name = "ribbonTab7";
             this.ribbonTab7.Text = "دفاتر الأمراض المزمنة";
             this.ribbonTab7.UseMnemonic = false;
+            // 
+            // radRibbonBarGroup32
+            // 
+            this.radRibbonBarGroup32.Items.AddRange(new Telerik.WinControls.RadItem[] {
+            this.FRMBookInfo});
+            this.radRibbonBarGroup32.Name = "radRibbonBarGroup32";
+            this.radRibbonBarGroup32.Text = "الأمراض المزمنة";
+            // 
+            // FRMBookInfo
+            // 
+            this.FRMBookInfo.Enabled = false;
+            this.FRMBookInfo.EnableElementShadow = true;
+            this.FRMBookInfo.Name = "FRMBookInfo";
+            this.FRMBookInfo.Text = "ادخال دفاتر الأمراض المزمنة";
+            this.FRMBookInfo.Click += new System.EventHandler(this.FRMBookInfo_Click);
+            // 
+            // radRibbonBarGroup33
+            // 
+            this.radRibbonBarGroup33.Items.AddRange(new Telerik.WinControls.RadItem[] {
+            this.FRMreportChronics});
+            this.radRibbonBarGroup33.Name = "radRibbonBarGroup33";
+            this.radRibbonBarGroup33.Text = "تقارير";
+            // 
+            // FRMreportChronics
+            // 
+            this.FRMreportChronics.Enabled = false;
+            this.FRMreportChronics.Name = "FRMreportChronics";
+            this.FRMreportChronics.Text = "تقارير دفاتر الأمراض المزمنة";
+            this.FRMreportChronics.Click += new System.EventHandler(this.FRMreportChronics_Click);
+            // 
+            // radRibbonBarGroup34
+            // 
+            this.radRibbonBarGroup34.Items.AddRange(new Telerik.WinControls.RadItem[] {
+            this.FrmChronics});
+            this.radRibbonBarGroup34.Name = "radRibbonBarGroup34";
+            this.radRibbonBarGroup34.Text = "اعداد";
+            // 
+            // FrmChronics
+            // 
+            this.FrmChronics.Enabled = false;
+            this.FrmChronics.Name = "FrmChronics";
+            this.FrmChronics.Text = "اعداد قائمة الأمراض المزمنة";
+            this.FrmChronics.Click += new System.EventHandler(this.RadButtonElement7_Click);
             // 
             // radMenuComboItem1
             // 
@@ -912,5 +966,11 @@
         private Telerik.WinControls.UI.RadButtonElement FrmAppMedicineTyp;
         private Telerik.WinControls.UI.RadButtonElement FrmPharmacist;
         private Telerik.WinControls.UI.RadButtonElement FRMMedicinePricing;
+        private Telerik.WinControls.UI.RadRibbonBarGroup radRibbonBarGroup32;
+        private Telerik.WinControls.UI.RadButtonElement FRMBookInfo;
+        private Telerik.WinControls.UI.RadRibbonBarGroup radRibbonBarGroup33;
+        private Telerik.WinControls.UI.RadButtonElement FRMreportChronics;
+        private Telerik.WinControls.UI.RadRibbonBarGroup radRibbonBarGroup34;
+        private Telerik.WinControls.UI.RadButtonElement FrmChronics;
     }
 }

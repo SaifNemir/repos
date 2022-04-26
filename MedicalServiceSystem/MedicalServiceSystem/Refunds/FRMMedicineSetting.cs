@@ -107,6 +107,7 @@ namespace MedicalServiceSystem.Reclaims
                     {
                         var Geneiclst = db.Medicines.Where(p => p.ATCId == AtcId).Select(p => new { p.Id, p.Generic_name, p.Unit.Unit_Name, p.PL, HICKS_DC= p.HICKS_DCS.HICKSDC, p.NOTE, p.DDD,U= p.US.U, Adm_R = p.AdmRS.AdmR }).ToList();
                         GRDMedicine.DataSource = Geneiclst;
+                       
 
                     }
                 }
@@ -277,6 +278,12 @@ namespace MedicalServiceSystem.Reclaims
                     db.SaveChanges();
                     MessageBox.Show("Data has been Inserted", "System", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     Fill();
+                    if (GRDMedicine.RowCount > 0)
+                    {
+                        GRDMedicine.Rows[GRDMedicine.RowCount - 1].IsCurrent = true;
+                        GRDMedicine.Rows[GRDMedicine.RowCount - 1].IsSelected = true;
+
+                    }
                 }
                 else if (MedicineId > 0)
                 {
@@ -579,6 +586,23 @@ namespace MedicalServiceSystem.Reclaims
         private void Note_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void GRDMedicine_RowFormatting(object sender, Telerik.WinControls.UI.RowFormattingEventArgs e)
+        {
+            if (GRDMedicine.RowCount > 0)
+            {
+                if (Convert.ToInt32(e.RowElement.RowInfo.Cells["Activated"].Value) == 0)
+                {
+                    e.RowElement.DrawFill = true;
+                    e.RowElement.BackColor = System.Drawing.Color.Gray;
+                }
+                else if (Convert.ToInt32(e.RowElement.RowInfo.Cells["Activated"].Value) == 1)
+                {
+                    e.RowElement.DrawFill = true;
+                    e.RowElement.BackColor = System.Drawing.Color.White;
+                }
+            }
         }
     }
 }

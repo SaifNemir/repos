@@ -62,6 +62,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ChkUpdate.cs" />
+    <Compile Include="ChronicBookType.cs" />
+    <Compile Include="Chronics.cs" />
     <Compile Include="Migrations\202201121056569_ThirdMig.cs" />
     <Compile Include="Migrations\202201121056569_ThirdMig.designer.cs">
       <DependentUpon>202201121056569_ThirdMig.cs</DependentUpon>
@@ -110,6 +112,36 @@
     <Compile Include="Migrations\202202010900539_saif122022.cs" />
     <Compile Include="Migrations\202202010900539_saif122022.designer.cs">
       <DependentUpon>202202010900539_saif122022.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202202031138189_saif322022.cs" />
+    <Compile Include="Migrations\202202031138189_saif322022.designer.cs">
+      <DependentUpon>202202031138189_saif322022.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202202031221265_saif3220221.cs" />
+    <Compile Include="Migrations\202202031221265_saif3220221.designer.cs">
+      <DependentUpon>202202031221265_saif3220221.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202202060610083_saif622022.cs" />
+    <Compile Include="Migrations\202202060610083_saif622022.designer.cs">
+      <DependentUpon>202202060610083_saif622022.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202203220639421_S2022322.cs" />
+    <Compile Include="Migrations\202203220639421_S2022322.designer.cs">
+      <DependentUpon>202203220639421_S2022322.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202203240909262_20220324S.cs" />
+    <Compile Include="Migrations\202203240909262_20220324S.designer.cs">
+      <DependentUpon>202203240909262_20220324S.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ChronicsBooks.cs" />
+    <Compile Include="ChronicBooksDetails.cs" />
+    <Compile Include="Migrations\202203281157275_20220328Sa.cs" />
+    <Compile Include="Migrations\202203281157275_20220328Sa.designer.cs">
+      <DependentUpon>202203281157275_20220328Sa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202204131130377_sa2022413.cs" />
+    <Compile Include="Migrations\202204131130377_sa2022413.designer.cs">
+      <DependentUpon>202204131130377_sa2022413.cs</DependentUpon>
     </Compile>
     <Compile Include="US.cs" />
     <Compile Include="HICKSDCS.cs" />
@@ -218,6 +250,27 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202202010900539_saif122022.resx">
       <DependentUpon>202202010900539_saif122022.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202202031138189_saif322022.resx">
+      <DependentUpon>202202031138189_saif322022.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202202031221265_saif3220221.resx">
+      <DependentUpon>202202031221265_saif3220221.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202202060610083_saif622022.resx">
+      <DependentUpon>202202060610083_saif622022.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202203220639421_S2022322.resx">
+      <DependentUpon>202203220639421_S2022322.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202203240909262_20220324S.resx">
+      <DependentUpon>202203240909262_20220324S.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202203281157275_20220328Sa.resx">
+      <DependentUpon>202203281157275_20220328Sa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202204131130377_sa2022413.resx">
+      <DependentUpon>202204131130377_sa2022413.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <!--<Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

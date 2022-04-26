@@ -311,5 +311,29 @@ namespace MedicalServiceSystem
             form.WindowState = FormWindowState.Maximized;
             form.Show();
         }
+
+        private void RadButtonElement7_Click(object sender, EventArgs e)
+        {
+            FrmChronics form = new FrmChronics();
+            form.MdiParent = this;
+            form.WindowState = FormWindowState.Maximized;
+            form.Show();
+        }
+
+        private void FRMBookInfo_Click(object sender, EventArgs e)
+        {
+            FRMBookInfo form = new FRMBookInfo();
+            form.MdiParent = this;
+            form.WindowState = FormWindowState.Maximized;
+            form.Show();
+        }
+
+        private void FRMreportChronics_Click(object sender, EventArgs e)
+        {
+            FRMreportChronics form = new FRMreportChronics();
+            form.MdiParent = this;
+            form.WindowState = FormWindowState.Maximized;
+            form.Show();
+        }
     }
 }

@@ -23,6 +23,7 @@ namespace ModelDB
         public int ApproveTypeId { get; set; }
         [ForeignKey("ApproveTypeId")]
         public virtual ApproveMedicineType ApproveMedicineType { get; set; }
+        public string Atachment { get; set; }
 
     }
 

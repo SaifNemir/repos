@@ -28,7 +28,7 @@
     <MapFileExtensions>true</MapFileExtensions>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>17</ApplicationRevision>
+    <ApplicationRevision>31</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -54,10 +54,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>64E0B44DB00E6C6DADE8DB5B632711B6022F6925</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>713B642D171C2EB4147FDED3FFE78C4B9F288087</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>MedicalServiceSystem_TemporaryKey.pfx</ManifestKeyFile>
+    <ManifestKeyFile>MedicalServiceSystem_1_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
     <GenerateManifests>true</GenerateManifests>
@@ -94,6 +94,7 @@
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Telerik.Reporting, Version=14.0.20.115, Culture=neutral, PublicKeyToken=a9d7983dfcc261be" />
+    <Reference Include="Telerik.ReportViewer.WinForms, Version=14.0.20.115, Culture=neutral, PublicKeyToken=a9d7983dfcc261be, processorArchitecture=MSIL" />
     <Reference Include="Telerik.WinControls, Version=2020.1.113.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
       <HintPath>..\lib\RCWF\2020.1.113.40\Telerik.WinControls.dll</HintPath>
       <Private>True</Private>
@@ -110,6 +111,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Chronics\FRMBookInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Chronics\FRMBookInfo.Designer.cs">
+      <DependentUpon>FRMBookInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ReportForAll.cs" />
     <Compile Include="Refunds\AllSupplierRPT.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -139,6 +147,12 @@
     </Compile>
     <Compile Include="Refunds\FrmAppMedicineTyp.Designer.cs">
       <DependentUpon>FrmAppMedicineTyp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Refunds\FrmChronics.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Refunds\FrmChronics.Designer.cs">
+      <DependentUpon>FrmChronics.cs</DependentUpon>
     </Compile>
     <Compile Include="Refunds\FrmPharmacist.cs">
       <SubType>Form</SubType>
@@ -181,6 +195,12 @@
     </Compile>
     <Compile Include="Refunds\FrmMedicineOut.Designer.cs">
       <DependentUpon>FrmMedicineOut.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Refunds\FRMAddStudent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Refunds\FRMAddStudent.Designer.cs">
+      <DependentUpon>FRMAddStudent.cs</DependentUpon>
     </Compile>
     <Compile Include="Refunds\FrmTrades.cs">
       <SubType>Form</SubType>
@@ -280,6 +300,24 @@
     <Compile Include="Refunds\FRMStopSubscriber.Designer.cs">
       <DependentUpon>FRMStopSubscriber.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reports\FRMreportChronics.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reports\FRMreportChronics.designer.cs">
+      <DependentUpon>FRMreportChronics.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\RPTChronicAll.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\RPTChronicAll.Designer.cs">
+      <DependentUpon>RPTChronicAll.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\RPTChronicBooksDetails.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\RPTChronicBooksDetails.Designer.cs">
+      <DependentUpon>RPTChronicBooksDetails.cs</DependentUpon>
+    </Compile>
     <Compile Include="SystemSetting\MainMenuForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -335,6 +373,9 @@
     <Compile Include="SystemSetting\UserPermissionsFRM.Designer.cs">
       <DependentUpon>UserPermissionsFRM.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Chronics\FRMBookInfo.resx">
+      <DependentUpon>FRMBookInfo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -344,6 +385,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="Refunds\AllSupplierRPT.resx">
       <DependentUpon>AllSupplierRPT.cs</DependentUpon>
@@ -359,6 +401,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Refunds\FrmAppMedicineTyp.resx">
       <DependentUpon>FrmAppMedicineTyp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Refunds\FrmChronics.resx">
+      <DependentUpon>FrmChronics.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Refunds\FrmPharmacist.resx">
       <DependentUpon>FrmPharmacist.cs</DependentUpon>
@@ -380,6 +425,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Refunds\FrmMedicineOut.resx">
       <DependentUpon>FrmMedicineOut.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Refunds\FRMAddStudent.resx">
+      <DependentUpon>FRMAddStudent.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Refunds\FrmTrades.resx">
       <DependentUpon>FrmTrades.cs</DependentUpon>
@@ -429,6 +477,15 @@
     <EmbeddedResource Include="Refunds\FRMStopSubscriber.resx">
       <DependentUpon>FRMStopSubscriber.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reports\FRMreportChronics.resx">
+      <DependentUpon>FRMreportChronics.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\RPTChronicAll.resx">
+      <DependentUpon>RPTChronicAll.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\RPTChronicBooksDetails.resx">
+      <DependentUpon>RPTChronicBooksDetails.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SystemSetting\MainMenuForm.resx">
       <DependentUpon>MainMenuForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -456,6 +513,7 @@
     <EmbeddedResource Include="SystemSetting\UserPermissionsFRM.resx">
       <DependentUpon>UserPermissionsFRM.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="MedicalServiceSystem_1_TemporaryKey.pfx" />
     <None Include="MedicalServiceSystem_TemporaryKey.pfx" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -467,12 +525,12 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Resources\Thumbs.db" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Chronics\" />
     <Folder Include="Claims\" />
   </ItemGroup>
   <ItemGroup>
@@ -486,6 +544,219 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Aisologo.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BINOCULR.ICO" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Bloc Notes SZ.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Book_Green.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DELETE - Copy.BMP" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DELETE.BMP" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Dock_About01.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\editdelete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\encrypted.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\error.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\exec.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\filefind.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fileprint.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FILES10.ICO" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\hh.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NEW.BMP" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Printer_Red.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SAVE.BMP" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Settings.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Xserve.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AddNew.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\addPerson.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\approval.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Approve.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\attach.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\attachment.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baseline_block_black_18dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\clear.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CompanyLogo.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\copying.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\create.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Delete.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Disable.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dwa.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\edit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Edit1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\EditImage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Enable5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Excel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Insurance.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\InsuranceSystem.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LoginIco.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LogoutIco.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\more.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\new1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\off.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\On.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\outline_hourglass_bottom_black_24dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\outline_hourglass_bottom_black_24dp1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\outline_person_add_alt_black_18dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\outline_verified_black_18dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\photo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\preview.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\print.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\removePerson.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Renew.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\saveAll.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SaveImage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\search.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\search2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\search11.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SearchForCard.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sss.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\StateLogo.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Transaction.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\transfer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\transfer1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\upload.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\UsersSetting.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

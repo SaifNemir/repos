@@ -264,6 +264,7 @@ namespace MedicalServiceSystem.Reclaims
             this.GRDMedicine.Size = new System.Drawing.Size(1046, 248);
             this.GRDMedicine.TabIndex = 12;
             this.GRDMedicine.ThemeName = "Office2010Blue";
+            this.GRDMedicine.RowFormatting += new Telerik.WinControls.UI.RowFormattingEventHandler(this.GRDMedicine_RowFormatting);
             this.GRDMedicine.CellFormatting += new Telerik.WinControls.UI.CellFormattingEventHandler(this.GRDMedicine_CellFormatting);
             this.GRDMedicine.CommandCellClick += new Telerik.WinControls.UI.CommandCellClickEventHandler(this.GRDMedicine_CommandCellClick);
             // 

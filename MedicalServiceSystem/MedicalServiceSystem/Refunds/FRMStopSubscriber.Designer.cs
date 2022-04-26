@@ -36,6 +36,18 @@
             this.Button1 = new Telerik.WinControls.UI.RadButton();
             this.Label1 = new Telerik.WinControls.UI.RadLabel();
             this.StopCause = new Telerik.WinControls.UI.RadTextBox();
+            this.radButton1 = new Telerik.WinControls.UI.RadButton();
+            ((System.ComponentModel.ISupportInitialize)(this.Label8)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ful_name)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Label5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Label4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.card_no)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Label3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Button1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Label1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.StopCause)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radButton1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
             // 
             // Label8
@@ -114,7 +126,8 @@
             // Button1
             // 
             this.Button1.Font = new System.Drawing.Font("Sakkal Majalla", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Button1.Location = new System.Drawing.Point(320, 128);
+            this.Button1.ForeColor = System.Drawing.Color.Crimson;
+            this.Button1.Location = new System.Drawing.Point(391, 128);
             this.Button1.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.Button1.Name = "Button1";
             this.Button1.Size = new System.Drawing.Size(117, 31);
@@ -145,7 +158,18 @@
             this.StopCause.TabIndex = 27;
             this.StopCause.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // StopSubscriber
+            // radButton1
+            // 
+            this.radButton1.Font = new System.Drawing.Font("Sakkal Majalla", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radButton1.Location = new System.Drawing.Point(266, 128);
+            this.radButton1.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.radButton1.Name = "radButton1";
+            this.radButton1.Size = new System.Drawing.Size(117, 31);
+            this.radButton1.TabIndex = 29;
+            this.radButton1.Text = "إلغاء الايقاف";
+            this.radButton1.Click += new System.EventHandler(this.RadButton1_Click);
+            // 
+            // FRMStopSubscriber
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -153,6 +177,7 @@
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(776, 170);
+            this.Controls.Add(this.radButton1);
             this.Controls.Add(this.Label1);
             this.Controls.Add(this.StopCause);
             this.Controls.Add(this.Button1);
@@ -166,7 +191,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(6);
             this.MaximizeBox = false;
-            this.Name = "StopSubscriber";
+            this.Name = "FRMStopSubscriber";
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             // 
             // 
@@ -175,6 +200,17 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ايقاف مشترك";
             this.Load += new System.EventHandler(this.patienthistory_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.Label8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ful_name)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Label5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Label4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.card_no)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Label3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Button1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Label1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.StopCause)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radButton1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -189,6 +225,8 @@
         internal Telerik.WinControls.UI.RadLabel Label1;
         internal Telerik.WinControls.UI.RadTextBox StopCause;
         private static FRMStopSubscriber _Default;
+        internal Telerik.WinControls.UI.RadButton radButton1;
+
         public static FRMStopSubscriber Default
         {
             get

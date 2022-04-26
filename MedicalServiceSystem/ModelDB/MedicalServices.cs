@@ -21,7 +21,10 @@ namespace ModelDB
 		public bool InContract { get; set; }
 		public bool? IsEnabled { get; set; }
 		public int? Sessions { get; set; }
-	}
+        public bool? IsVisible { get; set; }
+        public bool FromTheList { get; set; }
+        public int Percentag { get; set; }
+    }
 	public enum ListType
     {
 		مايعادل,

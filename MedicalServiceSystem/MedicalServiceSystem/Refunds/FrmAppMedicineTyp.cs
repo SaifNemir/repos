@@ -43,7 +43,7 @@ namespace MedicalServiceSystem
         {
             if (ApproveType.Text == "")
             {
-                MessageBox.Show("Please insert Diagnosis Name!");
+                MessageBox.Show("يجب ادخال السبب");
                 ApproveType.Focus();
                 return;
             }
@@ -52,10 +52,10 @@ namespace MedicalServiceSystem
             {
                 if (ApproveId == 0)
                 {
-                    Diagnosis tr = new Diagnosis();
-                    tr.DiagnosisName= ApproveType.Text.Trim();
+                    ApproveMedicineType tr = new ApproveMedicineType();
+                    tr.ApproveType= ApproveType.Text.Trim();
                     tr.Activated = 1;
-                    db.Diagnoses.Add(tr);
+                    db.ApproveMedicineTypes.Add(tr);
                     db.SaveChanges();
                     FillCombo();
                     radButton1.PerformClick();
@@ -250,7 +250,7 @@ namespace MedicalServiceSystem
                 else if(GRDApproveType.CurrentColumn.Name == "Edit")
                 {
                     //  var form = new AddNewItem();
-                    var Gtrade = db.Diagnoses.Where(p => p.Id == ApproveId).ToList();
+                    var Gtrade = db.ApproveMedicineTypes.Where(p => p.Id == ApproveId).ToList();
                     if (Gtrade.Count > 0)
                     {
 
@@ -294,7 +294,7 @@ namespace MedicalServiceSystem
                     // TradeId = Convert.ToInt32(TradeName.SelectedValue.ToString());
                     using (dbContext db = new dbContext())
                     {
-                        var gtrade = db.Diagnoses.Where(p => p.DiagnosisName == ApproveType.Text).ToList();
+                        var gtrade = db.ApproveMedicineTypes.Where(p => p.ApproveType == ApproveType.Text).ToList();
                         if (gtrade.Count > 0)
                         {
                             ApproveId = gtrade[0].Id;
@@ -329,6 +329,23 @@ namespace MedicalServiceSystem
         private void GrdTrades_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void GRDApproveType_RowFormatting(object sender, Telerik.WinControls.UI.RowFormattingEventArgs e)
+        {
+             if (GRDApproveType.RowCount > 0)
+            {
+                if (Convert.ToInt32(e.RowElement.RowInfo.Cells["Activated"].Value) == 0)
+                {
+                    e.RowElement.DrawFill = true;
+                    e.RowElement.BackColor = System.Drawing.Color.Gray;
+                }
+                else if (Convert.ToInt32(e.RowElement.RowInfo.Cells["Activated"].Value) == 1)
+                {
+                    e.RowElement.DrawFill = true;
+                    e.RowElement.BackColor = System.Drawing.Color.White;
+                }
+            }
         }
     }
 }

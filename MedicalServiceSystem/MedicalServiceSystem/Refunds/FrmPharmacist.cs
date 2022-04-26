@@ -37,6 +37,7 @@ namespace MedicalServiceSystem
                 PharmacistList.SelectedIndex = -1;
                 PharmacistList.DropDownListElement.AutoCompleteSuggest.SuggestMode = Telerik.WinControls.UI.SuggestMode.Contains;
                 GrdTrades.DataSource = Tlist;
+                
             }
         }
 
@@ -312,19 +313,29 @@ namespace MedicalServiceSystem
 
         private void GrdTrades_CellFormatting(object sender, Telerik.WinControls.UI.CellFormattingEventArgs e)
         {
-            if (Convert.ToInt32(e.Row.Cells["Activated"].Value) == 1)
-            {
-                e.CellElement.BackColor = System.Drawing.Color.Gray;
-            }
-            else
-            {
-                e.CellElement.BackColor = System.Drawing.Color.White;
-            }
+          
         }
 
         private void radButton2_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void GrdTrades_RowFormatting(object sender, Telerik.WinControls.UI.RowFormattingEventArgs e)
+        {
+            if (GrdTrades.RowCount > 0)
+            {
+                if (Convert.ToInt32(e.RowElement.RowInfo.Cells["Activated"].Value) == 0)
+                {
+                    e.RowElement.DrawFill = true;
+                    e.RowElement.BackColor = System.Drawing.Color.Gray;
+                }
+                else if (Convert.ToInt32(e.RowElement.RowInfo.Cells["Activated"].Value) == 1)
+                {
+                    e.RowElement.DrawFill = true;
+                    e.RowElement.BackColor = System.Drawing.Color.White;
+                }
+            }
         }
     }
 }

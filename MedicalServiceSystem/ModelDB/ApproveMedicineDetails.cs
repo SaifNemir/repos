@@ -13,6 +13,7 @@ namespace ModelDB
 		public virtual MedicineForReclaim MedicineForReclaim { get; set; }
 		public int Quantity { get; set; }
 		public int ApprovedQuantity { get; set; }
-	}
+        public int ApproveDuration { get; set; }
+    }
 
 }

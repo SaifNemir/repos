@@ -136,6 +136,7 @@
             gridViewTextBoxColumn3.HeaderText = "column1";
             gridViewTextBoxColumn3.IsVisible = false;
             gridViewTextBoxColumn3.Name = "Activated";
+            gridViewTextBoxColumn3.Width = 300;
             this.GrdTrades.MasterTemplate.Columns.AddRange(new Telerik.WinControls.UI.GridViewDataColumn[] {
             gridViewTextBoxColumn1,
             gridViewTextBoxColumn2,
@@ -152,6 +153,7 @@
             this.GrdTrades.ShowGroupPanel = false;
             this.GrdTrades.Size = new System.Drawing.Size(1241, 360);
             this.GrdTrades.TabIndex = 15;
+            this.GrdTrades.RowFormatting += new Telerik.WinControls.UI.RowFormattingEventHandler(this.GrdTrades_RowFormatting);
             this.GrdTrades.CellFormatting += new Telerik.WinControls.UI.CellFormattingEventHandler(this.GrdTrades_CellFormatting);
             this.GrdTrades.CommandCellClick += new Telerik.WinControls.UI.CommandCellClickEventHandler(this.ItemGrid_CommandCellClick);
             // 

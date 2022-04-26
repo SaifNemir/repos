@@ -12,5 +12,9 @@ namespace ModelDB
         public decimal UnitCost { get; set; }
         public bool InContract { get; set; }
         public int Activated { get; set; }
+        public bool IsVisible { get; set; }
+        public bool FromTheList { get; set; }
+        public int Percentag { get; set; }
+
     }
 }

@@ -308,7 +308,7 @@ namespace MedicalServiceSystem.SystemSetting
                                 excc.Level4 = false;
                                 excc.HasContract = false;
                                 excc.IsEnabled = false;
-
+                                excc.IsVisible = true;
                                 if (Convert.ToInt32(dtCenter.Rows[i]["center_level"]) == 1)
                                 {
                                     excc.Level1 = true;

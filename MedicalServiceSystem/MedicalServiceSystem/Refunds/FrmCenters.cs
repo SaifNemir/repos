@@ -164,7 +164,7 @@ namespace MedicalServiceSystem
         {
             using (dbContext db = new dbContext())
             {
-                var CInfo = db.CenterInfos.Where(p=>p.HasContract==false).Select(p => new { p.Id, p.CenterName, p.Level1, p.Level2, p.Level3, p.CenterTypeId, p.HasContract, p.IsEnabled }).ToList();
+                var CInfo = db.CenterInfos.Where(p=>p.HasContract==false && p.IsVisible && p.IsVisible==true).Select(p => new { p.Id, p.CenterName, p.Level1, p.Level2, p.Level3, p.CenterTypeId, p.HasContract, p.IsEnabled }).ToList();
                 GRDCenter.DataSource = CInfo;
                 if (GRDCenter.RowCount > 0)
                 {

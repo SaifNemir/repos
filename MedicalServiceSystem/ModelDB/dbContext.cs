@@ -51,7 +51,10 @@ namespace ModelDB
         public DbSet<HICKS_DCS> HICKS_DCS { get; set; }
         public DbSet<US> US { get; set; }
         public DbSet<ChkUpdate> ChkUpdates { get; set; }
-       
+        public DbSet<Chronics> Chronics { get; set; }
+        public DbSet<ChronicsBooks> ChronicsBooks { get; set; }
+        public DbSet<ChronicBooksDetails> ChronicBooksDetails { get; set; }
         public DbSet<ApproveMedicineType > ApproveMedicineTypes { get; set; }
+        public DbSet<ChronicBookType> ChronicBookTypes { get; set; }
     }
 }

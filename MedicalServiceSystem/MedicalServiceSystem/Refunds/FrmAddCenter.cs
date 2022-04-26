@@ -89,6 +89,7 @@ namespace MedicalServiceSystem
                     cr.HasContract= false; 
                     cr.LocalityId =Convert.ToInt32( Locality.SelectedValue);
                     cr.IsEnabled = true;
+                    cr.IsVisible = true;
                     db.CenterInfos.Add(cr);
                     db.SaveChanges();
                     CenterId = db.CenterInfos.Max(p => p.Id);

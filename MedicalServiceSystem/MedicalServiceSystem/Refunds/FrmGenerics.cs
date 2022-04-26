@@ -344,6 +344,23 @@ namespace MedicalServiceSystem
         {
             Close();
         }
+
+        private void GrdGenerics_RowFormatting(object sender, Telerik.WinControls.UI.RowFormattingEventArgs e)
+        {
+            if (GrdGenerics.RowCount > 0)
+            {
+                if (Convert.ToInt32(e.RowElement.RowInfo.Cells["IsActive"].Value) == 0)
+                {
+                    e.RowElement.DrawFill = true;
+                    e.RowElement.BackColor = System.Drawing.Color.Gray;
+                }
+                else if (Convert.ToInt32(e.RowElement.RowInfo.Cells["IsActive"].Value) == 1)
+                {
+                    e.RowElement.DrawFill = true;
+                    e.RowElement.BackColor = System.Drawing.Color.White;
+                }
+            }
+        }
     }
 }
 

@@ -146,6 +146,7 @@
             this.GrdGenerics.ShowGroupPanel = false;
             this.GrdGenerics.Size = new System.Drawing.Size(869, 322);
             this.GrdGenerics.TabIndex = 15;
+            this.GrdGenerics.RowFormatting += new Telerik.WinControls.UI.RowFormattingEventHandler(this.GrdGenerics_RowFormatting);
             this.GrdGenerics.CellFormatting += new Telerik.WinControls.UI.CellFormattingEventHandler(this.GrdTrades_CellFormatting);
             this.GrdGenerics.CommandCellClick += new Telerik.WinControls.UI.CommandCellClickEventHandler(this.ItemGrid_CommandCellClick);
             // 

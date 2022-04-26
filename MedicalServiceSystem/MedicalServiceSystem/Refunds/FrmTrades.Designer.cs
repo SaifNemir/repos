@@ -180,6 +180,7 @@
             this.GrdTrades.ShowGroupPanel = false;
             this.GrdTrades.Size = new System.Drawing.Size(1100, 516);
             this.GrdTrades.TabIndex = 15;
+            this.GrdTrades.RowFormatting += new Telerik.WinControls.UI.RowFormattingEventHandler(this.GrdTrades_RowFormatting);
             this.GrdTrades.CellFormatting += new Telerik.WinControls.UI.CellFormattingEventHandler(this.GrdTrades_CellFormatting);
             this.GrdTrades.CommandCellClick += new Telerik.WinControls.UI.CommandCellClickEventHandler(this.ItemGrid_CommandCellClick);
             // 

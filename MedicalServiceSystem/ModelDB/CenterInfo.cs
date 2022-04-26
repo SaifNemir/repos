@@ -16,7 +16,8 @@ namespace ModelDB
         public bool HasContract { get; set; }		
 		public CenterType CenterTypeId { get; set; }
 		public bool IsEnabled { get; set; }
-	}
+        public bool IsVisible { get; set; }
+    }
 	public enum CenterType
 	{
         None,
