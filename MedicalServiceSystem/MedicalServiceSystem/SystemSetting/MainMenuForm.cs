@@ -335,5 +335,37 @@ namespace MedicalServiceSystem
             form.WindowState = FormWindowState.Maximized;
             form.Show();
         }
+
+        private void FRMReception_Click(object sender, EventArgs e)
+        {
+            FRMReception form = new FRMReception();
+            form.MdiParent = this;
+            form.WindowState = FormWindowState.Maximized;
+            form.Show();
+        }
+
+        private void FRMmedicine_Click(object sender, EventArgs e)
+        {
+            FRMmedicine form = new FRMmedicine();
+            form.MdiParent = this;
+            form.WindowState = FormWindowState.Maximized;
+            form.Show();
+        }
+
+        private void FRMmedical_Click(object sender, EventArgs e)
+        {
+            FRMmedical form = new FRMmedical();
+            form.MdiParent = this;
+            form.WindowState = FormWindowState.Maximized;
+            form.Show();
+        }
+
+        private void FRMmedicalCoPay_Click(object sender, EventArgs e)
+        {
+            FRMmedicalCoPay form = new FRMmedicalCoPay();
+            form.MdiParent = this;
+            form.WindowState = FormWindowState.Maximized;
+            form.Show();
+        }
     }
 }

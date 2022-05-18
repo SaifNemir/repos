@@ -401,7 +401,7 @@
             // 
             // ribbonTab3
             // 
-            this.ribbonTab3.IsSelected = false;
+            this.ribbonTab3.IsSelected = true;
             this.ribbonTab3.Items.AddRange(new Telerik.WinControls.RadItem[] {
             this.radRibbonBarGroup22,
             this.radRibbonBarGroup23,
@@ -424,6 +424,7 @@
             this.FRMReception.Enabled = false;
             this.FRMReception.Name = "FRMReception";
             this.FRMReception.Text = "استقبال طلبات الاسترداد";
+            this.FRMReception.Click += new System.EventHandler(this.FRMReception_Click);
             // 
             // radRibbonBarGroup23
             // 
@@ -437,6 +438,7 @@
             this.FRMmedicine.Enabled = false;
             this.FRMmedicine.Name = "FRMmedicine";
             this.FRMmedicine.Text = "استرداد الخدمة الدوائية";
+            this.FRMmedicine.Click += new System.EventHandler(this.FRMmedicine_Click);
             // 
             // radRibbonBarGroup24
             // 
@@ -450,6 +452,7 @@
             this.FRMmedical.Enabled = false;
             this.FRMmedical.Name = "FRMmedical";
             this.FRMmedical.Text = "استرداد الخدمة الطبية";
+            this.FRMmedical.Click += new System.EventHandler(this.FRMmedical_Click);
             // 
             // radRibbonBarGroup26
             // 
@@ -463,6 +466,7 @@
             this.FRMmedicalCoPay.Enabled = false;
             this.FRMmedicalCoPay.Name = "FRMmedicalCoPay";
             this.FRMmedicalCoPay.Text = "مساهمات الخدمة الطبية";
+            this.FRMmedicalCoPay.Click += new System.EventHandler(this.FRMmedicalCoPay_Click);
             // 
             // radRibbonBarGroup25
             // 
@@ -584,7 +588,7 @@
             // 
             // ribbonTab7
             // 
-            this.ribbonTab7.IsSelected = true;
+            this.ribbonTab7.IsSelected = false;
             this.ribbonTab7.Items.AddRange(new Telerik.WinControls.RadItem[] {
             this.radRibbonBarGroup32,
             this.radRibbonBarGroup33,

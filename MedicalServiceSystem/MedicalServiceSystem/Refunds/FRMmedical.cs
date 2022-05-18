@@ -44,6 +44,8 @@ namespace MedicalServiceSystem.Reclaims
         }
         private void FRMmedical_Load(object sender, EventArgs e)
         {
+            UserId = LoginForm.Default.UserId;
+            LocalityId = LoginForm.Default.LocalityId;
             using (dbContext db = new dbContext())
             {
                 var ReclaimRes = db.ReclaimMedicalReasonsLists.ToList();
@@ -79,8 +81,7 @@ namespace MedicalServiceSystem.Reclaims
                 MedicalArabic.DropDownListElement.AutoCompleteSuggest.SuggestMode = Telerik.WinControls.UI.SuggestMode.Contains;
                 MedicalArabic.SelectedIndex = -1;
                 BillStatus.DataSource = Enum.GetValues(typeof(ReclaimStatus));
-                UserId = LoginForm.Default.UserId;
-                LocalityId = LoginForm.Default.LocalityId;
+              
             }
         }
 

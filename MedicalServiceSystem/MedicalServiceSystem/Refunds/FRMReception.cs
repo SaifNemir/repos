@@ -54,6 +54,7 @@ namespace MedicalServiceSystem.Reclaims
             CustName.Clear();
             ServerName.Clear();
             money.Clear();
+            Phone.Clear();
             moneywritten.Clear();
             medicalNote.Clear();
             CenterList.Text = "";
@@ -93,6 +94,7 @@ namespace MedicalServiceSystem.Reclaims
                         if (ser[0].IsStoped == false)
                         {
                             this.Cursor = Cursors.WaitCursor;
+                          
                             CustName.Text = ser[0].InsurName;
                             Birthdate.Value = ser[0].BirthDate;
                             sex.Text = ser[0].Gender;
@@ -375,7 +377,7 @@ namespace MedicalServiceSystem.Reclaims
                         }
                     }
                 }
-                GrdBill.Rows.Add(GrdBill.RowCount + 1, CenterList.Text, Convert.ToDouble(PartMoney.Text), BillNo.Text, BillDate.Value);
+                GrdBill.Rows.Add(GrdBill.RowCount + 1, CenterList.Text, Convert.ToDouble(PartMoney.Text), BillNo.Text, BillDate.Value,CenterList.SelectedValue.ToString());
                 if (GrdBill.RowCount > 0)
                 {
                     double a = 0;
@@ -445,15 +447,19 @@ namespace MedicalServiceSystem.Reclaims
             {
                 using (dbContext db = new dbContext())
                 {
+                    db.Database.CommandTimeout= 0;
                     var Fref = db.Reclaims.Where(p => p.ReclaimNo == OperationNo.Text.Trim() && p.RowStatus != RowStatus.Deleted).ToList();
                     if (Fref.Count > 0)
                     {
                         this.AcceptButton = null;
+                        OperationDate.Value = Fref[0].ReclaimDate;
                         InsuranceNo.Text = Fref[0].Subscriber.InsurNo;
+                        CustName.Text = Fref[0].Subscriber.InsurName;
                         ServerName.Text = Fref[0].Subscriber.Server;
                         sex.Text = Fref[0].Subscriber.Gender;
                         Birthdate.Value = Fref[0].Subscriber.BirthDate;
-                        money.Text = Fref[0].ReclaimTotal.ToString();
+                        money.Text = Fref[0].BillsTotal.ToString();
+                        Phone.Text = Fref[0].Subscriber.PhoneNo;
                         medicalNote.Text = Fref[0].Notes;
                         ReclaimId = Fref[0].Id;
                         //int RefId = Fref[0].Id;
@@ -463,7 +469,7 @@ namespace MedicalServiceSystem.Reclaims
                             GrdBill.Rows.Clear();
                             for (int i = 0; i < Fbill.Count; i++)
                             {
-                                GrdBill.Rows.Add(i + 1, Fbill[i].CenterInfo.CenterName, Fbill[i].BillTotal, Fbill[i].BillNo, Fbill[i].BillDate);
+                                GrdBill.Rows.Add(i + 1, Fbill[i].CenterInfo.CenterName, Fbill[i].BillTotal, Fbill[i].BillNo, Fbill[i].BillDate, Fbill[i].ServiceProviderId);
                             }
                         }
                         chsave.Checked = true;
@@ -490,7 +496,7 @@ namespace MedicalServiceSystem.Reclaims
                     {
                         ModelDB.Reclaim Rf = new ModelDB.Reclaim();
                         Rf.ReclaimDate = OperationDate.Value;
-                        int SubId = db.Subscribers.Where(p => p.InsurNo == OperationNo.Text).ToList()[0].Id;
+                        int SubId = db.Subscribers.Where(p => p.InsurNo == InsuranceNo.Text).ToList()[0].Id;
                         Rf.SubscriberId = SubId;
                         Rf.BillsTotal = Convert.ToDecimal(money.Text);
                         Rf.ReclaimTotal = 0;
@@ -595,8 +601,6 @@ namespace MedicalServiceSystem.Reclaims
                         {
                             db.Database.ExecuteSqlCommand("update  Reclaims set RowStatus=2 , UserDeleted =" + UserId + ",DeleteDate=GetDate() where Id=" + ReclaimId + "");
                             db.Database.ExecuteSqlCommand("delete from ReclaimBills where ReclaimId=" + ReclaimId + "");
-                            db.Database.ExecuteSqlCommand("delete from ReclaimExcuteCenters where ReclaimId=" + ReclaimId + "");
-                            db.Database.ExecuteSqlCommand("delete from ReclaimRequestCenters where ReclaimId=" + ReclaimId + "");
                             db.Database.ExecuteSqlCommand("delete from ReclaimMedicals where ReclaimId=" + ReclaimId + "");
                             db.Database.ExecuteSqlCommand("delete from ReclaimMedicines where ReclaimId=" + ReclaimId + "");
                             //SqlCommand cmddel2 = new SqlCommand("delete from treatmentdetails where operationno='" + OperationNo.Text + "'  ", PLC.con);
@@ -616,6 +620,12 @@ namespace MedicalServiceSystem.Reclaims
             {
                 MessageBox.Show("لا توجد بيانات للحذف", "النظام", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
+        }
+
+        private void Button7_Click(object sender, EventArgs e)
+        {
+            FrmSearch frs = new FrmSearch();
+            frs.ShowDialog();
         }
     }
 }
