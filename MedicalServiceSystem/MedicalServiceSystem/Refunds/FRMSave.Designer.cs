@@ -75,11 +75,12 @@
             // OPr
             // 
             this.OPr.AutoSize = false;
+            this.OPr.BorderVisible = true;
             this.OPr.Font = new System.Drawing.Font("Sakkal Majalla", 20.25F);
             this.OPr.ForeColor = System.Drawing.Color.Black;
-            this.OPr.Location = new System.Drawing.Point(12, 116);
+            this.OPr.Location = new System.Drawing.Point(12, 99);
             this.OPr.Name = "OPr";
-            this.OPr.Size = new System.Drawing.Size(368, 31);
+            this.OPr.Size = new System.Drawing.Size(339, 31);
             this.OPr.TabIndex = 32;
             this.OPr.TextAlignment = System.Drawing.ContentAlignment.TopRight;
             // 
@@ -101,7 +102,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(375, 227);
+            this.ClientSize = new System.Drawing.Size(363, 259);
             this.Controls.Add(this.radLabel1);
             this.Controls.Add(this.OPr);
             this.Controls.Add(this.Button1);

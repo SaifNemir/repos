@@ -41,11 +41,11 @@ namespace MedicalServiceSystem
         /// </summary>
         private void InitializeComponent()
         {
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn1 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn2 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn3 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewCommandColumn gridViewCommandColumn1 = new Telerik.WinControls.UI.GridViewCommandColumn();
-            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition1 = new Telerik.WinControls.UI.TableViewDefinition();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn7 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn8 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn9 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewCommandColumn gridViewCommandColumn3 = new Telerik.WinControls.UI.GridViewCommandColumn();
+            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition3 = new Telerik.WinControls.UI.TableViewDefinition();
             Telerik.WinControls.UI.GridViewRelation gridViewRelation1 = new Telerik.WinControls.UI.GridViewRelation();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserGroupFRM));
             this.radLabel1 = new Telerik.WinControls.UI.RadLabel();
@@ -57,6 +57,8 @@ namespace MedicalServiceSystem
             this.UserId = new Telerik.WinControls.UI.RadTextBox();
             this.radButton1 = new Telerik.WinControls.UI.RadButton();
             this.GRDGroups = new Telerik.WinControls.UI.RadGridView();
+            this.SystemName = new System.Windows.Forms.ComboBox();
+            this.radLabel2 = new Telerik.WinControls.UI.RadLabel();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radButton4)).BeginInit();
@@ -66,6 +68,7 @@ namespace MedicalServiceSystem
             ((System.ComponentModel.ISupportInitialize)(this.radButton1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GRDGroups)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GRDGroups.MasterTemplate)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radLabel2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
             // 
@@ -73,11 +76,11 @@ namespace MedicalServiceSystem
             // 
             this.radLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.radLabel1.Font = new System.Drawing.Font("Sakkal Majalla", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radLabel1.Location = new System.Drawing.Point(712, 13);
+            this.radLabel1.Location = new System.Drawing.Point(638, 12);
             this.radLabel1.Name = "radLabel1";
-            this.radLabel1.Size = new System.Drawing.Size(70, 26);
+            this.radLabel1.Size = new System.Drawing.Size(77, 26);
             this.radLabel1.TabIndex = 1;
-            this.radLabel1.Text = "رقم المجموع :";
+            this.radLabel1.Text = "رقم المجموعة :";
             this.radLabel1.TextAlignment = System.Drawing.ContentAlignment.TopRight;
             this.radLabel1.ThemeName = "Office2010Black";
             // 
@@ -85,7 +88,7 @@ namespace MedicalServiceSystem
             // 
             this.radLabel3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.radLabel3.Font = new System.Drawing.Font("Sakkal Majalla", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radLabel3.Location = new System.Drawing.Point(701, 60);
+            this.radLabel3.Location = new System.Drawing.Point(638, 64);
             this.radLabel3.Name = "radLabel3";
             this.radLabel3.Size = new System.Drawing.Size(81, 26);
             this.radLabel3.TabIndex = 3;
@@ -97,7 +100,7 @@ namespace MedicalServiceSystem
             // 
             this.radButton4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.radButton4.Font = new System.Drawing.Font("Sakkal Majalla", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radButton4.Location = new System.Drawing.Point(314, 463);
+            this.radButton4.Location = new System.Drawing.Point(314, 548);
             this.radButton4.Name = "radButton4";
             this.radButton4.Size = new System.Drawing.Size(164, 40);
             this.radButton4.TabIndex = 6;
@@ -113,7 +116,7 @@ namespace MedicalServiceSystem
             this.GroupName.BackColor = System.Drawing.Color.WhiteSmoke;
             this.GroupName.Font = new System.Drawing.Font("Sakkal Majalla", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.GroupName.FormattingEnabled = true;
-            this.GroupName.Location = new System.Drawing.Point(140, 58);
+            this.GroupName.Location = new System.Drawing.Point(82, 57);
             this.GroupName.Name = "GroupName";
             this.GroupName.Size = new System.Drawing.Size(544, 33);
             this.GroupName.TabIndex = 1;
@@ -135,7 +138,7 @@ namespace MedicalServiceSystem
             // 
             this.GroupId.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.GroupId.Font = new System.Drawing.Font("Sakkal Majalla", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.GroupId.Location = new System.Drawing.Point(509, 13);
+            this.GroupId.Location = new System.Drawing.Point(451, 12);
             this.GroupId.Name = "GroupId";
             this.GroupId.Size = new System.Drawing.Size(176, 24);
             this.GroupId.TabIndex = 19;
@@ -156,7 +159,7 @@ namespace MedicalServiceSystem
             // 
             this.radButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.radButton1.Font = new System.Drawing.Font("Sakkal Majalla", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radButton1.Location = new System.Drawing.Point(627, 111);
+            this.radButton1.Location = new System.Drawing.Point(627, 196);
             this.radButton1.Name = "radButton1";
             this.radButton1.Size = new System.Drawing.Size(164, 40);
             this.radButton1.TabIndex = 7;
@@ -172,42 +175,42 @@ namespace MedicalServiceSystem
             this.GRDGroups.Font = new System.Drawing.Font("Sakkal Majalla", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.GRDGroups.ForeColor = System.Drawing.SystemColors.ControlText;
             this.GRDGroups.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.GRDGroups.Location = new System.Drawing.Point(12, 157);
+            this.GRDGroups.Location = new System.Drawing.Point(12, 242);
             // 
             // 
             // 
             this.GRDGroups.MasterTemplate.AllowAddNewRow = false;
             this.GRDGroups.MasterTemplate.AllowDeleteRow = false;
             this.GRDGroups.MasterTemplate.AllowSearchRow = true;
-            gridViewTextBoxColumn1.EnableExpressionEditor = false;
-            gridViewTextBoxColumn1.HeaderText = "م";
-            gridViewTextBoxColumn1.Name = "ser";
-            gridViewTextBoxColumn1.ReadOnly = true;
-            gridViewTextBoxColumn2.EnableExpressionEditor = false;
-            gridViewTextBoxColumn2.FieldName = "Id";
-            gridViewTextBoxColumn2.HeaderText = "Group No";
-            gridViewTextBoxColumn2.IsVisible = false;
-            gridViewTextBoxColumn2.Name = "GroupId";
-            gridViewTextBoxColumn2.ReadOnly = true;
-            gridViewTextBoxColumn2.Width = 100;
-            gridViewTextBoxColumn3.EnableExpressionEditor = false;
-            gridViewTextBoxColumn3.FieldName = "GroupName";
-            gridViewTextBoxColumn3.HeaderText = "المجموعة";
-            gridViewTextBoxColumn3.Name = "GroupName";
-            gridViewTextBoxColumn3.ReadOnly = true;
-            gridViewTextBoxColumn3.Width = 350;
-            gridViewCommandColumn1.DefaultText = "Edit";
-            gridViewCommandColumn1.EnableExpressionEditor = false;
-            gridViewCommandColumn1.HeaderText = "تعديل";
-            gridViewCommandColumn1.Name = "Edit";
-            gridViewCommandColumn1.UseDefaultText = true;
-            gridViewCommandColumn1.Width = 100;
+            gridViewTextBoxColumn7.EnableExpressionEditor = false;
+            gridViewTextBoxColumn7.HeaderText = "م";
+            gridViewTextBoxColumn7.Name = "ser";
+            gridViewTextBoxColumn7.ReadOnly = true;
+            gridViewTextBoxColumn8.EnableExpressionEditor = false;
+            gridViewTextBoxColumn8.FieldName = "Id";
+            gridViewTextBoxColumn8.HeaderText = "Group No";
+            gridViewTextBoxColumn8.IsVisible = false;
+            gridViewTextBoxColumn8.Name = "GroupId";
+            gridViewTextBoxColumn8.ReadOnly = true;
+            gridViewTextBoxColumn8.Width = 100;
+            gridViewTextBoxColumn9.EnableExpressionEditor = false;
+            gridViewTextBoxColumn9.FieldName = "GroupName";
+            gridViewTextBoxColumn9.HeaderText = "المجموعة";
+            gridViewTextBoxColumn9.Name = "GroupName";
+            gridViewTextBoxColumn9.ReadOnly = true;
+            gridViewTextBoxColumn9.Width = 350;
+            gridViewCommandColumn3.DefaultText = "Edit";
+            gridViewCommandColumn3.EnableExpressionEditor = false;
+            gridViewCommandColumn3.HeaderText = "تعديل";
+            gridViewCommandColumn3.Name = "Edit";
+            gridViewCommandColumn3.UseDefaultText = true;
+            gridViewCommandColumn3.Width = 100;
             this.GRDGroups.MasterTemplate.Columns.AddRange(new Telerik.WinControls.UI.GridViewDataColumn[] {
-            gridViewTextBoxColumn1,
-            gridViewTextBoxColumn2,
-            gridViewTextBoxColumn3,
-            gridViewCommandColumn1});
-            this.GRDGroups.MasterTemplate.ViewDefinition = tableViewDefinition1;
+            gridViewTextBoxColumn7,
+            gridViewTextBoxColumn8,
+            gridViewTextBoxColumn9,
+            gridViewCommandColumn3});
+            this.GRDGroups.MasterTemplate.ViewDefinition = tableViewDefinition3;
             this.GRDGroups.Name = "GRDGroups";
             gridViewRelation1.ChildColumnNames = ((System.Collections.Specialized.StringCollection)(resources.GetObject("gridViewRelation1.ChildColumnNames")));
             gridViewRelation1.ParentColumnNames = ((System.Collections.Specialized.StringCollection)(resources.GetObject("gridViewRelation1.ParentColumnNames")));
@@ -222,12 +225,39 @@ namespace MedicalServiceSystem
             this.GRDGroups.CommandCellClick += new Telerik.WinControls.UI.CommandCellClickEventHandler(this.GRDGroups_CommandCellClick);
             this.GRDGroups.Click += new System.EventHandler(this.GRDGroups_Click);
             // 
+            // SystemName
+            // 
+            this.SystemName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.SystemName.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.SystemName.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.SystemName.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.SystemName.Font = new System.Drawing.Font("Sakkal Majalla", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SystemName.FormattingEnabled = true;
+            this.SystemName.Location = new System.Drawing.Point(82, 109);
+            this.SystemName.Name = "SystemName";
+            this.SystemName.Size = new System.Drawing.Size(544, 33);
+            this.SystemName.TabIndex = 2;
+            // 
+            // radLabel2
+            // 
+            this.radLabel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.radLabel2.Font = new System.Drawing.Font("Sakkal Majalla", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radLabel2.Location = new System.Drawing.Point(638, 109);
+            this.radLabel2.Name = "radLabel2";
+            this.radLabel2.Size = new System.Drawing.Size(153, 26);
+            this.radLabel2.TabIndex = 86;
+            this.radLabel2.Text = "النظام الذي تتبع له المجموعة :";
+            this.radLabel2.TextAlignment = System.Drawing.ContentAlignment.TopRight;
+            this.radLabel2.ThemeName = "Office2010Black";
+            // 
             // UserGroupFRM
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(803, 515);
+            this.ClientSize = new System.Drawing.Size(803, 602);
+            this.Controls.Add(this.SystemName);
+            this.Controls.Add(this.radLabel2);
             this.Controls.Add(this.GRDGroups);
             this.Controls.Add(this.radButton1);
             this.Controls.Add(this.UserId);
@@ -260,6 +290,7 @@ namespace MedicalServiceSystem
             ((System.ComponentModel.ISupportInitialize)(this.radButton1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.GRDGroups.MasterTemplate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.GRDGroups)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radLabel2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -279,6 +310,9 @@ namespace MedicalServiceSystem
         internal Telerik.WinControls.UI.RadGridView GRDGroups;
         //private Telerik.WinControls.Themes.BreezeTheme breezeTheme1;
         public static UserGroupFRM _Default;
+        internal ComboBox SystemName;
+        internal Telerik.WinControls.UI.RadLabel radLabel2;
+
         public static UserGroupFRM Default
         {
             get

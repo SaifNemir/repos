@@ -18,6 +18,7 @@ namespace MedicalServiceSystem
         }
         public int UserId = 0;
         public int LocalityId = 0;
+        public string LocalityName="";
         private void SimpleButton1_Click(object sender, System.EventArgs e)
         {
 
@@ -35,9 +36,21 @@ namespace MedicalServiceSystem
             d_end.Value = PLC.getdate();
             UserId = SystemSetting.LoginForm.Default.UserId;
             LocalityId = SystemSetting.LoginForm.Default.LocalityId;
+            using (dbContext db = new dbContext())
+            {
+                var GetUser = db.Users.Where(p => p.Id == UserId).ToList();
+                if (GetUser.Count > 0)
+                {
 
+                    if (GetUser[0].UserType == UserType.User)
+                    {
+                        LocalityName = "dbo.ChronicsBooks.LocalityId=" + LocalityId + " And";
 
-        }
+                    }
+                }
+            }
+
+            }
 
         [Obsolete]
         private void Rd_books_CheckedChanged(object sender, EventArgs e)
@@ -46,7 +59,7 @@ namespace MedicalServiceSystem
             {
                 using (dbContext db = new dbContext())
                 {
-                    var GetDet = db.Database.SqlQuery<ReportForAll>("SELECT dbo.ChronicsBooks.BookNo AS Row1, dbo.ChronicsBooks.BookDate AS Row13, dbo.ChronicsBooks.DocNo AS Row2, dbo.Subscribers.InsurName AS Row6, dbo.Subscribers.InsurNo AS Row7,  dbo.CenterInfoes.CenterName AS Row8, dbo.ChronicBookTypes.BookType AS Row9 FROM  dbo.ChronicsBooks INNER JOIN dbo.CenterInfoes ON dbo.ChronicsBooks.CenterId = dbo.CenterInfoes.Id INNER JOIN dbo.Chronics INNER JOIN dbo.ChronicBooksDetails ON dbo.Chronics.Id = dbo.ChronicBooksDetails.ChronicId ON dbo.ChronicsBooks.Id = dbo.ChronicBooksDetails.BookId INNER JOIN dbo.Subscribers ON dbo.ChronicsBooks.SubscriberId = dbo.Subscribers.Id INNER JOIN dbo.Localities ON dbo.ChronicsBooks.LocalityId = dbo.Localities.Id INNER JOIN dbo.Users ON dbo.ChronicsBooks.UserId = dbo.Users.Id INNER JOIN  dbo.ChronicBookTypes ON dbo.ChronicsBooks.BookTypeId = dbo.ChronicBookTypes.Id where dbo.ChronicsBooks.BookDate between '" + d_start.Value + "' and '" + d_end.Value + "' and  dbo.ChronicsBooks.LocalityId=" + LocalityId + " GROUP BY dbo.ChronicsBooks.BookNo, dbo.ChronicsBooks.BookDate, dbo.ChronicsBooks.DocNo, dbo.Subscribers.InsurName, dbo.Subscribers.InsurNo, dbo.CenterInfoes.CenterName, dbo.ChronicBookTypes.BookType").ToList();
+                    var GetDet = db.Database.SqlQuery<ReportForAll>("SELECT dbo.ChronicsBooks.BookNo AS Row1, dbo.ChronicsBooks.BookDate AS Row13, dbo.ChronicsBooks.DocNo AS Row2, dbo.Subscribers.InsurName AS Row6, dbo.Subscribers.InsurNo AS Row7,  dbo.CenterInfoes.CenterName AS Row8, dbo.ChronicBookTypes.BookType AS Row9 FROM  dbo.ChronicsBooks INNER JOIN dbo.CenterInfoes ON dbo.ChronicsBooks.CenterId = dbo.CenterInfoes.Id INNER JOIN dbo.Chronics INNER JOIN dbo.ChronicBooksDetails ON dbo.Chronics.Id = dbo.ChronicBooksDetails.ChronicId ON dbo.ChronicsBooks.Id = dbo.ChronicBooksDetails.BookId INNER JOIN dbo.Subscribers ON dbo.ChronicsBooks.SubscriberId = dbo.Subscribers.Id INNER JOIN dbo.Localities ON dbo.ChronicsBooks.LocalityId = dbo.Localities.Id INNER JOIN dbo.Users ON dbo.ChronicsBooks.UserId = dbo.Users.Id INNER JOIN  dbo.ChronicBookTypes ON dbo.ChronicsBooks.BookTypeId = dbo.ChronicBookTypes.Id where "+ LocalityName + " dbo.ChronicsBooks.BookDate between '" + d_start.Value + "' and '" + d_end.Value + "'  GROUP BY dbo.ChronicsBooks.BookNo, dbo.ChronicsBooks.BookDate, dbo.ChronicsBooks.DocNo, dbo.Subscribers.InsurName, dbo.Subscribers.InsurNo, dbo.CenterInfoes.CenterName, dbo.ChronicBookTypes.BookType").ToList();
                     //MessageBox.Show(GetDet.Count.ToString());
                     if (GetDet.Count > 0)
                     {
@@ -71,7 +84,7 @@ namespace MedicalServiceSystem
             {
                 using (dbContext db = new dbContext())
                 {
-                    var GetCent = db.Database.SqlQuery<ReportForAll>("SELECT dbo.CenterInfoes.CenterName AS Row6, COUNT(dbo.ChronicsBooks.BookNo) AS Row1 FROM dbo.CenterInfoes INNER JOIN dbo.ChronicsBooks ON dbo.CenterInfoes.Id = dbo.ChronicsBooks.CenterId   INNER JOIN dbo.Localities ON dbo.ChronicsBooks.LocalityId = dbo.Localities.Id  WHERE (dbo.ChronicsBooks.BookDate BETWEEN '" + d_start.Value + "' and '" + d_end.Value + "')  and (dbo.ChronicsBooks.LocalityId = " + LocalityId + ")GROUP BY dbo.CenterInfoes.CenterName, dbo.ChronicsBooks.BookDate").ToList();
+                    var GetCent = db.Database.SqlQuery<ReportForAll>("SELECT dbo.CenterInfoes.CenterName AS Row6, COUNT(dbo.ChronicsBooks.BookNo) AS Row1 FROM dbo.CenterInfoes INNER JOIN dbo.ChronicsBooks ON dbo.CenterInfoes.Id = dbo.ChronicsBooks.CenterId   INNER JOIN dbo.Localities ON dbo.ChronicsBooks.LocalityId = dbo.Localities.Id  WHERE " + LocalityName + " (dbo.ChronicsBooks.BookDate BETWEEN '" + d_start.Value + "' and '" + d_end.Value + "') GROUP BY dbo.CenterInfoes.CenterName, dbo.ChronicsBooks.BookDate").ToList();
                     if (GetCent.Count > 0)
                     {
 
@@ -99,7 +112,7 @@ namespace MedicalServiceSystem
             {
                 using (dbContext db = new dbContext())
                 {
-                    var GetCent = db.Database.SqlQuery<ReportForAll>("SELECT dbo.Chronics.ChronicName AS Row6, COUNT(dbo.ChronicsBooks.BookNo) AS Row1 FROM dbo.ChronicsBooks INNER JOIN dbo.ChronicBooksDetails ON dbo.ChronicsBooks.Id = dbo.ChronicBooksDetails.BookId INNER JOIN dbo.Chronics ON dbo.ChronicBooksDetails.ChronicId = dbo.Chronics.Id   INNER JOIN dbo.Localities ON dbo.ChronicsBooks.LocalityId = dbo.Localities.Id  WHERE (dbo.ChronicsBooks.BookDate BETWEEN '" + d_start.Value + "' and '" + d_end.Value + "')  and (dbo.ChronicsBooks.LocalityId = " + LocalityId + ") GROUP BY dbo.ChronicsBooks.BookDate, dbo.Chronics.ChronicName").ToList();
+                    var GetCent = db.Database.SqlQuery<ReportForAll>("SELECT dbo.Chronics.ChronicName AS Row6, COUNT(dbo.ChronicsBooks.BookNo) AS Row1 FROM dbo.ChronicsBooks INNER JOIN dbo.ChronicBooksDetails ON dbo.ChronicsBooks.Id = dbo.ChronicBooksDetails.BookId INNER JOIN dbo.Chronics ON dbo.ChronicBooksDetails.ChronicId = dbo.Chronics.Id   INNER JOIN dbo.Localities ON dbo.ChronicsBooks.LocalityId = dbo.Localities.Id  WHERE "+ LocalityName + " (dbo.ChronicsBooks.BookDate BETWEEN '" + d_start.Value + "' and '" + d_end.Value + "') GROUP BY dbo.ChronicsBooks.BookDate, dbo.Chronics.ChronicName").ToList();
                     if (GetCent.Count > 0)
                     {
 
@@ -127,7 +140,7 @@ namespace MedicalServiceSystem
             {
                 using (dbContext db = new dbContext())
                 {
-                    var GetCent = db.Database.SqlQuery<ReportForAll>("SELECT dbo.Localities.LocalityName AS Row6, COUNT(dbo.ChronicsBooks.BookNo) AS Row1 FROM dbo.ChronicsBooks INNER JOIN dbo.Localities ON dbo.ChronicsBooks.LocalityId = dbo.Localities.Id WHERE (dbo.ChronicsBooks.BookDate BETWEEN '" + d_start.Value + "' and '" + d_end.Value + "') and (dbo.ChronicsBooks.LocalityId = " + LocalityId + ")  GROUP BY dbo.ChronicsBooks.BookDate, dbo.Localities.LocalityName").ToList();
+                    var GetCent = db.Database.SqlQuery<ReportForAll>("SELECT dbo.Localities.LocalityName AS Row6, COUNT(dbo.ChronicsBooks.BookNo) AS Row1 FROM dbo.ChronicsBooks INNER JOIN dbo.Localities ON dbo.ChronicsBooks.LocalityId = dbo.Localities.Id WHERE "+ LocalityName + " (dbo.ChronicsBooks.BookDate BETWEEN '" + d_start.Value + "' and '" + d_end.Value + "') GROUP BY dbo.ChronicsBooks.BookDate, dbo.Localities.LocalityName").ToList();
                     if (GetCent.Count > 0)
                     {
 
@@ -155,7 +168,7 @@ namespace MedicalServiceSystem
             {
                 using (dbContext db = new dbContext())
                 {
-                    var GetCent = db.Database.SqlQuery<ReportForAll>("SELECT  dbo.ChronicBookTypes.BookType AS Row6, COUNT(BookNo) AS Row1 FROM dbo.ChronicsBooks   INNER JOIN  dbo.ChronicBookTypes ON dbo.ChronicsBooks.BookTypeId = dbo.ChronicBookTypes.Id  WHERE (BookDate BETWEEN '" + d_start.Value + "' and '" + d_end.Value + "')  and (dbo.ChronicsBooks.LocalityId = " + LocalityId + ") GROUP BY BookDate, BookType").ToList();
+                    var GetCent = db.Database.SqlQuery<ReportForAll>("SELECT  dbo.ChronicBookTypes.BookType AS Row6, COUNT(BookNo) AS Row1 FROM dbo.ChronicsBooks   INNER JOIN  dbo.ChronicBookTypes ON dbo.ChronicsBooks.BookTypeId = dbo.ChronicBookTypes.Id  WHERE "+ LocalityName + " (BookDate BETWEEN '" + d_start.Value + "' and '" + d_end.Value + "') GROUP BY BookDate, BookType").ToList();
 
                     if (GetCent.Count > 0)
                     {
@@ -185,7 +198,7 @@ namespace MedicalServiceSystem
             {
                 using (dbContext db = new dbContext())
                 {
-                    var GetCent = db.Database.SqlQuery<ReportForAll>("SELECT dbo.Users.FullName AS Row6, COUNT(dbo.ChronicsBooks.BookNo) AS Row1 FROM dbo.ChronicsBooks INNER JOIN dbo.Users ON dbo.ChronicsBooks.UserId = dbo.Users.Id   WHERE (dbo.ChronicsBooks.BookDate  BETWEEN '" + d_start.Value + "' and '" + d_end.Value + "')  and (dbo.ChronicsBooks.LocalityId = " + LocalityId + ") GROUP BY dbo.ChronicsBooks.BookDate, dbo.Users.FullName").ToList();
+                    var GetCent = db.Database.SqlQuery<ReportForAll>("SELECT dbo.Users.FullName AS Row6, COUNT(dbo.ChronicsBooks.BookNo) AS Row1 FROM dbo.ChronicsBooks INNER JOIN dbo.Users ON dbo.ChronicsBooks.UserId = dbo.Users.Id   WHERE "+ LocalityName + "(dbo.ChronicsBooks.BookDate  BETWEEN '" + d_start.Value + "' and '" + d_end.Value + "') GROUP BY dbo.ChronicsBooks.BookDate, dbo.Users.FullName").ToList();
                     if (GetCent.Count > 0)
                     {
 

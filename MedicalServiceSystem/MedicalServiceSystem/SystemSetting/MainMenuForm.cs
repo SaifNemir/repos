@@ -367,5 +367,51 @@ namespace MedicalServiceSystem
             form.WindowState = FormWindowState.Maximized;
             form.Show();
         }
+
+        private void FRMreportApproveMedicine_Click(object sender, EventArgs e)
+        {
+
+            FRMreportApproveMedicine form = new FRMreportApproveMedicine();
+            form.MdiParent = this;
+            form.WindowState = FormWindowState.Maximized;
+            form.Show();
+        }
+
+        private void FRMApproveSearch_Click(object sender, EventArgs e)
+        {
+            FRMApproveSearch form = new FRMApproveSearch();
+            form.MdiParent = this;
+            form.WindowState = FormWindowState.Maximized;
+            form.Show();
+        }
+
+        private void RadRibbonBarButtonGroup1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void FRMRPTMedicalEStrdad_Click(object sender, EventArgs e)
+        {
+            FRMRPTMedicalEStrdad form = new FRMRPTMedicalEStrdad();
+            form.MdiParent = this;
+            form.WindowState = FormWindowState.Maximized;
+            form.Show();
+        }
+
+        private void FRMRPTMedicineEStrdad_Click(object sender, EventArgs e)
+        {
+            FRMRPTMedicineEStrdad form = new FRMRPTMedicineEStrdad();
+            form.MdiParent = this;
+            form.WindowState = FormWindowState.Maximized;
+            form.Show();
+        }
+
+        private void FRMMedicineSetting_Click(object sender, EventArgs e)
+        {
+            FRMMedicineSetting form = new FRMMedicineSetting();
+            form.MdiParent = this;
+            form.WindowState = FormWindowState.Maximized;
+            form.Show();
+        }
     }
 }

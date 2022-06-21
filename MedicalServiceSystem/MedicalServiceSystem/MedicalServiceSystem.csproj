@@ -28,7 +28,7 @@
     <MapFileExtensions>true</MapFileExtensions>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>31</ApplicationRevision>
+    <ApplicationRevision>40</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -99,7 +99,7 @@
       <HintPath>..\lib\RCWF\2020.1.113.40\Telerik.WinControls.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Telerik.WinControls.GridView, Version=2020.1.113.20, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.WinControls.GridView, Version=2020.1.113.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
     <Reference Include="Telerik.WinControls.Themes.Office2010Blue, Version=2020.1.113.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
     <Reference Include="Telerik.WinControls.UI, Version=2020.1.113.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
       <HintPath>..\lib\RCWF\2020.1.113.40\Telerik.WinControls.UI.dll</HintPath>
@@ -116,6 +116,12 @@
     </Compile>
     <Compile Include="Chronics\FRMBookInfo.Designer.cs">
       <DependentUpon>FRMBookInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Refunds\FRMApproveSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Refunds\FRMApproveSearch.Designer.cs">
+      <DependentUpon>FRMApproveSearch.cs</DependentUpon>
     </Compile>
     <Compile Include="ReportForAll.cs" />
     <Compile Include="Refunds\AllSupplierRPT.cs">
@@ -300,17 +306,71 @@
     <Compile Include="Refunds\FRMStopSubscriber.Designer.cs">
       <DependentUpon>FRMStopSubscriber.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reports\FRMRPTMedicalEStrdad.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reports\FRMRPTMedicalEStrdad.designer.cs">
+      <DependentUpon>FRMRPTMedicalEStrdad.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\FRMRPTMedicineEStrdad.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reports\FRMRPTMedicineEStrdad.designer.cs">
+      <DependentUpon>FRMRPTMedicineEStrdad.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\FRMreportApproveMedicine.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reports\FRMreportApproveMedicine.designer.cs">
+      <DependentUpon>FRMreportApproveMedicine.cs</DependentUpon>
+    </Compile>
     <Compile Include="Reports\FRMreportChronics.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Reports\FRMreportChronics.designer.cs">
       <DependentUpon>FRMreportChronics.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reports\RPTِApproveDWACount.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\RPTِApproveDWACount.Designer.cs">
+      <DependentUpon>RPTِApproveDWACount.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\RPTِEstrdadCountLoc.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\RPTِEstrdadCountLoc.Designer.cs">
+      <DependentUpon>RPTِEstrdadCountLoc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\RPTِEstrdadCount.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\RPTِEstrdadCount.Designer.cs">
+      <DependentUpon>RPTِEstrdadCount.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\RPTِApproveMedicineCount.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\RPTِApproveMedicineCount.Designer.cs">
+      <DependentUpon>RPTِApproveMedicineCount.cs</DependentUpon>
+    </Compile>
     <Compile Include="Reports\RPTChronicAll.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Reports\RPTChronicAll.Designer.cs">
       <DependentUpon>RPTChronicAll.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\RPTِEstrdadMedicineDetails.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\RPTِEstrdadMedicineDetails.Designer.cs">
+      <DependentUpon>RPTِEstrdadMedicineDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\RPTِApproveMedicineDetails.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\RPTِApproveMedicineDetails.Designer.cs">
+      <DependentUpon>RPTِApproveMedicineDetails.cs</DependentUpon>
     </Compile>
     <Compile Include="Reports\RPTChronicBooksDetails.cs">
       <SubType>Component</SubType>
@@ -405,6 +465,9 @@
     <EmbeddedResource Include="Refunds\FrmChronics.resx">
       <DependentUpon>FrmChronics.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Refunds\FRMApproveSearch.resx">
+      <DependentUpon>FRMApproveSearch.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Refunds\FrmPharmacist.resx">
       <DependentUpon>FrmPharmacist.cs</DependentUpon>
     </EmbeddedResource>
@@ -477,11 +540,38 @@
     <EmbeddedResource Include="Refunds\FRMStopSubscriber.resx">
       <DependentUpon>FRMStopSubscriber.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reports\FRMRPTMedicalEStrdad.resx">
+      <DependentUpon>FRMRPTMedicalEStrdad.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\FRMRPTMedicineEStrdad.resx">
+      <DependentUpon>FRMRPTMedicineEStrdad.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\FRMreportApproveMedicine.resx">
+      <DependentUpon>FRMreportApproveMedicine.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reports\FRMreportChronics.resx">
       <DependentUpon>FRMreportChronics.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reports\RPTِApproveDWACount.resx">
+      <DependentUpon>RPTِApproveDWACount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\RPTِEstrdadCountLoc.resx">
+      <DependentUpon>RPTِEstrdadCountLoc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\RPTِEstrdadCount.resx">
+      <DependentUpon>RPTِEstrdadCount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\RPTِApproveMedicineCount.resx">
+      <DependentUpon>RPTِApproveMedicineCount.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reports\RPTChronicAll.resx">
       <DependentUpon>RPTChronicAll.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\RPTِEstrdadMedicineDetails.resx">
+      <DependentUpon>RPTِEstrdadMedicineDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\RPTِApproveMedicineDetails.resx">
+      <DependentUpon>RPTِApproveMedicineDetails.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\RPTChronicBooksDetails.resx">
       <DependentUpon>RPTChronicBooksDetails.cs</DependentUpon>

@@ -72,7 +72,8 @@
             this.radRibbonBarGroup26 = new Telerik.WinControls.UI.RadRibbonBarGroup();
             this.FRMmedicalCoPay = new Telerik.WinControls.UI.RadButtonElement();
             this.radRibbonBarGroup25 = new Telerik.WinControls.UI.RadRibbonBarGroup();
-            this.FrmReclaimReports = new Telerik.WinControls.UI.RadButtonElement();
+            this.FRMRPTMedicalEStrdad = new Telerik.WinControls.UI.RadButtonElement();
+            this.FRMRPTMedicineEStrdad = new Telerik.WinControls.UI.RadButtonElement();
             this.ribbonTab4 = new Telerik.WinControls.UI.RibbonTab();
             this.radRibbonBarGroup27 = new Telerik.WinControls.UI.RadRibbonBarGroup();
             this.FRMApproveWindowAll = new Telerik.WinControls.UI.RadButtonElement();
@@ -83,10 +84,12 @@
             this.radRibbonBarGroup30 = new Telerik.WinControls.UI.RadRibbonBarGroup();
             this.FRMApproveMedicine = new Telerik.WinControls.UI.RadButtonElement();
             this.radRibbonBarGroup31 = new Telerik.WinControls.UI.RadRibbonBarGroup();
-            this.FRMApproveMedicineReorts = new Telerik.WinControls.UI.RadButtonElement();
+            this.FRMreportApproveMedicine = new Telerik.WinControls.UI.RadButtonElement();
             this.radRibbonBarGroup7 = new Telerik.WinControls.UI.RadRibbonBarGroup();
             this.FrmAppMedicineTyp = new Telerik.WinControls.UI.RadButtonElement();
             this.FrmPharmacist = new Telerik.WinControls.UI.RadButtonElement();
+            this.radRibbonBarGroup35 = new Telerik.WinControls.UI.RadRibbonBarGroup();
+            this.FRMApproveSearch = new Telerik.WinControls.UI.RadButtonElement();
             this.ribbonTab7 = new Telerik.WinControls.UI.RibbonTab();
             this.radRibbonBarGroup32 = new Telerik.WinControls.UI.RadRibbonBarGroup();
             this.FRMBookInfo = new Telerik.WinControls.UI.RadButtonElement();
@@ -161,7 +164,7 @@
             // 
             // ribbonTab5
             // 
-            this.ribbonTab5.IsSelected = false;
+            this.ribbonTab5.IsSelected = true;
             this.ribbonTab5.Items.AddRange(new Telerik.WinControls.RadItem[] {
             this.radRibbonBarGroup5,
             this.radRibbonBarGroup6,
@@ -190,6 +193,7 @@
             this.FRMMedicineSetting.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold);
             this.FRMMedicineSetting.Name = "FRMMedicineSetting";
             this.FRMMedicineSetting.Text = "قائمة الدواء";
+            this.FRMMedicineSetting.Click += new System.EventHandler(this.FRMMedicineSetting_Click);
             // 
             // FRMMedicinePricing
             // 
@@ -401,7 +405,7 @@
             // 
             // ribbonTab3
             // 
-            this.ribbonTab3.IsSelected = true;
+            this.ribbonTab3.IsSelected = false;
             this.ribbonTab3.Items.AddRange(new Telerik.WinControls.RadItem[] {
             this.radRibbonBarGroup22,
             this.radRibbonBarGroup23,
@@ -470,16 +474,29 @@
             // 
             // radRibbonBarGroup25
             // 
+            this.radRibbonBarGroup25.AutoSize = false;
+            this.radRibbonBarGroup25.Bounds = new System.Drawing.Rectangle(0, 0, 320, 87);
             this.radRibbonBarGroup25.Items.AddRange(new Telerik.WinControls.RadItem[] {
-            this.FrmReclaimReports});
+            this.FRMRPTMedicalEStrdad,
+            this.FRMRPTMedicineEStrdad});
             this.radRibbonBarGroup25.Name = "radRibbonBarGroup25";
             this.radRibbonBarGroup25.Text = "تقارير الاسترداد";
             // 
-            // FrmReclaimReports
+            // FRMRPTMedicalEStrdad
             // 
-            this.FrmReclaimReports.Enabled = false;
-            this.FrmReclaimReports.Name = "FrmReclaimReports";
-            this.FrmReclaimReports.Text = "تقارير الاسترداد";
+            this.FRMRPTMedicalEStrdad.Enabled = false;
+            this.FRMRPTMedicalEStrdad.Name = "FRMRPTMedicalEStrdad";
+            this.FRMRPTMedicalEStrdad.Text = "تقارير استرداد الخدمة الطبية";
+            this.FRMRPTMedicalEStrdad.Click += new System.EventHandler(this.FRMRPTMedicalEStrdad_Click);
+            // 
+            // FRMRPTMedicineEStrdad
+            // 
+            this.FRMRPTMedicineEStrdad.AutoSize = false;
+            this.FRMRPTMedicineEStrdad.Bounds = new System.Drawing.Rectangle(0, 0, 170, 54);
+            this.FRMRPTMedicineEStrdad.Enabled = false;
+            this.FRMRPTMedicineEStrdad.Name = "FRMRPTMedicineEStrdad";
+            this.FRMRPTMedicineEStrdad.Text = "تقارير استرداد الحدمة الدوائية";
+            this.FRMRPTMedicineEStrdad.Click += new System.EventHandler(this.FRMRPTMedicineEStrdad_Click);
             // 
             // ribbonTab4
             // 
@@ -532,7 +549,8 @@
             this.ribbonTab6.Items.AddRange(new Telerik.WinControls.RadItem[] {
             this.radRibbonBarGroup30,
             this.radRibbonBarGroup31,
-            this.radRibbonBarGroup7});
+            this.radRibbonBarGroup7,
+            this.radRibbonBarGroup35});
             this.ribbonTab6.Name = "ribbonTab6";
             this.ribbonTab6.Text = "موافقات الخدمة الدوائية";
             this.ribbonTab6.UseMnemonic = false;
@@ -542,27 +560,28 @@
             this.radRibbonBarGroup30.Items.AddRange(new Telerik.WinControls.RadItem[] {
             this.FRMApproveMedicine});
             this.radRibbonBarGroup30.Name = "radRibbonBarGroup30";
-            this.radRibbonBarGroup30.Text = "الموافقة الدوائية";
+            this.radRibbonBarGroup30.Text = "التصديق";
             // 
             // FRMApproveMedicine
             // 
             this.FRMApproveMedicine.Name = "FRMApproveMedicine";
-            this.FRMApproveMedicine.Text = "الموافقة الدوائية";
+            this.FRMApproveMedicine.Text = "تصديق الأدوية";
             this.FRMApproveMedicine.Click += new System.EventHandler(this.FRMApproveMedicine_Click);
             // 
             // radRibbonBarGroup31
             // 
             this.radRibbonBarGroup31.Items.AddRange(new Telerik.WinControls.RadItem[] {
-            this.FRMApproveMedicineReorts});
+            this.FRMreportApproveMedicine});
             this.radRibbonBarGroup31.Name = "radRibbonBarGroup31";
-            this.radRibbonBarGroup31.Text = "تقارير الموافقة الدوائية";
+            this.radRibbonBarGroup31.Text = "التقارير";
             // 
-            // FRMApproveMedicineReorts
+            // FRMreportApproveMedicine
             // 
-            this.FRMApproveMedicineReorts.AutoSize = false;
-            this.FRMApproveMedicineReorts.Bounds = new System.Drawing.Rectangle(0, 0, 124, 59);
-            this.FRMApproveMedicineReorts.Name = "FRMApproveMedicineReorts";
-            this.FRMApproveMedicineReorts.Text = "التقارير";
+            this.FRMreportApproveMedicine.AutoSize = false;
+            this.FRMreportApproveMedicine.Bounds = new System.Drawing.Rectangle(0, 0, 124, 59);
+            this.FRMreportApproveMedicine.Name = "FRMreportApproveMedicine";
+            this.FRMreportApproveMedicine.Text = "تقارير تصديق الأدوية";
+            this.FRMreportApproveMedicine.Click += new System.EventHandler(this.FRMreportApproveMedicine_Click);
             // 
             // radRibbonBarGroup7
             // 
@@ -570,7 +589,7 @@
             this.FrmAppMedicineTyp,
             this.FrmPharmacist});
             this.radRibbonBarGroup7.Name = "radRibbonBarGroup7";
-            this.radRibbonBarGroup7.Text = "اعدادات الموافقة الدوائية";
+            this.radRibbonBarGroup7.Text = "اعدادات اتصديق الأدوية";
             // 
             // FrmAppMedicineTyp
             // 
@@ -585,6 +604,20 @@
             this.FrmPharmacist.Name = "FrmPharmacist";
             this.FrmPharmacist.Text = "قائمة الصيادلة";
             this.FrmPharmacist.Click += new System.EventHandler(this.FrmPharmacist_Click);
+            // 
+            // radRibbonBarGroup35
+            // 
+            this.radRibbonBarGroup35.Items.AddRange(new Telerik.WinControls.RadItem[] {
+            this.FRMApproveSearch});
+            this.radRibbonBarGroup35.Name = "radRibbonBarGroup35";
+            this.radRibbonBarGroup35.Text = "بحث";
+            // 
+            // FRMApproveSearch
+            // 
+            this.FRMApproveSearch.Enabled = false;
+            this.FRMApproveSearch.Name = "FRMApproveSearch";
+            this.FRMApproveSearch.Text = "البحث عن تصاديق الدواء";
+            this.FRMApproveSearch.Click += new System.EventHandler(this.FRMApproveSearch_Click);
             // 
             // ribbonTab7
             // 
@@ -951,7 +984,7 @@
         private Telerik.WinControls.UI.RadButtonElement FRMReception;
         private Telerik.WinControls.UI.RadButtonElement FRMmedicine;
         private Telerik.WinControls.UI.RadButtonElement FRMmedical;
-        private Telerik.WinControls.UI.RadButtonElement FrmReclaimReports;
+        private Telerik.WinControls.UI.RadButtonElement FRMRPTMedicalEStrdad;
         private Telerik.WinControls.UI.RadRibbonBarGroup radRibbonBarGroup26;
         private Telerik.WinControls.UI.RadButtonElement FRMmedicalCoPay;
         private Telerik.WinControls.UI.RadRibbonBarGroup radRibbonBarGroup27;
@@ -965,7 +998,7 @@
         private Telerik.WinControls.UI.RadRibbonBarGroup radRibbonBarGroup30;
         private Telerik.WinControls.UI.RadRibbonBarGroup radRibbonBarGroup31;
         private Telerik.WinControls.UI.RadButtonElement FRMApproveMedicine;
-        private Telerik.WinControls.UI.RadButtonElement FRMApproveMedicineReorts;
+        private Telerik.WinControls.UI.RadButtonElement FRMreportApproveMedicine;
         private Telerik.WinControls.UI.RadRibbonBarGroup radRibbonBarGroup7;
         private Telerik.WinControls.UI.RadButtonElement FrmAppMedicineTyp;
         private Telerik.WinControls.UI.RadButtonElement FrmPharmacist;
@@ -976,5 +1009,8 @@
         private Telerik.WinControls.UI.RadButtonElement FRMreportChronics;
         private Telerik.WinControls.UI.RadRibbonBarGroup radRibbonBarGroup34;
         private Telerik.WinControls.UI.RadButtonElement FrmChronics;
+        private Telerik.WinControls.UI.RadRibbonBarGroup radRibbonBarGroup35;
+        private Telerik.WinControls.UI.RadButtonElement FRMApproveSearch;
+        private Telerik.WinControls.UI.RadButtonElement FRMRPTMedicineEStrdad;
     }
 }

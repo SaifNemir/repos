@@ -32,7 +32,8 @@ namespace MedicalServiceSystem.SystemSetting
 
         private void UserFRM_Load(object sender, EventArgs e)
         {
-
+            UserType.DataSource = Enum.GetValues(typeof(UserType));
+            UserType.SelectedIndex = 1;
             StartDate.Value = PLC.getdate();
             EndDate.Value = PLC.getdate().AddMonths(3);
             using (dbContext db = new dbContext())
@@ -83,6 +84,12 @@ namespace MedicalServiceSystem.SystemSetting
                 {
                     Interaction.MsgBox("يجب اختيار المجموعة أولا", MsgBoxStyle.Exclamation, "System");
                     UserGroup.Focus();
+                    return;
+                }
+                if (UserType.Text == "")
+                {
+                    Interaction.MsgBox("يجب اختيار نوع المستخدم", MsgBoxStyle.Exclamation, "System");
+                    UserType.Focus();
                     return;
                 }
                 //if (UserName.Text == "")
@@ -151,6 +158,7 @@ namespace MedicalServiceSystem.SystemSetting
                         user.FullName = FulName.Text;
                         user.GroupId = int.Parse(GroupId.Text);
                         user.UserPass = UserPassWord.Text;
+                        user.UserType = (UserType)Enum.Parse(typeof(UserType), UserType.Text); 
                         if (UserStatus.Checked == true)
                         {
                             user.UserStatus = 1;
@@ -254,6 +262,7 @@ namespace MedicalServiceSystem.SystemSetting
                                 v2[0].UserPass = UserPassWord.Text;
                                 v2[0].StartDate = StartDate.Value.Date;
                                 v2[0].EndDate = EndDate.Value.Date;
+                                v2[0].UserType = (UserType)Enum.Parse(typeof(UserType), UserType.SelectedText);
                                 if (UserStatus.Checked == true)
                                 {
                                     v2[0].UserStatus = 1;

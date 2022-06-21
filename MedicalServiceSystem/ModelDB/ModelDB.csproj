@@ -143,6 +143,26 @@
     <Compile Include="Migrations\202204131130377_sa2022413.designer.cs">
       <DependentUpon>202204131130377_sa2022413.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202205190803346_saifUser22.cs" />
+    <Compile Include="Migrations\202205190803346_saifUser22.designer.cs">
+      <DependentUpon>202205190803346_saifUser22.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202206061053091_saif456.cs" />
+    <Compile Include="Migrations\202206061053091_saif456.designer.cs">
+      <DependentUpon>202206061053091_saif456.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202206190838162_Saif2022_05_19.cs" />
+    <Compile Include="Migrations\202206190838162_Saif2022_05_19.designer.cs">
+      <DependentUpon>202206190838162_Saif2022_05_19.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202206190845432_saif1_2022_05_19.cs" />
+    <Compile Include="Migrations\202206190845432_saif1_2022_05_19.designer.cs">
+      <DependentUpon>202206190845432_saif1_2022_05_19.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202206191242375_saif1_2022_05_19_2.cs" />
+    <Compile Include="Migrations\202206191242375_saif1_2022_05_19_2.designer.cs">
+      <DependentUpon>202206191242375_saif1_2022_05_19_2.cs</DependentUpon>
+    </Compile>
     <Compile Include="US.cs" />
     <Compile Include="HICKSDCS.cs" />
     <Compile Include="ApproveMedicineDetails.cs" />
@@ -271,6 +291,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202204131130377_sa2022413.resx">
       <DependentUpon>202204131130377_sa2022413.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202205190803346_saifUser22.resx">
+      <DependentUpon>202205190803346_saifUser22.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202206061053091_saif456.resx">
+      <DependentUpon>202206061053091_saif456.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202206190838162_Saif2022_05_19.resx">
+      <DependentUpon>202206190838162_Saif2022_05_19.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202206190845432_saif1_2022_05_19.resx">
+      <DependentUpon>202206190845432_saif1_2022_05_19.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202206191242375_saif1_2022_05_19_2.resx">
+      <DependentUpon>202206191242375_saif1_2022_05_19_2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <!--<Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

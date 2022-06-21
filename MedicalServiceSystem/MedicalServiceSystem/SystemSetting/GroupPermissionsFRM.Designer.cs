@@ -76,10 +76,10 @@
             // radLabel3
             // 
             this.radLabel3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.radLabel3.Font = new System.Drawing.Font("Sakkal Majalla", 12F);
-            this.radLabel3.Location = new System.Drawing.Point(1104, 16);
+            this.radLabel3.Font = new System.Drawing.Font("Sakkal Majalla", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radLabel3.Location = new System.Drawing.Point(1103, 8);
             this.radLabel3.Name = "radLabel3";
-            this.radLabel3.Size = new System.Drawing.Size(113, 26);
+            this.radLabel3.Size = new System.Drawing.Size(137, 31);
             this.radLabel3.TabIndex = 3;
             this.radLabel3.Text = "مجموعة المستخدمين :";
             this.radLabel3.TextAlignment = System.Drawing.ContentAlignment.TopRight;
@@ -88,12 +88,12 @@
             // radButton4
             // 
             this.radButton4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.radButton4.Font = new System.Drawing.Font("Sakkal Majalla", 12F);
+            this.radButton4.Font = new System.Drawing.Font("Sakkal Majalla", 18F, System.Drawing.FontStyle.Bold);
             this.radButton4.Location = new System.Drawing.Point(540, 442);
             this.radButton4.Name = "radButton4";
             this.radButton4.Size = new System.Drawing.Size(164, 40);
             this.radButton4.TabIndex = 6;
-            this.radButton4.Text = "تطبيق";
+            this.radButton4.Text = "موافق";
             this.radButton4.ThemeName = "Office2010Blue";
             this.radButton4.Click += new System.EventHandler(this.radButton4_Click);
             // 
@@ -144,12 +144,12 @@
             // radButton1
             // 
             this.radButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.radButton1.Font = new System.Drawing.Font("Sakkal Majalla", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radButton1.Location = new System.Drawing.Point(577, 200);
+            this.radButton1.Font = new System.Drawing.Font("Sakkal Majalla", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radButton1.Location = new System.Drawing.Point(577, 201);
             this.radButton1.Name = "radButton1";
             this.radButton1.Size = new System.Drawing.Size(88, 40);
             this.radButton1.TabIndex = 7;
-            this.radButton1.Text = ">>";
+            this.radButton1.Text = ">";
             this.radButton1.ThemeName = "Office2010Blue";
             this.radButton1.Click += new System.EventHandler(this.RadButton1_Click);
             // 
@@ -222,12 +222,12 @@
             // radButton2
             // 
             this.radButton2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.radButton2.Font = new System.Drawing.Font("Sakkal Majalla", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radButton2.Font = new System.Drawing.Font("Sakkal Majalla", 18F, System.Drawing.FontStyle.Bold);
             this.radButton2.Location = new System.Drawing.Point(577, 248);
             this.radButton2.Name = "radButton2";
             this.radButton2.Size = new System.Drawing.Size(88, 40);
             this.radButton2.TabIndex = 8;
-            this.radButton2.Text = "<<";
+            this.radButton2.Text = "<";
             this.radButton2.ThemeName = "Office2010Blue";
             this.radButton2.Click += new System.EventHandler(this.RadButton2_Click);
             // 
@@ -313,14 +313,13 @@
             this.radLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.radLabel1.AutoSize = false;
             this.radLabel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(246)))), ((int)(((byte)(255)))));
-            this.radLabel1.Font = new System.Drawing.Font("Sakkal Majalla", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radLabel1.Font = new System.Drawing.Font("Sakkal Majalla", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))));
             this.radLabel1.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.radLabel1.Location = new System.Drawing.Point(1140, 44);
+            this.radLabel1.Location = new System.Drawing.Point(1049, 35);
             this.radLabel1.Name = "radLabel1";
-            this.radLabel1.Size = new System.Drawing.Size(100, 27);
+            this.radLabel1.Size = new System.Drawing.Size(191, 36);
             this.radLabel1.TabIndex = 4;
             this.radLabel1.Text = "قائمة الصلاحيات :";
-            this.radLabel1.TextAlignment = System.Drawing.ContentAlignment.TopRight;
             this.radLabel1.ThemeName = "Office2010Black";
             // 
             // radLabel2
@@ -328,14 +327,13 @@
             this.radLabel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.radLabel2.AutoSize = false;
             this.radLabel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(246)))), ((int)(((byte)(255)))));
-            this.radLabel2.Font = new System.Drawing.Font("Sakkal Majalla", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radLabel2.Font = new System.Drawing.Font("Sakkal Majalla", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radLabel2.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.radLabel2.Location = new System.Drawing.Point(457, 46);
+            this.radLabel2.Location = new System.Drawing.Point(285, 35);
             this.radLabel2.Name = "radLabel2";
-            this.radLabel2.Size = new System.Drawing.Size(114, 27);
+            this.radLabel2.Size = new System.Drawing.Size(286, 38);
             this.radLabel2.TabIndex = 5;
             this.radLabel2.Text = "الصلاحيات الممنوحة :";
-            this.radLabel2.TextAlignment = System.Drawing.ContentAlignment.TopRight;
             this.radLabel2.ThemeName = "Office2010Black";
             // 
             // GroupPermissionsFRM
@@ -344,7 +342,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1244, 494);
             this.Controls.Add(this.GrdPermIssions);
-            this.Controls.Add(this.radLabel1);
             this.Controls.Add(this.GRDForm);
             this.Controls.Add(this.radButton2);
             this.Controls.Add(this.radButton1);
@@ -355,6 +352,7 @@
             this.Controls.Add(this.radButton4);
             this.Controls.Add(this.radLabel3);
             this.Controls.Add(this.radLabel2);
+            this.Controls.Add(this.radLabel1);
             this.Font = new System.Drawing.Font("Sakkal Majalla", 12F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);

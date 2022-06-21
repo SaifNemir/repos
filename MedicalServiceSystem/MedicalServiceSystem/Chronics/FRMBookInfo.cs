@@ -239,6 +239,28 @@ namespace MedicalServiceSystem.Reclaims
                         var ser = db.Subscribers.Where(p => p.InsurNo == card_no.Text).Take(1).ToList();
                         if (ser.Count > 0)
                         {
+                            if (card_no.Text.Length == 9 && !card_no.Text.Contains("/"))
+                            {
+                                if (PLC.conNew.State == (System.Data.ConnectionState)1)
+                                {
+                                    PLC.conNew.Close();
+                                }
+                                PLC.conNew.Open();
+                                string srr = "select top 1 * from Cards where InsuranceNo=" + card_no.Text + " and RowStatus<>2";
+                                SqlDataAdapter dasearch = new SqlDataAdapter(srr, PLC.conNew);
+                                DataTable dtsearch = new DataTable();
+                                dtsearch.Clear();
+                                dasearch.Fill(dtsearch);
+                                if (dtsearch.Rows.Count > 0)
+                                {
+                                    if (Convert.ToInt32(dtsearch.Rows[0]["Status"]) == 1)
+                                    {
+                                        MessageBox.Show("هذا المشترك موقوف وسبب الايقاف هو :" + (char)13 + dtsearch.Rows[0]["Comment"], "النظام", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                                        this.Cursor = Cursors.Default;
+                                        return;
+                                    }
+                                }
+                            }
                             if (ser[0].IsStoped == false)
                             {
                                 this.Cursor = Cursors.WaitCursor;
@@ -249,7 +271,7 @@ namespace MedicalServiceSystem.Reclaims
                                 PhoneNo.Text = ser[0].PhoneNo;
 
                                 Age.Text = DateAndTime.DateDiff(DateInterval.Year, ser[0].BirthDate, PLC.getdate()).ToString();
-                                var Fhis = db.ChronicsBooks.Where(p => p.SubscriberId == insurId && p.RowStatus != RowStatus.Deleted).ToList();
+                                var Fhis = db.ChronicsBooks.Where(p => p.Subscriber.InsurNo == card_no.Text && p.RowStatus != RowStatus.Deleted).ToList();
                                 if (Fhis.Count > 0)
                                 {
                                     BookType.SelectedIndex = 1;
