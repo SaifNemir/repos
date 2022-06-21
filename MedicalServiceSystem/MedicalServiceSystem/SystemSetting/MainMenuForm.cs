@@ -367,5 +367,10 @@ namespace MedicalServiceSystem
             form.WindowState = FormWindowState.Maximized;
             form.Show();
         }
+
+        private void RadRibbonBar1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
