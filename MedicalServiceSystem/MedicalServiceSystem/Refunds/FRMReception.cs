@@ -71,6 +71,7 @@ namespace MedicalServiceSystem.Reclaims
         {
             UserId = LoginForm.Default.UserId;
             LocalityId = LoginForm.Default.LocalityId;
+            BillDate.Value = PLC.getdate();
             using (dbContext db = new dbContext())
             {
                 var Gcenter = db.CenterInfos.ToList();
@@ -91,6 +92,28 @@ namespace MedicalServiceSystem.Reclaims
                     var ser = db.Subscribers.Where(p => p.InsurNo == InsuranceNo.Text).Take(1).ToList();
                     if (ser.Count > 0)
                     {
+                        if (InsuranceNo.Text.Length == 9 && !InsuranceNo.Text.Contains("/"))
+                        {
+                            if (PLC.conNew.State == (System.Data.ConnectionState)1)
+                            {
+                                PLC.conNew.Close();
+                            }
+                            PLC.conNew.Open();
+                            string srr = "select top 1 * from Cards where InsuranceNo=" + InsuranceNo.Text + " and RowStatus<>2";
+                            SqlDataAdapter dasearch = new SqlDataAdapter(srr, PLC.conNew);
+                            DataTable dtsearch = new DataTable();
+                            dtsearch.Clear();
+                            dasearch.Fill(dtsearch);
+                            if (dtsearch.Rows.Count > 0)
+                            {
+                                if (Convert.ToInt32(dtsearch.Rows[0]["Status"]) == 1)
+                                {
+                                    MessageBox.Show("هذا المشترك موقوف وسبب الايقاف هو :" + (char)13 + dtsearch.Rows[0]["Comment"], "النظام", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                                    this.Cursor = Cursors.Default;
+                                    return;
+                                }
+                            }
+                        }
                         if (ser[0].IsStoped == false)
                         {
                             this.Cursor = Cursors.WaitCursor;

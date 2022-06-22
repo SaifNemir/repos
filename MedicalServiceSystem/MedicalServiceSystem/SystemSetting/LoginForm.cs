@@ -191,7 +191,9 @@ namespace MedicalServiceSystem.SystemSetting
                     string GetSystemName = MyReader.GetValue("Locality", typeof(string)).ToString();
                     string GetServerIp = MyReader.GetValue("ServerIp", typeof(string)).ToString();
                     ServerIp = GetServerIp;
-                    LocalityId = Convert.ToInt32(GetSystemName);
+                    string IP = PLC.GetIP();
+                    string IP3 = IP.Substring(0, 8);
+                    LocalityId = db.Localities.Where(x => x.LocalityIP.Equals(IP3)).First().Id;
                 }
 
                 else

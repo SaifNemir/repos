@@ -372,5 +372,21 @@ namespace MedicalServiceSystem
         {
 
         }
+
+        private void FRMRPTMedicalEStrdad_Click(object sender, EventArgs e)
+        {
+            FRMRPTMedicalEStrdad form = new FRMRPTMedicalEStrdad();
+            form.MdiParent = this;
+            form.WindowState = FormWindowState.Maximized;
+            form.Show();
+        }
+
+        private void FRMRPTMedicineEStrdad_Click(object sender, EventArgs e)
+        {
+            FRMRPTMedicineEStrdad form = new FRMRPTMedicineEStrdad();
+            form.MdiParent = this;
+            form.WindowState = FormWindowState.Maximized;
+            form.Show();
+        }
     }
 }

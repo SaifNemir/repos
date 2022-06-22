@@ -26,7 +26,22 @@ namespace MedicalServiceSystem.Reclaims
 
         private void textBox35_ItemDataBound(object sender, EventArgs e)
         {
-            MoneyPaiedWritten.Value = PLC.NumToStr(Convert.ToDouble(textBox35.Value));
+           
+        }
+
+        private void TextBox33_ItemDataBound(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void TextBox16_ItemDataBound(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void Estrdad_ItemDataBound(object sender, EventArgs e)
+        {
+            
         }
     }
 }

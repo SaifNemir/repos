@@ -14,7 +14,8 @@ namespace ModelDB
 		public string Server { get; set; }
 		public string ClientId { get; set; }
 		public DateTime BirthDate { get; set; }
-		public Boolean? IsStoped { get; set; }
+        public DateTime? StopCard { get; set; }
+        public Boolean? IsStoped { get; set; }
 		public string Notes { get; set; }
         public int localityId { get; set; }
     }

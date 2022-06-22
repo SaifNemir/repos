@@ -20,9 +20,17 @@ namespace ModelDB
 
         public DateTime? StartDate { get; set; }
         public DateTime? EndDate { get; set; }
+        public UserType UserType { get; set; }
 
 
-      
+
+
+    }
+    public enum UserType
+    {
+        Admin,
+        User
+
     }
 
 

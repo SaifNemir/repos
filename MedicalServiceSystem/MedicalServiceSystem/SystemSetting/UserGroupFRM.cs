@@ -99,7 +99,12 @@ namespace MedicalServiceSystem
                 GroupName.DisplayMember = "GroupName";
                 GroupName.ValueMember = "Id";
                 GroupName.SelectedIndex = -1;
-               // GroupStatus.SelectedIndex = 0;
+                var Sys = db.Systems.ToList();
+                SystemName.DataSource = Sys;
+                SystemName.DisplayMember = "SystemName";
+                SystemName.ValueMember = "Id";
+                SystemName.SelectedIndex = -1;
+                // GroupStatus.SelectedIndex = 0;
             }
             flag = 1;
         }
@@ -118,17 +123,17 @@ namespace MedicalServiceSystem
                         GroupName.Focus();
                         return;
                     }
+                    if (SystemName.SelectedIndex==-1)
+                    {
+                        Interaction.MsgBox("يجب كتابة اسم النظام الذي تتبع له المجموعة أولا", MsgBoxStyle.Exclamation, "System");
+                        SystemName.Focus();
+                        return;
+                    }
                     UserGroup userGroup = new UserGroup();
-                    //if (GroupStatus.Text == "Active")
-                    //{
-                    //    userGroup.Status = Status.Active;
-                    //}
-                    //else
-                    //{
-                    //    userGroup.Status  = Status.DisActive;
-                    //}
                     string str =GroupName.Text.Trim();
+                    int SysId = Convert.ToInt32(SystemName.SelectedValue);
                     userGroup.GroupName = str;
+                    userGroup.SystemId = SysId;
                     db.UserGroups.Add(userGroup);
                     db.SaveChanges();
 
@@ -139,17 +144,6 @@ namespace MedicalServiceSystem
                     {
                         GRDGroups.Rows[i].Cells[0].Value = i + 1;
                     }
-                    //for (int i = 0; i <= u.Count - 1; i++)
-                    //{
-                    //    if (u[i].RowStatus == RowStatus.Active)
-                    //    {
-                    //        GRDGroups.Rows[i].Cells[3].Value = true;
-                    //    }
-                    //    else
-                    //    {
-                    //        GRDGroups.Rows[i].Cells[3].Value = false;
-                    //    }
-                    //}
                     GRDGroups.Rows[GRDGroups.RowCount - 1].IsCurrent = true;
                     GRDGroups.Rows[GRDGroups.RowCount - 1].IsCurrent = true;
                 }
@@ -163,16 +157,6 @@ namespace MedicalServiceSystem
                         if (v.Count > 0)
                         {
                             v[0].GroupName = Strings.Trim(GroupName.Text);
-
-                            //if (GroupStatus.Text == "Active")
-                            //{
-                            //    v[0]. = Status.Active;
-                            //}
-                            //else
-                            //{
-                            //    v[0].Status = Status.DisActive;
-                            //}
-
                             db.SaveChanges();
 
                             Interaction.MsgBox("لقد تم تعديل البيانات", MsgBoxStyle.Information, "System");
@@ -215,20 +199,7 @@ namespace MedicalServiceSystem
                         var cu = db.UserGroups.Where(p => p.Id == x).ToList();
                         if (cu.Count > 0)
                         {
-                            //CustomerTypeName.Text = cu[0].CustomerTypeName;
-                            // CustomerTypeId.Text = cu[0].Id.ToString( );
-
-                            //if (cu[0].Status == Status.Active)
-                            //{
-                            //    GroupStatus.Text = "Active";
-                            //}
-                            //else
-                            //{
-                            //    if (cu[0].Status == Status.DisActive)
-                            //    {
-                            //        GroupStatus.Text = "DisActive";
-                            //    }
-                            //}
+                            
                         }
 
                     }
@@ -254,17 +225,8 @@ namespace MedicalServiceSystem
                 if (GRDGroups.CurrentColumn.Name == "Edit")
                 {
                     flag = 2;
-                    //EditMode.Text = "Edit Mode : Edit";
                     GroupId.Text = GRDGroups.Rows[GRDGroups.CurrentRow.Index].Cells[1].Value.ToString();
                     GroupName.Text = GRDGroups.Rows[GRDGroups.CurrentRow.Index].Cells[2].Value.ToString();
-                    //if ((bool)(GRDGroups.Rows[GRDGroups.CurrentRow.Index].Cells[3].Value) == true)
-                    //{
-                    //    GroupStatus.Text = "Active";
-                    //}
-                    //else
-                    //{
-                    //    GroupStatus.Text = "DisActive";
-                    //}
 
                     for (int i = 0; i <= GRDGroups.RowCount - 1; i++)
                     {

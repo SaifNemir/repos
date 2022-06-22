@@ -345,7 +345,7 @@ namespace MedicalServiceSystem.Reports
             styleRule1.Style.Padding.Right = Telerik.Reporting.Drawing.Unit.Point(2D);
             this.StyleSheet.AddRange(new Telerik.Reporting.Drawing.StyleRule[] {
             styleRule1});
-            this.Width = Telerik.Reporting.Drawing.Unit.Cm(18.8D);
+            this.Width = Telerik.Reporting.Drawing.Unit.Cm(18.796D);
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
 
         }

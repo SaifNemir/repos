@@ -28,17 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn11 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn12 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn13 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn14 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn15 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewDateTimeColumn gridViewDateTimeColumn5 = new Telerik.WinControls.UI.GridViewDateTimeColumn();
-            Telerik.WinControls.UI.GridViewDateTimeColumn gridViewDateTimeColumn6 = new Telerik.WinControls.UI.GridViewDateTimeColumn();
-            Telerik.WinControls.UI.GridViewCheckBoxColumn gridViewCheckBoxColumn3 = new Telerik.WinControls.UI.GridViewCheckBoxColumn();
-            Telerik.WinControls.UI.GridViewCommandColumn gridViewCommandColumn3 = new Telerik.WinControls.UI.GridViewCommandColumn();
-            Telerik.WinControls.Data.SortDescriptor sortDescriptor3 = new Telerik.WinControls.Data.SortDescriptor();
-            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition3 = new Telerik.WinControls.UI.TableViewDefinition();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn1 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn2 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn3 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn4 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn5 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewDateTimeColumn gridViewDateTimeColumn1 = new Telerik.WinControls.UI.GridViewDateTimeColumn();
+            Telerik.WinControls.UI.GridViewDateTimeColumn gridViewDateTimeColumn2 = new Telerik.WinControls.UI.GridViewDateTimeColumn();
+            Telerik.WinControls.UI.GridViewCheckBoxColumn gridViewCheckBoxColumn1 = new Telerik.WinControls.UI.GridViewCheckBoxColumn();
+            Telerik.WinControls.UI.GridViewCommandColumn gridViewCommandColumn1 = new Telerik.WinControls.UI.GridViewCommandColumn();
+            Telerik.WinControls.Data.SortDescriptor sortDescriptor1 = new Telerik.WinControls.Data.SortDescriptor();
+            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition1 = new Telerik.WinControls.UI.TableViewDefinition();
             Telerik.WinControls.UI.GridViewRelation gridViewRelation1 = new Telerik.WinControls.UI.GridViewRelation();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserFRM));
             this.UserId = new Telerik.WinControls.UI.RadLabel();
@@ -67,6 +67,8 @@
             this.label4 = new Telerik.WinControls.UI.RadLabel();
             this.label6 = new Telerik.WinControls.UI.RadLabel();
             this.UserStatus = new Telerik.WinControls.UI.RadCheckBox();
+            this.UserType = new Telerik.WinControls.UI.RadDropDownList();
+            this.radLabel8 = new Telerik.WinControls.UI.RadLabel();
             ((System.ComponentModel.ISupportInitialize)(this.UserId)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GRDUsers)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GRDUsers.MasterTemplate)).BeginInit();
@@ -93,6 +95,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.label4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.label6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.UserStatus)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UserType)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radLabel8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
             // 
@@ -127,82 +131,82 @@
             this.GRDUsers.MasterTemplate.AllowDeleteRow = false;
             this.GRDUsers.MasterTemplate.AutoExpandGroups = true;
             this.GRDUsers.MasterTemplate.AutoGenerateColumns = false;
-            gridViewTextBoxColumn11.EnableExpressionEditor = false;
-            gridViewTextBoxColumn11.HeaderText = "م";
-            gridViewTextBoxColumn11.IsVisible = false;
-            gridViewTextBoxColumn11.Name = "S";
-            gridViewTextBoxColumn11.ReadOnly = true;
-            gridViewTextBoxColumn11.Width = 40;
-            gridViewTextBoxColumn12.EnableExpressionEditor = false;
-            gridViewTextBoxColumn12.FieldName = "UserId";
-            gridViewTextBoxColumn12.HeaderText = "User Id";
-            gridViewTextBoxColumn12.IsVisible = false;
-            gridViewTextBoxColumn12.Name = "UserId";
-            gridViewTextBoxColumn12.ReadOnly = true;
-            gridViewTextBoxColumn12.SortOrder = Telerik.WinControls.UI.RadSortOrder.Ascending;
-            gridViewTextBoxColumn12.Width = 100;
-            gridViewTextBoxColumn13.EnableExpressionEditor = false;
-            gridViewTextBoxColumn13.FieldName = "FulName";
-            gridViewTextBoxColumn13.HeaderText = "اسم المستخدم رباعي";
-            gridViewTextBoxColumn13.Name = "FulName";
-            gridViewTextBoxColumn13.ReadOnly = true;
-            gridViewTextBoxColumn13.Width = 250;
-            gridViewTextBoxColumn14.EnableExpressionEditor = false;
-            gridViewTextBoxColumn14.FieldName = "UserName";
-            gridViewTextBoxColumn14.HeaderText = "اسم المستخدم";
-            gridViewTextBoxColumn14.Name = "UserName";
-            gridViewTextBoxColumn14.ReadOnly = true;
-            gridViewTextBoxColumn14.Width = 150;
-            gridViewTextBoxColumn15.EnableExpressionEditor = false;
-            gridViewTextBoxColumn15.FieldName = "UserPassWord";
-            gridViewTextBoxColumn15.HeaderText = "رمز المرور";
-            gridViewTextBoxColumn15.IsVisible = false;
-            gridViewTextBoxColumn15.Name = "UserPassWord";
-            gridViewTextBoxColumn15.ReadOnly = true;
-            gridViewTextBoxColumn15.Width = 150;
-            gridViewDateTimeColumn5.EnableExpressionEditor = false;
-            gridViewDateTimeColumn5.FieldName = "StartDate";
-            gridViewDateTimeColumn5.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            gridViewDateTimeColumn5.HeaderText = "تاريخ بداية صلاحية المستخدم";
-            gridViewDateTimeColumn5.Name = "StartDate";
-            gridViewDateTimeColumn5.Width = 150;
-            gridViewDateTimeColumn6.EnableExpressionEditor = false;
-            gridViewDateTimeColumn6.FieldName = "EndDate";
-            gridViewDateTimeColumn6.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            gridViewDateTimeColumn6.HeaderText = "تاريخ نهاية صلاحية المستخدم";
-            gridViewDateTimeColumn6.Name = "EndDate";
-            gridViewDateTimeColumn6.Width = 150;
-            gridViewCheckBoxColumn3.EnableExpressionEditor = false;
-            gridViewCheckBoxColumn3.FieldName = "Status";
-            gridViewCheckBoxColumn3.HeaderText = "حالة المستخدم";
-            gridViewCheckBoxColumn3.MinWidth = 20;
-            gridViewCheckBoxColumn3.Name = "UserStatus";
-            gridViewCheckBoxColumn3.ReadOnly = true;
-            gridViewCheckBoxColumn3.Width = 80;
-            gridViewCommandColumn3.DefaultText = "Edit";
-            gridViewCommandColumn3.EnableExpressionEditor = false;
-            gridViewCommandColumn3.HeaderText = "تعديل";
-            gridViewCommandColumn3.Name = "Edit";
-            gridViewCommandColumn3.UseDefaultText = true;
-            gridViewCommandColumn3.Width = 80;
+            gridViewTextBoxColumn1.EnableExpressionEditor = false;
+            gridViewTextBoxColumn1.HeaderText = "م";
+            gridViewTextBoxColumn1.IsVisible = false;
+            gridViewTextBoxColumn1.Name = "S";
+            gridViewTextBoxColumn1.ReadOnly = true;
+            gridViewTextBoxColumn1.Width = 40;
+            gridViewTextBoxColumn2.EnableExpressionEditor = false;
+            gridViewTextBoxColumn2.FieldName = "UserId";
+            gridViewTextBoxColumn2.HeaderText = "User Id";
+            gridViewTextBoxColumn2.IsVisible = false;
+            gridViewTextBoxColumn2.Name = "UserId";
+            gridViewTextBoxColumn2.ReadOnly = true;
+            gridViewTextBoxColumn2.SortOrder = Telerik.WinControls.UI.RadSortOrder.Ascending;
+            gridViewTextBoxColumn2.Width = 100;
+            gridViewTextBoxColumn3.EnableExpressionEditor = false;
+            gridViewTextBoxColumn3.FieldName = "FulName";
+            gridViewTextBoxColumn3.HeaderText = "اسم المستخدم رباعي";
+            gridViewTextBoxColumn3.Name = "FulName";
+            gridViewTextBoxColumn3.ReadOnly = true;
+            gridViewTextBoxColumn3.Width = 250;
+            gridViewTextBoxColumn4.EnableExpressionEditor = false;
+            gridViewTextBoxColumn4.FieldName = "UserName";
+            gridViewTextBoxColumn4.HeaderText = "اسم المستخدم";
+            gridViewTextBoxColumn4.Name = "UserName";
+            gridViewTextBoxColumn4.ReadOnly = true;
+            gridViewTextBoxColumn4.Width = 150;
+            gridViewTextBoxColumn5.EnableExpressionEditor = false;
+            gridViewTextBoxColumn5.FieldName = "UserPassWord";
+            gridViewTextBoxColumn5.HeaderText = "رمز المرور";
+            gridViewTextBoxColumn5.IsVisible = false;
+            gridViewTextBoxColumn5.Name = "UserPassWord";
+            gridViewTextBoxColumn5.ReadOnly = true;
+            gridViewTextBoxColumn5.Width = 150;
+            gridViewDateTimeColumn1.EnableExpressionEditor = false;
+            gridViewDateTimeColumn1.FieldName = "StartDate";
+            gridViewDateTimeColumn1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            gridViewDateTimeColumn1.HeaderText = "تاريخ بداية صلاحية المستخدم";
+            gridViewDateTimeColumn1.Name = "StartDate";
+            gridViewDateTimeColumn1.Width = 150;
+            gridViewDateTimeColumn2.EnableExpressionEditor = false;
+            gridViewDateTimeColumn2.FieldName = "EndDate";
+            gridViewDateTimeColumn2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            gridViewDateTimeColumn2.HeaderText = "تاريخ نهاية صلاحية المستخدم";
+            gridViewDateTimeColumn2.Name = "EndDate";
+            gridViewDateTimeColumn2.Width = 150;
+            gridViewCheckBoxColumn1.EnableExpressionEditor = false;
+            gridViewCheckBoxColumn1.FieldName = "Status";
+            gridViewCheckBoxColumn1.HeaderText = "حالة المستخدم";
+            gridViewCheckBoxColumn1.MinWidth = 20;
+            gridViewCheckBoxColumn1.Name = "UserStatus";
+            gridViewCheckBoxColumn1.ReadOnly = true;
+            gridViewCheckBoxColumn1.Width = 80;
+            gridViewCommandColumn1.DefaultText = "Edit";
+            gridViewCommandColumn1.EnableExpressionEditor = false;
+            gridViewCommandColumn1.HeaderText = "تعديل";
+            gridViewCommandColumn1.Name = "Edit";
+            gridViewCommandColumn1.UseDefaultText = true;
+            gridViewCommandColumn1.Width = 80;
             this.GRDUsers.MasterTemplate.Columns.AddRange(new Telerik.WinControls.UI.GridViewDataColumn[] {
-            gridViewTextBoxColumn11,
-            gridViewTextBoxColumn12,
-            gridViewTextBoxColumn13,
-            gridViewTextBoxColumn14,
-            gridViewTextBoxColumn15,
-            gridViewDateTimeColumn5,
-            gridViewDateTimeColumn6,
-            gridViewCheckBoxColumn3,
-            gridViewCommandColumn3});
+            gridViewTextBoxColumn1,
+            gridViewTextBoxColumn2,
+            gridViewTextBoxColumn3,
+            gridViewTextBoxColumn4,
+            gridViewTextBoxColumn5,
+            gridViewDateTimeColumn1,
+            gridViewDateTimeColumn2,
+            gridViewCheckBoxColumn1,
+            gridViewCommandColumn1});
             this.GRDUsers.MasterTemplate.EnableAlternatingRowColor = true;
             this.GRDUsers.MasterTemplate.EnableCustomGrouping = true;
             this.GRDUsers.MasterTemplate.EnableFiltering = true;
             this.GRDUsers.MasterTemplate.ShowGroupedColumns = true;
-            sortDescriptor3.PropertyName = "UserId";
+            sortDescriptor1.PropertyName = "UserId";
             this.GRDUsers.MasterTemplate.SortDescriptors.AddRange(new Telerik.WinControls.Data.SortDescriptor[] {
-            sortDescriptor3});
-            this.GRDUsers.MasterTemplate.ViewDefinition = tableViewDefinition3;
+            sortDescriptor1});
+            this.GRDUsers.MasterTemplate.ViewDefinition = tableViewDefinition1;
             this.GRDUsers.Name = "GRDUsers";
             gridViewRelation1.ChildColumnNames = ((System.Collections.Specialized.StringCollection)(resources.GetObject("gridViewRelation1.ChildColumnNames")));
             gridViewRelation1.ParentColumnNames = ((System.Collections.Specialized.StringCollection)(resources.GetObject("gridViewRelation1.ParentColumnNames")));
@@ -238,7 +242,7 @@
             this.FulName.MaxLength = 150;
             this.FulName.Name = "FulName";
             this.FulName.Size = new System.Drawing.Size(568, 24);
-            this.FulName.TabIndex = 1;
+            this.FulName.TabIndex = 2;
             this.FulName.ThemeName = "Office2010Blue";
             // 
             // radButton3
@@ -257,7 +261,7 @@
             // 
             this.radLabel4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.radLabel4.Font = new System.Drawing.Font("Sakkal Majalla", 12F);
-            this.radLabel4.Location = new System.Drawing.Point(408, 17);
+            this.radLabel4.Location = new System.Drawing.Point(251, 17);
             this.radLabel4.Name = "radLabel4";
             this.radLabel4.Size = new System.Drawing.Size(85, 26);
             this.radLabel4.TabIndex = 99;
@@ -329,7 +333,7 @@
             this.UserGroup.Location = new System.Drawing.Point(220, 54);
             this.UserGroup.Name = "UserGroup";
             this.UserGroup.Size = new System.Drawing.Size(568, 32);
-            this.UserGroup.TabIndex = 0;
+            this.UserGroup.TabIndex = 1;
             this.UserGroup.SelectedIndexChanged += new Telerik.WinControls.UI.Data.PositionChangedEventHandler(this.UserGroup_SelectedIndexChanged);
             // 
             // UserName
@@ -480,10 +484,32 @@
             // 
             this.UserStatus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.UserStatus.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.UserStatus.Location = new System.Drawing.Point(379, 19);
+            this.UserStatus.Location = new System.Drawing.Point(230, 20);
             this.UserStatus.Name = "UserStatus";
             this.UserStatus.Size = new System.Drawing.Size(15, 15);
             this.UserStatus.TabIndex = 108;
+            // 
+            // UserType
+            // 
+            this.UserType.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.UserType.BackColor = System.Drawing.Color.White;
+            this.UserType.Font = new System.Drawing.Font("Sakkal Majalla", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UserType.Location = new System.Drawing.Point(342, 17);
+            this.UserType.Name = "UserType";
+            this.UserType.Size = new System.Drawing.Size(172, 32);
+            this.UserType.TabIndex = 0;
+            // 
+            // radLabel8
+            // 
+            this.radLabel8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.radLabel8.Font = new System.Drawing.Font("Sakkal Majalla", 12F);
+            this.radLabel8.Location = new System.Drawing.Point(520, 19);
+            this.radLabel8.Name = "radLabel8";
+            this.radLabel8.Size = new System.Drawing.Size(78, 26);
+            this.radLabel8.TabIndex = 112;
+            this.radLabel8.Text = "نوع المستخدم :";
+            this.radLabel8.TextAlignment = System.Drawing.ContentAlignment.TopRight;
+            this.radLabel8.ThemeName = "Office2010Black";
             // 
             // UserFRM
             // 
@@ -491,6 +517,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(246)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(924, 618);
+            this.Controls.Add(this.UserType);
+            this.Controls.Add(this.radLabel8);
             this.Controls.Add(this.UserStatus);
             this.Controls.Add(this.StartDate);
             this.Controls.Add(this.EndDate);
@@ -555,6 +583,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.label4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.label6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.UserStatus)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UserType)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radLabel8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -592,6 +622,8 @@
         private Telerik.WinControls.UI.RadLabel label6;
         public static UserFRM _Default;
         private Telerik.WinControls.UI.RadCheckBox UserStatus;
+        internal Telerik.WinControls.UI.RadDropDownList UserType;
+        internal Telerik.WinControls.UI.RadLabel radLabel8;
 
         public static UserFRM Default
         {

@@ -27,7 +27,8 @@ namespace MedicalServiceSystem.Reclaims
         public bool Saved = false;
         private void LoadData()
         {
-
+            card_no.Clear();
+            initMoney.Clear();
             GrdMedical.DataSource = null;
             OperationNo.Clear();
             OperationNo.Focus();
@@ -48,27 +49,27 @@ namespace MedicalServiceSystem.Reclaims
             LocalityId = LoginForm.Default.LocalityId;
             using (dbContext db = new dbContext())
             {
-                var ReclaimRes = db.ReclaimMedicalReasonsLists.ToList();
+                var ReclaimRes = db.ReclaimMedicalReasonsLists.Where(p=>p.Activated==true).ToList();
                 ApproveReason.DataSource = ReclaimRes;
                 ApproveReason.DisplayMember = "MedicalReason";
                 ApproveReason.ValueMember = "Id";
                 ApproveReason.SelectedIndex = -1;
 
-                var ReqCenter = db.CenterInfos.ToList();
+                var ReqCenter = db.CenterInfos.Where(p=>p.IsEnabled==true && p.IsVisible==true).ToList();
                 RequistingParty.DataSource = ReqCenter;
                 RequistingParty.ValueMember = "Id";
                 RequistingParty.DisplayMember = "CenterName";
                 RequistingParty.DropDownListElement.AutoCompleteSuggest.SuggestMode = Telerik.WinControls.UI.SuggestMode.Contains;
                 RequistingParty.SelectedIndex = -1;
 
-                var ExcCenter = db.CenterInfos.ToList();
-                ExcutingParty.DataSource = ReqCenter;
+                var ExcCenter = db.CenterInfos.Where(p => p.IsEnabled == true && p.IsVisible == true).ToList();
+                ExcutingParty.DataSource = ExcCenter;
                 ExcutingParty.ValueMember = "Id";
                 ExcutingParty.DisplayMember = "CenterName";
                 ExcutingParty.DropDownListElement.AutoCompleteSuggest.SuggestMode = Telerik.WinControls.UI.SuggestMode.Contains;
                 ExcutingParty.SelectedIndex = -1;
 
-                var EngSer = db.MedicalServices.Where(p=>p.ListType==ListType.مايعادل).ToList();
+                var EngSer = db.MedicalServices.Where(p=>p.ListType==ListType.مايعادل && p.IsEnabled==true && p.IsVisible==true).ToList();
                 ServiceList.DataSource = EngSer;
                 ServiceList.ValueMember = "Id";
                 ServiceList.DisplayMember = "ServiceEName";
@@ -106,44 +107,33 @@ namespace MedicalServiceSystem.Reclaims
                         card_no.Text = FRef[0].Subscriber.InsurNo;
                         CustName.Text = FRef[0].Subscriber.InsurName;
                         OperationDate.Value = FRef[0].ReclaimDate;
+                        ApproveReason.SelectedValue = FRef[0].ReclaimMedicalResonId;
                         ServerName.Text = FRef[0].Subscriber.Server;
                         initMoney.Text = FRef[0].BillsTotal.ToString();
+                        BillStatus.SelectedIndex =Convert.ToInt32( FRef[0].ReclaimStatus);
                         var FrefMd = db.ReclaimMedicines.Where(p => p.ReclaimId == ReclaimId).ToList();
-                        dwasum.Text = FRef[0].MedicineTotal.ToString();
+                        if(FrefMd.Count>0)
+                        { 
+                        dwasum.Text = FRef.Sum(p=>p.MedicineTotal).ToString();
+                        }
                         RequistingParty.SelectedValue = FRef[0].RefMedicalReqCenterId;
                         ExcutingParty.SelectedValue = FRef[0].RefMedicalExcCenterId;
+                        FillGrid();
                         string CardNo = card_no.Text;
-                        var FrHistoryMc = db.ReclaimMedicines.Where(p => p.Reclaim.Subscriber.InsurNo == CardNo).Select(p => new { p.Reclaim.ReclaimNo, ServiceName = p.MedicineForReclaim.Generic_name, p.Reclaim.ReclaimDate }).ToList();
-                        var FrHistoryMd = db.ReclaimMedicals.Where(p => p.Reclaim.Subscriber.InsurNo == CardNo).Select(p => new { p.Reclaim.ReclaimNo, ServiceName = p.MedicalServices.ServiceAName, p.Reclaim.ReclaimDate,System="النظام" }).ToList();
-                        FRMpatienthistory.Default.Grid_service.DataSource = FrHistoryMc;
+                       // var FrHistoryMc = db.ReclaimMedicines.Where(p => p.Reclaim.Subscriber.InsurNo == CardNo).Select(p => new { p.Reclaim.ReclaimNo, ServiceName = p.MedicineForReclaim.Generic_name, p.Reclaim.ReclaimDate }).ToList();
+                        //var FrHistoryMd = db.ReclaimMedicals.Where(p => p.Reclaim.Subscriber.InsurNo == CardNo).Select(p => new { p.Reclaim.ReclaimNo, ServiceName = p.MedicalServices.ServiceAName, p.Reclaim.ReclaimDate,System="النظام" }).ToList();
+                         var FrHistoryMd = db.Database.SqlQuery<ReportForAll>("SELECT  dbo.Reclaims.Id AS Row1, dbo.Reclaims.ReclaimNo AS Row6, dbo.Reclaims.ReclaimDate AS Row13, CenterInfoes_1.CenterName AS Row8, dbo.CenterInfoes.CenterName AS Row9, dbo.Subscribers.InsurNo AS Row10,  dbo.Subscribers.InsurName AS Row15, dbo.MedicalServices.ServiceAName AS Row7, dbo.ReclaimMedicals.Quantity AS Row2, dbo.ReclaimMedicals.ReclaimCost AS Row11 FROM dbo.Reclaims INNER JOIN dbo.CenterInfoes AS CenterInfoes_1 ON dbo.Reclaims.RefMedicineExcCenterId = CenterInfoes_1.Id INNER JOIN dbo.CenterInfoes ON dbo.Reclaims.RefMedicineReqCenterId = dbo.CenterInfoes.Id INNER JOIN dbo.Subscribers ON dbo.Reclaims.SubscriberId = dbo.Subscribers.Id INNER JOIN dbo.ReclaimMedicals ON dbo.Reclaims.Id = dbo.ReclaimMedicals.ReclaimId INNER JOIN dbo.MedicalServices ON dbo.ReclaimMedicals.MedicalId = dbo.MedicalServices.Id").Where(p => p.Row10 == CardNo).Select(p => new { ReclaimNo = p.Row6, ServiceName = p.Row7, ReclaimDate = p.Row13, System = "الاسترداد", Quantity = p.Row2, Cost = p.Row11, RequestParty = p.Row9, ExcuteParty = p.Row8 }).ToList();
+                        FRMpatienthistory.Default.Grid_service.DataSource = FrHistoryMd;
                         if (FrHistoryMd.Count > 0)
                         {
                             for (int i = 0; i < FrHistoryMd.Count; i++)
                             {
                                 FRMpatienthistory.Default.Grid_service.Rows[i].Cells[0].Value = i + 1;
                             }
+                            FRMpatienthistory.Default.ShowDialog();
 
                         }
-
-                        FRMpatienthistory.Default.ShowDialog();
-                        var FrefMl = db.ReclaimMedicals.Where(p => p.ReclaimId == ReclaimId).Select(p => new { p.Id, p.MedicalServices.ServiceEName, p.MedicalServices.InContract, p.MedicalServices.ServiceEmPrice,p.ReclaimCost, p.Quantity, p.Percentages,p.ReclaimTotal, p.Reclaim.ReclaimStatus, p.Reclaim.ReclaimMedicalResonId }).ToList();
-                        GrdMedical.DataSource = FrefMl;
-                        if (FrefMl.Count > 0)
-                        {
-                            Saved = true;
-                            decimal MedSum = db.ReclaimMedicals.Where(p => p.ReclaimId == ReclaimId).Sum(p => p.ReclaimTotal);
-                            MoneySum.Text = MedSum.ToString();
-                            BillStatus.SelectedIndex = Convert.ToInt32(FrefMl[0].ReclaimStatus);
-                            ApproveReason.SelectedValue = FrefMl[0].ReclaimMedicalResonId;
-
-                                
-
-                            for (int i = 0; i < FrefMl.Count; i++)
-                            {
-                                GrdMedical.Rows[i].Cells[0].Value = i + 1;
-                            }
-
-                        }
+                      
                     }
                 }
             }
@@ -197,7 +187,8 @@ namespace MedicalServiceSystem.Reclaims
                 {
                     GetReclaim[0].ReclaimStatus = (ReclaimStatus)Enum.Parse(typeof(ReclaimStatus), BillStatus.SelectedText);
                     GetReclaim[0].ReclaimMedicalResonId = Convert.ToInt32(ApproveReason.SelectedValue);
-
+                    GetReclaim[0].RefMedicalReqCenterId = Convert.ToInt32(RequistingParty.SelectedValue);
+                    GetReclaim[0].RefMedicalExcCenterId = Convert.ToInt32(ExcutingParty.SelectedValue);
 
                     var ChkReclaim = db.ReclaimMedicals.Where(p => p.ReclaimId == ReclaimId && p.MedicalId == ServiceId).ToList();
                     if (ChkReclaim.Count == 0)
@@ -206,10 +197,11 @@ namespace MedicalServiceSystem.Reclaims
                         rm.ReclaimId = ReclaimId;
                         rm.MedicalId = ServiceId;
                         rm.Quantity = Convert.ToInt32(quantity.Text);
-                        rm.ReclaimCost = Convert.ToDecimal(UnitPrice);
-                        rm.ReclaimTotal = Convert.ToDecimal(MoneyPaied.Text);
+                        rm.ReclaimTotal = Convert.ToDecimal(UnitPrice.Text);
+                        rm.ReclaimCost = Convert.ToDecimal(MoneyPaied.Text);
                         rm.Percentages = Convert.ToInt32(Percentage.Text);
                         rm.UserId = UserId;
+                        rm.DateIn = PLC.getdate();
                         db.ReclaimMedicals.Add(rm);
                     }
                     db.SaveChanges();
@@ -232,6 +224,7 @@ namespace MedicalServiceSystem.Reclaims
                     {
                         GrdMedical.Rows[i].Cells[0].Value = i + 1;
                     }
+                    MoneySum.Text = FrefMl.Sum(p => p.ReclaimCost).ToString();
                     NewMedical();
 
                 }
@@ -437,8 +430,7 @@ namespace MedicalServiceSystem.Reclaims
                 {
                     GetReclaim[0].MedicalTotal = Convert.ToDecimal(MoneySum.Text);
                     GetReclaim[0].ReclaimTotal = Convert.ToDecimal(MoneySum.Text) + Convert.ToDecimal(dwasum.Text);
-                    GetReclaim[0].RefMedicalReqCenterId = Convert.ToInt32(RequistingParty.SelectedValue);
-                    GetReclaim[0].RefMedicalExcCenterId = Convert.ToInt32(ExcutingParty.SelectedValue);
+
                     db.SaveChanges();
                     Saved = true;
                     MessageBox.Show("لقد تم حفظ بيانات الخدمات الطبية", "النظام", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -483,20 +475,22 @@ namespace MedicalServiceSystem.Reclaims
             {
                 using (dbContext db = new dbContext())
                 {
-                    var FrHistoryMc = db.ReclaimMedicines.Where(p => p.Reclaim.ReclaimNo == OperationNo.Text.Trim()).Select(p => new { p.Reclaim.ReclaimNo, ServiceName = p.MedicineForReclaim.Generic_name, p.Reclaim.ReclaimDate, p.Percentages, p.ReclaimCost, p.ReclaimTotal, p.Reclaim.BillsTotal, p.Reclaim.Subscriber.Server, p.Reclaim.Subscriber.ClientId, InContract = (p.MedicineForReclaim.InContract == true ? "داخل العقد" : "خارج العقد"), ServiceGroup = "أدوية" }).ToList();
-                    var FrHistoryMd = db.ReclaimMedicals.Where(p => p.Reclaim.ReclaimNo == OperationNo.Text.Trim()).Select(p => new { p.Reclaim.ReclaimNo, ServiceName = p.MedicalServices.ServiceAName, p.Reclaim.ReclaimDate, p.Percentages, p.ReclaimCost, p.ReclaimTotal, p.Reclaim.BillsTotal, p.Reclaim.Subscriber.Server, p.Reclaim.Subscriber.ClientId, InContract = (p.MedicalServices.InContract == true ? "داخل العقد" : "خارج العقد"), ServiceGroup = "خدمات طبية" }).ToList();
+                    var FrHistoryMc = db.ReclaimMedicines.Where(p => p.Reclaim.ReclaimNo == OperationNo.Text.Trim() && p.RowStatus != RowStatus.Deleted).Select(p => new { p.Reclaim.ReclaimNo, ServiceName = p.MedicineForReclaim.Generic_name, p.Reclaim.Subscriber.InsurNo, p.Reclaim.Subscriber.InsurName, p.Reclaim.ReclaimDate, p.Percentages, p.ReclaimCost, p.ReclaimTotal, p.Reclaim.BillsTotal, p.Reclaim.Subscriber.Server, p.Reclaim.Subscriber.ClientId, InContract = (p.MedicineForReclaim.InContract == true ? "داخل العقد" : "خارج العقد"), ServiceGroup = "أدوية" }).ToList();
+                    var FrHistoryMd = db.ReclaimMedicals.Where(p => p.Reclaim.ReclaimNo == OperationNo.Text.Trim() && p.RowStatus != RowStatus.Deleted).Select(p => new { p.Reclaim.ReclaimNo, ServiceName = p.MedicalServices.ServiceAName, p.Reclaim.Subscriber.InsurNo, p.Reclaim.Subscriber.InsurName, p.Reclaim.ReclaimDate, p.Percentages, p.ReclaimCost, p.ReclaimTotal, p.Reclaim.BillsTotal, p.Reclaim.Subscriber.Server, p.Reclaim.Subscriber.ClientId, InContract = (p.MedicalServices.InContract == true ? "داخل العقد" : "خارج العقد"), ServiceGroup = "خدمات طبية" }).ToList();
                     var FrHistory = FrHistoryMc.Union(FrHistoryMd).ToList();
                     if (FrHistory.Count > 0)
                     {
                         Estrdad Estr = new Estrdad();
                         Estr.DataSource = FrHistory;
                         double TotalOfMoney = Convert.ToDouble(FrHistory[0].BillsTotal);
+                        double TotalOfEstrdad = Convert.ToDouble(FrHistory.Sum(p => p.ReclaimTotal));
                         Estr.MoneyWritten.Value = PLC.NumToStr(TotalOfMoney).ToString();
+                        Estr.MoneyPaiedWritten.Value = PLC.NumToStr(TotalOfEstrdad).ToString();
                         Estr.FormName.Value = "استمارة أ";
                         var GetInfo = db.CompanySettings.FirstOrDefault();
                         Estr.ComanyName.Value = GetInfo.CompanyName;
                         Estr.ManagementName.Value = GetInfo.Management;
-                        Estr.DepartmentName.Value = GetInfo.Department;
+                        //Estr.DepartmentName.Value = GetInfo.Department;
                         Byte[] MyData = new byte[0];
                         MyData = (Byte[])GetInfo.LogoPath1;
                         MemoryStream stream = new MemoryStream(MyData);

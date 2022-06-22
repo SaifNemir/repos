@@ -104,7 +104,7 @@ namespace MedicalServiceSystem.Reclaims
             gridViewTextBoxColumn6.EnableExpressionEditor = false;
             gridViewTextBoxColumn6.FieldName = "Cost";
             gridViewTextBoxColumn6.HeaderText = "التكلفة";
-            gridViewTextBoxColumn6.Name = "ReclaimTotal";
+            gridViewTextBoxColumn6.Name = "ReclaimCost";
             gridViewTextBoxColumn6.ReadOnly = true;
             gridViewTextBoxColumn6.Width = 78;
             gridViewTextBoxColumn7.DataType = typeof(System.DateTime);
@@ -123,11 +123,11 @@ namespace MedicalServiceSystem.Reclaims
             gridViewTextBoxColumn9.Name = "column1";
             gridViewTextBoxColumn9.Width = 80;
             gridViewTextBoxColumn10.FieldName = "RequestParty";
-            gridViewTextBoxColumn10.HeaderText = "المركز الطالب";
+            gridViewTextBoxColumn10.HeaderText = "الجهة الطالبة";
             gridViewTextBoxColumn10.Name = "RequestParty";
             gridViewTextBoxColumn10.Width = 150;
             gridViewTextBoxColumn11.FieldName = "ExcuteParty";
-            gridViewTextBoxColumn11.HeaderText = "الصيدلية المنفذة";
+            gridViewTextBoxColumn11.HeaderText = "الجهة المنفذة";
             gridViewTextBoxColumn11.Name = "ExcuteParty";
             gridViewTextBoxColumn11.Width = 150;
             gridViewTextBoxColumn12.FieldName = "Atachment";

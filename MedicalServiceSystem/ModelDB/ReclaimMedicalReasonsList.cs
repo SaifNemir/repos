@@ -10,5 +10,6 @@ namespace ModelDB
     {
         public int Id { get; set; }
         public string MedicalReason { get; set; }
+        public bool Activated { get; set; }
     }
 }

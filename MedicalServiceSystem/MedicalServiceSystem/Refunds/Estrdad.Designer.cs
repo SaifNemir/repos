@@ -32,6 +32,9 @@ namespace MedicalServiceSystem.Reclaims
             this.textBox30 = new Telerik.Reporting.TextBox();
             this.textBox31 = new Telerik.Reporting.TextBox();
             this.pageFooterSection1 = new Telerik.Reporting.PageFooterSection();
+            this.textBox47 = new Telerik.Reporting.TextBox();
+            this.textBox48 = new Telerik.Reporting.TextBox();
+            this.textBox49 = new Telerik.Reporting.TextBox();
             this.textBox39 = new Telerik.Reporting.TextBox();
             this.textBox40 = new Telerik.Reporting.TextBox();
             this.textBox41 = new Telerik.Reporting.TextBox();
@@ -40,9 +43,6 @@ namespace MedicalServiceSystem.Reclaims
             this.textBox44 = new Telerik.Reporting.TextBox();
             this.textBox45 = new Telerik.Reporting.TextBox();
             this.textBox46 = new Telerik.Reporting.TextBox();
-            this.textBox47 = new Telerik.Reporting.TextBox();
-            this.textBox48 = new Telerik.Reporting.TextBox();
-            this.textBox49 = new Telerik.Reporting.TextBox();
             this.reportHeaderSection1 = new Telerik.Reporting.ReportHeaderSection();
             this.textBox6 = new Telerik.Reporting.TextBox();
             this.Cost = new Telerik.Reporting.TextBox();
@@ -91,8 +91,8 @@ namespace MedicalServiceSystem.Reclaims
             // 
             // textBox32
             // 
-            this.textBox32.Format = "{0:N4}";
-            this.textBox32.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(2.906D), Telerik.Reporting.Drawing.Unit.Cm(0D));
+            this.textBox32.Format = "{0:N2}";
+            this.textBox32.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(3.16D), Telerik.Reporting.Drawing.Unit.Cm(0D));
             this.textBox32.Name = "textBox32";
             this.textBox32.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(2.428D), Telerik.Reporting.Drawing.Unit.Cm(0.762D));
             this.textBox32.Style.BorderColor.Default = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
@@ -100,18 +100,18 @@ namespace MedicalServiceSystem.Reclaims
             this.textBox32.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Center;
             this.textBox32.Style.VerticalAlign = Telerik.Reporting.Drawing.VerticalAlign.Middle;
             this.textBox32.StyleName = "Normal.TableBody";
-            this.textBox32.Value = "=[sum(ReclaimTotal)] ";
+            this.textBox32.Value = "=sum([ReclaimTotal]) ";
             // 
             // textBox34
             // 
-            this.textBox34.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(15.494D), Telerik.Reporting.Drawing.Unit.Cm(0.082D));
+            this.textBox34.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(16.622D), Telerik.Reporting.Drawing.Unit.Cm(0D));
             this.textBox34.Name = "textBox34";
-            this.textBox34.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(2.936D), Telerik.Reporting.Drawing.Unit.Cm(0.5D));
+            this.textBox34.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(2.062D), Telerik.Reporting.Drawing.Unit.Cm(0.5D));
             this.textBox34.Style.BackgroundColor = System.Drawing.Color.White;
             this.textBox34.Style.BorderStyle.Default = Telerik.Reporting.Drawing.BorderType.None;
             this.textBox34.Style.Font.Bold = true;
             this.textBox34.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(14D);
-            this.textBox34.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Right;
+            this.textBox34.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Left;
             this.textBox34.Style.VerticalAlign = Telerik.Reporting.Drawing.VerticalAlign.Middle;
             this.textBox34.StyleName = "Normal.TableHeader";
             this.textBox34.Value = "«Ã„«·Ì „»·€";
@@ -119,15 +119,17 @@ namespace MedicalServiceSystem.Reclaims
             // textBox35
             // 
             this.textBox35.Format = "{0:N4}";
-            this.textBox35.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(10.922D), Telerik.Reporting.Drawing.Unit.Cm(0.082D));
+            this.textBox35.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(12.05D), Telerik.Reporting.Drawing.Unit.Cm(0D));
             this.textBox35.Name = "textBox35";
             this.textBox35.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(4.572D), Telerik.Reporting.Drawing.Unit.Cm(0.5D));
             this.textBox35.Style.BorderColor.Default = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
             this.textBox35.Style.BorderStyle.Default = Telerik.Reporting.Drawing.BorderType.None;
+            this.textBox35.Style.Font.Bold = true;
+            this.textBox35.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(14D);
             this.textBox35.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Right;
             this.textBox35.Style.VerticalAlign = Telerik.Reporting.Drawing.VerticalAlign.Middle;
             this.textBox35.StyleName = "Normal.TableBody";
-            this.textBox35.Value = "=[ServiceGroup] ";
+            this.textBox35.Value = "=ServiceGroup ";
             this.textBox35.ItemDataBound += new System.EventHandler(this.textBox35_ItemDataBound);
             // 
             // groupHeaderSection
@@ -146,22 +148,23 @@ namespace MedicalServiceSystem.Reclaims
             // textBox19
             // 
             this.textBox19.Format = "{0:N4}";
-            this.textBox19.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(12.954D), Telerik.Reporting.Drawing.Unit.Cm(0D));
+            this.textBox19.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(12.842D), Telerik.Reporting.Drawing.Unit.Cm(0.008D));
             this.textBox19.Name = "textBox19";
             this.textBox19.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(5.842D), Telerik.Reporting.Drawing.Unit.Cm(0.762D));
             this.textBox19.Style.BorderColor.Default = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
             this.textBox19.Style.BorderStyle.Default = Telerik.Reporting.Drawing.BorderType.None;
             this.textBox19.Style.Font.Bold = true;
+            this.textBox19.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(14D);
             this.textBox19.Style.Font.Strikeout = false;
             this.textBox19.Style.Font.Underline = true;
             this.textBox19.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Right;
             this.textBox19.Style.VerticalAlign = Telerik.Reporting.Drawing.VerticalAlign.Middle;
             this.textBox19.StyleName = "Normal.TableBody";
-            this.textBox19.Value = "=[ServiceGroup] ";
+            this.textBox19.Value = "=ServiceGroup ";
             // 
             // textBox20
             // 
-            this.textBox20.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(17.302D), Telerik.Reporting.Drawing.Unit.Cm(0.762D));
+            this.textBox20.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(17.556D), Telerik.Reporting.Drawing.Unit.Cm(0.77D));
             this.textBox20.Name = "textBox20";
             this.textBox20.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(1.158D), Telerik.Reporting.Drawing.Unit.Cm(0.5D));
             this.textBox20.Style.BackgroundColor = System.Drawing.Color.White;
@@ -175,7 +178,7 @@ namespace MedicalServiceSystem.Reclaims
             // 
             // textBox21
             // 
-            this.textBox21.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(9.682D), Telerik.Reporting.Drawing.Unit.Cm(0.762D));
+            this.textBox21.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(9.936D), Telerik.Reporting.Drawing.Unit.Cm(0.77D));
             this.textBox21.Name = "textBox21";
             this.textBox21.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(7.62D), Telerik.Reporting.Drawing.Unit.Cm(0.5D));
             this.textBox21.Style.BackgroundColor = System.Drawing.Color.White;
@@ -189,7 +192,7 @@ namespace MedicalServiceSystem.Reclaims
             // 
             // textBox22
             // 
-            this.textBox22.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(7.254D), Telerik.Reporting.Drawing.Unit.Cm(0.762D));
+            this.textBox22.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(7.508D), Telerik.Reporting.Drawing.Unit.Cm(0.77D));
             this.textBox22.Name = "textBox22";
             this.textBox22.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(2.428D), Telerik.Reporting.Drawing.Unit.Cm(0.5D));
             this.textBox22.Style.BackgroundColor = System.Drawing.Color.White;
@@ -203,7 +206,7 @@ namespace MedicalServiceSystem.Reclaims
             // 
             // textBox23
             // 
-            this.textBox23.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(5.334D), Telerik.Reporting.Drawing.Unit.Cm(0.762D));
+            this.textBox23.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(5.588D), Telerik.Reporting.Drawing.Unit.Cm(0.77D));
             this.textBox23.Name = "textBox23";
             this.textBox23.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(1.92D), Telerik.Reporting.Drawing.Unit.Cm(0.5D));
             this.textBox23.Style.BackgroundColor = System.Drawing.Color.White;
@@ -217,7 +220,7 @@ namespace MedicalServiceSystem.Reclaims
             // 
             // textBox24
             // 
-            this.textBox24.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(2.906D), Telerik.Reporting.Drawing.Unit.Cm(0.762D));
+            this.textBox24.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(3.16D), Telerik.Reporting.Drawing.Unit.Cm(0.77D));
             this.textBox24.Name = "textBox24";
             this.textBox24.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(2.428D), Telerik.Reporting.Drawing.Unit.Cm(0.5D));
             this.textBox24.Style.BackgroundColor = System.Drawing.Color.White;
@@ -231,9 +234,9 @@ namespace MedicalServiceSystem.Reclaims
             // 
             // textBox25
             // 
-            this.textBox25.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(0.254D), Telerik.Reporting.Drawing.Unit.Cm(0.762D));
+            this.textBox25.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(0.985D), Telerik.Reporting.Drawing.Unit.Cm(0.77D));
             this.textBox25.Name = "textBox25";
-            this.textBox25.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(2.652D), Telerik.Reporting.Drawing.Unit.Cm(0.5D));
+            this.textBox25.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(2.175D), Telerik.Reporting.Drawing.Unit.Cm(0.5D));
             this.textBox25.Style.BackgroundColor = System.Drawing.Color.White;
             this.textBox25.Style.BorderStyle.Default = Telerik.Reporting.Drawing.BorderType.Solid;
             this.textBox25.Style.Font.Bold = true;
@@ -257,8 +260,8 @@ namespace MedicalServiceSystem.Reclaims
             // 
             // textBox26
             // 
-            this.textBox26.Format = "{0:N4}";
-            this.textBox26.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(17.302D), Telerik.Reporting.Drawing.Unit.Cm(0D));
+            this.textBox26.Format = "{0:N0}";
+            this.textBox26.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(17.556D), Telerik.Reporting.Drawing.Unit.Cm(0D));
             this.textBox26.Name = "textBox26";
             this.textBox26.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(1.158D), Telerik.Reporting.Drawing.Unit.Cm(0.762D));
             this.textBox26.Style.BorderColor.Default = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
@@ -271,7 +274,7 @@ namespace MedicalServiceSystem.Reclaims
             // textBox27
             // 
             this.textBox27.Format = "{0:N4}";
-            this.textBox27.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(9.682D), Telerik.Reporting.Drawing.Unit.Cm(0D));
+            this.textBox27.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(9.936D), Telerik.Reporting.Drawing.Unit.Cm(0D));
             this.textBox27.Name = "textBox27";
             this.textBox27.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(7.62D), Telerik.Reporting.Drawing.Unit.Cm(0.762D));
             this.textBox27.Style.BorderColor.Default = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
@@ -279,12 +282,12 @@ namespace MedicalServiceSystem.Reclaims
             this.textBox27.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Center;
             this.textBox27.Style.VerticalAlign = Telerik.Reporting.Drawing.VerticalAlign.Middle;
             this.textBox27.StyleName = "Normal.TableBody";
-            this.textBox27.Value = "=[ServiceName] ";
+            this.textBox27.Value = "=ServiceName";
             // 
             // textBox28
             // 
-            this.textBox28.Format = "{0:N4}";
-            this.textBox28.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(7.254D), Telerik.Reporting.Drawing.Unit.Cm(0D));
+            this.textBox28.Format = "{0:N2}";
+            this.textBox28.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(7.508D), Telerik.Reporting.Drawing.Unit.Cm(0D));
             this.textBox28.Name = "textBox28";
             this.textBox28.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(2.428D), Telerik.Reporting.Drawing.Unit.Cm(0.762D));
             this.textBox28.Style.BorderColor.Default = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
@@ -292,12 +295,12 @@ namespace MedicalServiceSystem.Reclaims
             this.textBox28.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Center;
             this.textBox28.Style.VerticalAlign = Telerik.Reporting.Drawing.VerticalAlign.Middle;
             this.textBox28.StyleName = "Normal.TableBody";
-            this.textBox28.Value = "=[ReclaimCost] ";
+            this.textBox28.Value = "=ReclaimCost ";
             // 
             // textBox29
             // 
-            this.textBox29.Format = "{0:N4}";
-            this.textBox29.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(5.334D), Telerik.Reporting.Drawing.Unit.Cm(0D));
+            this.textBox29.Format = "{0:N0}";
+            this.textBox29.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(5.588D), Telerik.Reporting.Drawing.Unit.Cm(0D));
             this.textBox29.Name = "textBox29";
             this.textBox29.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(1.92D), Telerik.Reporting.Drawing.Unit.Cm(0.762D));
             this.textBox29.Style.BorderColor.Default = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
@@ -305,12 +308,12 @@ namespace MedicalServiceSystem.Reclaims
             this.textBox29.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Center;
             this.textBox29.Style.VerticalAlign = Telerik.Reporting.Drawing.VerticalAlign.Middle;
             this.textBox29.StyleName = "Normal.TableBody";
-            this.textBox29.Value = "=[Percentages] ";
+            this.textBox29.Value = "=Percentages ";
             // 
             // textBox30
             // 
-            this.textBox30.Format = "{0:N4}";
-            this.textBox30.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(2.906D), Telerik.Reporting.Drawing.Unit.Cm(0D));
+            this.textBox30.Format = "{0:N2}";
+            this.textBox30.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(3.16D), Telerik.Reporting.Drawing.Unit.Cm(0D));
             this.textBox30.Name = "textBox30";
             this.textBox30.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(2.428D), Telerik.Reporting.Drawing.Unit.Cm(0.762D));
             this.textBox30.Style.BorderColor.Default = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
@@ -318,149 +321,33 @@ namespace MedicalServiceSystem.Reclaims
             this.textBox30.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Center;
             this.textBox30.Style.VerticalAlign = Telerik.Reporting.Drawing.VerticalAlign.Middle;
             this.textBox30.StyleName = "Normal.TableBody";
-            this.textBox30.Value = "=[ReclaimTotal] ";
+            this.textBox30.Value = "=ReclaimTotal ";
             // 
             // textBox31
             // 
             this.textBox31.Format = "{0:N4}";
-            this.textBox31.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(0.254D), Telerik.Reporting.Drawing.Unit.Cm(0D));
+            this.textBox31.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(1.016D), Telerik.Reporting.Drawing.Unit.Cm(0D));
             this.textBox31.Name = "textBox31";
-            this.textBox31.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(2.652D), Telerik.Reporting.Drawing.Unit.Cm(0.762D));
+            this.textBox31.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(2.144D), Telerik.Reporting.Drawing.Unit.Cm(0.762D));
             this.textBox31.Style.BorderColor.Default = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
             this.textBox31.Style.BorderStyle.Default = Telerik.Reporting.Drawing.BorderType.Solid;
             this.textBox31.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Center;
             this.textBox31.Style.VerticalAlign = Telerik.Reporting.Drawing.VerticalAlign.Middle;
             this.textBox31.StyleName = "Normal.TableBody";
-            this.textBox31.Value = "=[InContract] ";
+            this.textBox31.Value = "=InContract ";
             // 
             // pageFooterSection1
             // 
-            this.pageFooterSection1.Height = Telerik.Reporting.Drawing.Unit.Inch(0.903D);
+            this.pageFooterSection1.Height = Telerik.Reporting.Drawing.Unit.Inch(0.297D);
             this.pageFooterSection1.Items.AddRange(new Telerik.Reporting.ReportItemBase[] {
-            this.textBox39,
-            this.textBox40,
-            this.textBox41,
-            this.textBox42,
-            this.textBox43,
-            this.textBox44,
-            this.textBox45,
-            this.textBox46,
             this.textBox47,
             this.textBox48,
             this.textBox49});
             this.pageFooterSection1.Name = "pageFooterSection1";
             // 
-            // textBox39
-            // 
-            this.textBox39.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(14.224D), Telerik.Reporting.Drawing.Unit.Cm(0.262D));
-            this.textBox39.Name = "textBox39";
-            this.textBox39.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(4.206D), Telerik.Reporting.Drawing.Unit.Cm(0.5D));
-            this.textBox39.Style.BackgroundColor = System.Drawing.Color.White;
-            this.textBox39.Style.BorderStyle.Default = Telerik.Reporting.Drawing.BorderType.None;
-            this.textBox39.Style.Font.Bold = true;
-            this.textBox39.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(14D);
-            this.textBox39.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Right;
-            this.textBox39.Style.VerticalAlign = Telerik.Reporting.Drawing.VerticalAlign.Middle;
-            this.textBox39.StyleName = "Normal.TableHeader";
-            this.textBox39.Value = " ÊﬁÌ⁄ «·ÿ»Ì» √Ê «·’Ìœ·Ì";
-            // 
-            // textBox40
-            // 
-            this.textBox40.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(9.256D), Telerik.Reporting.Drawing.Unit.Cm(0.262D));
-            this.textBox40.Name = "textBox40";
-            this.textBox40.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(2.936D), Telerik.Reporting.Drawing.Unit.Cm(0.5D));
-            this.textBox40.Style.BackgroundColor = System.Drawing.Color.White;
-            this.textBox40.Style.BorderStyle.Default = Telerik.Reporting.Drawing.BorderType.None;
-            this.textBox40.Style.Font.Bold = true;
-            this.textBox40.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(14D);
-            this.textBox40.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Center;
-            this.textBox40.Style.VerticalAlign = Telerik.Reporting.Drawing.VerticalAlign.Middle;
-            this.textBox40.StyleName = "Normal.TableHeader";
-            this.textBox40.Value = "«·„»·€";
-            // 
-            // textBox41
-            // 
-            this.textBox41.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(5.08D), Telerik.Reporting.Drawing.Unit.Cm(0.262D));
-            this.textBox41.Name = "textBox41";
-            this.textBox41.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(2.936D), Telerik.Reporting.Drawing.Unit.Cm(0.5D));
-            this.textBox41.Style.BackgroundColor = System.Drawing.Color.White;
-            this.textBox41.Style.BorderStyle.Default = Telerik.Reporting.Drawing.BorderType.None;
-            this.textBox41.Style.Font.Bold = true;
-            this.textBox41.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(14D);
-            this.textBox41.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Center;
-            this.textBox41.Style.VerticalAlign = Telerik.Reporting.Drawing.VerticalAlign.Middle;
-            this.textBox41.StyleName = "Normal.TableHeader";
-            this.textBox41.Value = " ÊﬁÌ⁄ «·„Õ«”»";
-            // 
-            // textBox42
-            // 
-            this.textBox42.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(0.508D), Telerik.Reporting.Drawing.Unit.Cm(0.262D));
-            this.textBox42.Name = "textBox42";
-            this.textBox42.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(3.81D), Telerik.Reporting.Drawing.Unit.Cm(0.5D));
-            this.textBox42.Style.BackgroundColor = System.Drawing.Color.White;
-            this.textBox42.Style.BorderStyle.Default = Telerik.Reporting.Drawing.BorderType.None;
-            this.textBox42.Style.Font.Bold = true;
-            this.textBox42.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(14D);
-            this.textBox42.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Center;
-            this.textBox42.Style.VerticalAlign = Telerik.Reporting.Drawing.VerticalAlign.Middle;
-            this.textBox42.StyleName = "Normal.TableHeader";
-            this.textBox42.Value = " ÊﬁÌ⁄ —∆Ì” «·ÊÕœ…";
-            // 
-            // textBox43
-            // 
-            this.textBox43.Format = "{0:N4}";
-            this.textBox43.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(14.224D), Telerik.Reporting.Drawing.Unit.Cm(0.762D));
-            this.textBox43.Name = "textBox43";
-            this.textBox43.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(4.206D), Telerik.Reporting.Drawing.Unit.Cm(0.5D));
-            this.textBox43.Style.BorderColor.Default = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
-            this.textBox43.Style.BorderStyle.Default = Telerik.Reporting.Drawing.BorderType.None;
-            this.textBox43.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Center;
-            this.textBox43.Style.VerticalAlign = Telerik.Reporting.Drawing.VerticalAlign.Middle;
-            this.textBox43.StyleName = "Normal.TableBody";
-            this.textBox43.Value = "....................................";
-            // 
-            // textBox44
-            // 
-            this.textBox44.Format = "{0:N4}";
-            this.textBox44.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(9.256D), Telerik.Reporting.Drawing.Unit.Cm(0.762D));
-            this.textBox44.Name = "textBox44";
-            this.textBox44.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(2.936D), Telerik.Reporting.Drawing.Unit.Cm(0.5D));
-            this.textBox44.Style.BorderColor.Default = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
-            this.textBox44.Style.BorderStyle.Default = Telerik.Reporting.Drawing.BorderType.None;
-            this.textBox44.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Center;
-            this.textBox44.Style.VerticalAlign = Telerik.Reporting.Drawing.VerticalAlign.Middle;
-            this.textBox44.StyleName = "Normal.TableBody";
-            this.textBox44.Value = "....................................";
-            // 
-            // textBox45
-            // 
-            this.textBox45.Format = "{0:N4}";
-            this.textBox45.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(5.08D), Telerik.Reporting.Drawing.Unit.Cm(0.762D));
-            this.textBox45.Name = "textBox45";
-            this.textBox45.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(2.936D), Telerik.Reporting.Drawing.Unit.Cm(0.5D));
-            this.textBox45.Style.BorderColor.Default = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
-            this.textBox45.Style.BorderStyle.Default = Telerik.Reporting.Drawing.BorderType.None;
-            this.textBox45.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Center;
-            this.textBox45.Style.VerticalAlign = Telerik.Reporting.Drawing.VerticalAlign.Middle;
-            this.textBox45.StyleName = "Normal.TableBody";
-            this.textBox45.Value = "....................................";
-            // 
-            // textBox46
-            // 
-            this.textBox46.Format = "{0:N4}";
-            this.textBox46.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(0.508D), Telerik.Reporting.Drawing.Unit.Cm(0.762D));
-            this.textBox46.Name = "textBox46";
-            this.textBox46.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(3.81D), Telerik.Reporting.Drawing.Unit.Cm(0.5D));
-            this.textBox46.Style.BorderColor.Default = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
-            this.textBox46.Style.BorderStyle.Default = Telerik.Reporting.Drawing.BorderType.None;
-            this.textBox46.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Center;
-            this.textBox46.Style.VerticalAlign = Telerik.Reporting.Drawing.VerticalAlign.Middle;
-            this.textBox46.StyleName = "Normal.TableBody";
-            this.textBox46.Value = "....................................";
-            // 
             // textBox47
             // 
-            this.textBox47.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(11.684D), Telerik.Reporting.Drawing.Unit.Cm(1.532D));
+            this.textBox47.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(12.192D), Telerik.Reporting.Drawing.Unit.Cm(0D));
             this.textBox47.Name = "textBox47";
             this.textBox47.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(5.08D), Telerik.Reporting.Drawing.Unit.Cm(0.754D));
             this.textBox47.Style.BackgroundColor = System.Drawing.Color.White;
@@ -474,7 +361,7 @@ namespace MedicalServiceSystem.Reclaims
             // 
             // textBox48
             // 
-            this.textBox48.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(6.604D), Telerik.Reporting.Drawing.Unit.Cm(1.532D));
+            this.textBox48.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(7.112D), Telerik.Reporting.Drawing.Unit.Cm(0D));
             this.textBox48.Name = "textBox48";
             this.textBox48.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(5.08D), Telerik.Reporting.Drawing.Unit.Cm(0.754D));
             this.textBox48.Style.BackgroundColor = System.Drawing.Color.White;
@@ -488,7 +375,7 @@ namespace MedicalServiceSystem.Reclaims
             // 
             // textBox49
             // 
-            this.textBox49.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(1.524D), Telerik.Reporting.Drawing.Unit.Cm(1.532D));
+            this.textBox49.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(2.032D), Telerik.Reporting.Drawing.Unit.Cm(0D));
             this.textBox49.Name = "textBox49";
             this.textBox49.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(5.08D), Telerik.Reporting.Drawing.Unit.Cm(0.754D));
             this.textBox49.Style.BackgroundColor = System.Drawing.Color.White;
@@ -499,6 +386,114 @@ namespace MedicalServiceSystem.Reclaims
             this.textBox49.Style.VerticalAlign = Telerik.Reporting.Drawing.VerticalAlign.Middle;
             this.textBox49.StyleName = "Normal.TableHeader";
             this.textBox49.Value = "2013/07/28: «—ÌŒ «·«’œ«—";
+            // 
+            // textBox39
+            // 
+            this.textBox39.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(14.001D), Telerik.Reporting.Drawing.Unit.Cm(0.762D));
+            this.textBox39.Name = "textBox39";
+            this.textBox39.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(4.683D), Telerik.Reporting.Drawing.Unit.Cm(0.5D));
+            this.textBox39.Style.BackgroundColor = System.Drawing.Color.White;
+            this.textBox39.Style.BorderStyle.Default = Telerik.Reporting.Drawing.BorderType.None;
+            this.textBox39.Style.Font.Bold = true;
+            this.textBox39.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(14D);
+            this.textBox39.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Right;
+            this.textBox39.Style.VerticalAlign = Telerik.Reporting.Drawing.VerticalAlign.Middle;
+            this.textBox39.StyleName = "Normal.TableHeader";
+            this.textBox39.Value = " ÊﬁÌ⁄ «·ÿ»Ì» √Ê «·’Ìœ·Ì";
+            // 
+            // textBox40
+            // 
+            this.textBox40.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(9.682D), Telerik.Reporting.Drawing.Unit.Cm(0.762D));
+            this.textBox40.Name = "textBox40";
+            this.textBox40.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(3.525D), Telerik.Reporting.Drawing.Unit.Cm(0.5D));
+            this.textBox40.Style.BackgroundColor = System.Drawing.Color.White;
+            this.textBox40.Style.BorderStyle.Default = Telerik.Reporting.Drawing.BorderType.None;
+            this.textBox40.Style.Font.Bold = true;
+            this.textBox40.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(14D);
+            this.textBox40.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Center;
+            this.textBox40.Style.VerticalAlign = Telerik.Reporting.Drawing.VerticalAlign.Middle;
+            this.textBox40.StyleName = "Normal.TableHeader";
+            this.textBox40.Value = "«·„»·€";
+            // 
+            // textBox41
+            // 
+            this.textBox41.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(5.587D), Telerik.Reporting.Drawing.Unit.Cm(0.762D));
+            this.textBox41.Name = "textBox41";
+            this.textBox41.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(3.445D), Telerik.Reporting.Drawing.Unit.Cm(0.5D));
+            this.textBox41.Style.BackgroundColor = System.Drawing.Color.White;
+            this.textBox41.Style.BorderStyle.Default = Telerik.Reporting.Drawing.BorderType.None;
+            this.textBox41.Style.Font.Bold = true;
+            this.textBox41.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(14D);
+            this.textBox41.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Center;
+            this.textBox41.Style.VerticalAlign = Telerik.Reporting.Drawing.VerticalAlign.Middle;
+            this.textBox41.StyleName = "Normal.TableHeader";
+            this.textBox41.Value = " ÊﬁÌ⁄ «·„Õ«”»";
+            // 
+            // textBox42
+            // 
+            this.textBox42.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(1.016D), Telerik.Reporting.Drawing.Unit.Cm(0.762D));
+            this.textBox42.Name = "textBox42";
+            this.textBox42.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(4.094D), Telerik.Reporting.Drawing.Unit.Cm(0.5D));
+            this.textBox42.Style.BackgroundColor = System.Drawing.Color.White;
+            this.textBox42.Style.BorderStyle.Default = Telerik.Reporting.Drawing.BorderType.None;
+            this.textBox42.Style.Font.Bold = true;
+            this.textBox42.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(14D);
+            this.textBox42.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Center;
+            this.textBox42.Style.VerticalAlign = Telerik.Reporting.Drawing.VerticalAlign.Middle;
+            this.textBox42.StyleName = "Normal.TableHeader";
+            this.textBox42.Value = " ÊﬁÌ⁄ —∆Ì” «·ÊÕœ…";
+            // 
+            // textBox43
+            // 
+            this.textBox43.Format = "{0:N4}";
+            this.textBox43.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(14.001D), Telerik.Reporting.Drawing.Unit.Cm(1.262D));
+            this.textBox43.Name = "textBox43";
+            this.textBox43.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(4.683D), Telerik.Reporting.Drawing.Unit.Cm(0.523D));
+            this.textBox43.Style.BorderColor.Default = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            this.textBox43.Style.BorderStyle.Default = Telerik.Reporting.Drawing.BorderType.None;
+            this.textBox43.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Center;
+            this.textBox43.Style.VerticalAlign = Telerik.Reporting.Drawing.VerticalAlign.Middle;
+            this.textBox43.StyleName = "Normal.TableBody";
+            this.textBox43.Value = "....................................";
+            // 
+            // textBox44
+            // 
+            this.textBox44.Format = "{0:N4}";
+            this.textBox44.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(9.682D), Telerik.Reporting.Drawing.Unit.Cm(1.262D));
+            this.textBox44.Name = "textBox44";
+            this.textBox44.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(3.525D), Telerik.Reporting.Drawing.Unit.Cm(0.523D));
+            this.textBox44.Style.BorderColor.Default = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            this.textBox44.Style.BorderStyle.Default = Telerik.Reporting.Drawing.BorderType.None;
+            this.textBox44.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Center;
+            this.textBox44.Style.VerticalAlign = Telerik.Reporting.Drawing.VerticalAlign.Middle;
+            this.textBox44.StyleName = "Normal.TableBody";
+            this.textBox44.Value = "....................";
+            // 
+            // textBox45
+            // 
+            this.textBox45.Format = "{0:N4}";
+            this.textBox45.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(5.587D), Telerik.Reporting.Drawing.Unit.Cm(1.262D));
+            this.textBox45.Name = "textBox45";
+            this.textBox45.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(3.445D), Telerik.Reporting.Drawing.Unit.Cm(0.523D));
+            this.textBox45.Style.BorderColor.Default = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            this.textBox45.Style.BorderStyle.Default = Telerik.Reporting.Drawing.BorderType.None;
+            this.textBox45.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Center;
+            this.textBox45.Style.VerticalAlign = Telerik.Reporting.Drawing.VerticalAlign.Middle;
+            this.textBox45.StyleName = "Normal.TableBody";
+            this.textBox45.Value = ".............................";
+            // 
+            // textBox46
+            // 
+            this.textBox46.Format = "{0:N4}";
+            this.textBox46.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(1.016D), Telerik.Reporting.Drawing.Unit.Cm(1.262D));
+            this.textBox46.Name = "textBox46";
+            this.textBox46.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(4.094D), Telerik.Reporting.Drawing.Unit.Cm(0.523D));
+            this.textBox46.Style.BorderColor.Default = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            this.textBox46.Style.BorderStyle.Default = Telerik.Reporting.Drawing.BorderType.None;
+            this.textBox46.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Center;
+            this.textBox46.Style.VerticalAlign = Telerik.Reporting.Drawing.VerticalAlign.Middle;
+            this.textBox46.StyleName = "Normal.TableBody";
+            this.textBox46.Value = "....................................";
             // 
             // reportHeaderSection1
             // 
@@ -530,7 +525,7 @@ namespace MedicalServiceSystem.Reclaims
             // 
             // textBox6
             // 
-            this.textBox6.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(16.002D), Telerik.Reporting.Drawing.Unit.Cm(2.286D));
+            this.textBox6.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(16.479D), Telerik.Reporting.Drawing.Unit.Cm(2.294D));
             this.textBox6.Name = "textBox6";
             this.textBox6.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(2.428D), Telerik.Reporting.Drawing.Unit.Cm(0.5D));
             this.textBox6.Style.BackgroundColor = System.Drawing.Color.White;
@@ -545,7 +540,7 @@ namespace MedicalServiceSystem.Reclaims
             // Cost
             // 
             this.Cost.Format = "{0:N4}";
-            this.Cost.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(12.954D), Telerik.Reporting.Drawing.Unit.Cm(2.286D));
+            this.Cost.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(13.431D), Telerik.Reporting.Drawing.Unit.Cm(2.294D));
             this.Cost.Name = "Cost";
             this.Cost.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(3.048D), Telerik.Reporting.Drawing.Unit.Cm(0.5D));
             this.Cost.Style.BorderColor.Default = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
@@ -553,11 +548,11 @@ namespace MedicalServiceSystem.Reclaims
             this.Cost.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Center;
             this.Cost.Style.VerticalAlign = Telerik.Reporting.Drawing.VerticalAlign.Middle;
             this.Cost.StyleName = "Normal.TableBody";
-            this.Cost.Value = "=[ReclaimNo] ";
+            this.Cost.Value = "=ReclaimNo ";
             // 
             // textBox4
             // 
-            this.textBox4.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(9.906D), Telerik.Reporting.Drawing.Unit.Cm(2.286D));
+            this.textBox4.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(10.383D), Telerik.Reporting.Drawing.Unit.Cm(2.294D));
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(2.682D), Telerik.Reporting.Drawing.Unit.Cm(0.5D));
             this.textBox4.Style.BackgroundColor = System.Drawing.Color.White;
@@ -571,8 +566,8 @@ namespace MedicalServiceSystem.Reclaims
             // 
             // textBox5
             // 
-            this.textBox5.Format = "{0:N4}";
-            this.textBox5.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(6.858D), Telerik.Reporting.Drawing.Unit.Cm(2.286D));
+            this.textBox5.Format = "{0:D}";
+            this.textBox5.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(7.335D), Telerik.Reporting.Drawing.Unit.Cm(2.294D));
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(3.048D), Telerik.Reporting.Drawing.Unit.Cm(0.5D));
             this.textBox5.Style.BorderColor.Default = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
@@ -580,11 +575,11 @@ namespace MedicalServiceSystem.Reclaims
             this.textBox5.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Center;
             this.textBox5.Style.VerticalAlign = Telerik.Reporting.Drawing.VerticalAlign.Middle;
             this.textBox5.StyleName = "Normal.TableBody";
-            this.textBox5.Value = "=[ReclaimDate] ";
+            this.textBox5.Value = "=ReclaimDate";
             // 
             // textBox7
             // 
-            this.textBox7.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(4.572D), Telerik.Reporting.Drawing.Unit.Cm(2.286D));
+            this.textBox7.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(5.049D), Telerik.Reporting.Drawing.Unit.Cm(2.294D));
             this.textBox7.Name = "textBox7";
             this.textBox7.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(2.286D), Telerik.Reporting.Drawing.Unit.Cm(0.5D));
             this.textBox7.Style.BackgroundColor = System.Drawing.Color.White;
@@ -599,7 +594,7 @@ namespace MedicalServiceSystem.Reclaims
             // textBox8
             // 
             this.textBox8.Format = "{0:N4}";
-            this.textBox8.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(0.254D), Telerik.Reporting.Drawing.Unit.Cm(2.286D));
+            this.textBox8.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(0.985D), Telerik.Reporting.Drawing.Unit.Cm(2.294D));
             this.textBox8.Name = "textBox8";
             this.textBox8.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(4.064D), Telerik.Reporting.Drawing.Unit.Cm(0.5D));
             this.textBox8.Style.BorderColor.Default = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
@@ -607,11 +602,11 @@ namespace MedicalServiceSystem.Reclaims
             this.textBox8.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Center;
             this.textBox8.Style.VerticalAlign = Telerik.Reporting.Drawing.VerticalAlign.Middle;
             this.textBox8.StyleName = "Normal.TableBody";
-            this.textBox8.Value = "=[InsurNo] ";
+            this.textBox8.Value = "=InsurNo ";
             // 
             // textBox9
             // 
-            this.textBox9.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(15.494D), Telerik.Reporting.Drawing.Unit.Cm(3.048D));
+            this.textBox9.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(15.971D), Telerik.Reporting.Drawing.Unit.Cm(3.056D));
             this.textBox9.Name = "textBox9";
             this.textBox9.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(2.936D), Telerik.Reporting.Drawing.Unit.Cm(0.5D));
             this.textBox9.Style.BackgroundColor = System.Drawing.Color.White;
@@ -626,7 +621,7 @@ namespace MedicalServiceSystem.Reclaims
             // textBox10
             // 
             this.textBox10.Format = "{0:N4}";
-            this.textBox10.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(6.858D), Telerik.Reporting.Drawing.Unit.Cm(3.048D));
+            this.textBox10.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(7.335D), Telerik.Reporting.Drawing.Unit.Cm(3.056D));
             this.textBox10.Name = "textBox10";
             this.textBox10.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(8.636D), Telerik.Reporting.Drawing.Unit.Cm(0.5D));
             this.textBox10.Style.BorderColor.Default = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
@@ -634,13 +629,13 @@ namespace MedicalServiceSystem.Reclaims
             this.textBox10.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Center;
             this.textBox10.Style.VerticalAlign = Telerik.Reporting.Drawing.VerticalAlign.Middle;
             this.textBox10.StyleName = "Normal.TableBody";
-            this.textBox10.Value = "=[InsurName] ";
+            this.textBox10.Value = "=InsurName ";
             // 
             // textBox11
             // 
-            this.textBox11.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(4.318D), Telerik.Reporting.Drawing.Unit.Cm(2.999D));
+            this.textBox11.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(4.826D), Telerik.Reporting.Drawing.Unit.Cm(3.056D));
             this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(2.54D), Telerik.Reporting.Drawing.Unit.Cm(0.5D));
+            this.textBox11.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(2.509D), Telerik.Reporting.Drawing.Unit.Cm(0.5D));
             this.textBox11.Style.BackgroundColor = System.Drawing.Color.White;
             this.textBox11.Style.BorderStyle.Default = Telerik.Reporting.Drawing.BorderType.None;
             this.textBox11.Style.Font.Bold = true;
@@ -653,19 +648,19 @@ namespace MedicalServiceSystem.Reclaims
             // textBox12
             // 
             this.textBox12.Format = "{0:N4}";
-            this.textBox12.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(0.254D), Telerik.Reporting.Drawing.Unit.Cm(2.999D));
+            this.textBox12.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(1.016D), Telerik.Reporting.Drawing.Unit.Cm(3.056D));
             this.textBox12.Name = "textBox12";
-            this.textBox12.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(4.064D), Telerik.Reporting.Drawing.Unit.Cm(0.5D));
+            this.textBox12.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(3.779D), Telerik.Reporting.Drawing.Unit.Cm(0.5D));
             this.textBox12.Style.BorderColor.Default = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
             this.textBox12.Style.BorderStyle.Default = Telerik.Reporting.Drawing.BorderType.Solid;
             this.textBox12.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Center;
             this.textBox12.Style.VerticalAlign = Telerik.Reporting.Drawing.VerticalAlign.Middle;
             this.textBox12.StyleName = "Normal.TableBody";
-            this.textBox12.Value = "=[ClientId] ";
+            this.textBox12.Value = "=ClientId ";
             // 
             // textBox13
             // 
-            this.textBox13.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(15.494D), Telerik.Reporting.Drawing.Unit.Cm(3.81D));
+            this.textBox13.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(15.971D), Telerik.Reporting.Drawing.Unit.Cm(3.818D));
             this.textBox13.Name = "textBox13";
             this.textBox13.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(2.936D), Telerik.Reporting.Drawing.Unit.Cm(0.5D));
             this.textBox13.Style.BackgroundColor = System.Drawing.Color.White;
@@ -680,7 +675,7 @@ namespace MedicalServiceSystem.Reclaims
             // textBox14
             // 
             this.textBox14.Format = "{0:N4}";
-            this.textBox14.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(6.858D), Telerik.Reporting.Drawing.Unit.Cm(3.81D));
+            this.textBox14.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(7.335D), Telerik.Reporting.Drawing.Unit.Cm(3.818D));
             this.textBox14.Name = "textBox14";
             this.textBox14.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(8.636D), Telerik.Reporting.Drawing.Unit.Cm(0.5D));
             this.textBox14.Style.BorderColor.Default = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
@@ -688,11 +683,11 @@ namespace MedicalServiceSystem.Reclaims
             this.textBox14.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Center;
             this.textBox14.Style.VerticalAlign = Telerik.Reporting.Drawing.VerticalAlign.Middle;
             this.textBox14.StyleName = "Normal.TableBody";
-            this.textBox14.Value = "=[Server] ";
+            this.textBox14.Value = "=Server";
             // 
             // textBox15
             // 
-            this.textBox15.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(15.494D), Telerik.Reporting.Drawing.Unit.Cm(4.572D));
+            this.textBox15.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(15.971D), Telerik.Reporting.Drawing.Unit.Cm(4.58D));
             this.textBox15.Name = "textBox15";
             this.textBox15.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(2.936D), Telerik.Reporting.Drawing.Unit.Cm(0.5D));
             this.textBox15.Style.BackgroundColor = System.Drawing.Color.White;
@@ -707,7 +702,7 @@ namespace MedicalServiceSystem.Reclaims
             // textBox16
             // 
             this.textBox16.Format = "{0:N4}";
-            this.textBox16.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(12.192D), Telerik.Reporting.Drawing.Unit.Cm(4.572D));
+            this.textBox16.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(12.669D), Telerik.Reporting.Drawing.Unit.Cm(4.58D));
             this.textBox16.Name = "textBox16";
             this.textBox16.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(3.302D), Telerik.Reporting.Drawing.Unit.Cm(0.5D));
             this.textBox16.Style.BorderColor.Default = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
@@ -715,11 +710,12 @@ namespace MedicalServiceSystem.Reclaims
             this.textBox16.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Center;
             this.textBox16.Style.VerticalAlign = Telerik.Reporting.Drawing.VerticalAlign.Middle;
             this.textBox16.StyleName = "Normal.TableBody";
-            this.textBox16.Value = "=[ReclaimTotal] ";
+            this.textBox16.Value = "=BillsTotal";
+            this.textBox16.ItemDataBound += new System.EventHandler(this.TextBox16_ItemDataBound);
             // 
             // textBox17
             // 
-            this.textBox17.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(9.256D), Telerik.Reporting.Drawing.Unit.Cm(4.572D));
+            this.textBox17.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(9.733D), Telerik.Reporting.Drawing.Unit.Cm(4.58D));
             this.textBox17.Name = "textBox17";
             this.textBox17.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(2.936D), Telerik.Reporting.Drawing.Unit.Cm(0.5D));
             this.textBox17.Style.BackgroundColor = System.Drawing.Color.White;
@@ -734,9 +730,9 @@ namespace MedicalServiceSystem.Reclaims
             // MoneyWritten
             // 
             this.MoneyWritten.Format = "{0:N4}";
-            this.MoneyWritten.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(0.254D), Telerik.Reporting.Drawing.Unit.Cm(4.572D));
+            this.MoneyWritten.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(0.985D), Telerik.Reporting.Drawing.Unit.Cm(4.58D));
             this.MoneyWritten.Name = "MoneyWritten";
-            this.MoneyWritten.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(9.002D), Telerik.Reporting.Drawing.Unit.Cm(0.5D));
+            this.MoneyWritten.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(8.748D), Telerik.Reporting.Drawing.Unit.Cm(0.5D));
             this.MoneyWritten.Style.BorderColor.Default = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
             this.MoneyWritten.Style.BorderStyle.Default = Telerik.Reporting.Drawing.BorderType.None;
             this.MoneyWritten.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Center;
@@ -746,7 +742,7 @@ namespace MedicalServiceSystem.Reclaims
             // 
             // ComanyName
             // 
-            this.ComanyName.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(4.572D), Telerik.Reporting.Drawing.Unit.Cm(0D));
+            this.ComanyName.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(5.049D), Telerik.Reporting.Drawing.Unit.Cm(0D));
             this.ComanyName.Name = "ComanyName";
             this.ComanyName.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(10.16D), Telerik.Reporting.Drawing.Unit.Cm(0.5D));
             this.ComanyName.Style.BackgroundColor = System.Drawing.Color.White;
@@ -760,7 +756,7 @@ namespace MedicalServiceSystem.Reclaims
             // 
             // ManagementName
             // 
-            this.ManagementName.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(4.572D), Telerik.Reporting.Drawing.Unit.Cm(0.5D));
+            this.ManagementName.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(5.049D), Telerik.Reporting.Drawing.Unit.Cm(0.5D));
             this.ManagementName.Name = "ManagementName";
             this.ManagementName.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(10.16D), Telerik.Reporting.Drawing.Unit.Cm(0.5D));
             this.ManagementName.Style.BackgroundColor = System.Drawing.Color.White;
@@ -774,7 +770,7 @@ namespace MedicalServiceSystem.Reclaims
             // 
             // DepartmentName
             // 
-            this.DepartmentName.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(4.572D), Telerik.Reporting.Drawing.Unit.Cm(1D));
+            this.DepartmentName.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(5.049D), Telerik.Reporting.Drawing.Unit.Cm(1.008D));
             this.DepartmentName.Name = "DepartmentName";
             this.DepartmentName.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(10.16D), Telerik.Reporting.Drawing.Unit.Cm(0.5D));
             this.DepartmentName.Style.BackgroundColor = System.Drawing.Color.White;
@@ -784,11 +780,11 @@ namespace MedicalServiceSystem.Reclaims
             this.DepartmentName.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Center;
             this.DepartmentName.Style.VerticalAlign = Telerik.Reporting.Drawing.VerticalAlign.Middle;
             this.DepartmentName.StyleName = "Normal.TableHeader";
-            this.DepartmentName.Value = "";
+            this.DepartmentName.Value = "ﬁ”„ «·«” —œ«œ";
             // 
             // FormName
             // 
-            this.FormName.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(4.572D), Telerik.Reporting.Drawing.Unit.Cm(1.501D));
+            this.FormName.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(5.049D), Telerik.Reporting.Drawing.Unit.Cm(1.509D));
             this.FormName.Name = "FormName";
             this.FormName.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(10.16D), Telerik.Reporting.Drawing.Unit.Cm(0.5D));
             this.FormName.Style.BackgroundColor = System.Drawing.Color.White;
@@ -802,19 +798,19 @@ namespace MedicalServiceSystem.Reclaims
             // 
             // CompanyLogo
             // 
-            this.CompanyLogo.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(6.168D), Telerik.Reporting.Drawing.Unit.Inch(0.097D));
+            this.CompanyLogo.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(6.356D), Telerik.Reporting.Drawing.Unit.Inch(0.1D));
             this.CompanyLogo.Name = "CompanyLogo";
             this.CompanyLogo.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(1D), Telerik.Reporting.Drawing.Unit.Inch(0.691D));
             // 
             // IsoLogo
             // 
-            this.IsoLogo.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(0.144D), Telerik.Reporting.Drawing.Unit.Inch(0.097D));
+            this.IsoLogo.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(0.4D), Telerik.Reporting.Drawing.Unit.Inch(0.1D));
             this.IsoLogo.Name = "IsoLogo";
             this.IsoLogo.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(1D), Telerik.Reporting.Drawing.Unit.Inch(0.691D));
             // 
             // textBox50
             // 
-            this.textBox50.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(17.048D), Telerik.Reporting.Drawing.Unit.Cm(0D));
+            this.textBox50.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(17.556D), Telerik.Reporting.Drawing.Unit.Cm(0D));
             this.textBox50.Name = "textBox50";
             this.textBox50.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(1.158D), Telerik.Reporting.Drawing.Unit.Cm(0.5D));
             this.textBox50.Style.BackgroundColor = System.Drawing.Color.White;
@@ -828,7 +824,7 @@ namespace MedicalServiceSystem.Reclaims
             // 
             // textBox38
             // 
-            this.textBox38.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(9.428D), Telerik.Reporting.Drawing.Unit.Cm(0D));
+            this.textBox38.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(9.936D), Telerik.Reporting.Drawing.Unit.Cm(0D));
             this.textBox38.Name = "textBox38";
             this.textBox38.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(7.62D), Telerik.Reporting.Drawing.Unit.Cm(0.5D));
             this.textBox38.Style.BackgroundColor = System.Drawing.Color.White;
@@ -842,7 +838,7 @@ namespace MedicalServiceSystem.Reclaims
             // 
             // textBox18
             // 
-            this.textBox18.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(7D), Telerik.Reporting.Drawing.Unit.Cm(0D));
+            this.textBox18.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(7.508D), Telerik.Reporting.Drawing.Unit.Cm(0D));
             this.textBox18.Name = "textBox18";
             this.textBox18.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(2.428D), Telerik.Reporting.Drawing.Unit.Cm(0.5D));
             this.textBox18.Style.BackgroundColor = System.Drawing.Color.White;
@@ -856,7 +852,7 @@ namespace MedicalServiceSystem.Reclaims
             // 
             // textBox3
             // 
-            this.textBox3.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(5.08D), Telerik.Reporting.Drawing.Unit.Cm(0D));
+            this.textBox3.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(5.588D), Telerik.Reporting.Drawing.Unit.Cm(0D));
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(1.92D), Telerik.Reporting.Drawing.Unit.Cm(0.5D));
             this.textBox3.Style.BackgroundColor = System.Drawing.Color.White;
@@ -870,7 +866,7 @@ namespace MedicalServiceSystem.Reclaims
             // 
             // textBox2
             // 
-            this.textBox2.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(2.652D), Telerik.Reporting.Drawing.Unit.Cm(0D));
+            this.textBox2.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(3.16D), Telerik.Reporting.Drawing.Unit.Cm(0D));
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(2.428D), Telerik.Reporting.Drawing.Unit.Cm(0.5D));
             this.textBox2.Style.BackgroundColor = System.Drawing.Color.White;
@@ -884,9 +880,9 @@ namespace MedicalServiceSystem.Reclaims
             // 
             // textBox1
             // 
-            this.textBox1.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(0D), Telerik.Reporting.Drawing.Unit.Cm(0D));
+            this.textBox1.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(0.985D), Telerik.Reporting.Drawing.Unit.Cm(0D));
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(2.652D), Telerik.Reporting.Drawing.Unit.Cm(0.5D));
+            this.textBox1.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(2.175D), Telerik.Reporting.Drawing.Unit.Cm(0.5D));
             this.textBox1.Style.BackgroundColor = System.Drawing.Color.White;
             this.textBox1.Style.BorderStyle.Default = Telerik.Reporting.Drawing.BorderType.Solid;
             this.textBox1.Style.Font.Bold = true;
@@ -898,12 +894,20 @@ namespace MedicalServiceSystem.Reclaims
             // 
             // reportFooterSection1
             // 
-            this.reportFooterSection1.Height = Telerik.Reporting.Drawing.Unit.Inch(0.197D);
+            this.reportFooterSection1.Height = Telerik.Reporting.Drawing.Unit.Inch(0.703D);
             this.reportFooterSection1.Items.AddRange(new Telerik.Reporting.ReportItemBase[] {
             this.textBox36,
             this.textBox33,
             this.textBox37,
-            this.MoneyPaiedWritten});
+            this.MoneyPaiedWritten,
+            this.textBox46,
+            this.textBox40,
+            this.textBox41,
+            this.textBox42,
+            this.textBox43,
+            this.textBox44,
+            this.textBox45,
+            this.textBox39});
             this.reportFooterSection1.Name = "reportFooterSection1";
             // 
             // textBox36
@@ -922,7 +926,7 @@ namespace MedicalServiceSystem.Reclaims
             // 
             // textBox33
             // 
-            this.textBox33.Format = "{0:N4}";
+            this.textBox33.Format = "{0:N2}";
             this.textBox33.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(11.176D), Telerik.Reporting.Drawing.Unit.Cm(0D));
             this.textBox33.Name = "textBox33";
             this.textBox33.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(3.048D), Telerik.Reporting.Drawing.Unit.Cm(0.5D));
@@ -931,7 +935,8 @@ namespace MedicalServiceSystem.Reclaims
             this.textBox33.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Center;
             this.textBox33.Style.VerticalAlign = Telerik.Reporting.Drawing.VerticalAlign.Middle;
             this.textBox33.StyleName = "Normal.TableBody";
-            this.textBox33.Value = "=[sum(ReclaimTotal)] ";
+            this.textBox33.Value = "=sum([ReclaimTotal]) ";
+            this.textBox33.ItemDataBound += new System.EventHandler(this.TextBox33_ItemDataBound);
             // 
             // textBox37
             // 
@@ -950,9 +955,9 @@ namespace MedicalServiceSystem.Reclaims
             // MoneyPaiedWritten
             // 
             this.MoneyPaiedWritten.Format = "{0:N4}";
-            this.MoneyPaiedWritten.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(0D), Telerik.Reporting.Drawing.Unit.Cm(0D));
+            this.MoneyPaiedWritten.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(0.985D), Telerik.Reporting.Drawing.Unit.Cm(0D));
             this.MoneyPaiedWritten.Name = "MoneyPaiedWritten";
-            this.MoneyPaiedWritten.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(8.636D), Telerik.Reporting.Drawing.Unit.Cm(0.5D));
+            this.MoneyPaiedWritten.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(7.651D), Telerik.Reporting.Drawing.Unit.Cm(0.5D));
             this.MoneyPaiedWritten.Style.BorderColor.Default = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
             this.MoneyPaiedWritten.Style.BorderStyle.Default = Telerik.Reporting.Drawing.BorderType.None;
             this.MoneyPaiedWritten.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Center;
@@ -977,6 +982,8 @@ namespace MedicalServiceSystem.Reclaims
             // 
             group1.GroupFooter = this.groupFooterSection;
             group1.GroupHeader = this.groupHeaderSection;
+            group1.Groupings.Add(new Telerik.Reporting.Grouping("ServiceGroup"));
+            group1.Groupings.Add(new Telerik.Reporting.Grouping(null));
             group1.Name = "Service";
             this.Groups.AddRange(new Telerik.Reporting.Group[] {
             group1});
@@ -991,7 +998,7 @@ namespace MedicalServiceSystem.Reclaims
             this.Name = "Estrdad";
             this.PageSettings.ContinuousPaper = false;
             this.PageSettings.Landscape = false;
-            this.PageSettings.Margins = new Telerik.Reporting.Drawing.MarginsU(Telerik.Reporting.Drawing.Unit.Inch(1D), Telerik.Reporting.Drawing.Unit.Inch(1D), Telerik.Reporting.Drawing.Unit.Inch(1D), Telerik.Reporting.Drawing.Unit.Inch(1D));
+            this.PageSettings.Margins = new Telerik.Reporting.Drawing.MarginsU(Telerik.Reporting.Drawing.Unit.Inch(0.2D), Telerik.Reporting.Drawing.Unit.Inch(0.2D), Telerik.Reporting.Drawing.Unit.Inch(0.5D), Telerik.Reporting.Drawing.Unit.Inch(0.5D));
             this.PageSettings.PaperKind = System.Drawing.Printing.PaperKind.A4;
             styleRule1.Selectors.AddRange(new Telerik.Reporting.Drawing.ISelector[] {
             new Telerik.Reporting.Drawing.TypeSelector(typeof(Telerik.Reporting.TextItemBase)),
@@ -1000,7 +1007,8 @@ namespace MedicalServiceSystem.Reclaims
             styleRule1.Style.Padding.Right = Telerik.Reporting.Drawing.Unit.Point(2D);
             this.StyleSheet.AddRange(new Telerik.Reporting.Drawing.StyleRule[] {
             styleRule1});
-            this.Width = Telerik.Reporting.Drawing.Unit.Cm(18.796D);
+            this.Width = Telerik.Reporting.Drawing.Unit.Cm(19.984D);
+            this.ItemDataBound += new System.EventHandler(this.Estrdad_ItemDataBound);
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
 
         }
