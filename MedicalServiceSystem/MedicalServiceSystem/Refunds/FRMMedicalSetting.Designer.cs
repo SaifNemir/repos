@@ -30,15 +30,16 @@ namespace MedicalServiceSystem.Reclaims
         /// </summary>
         private void InitializeComponent()
         {
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn1 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn2 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn3 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn4 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewCheckBoxColumn gridViewCheckBoxColumn1 = new Telerik.WinControls.UI.GridViewCheckBoxColumn();
-            Telerik.WinControls.UI.GridViewCommandColumn gridViewCommandColumn1 = new Telerik.WinControls.UI.GridViewCommandColumn();
-            Telerik.WinControls.UI.GridViewCommandColumn gridViewCommandColumn2 = new Telerik.WinControls.UI.GridViewCommandColumn();
-            Telerik.WinControls.Data.SortDescriptor sortDescriptor1 = new Telerik.WinControls.Data.SortDescriptor();
-            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition1 = new Telerik.WinControls.UI.TableViewDefinition();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn6 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn7 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn8 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn9 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewCheckBoxColumn gridViewCheckBoxColumn2 = new Telerik.WinControls.UI.GridViewCheckBoxColumn();
+            Telerik.WinControls.UI.GridViewCommandColumn gridViewCommandColumn3 = new Telerik.WinControls.UI.GridViewCommandColumn();
+            Telerik.WinControls.UI.GridViewCommandColumn gridViewCommandColumn4 = new Telerik.WinControls.UI.GridViewCommandColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn10 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.Data.SortDescriptor sortDescriptor2 = new Telerik.WinControls.Data.SortDescriptor();
+            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition2 = new Telerik.WinControls.UI.TableViewDefinition();
             this.Label1 = new Telerik.WinControls.UI.RadLabel();
             this.MedicaGroup = new Telerik.WinControls.UI.RadDropDownList();
             this.Label5 = new Telerik.WinControls.UI.RadLabel();
@@ -224,68 +225,74 @@ namespace MedicalServiceSystem.Reclaims
             this.GRDMedical.Font = new System.Drawing.Font("Sakkal Majalla", 8.999999F);
             this.GRDMedical.ForeColor = System.Drawing.Color.Black;
             this.GRDMedical.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.GRDMedical.Location = new System.Drawing.Point(-3, 298);
+            this.GRDMedical.Location = new System.Drawing.Point(-3, 318);
             // 
             // 
             // 
             this.GRDMedical.MasterTemplate.AllowAddNewRow = false;
             this.GRDMedical.MasterTemplate.AllowColumnResize = false;
-            gridViewTextBoxColumn1.EnableExpressionEditor = false;
-            gridViewTextBoxColumn1.FieldName = "Id";
-            gridViewTextBoxColumn1.HeaderText = "رقم الخدمة";
-            gridViewTextBoxColumn1.Name = "Id";
-            gridViewTextBoxColumn1.ReadOnly = true;
-            gridViewTextBoxColumn1.Width = 80;
-            gridViewTextBoxColumn2.EnableExpressionEditor = false;
-            gridViewTextBoxColumn2.FieldName = "ServiceEName";
-            gridViewTextBoxColumn2.HeaderText = "اسم الخدمة انجليزي";
-            gridViewTextBoxColumn2.Name = "Medical";
-            gridViewTextBoxColumn2.ReadOnly = true;
-            gridViewTextBoxColumn2.Width = 200;
-            gridViewTextBoxColumn3.EnableExpressionEditor = false;
-            gridViewTextBoxColumn3.FieldName = "ServiceAName";
-            gridViewTextBoxColumn3.HeaderText = "اسم الخدمة عربي";
-            gridViewTextBoxColumn3.Name = "Translations";
-            gridViewTextBoxColumn3.ReadOnly = true;
-            gridViewTextBoxColumn3.Width = 200;
-            gridViewTextBoxColumn4.EnableExpressionEditor = false;
-            gridViewTextBoxColumn4.FieldName = "ServicePrice";
-            gridViewTextBoxColumn4.HeaderText = "أقصى سعر للخدمة";
-            gridViewTextBoxColumn4.Name = "MaxPice";
-            gridViewTextBoxColumn4.Width = 120;
-            gridViewCheckBoxColumn1.FieldName = "IsMushamat";
-            gridViewCheckBoxColumn1.HeaderText = "تصرف كمساهمة";
-            gridViewCheckBoxColumn1.Name = "column1";
-            gridViewCheckBoxColumn1.Width = 100;
-            gridViewCommandColumn1.EnableExpressionEditor = false;
-            gridViewCommandColumn1.ExcelExportType = Telerik.WinControls.UI.Export.DisplayFormatType.MediumTime;
-            gridViewCommandColumn1.HeaderText = "تعديل";
-            gridViewCommandColumn1.ImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            gridViewCommandColumn1.Name = "Edit";
-            gridViewCommandColumn1.SortOrder = Telerik.WinControls.UI.RadSortOrder.Ascending;
-            gridViewCommandColumn2.EnableExpressionEditor = false;
-            gridViewCommandColumn2.HeaderText = "حذف";
-            gridViewCommandColumn2.ImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            gridViewCommandColumn2.Name = "Delete";
+            gridViewTextBoxColumn6.EnableExpressionEditor = false;
+            gridViewTextBoxColumn6.FieldName = "Id";
+            gridViewTextBoxColumn6.HeaderText = "رقم الخدمة";
+            gridViewTextBoxColumn6.Name = "Id";
+            gridViewTextBoxColumn6.ReadOnly = true;
+            gridViewTextBoxColumn6.Width = 80;
+            gridViewTextBoxColumn7.EnableExpressionEditor = false;
+            gridViewTextBoxColumn7.FieldName = "ServiceEName";
+            gridViewTextBoxColumn7.HeaderText = "اسم الخدمة انجليزي";
+            gridViewTextBoxColumn7.Name = "Medical";
+            gridViewTextBoxColumn7.ReadOnly = true;
+            gridViewTextBoxColumn7.Width = 200;
+            gridViewTextBoxColumn8.EnableExpressionEditor = false;
+            gridViewTextBoxColumn8.FieldName = "ServiceAName";
+            gridViewTextBoxColumn8.HeaderText = "اسم الخدمة عربي";
+            gridViewTextBoxColumn8.Name = "Translations";
+            gridViewTextBoxColumn8.ReadOnly = true;
+            gridViewTextBoxColumn8.Width = 200;
+            gridViewTextBoxColumn9.EnableExpressionEditor = false;
+            gridViewTextBoxColumn9.FieldName = "ServicePrice";
+            gridViewTextBoxColumn9.HeaderText = "أقصى سعر للخدمة";
+            gridViewTextBoxColumn9.Name = "MaxPice";
+            gridViewTextBoxColumn9.Width = 120;
+            gridViewCheckBoxColumn2.FieldName = "IsMushamat";
+            gridViewCheckBoxColumn2.HeaderText = "تصرف كمساهمة";
+            gridViewCheckBoxColumn2.Name = "column1";
+            gridViewCheckBoxColumn2.Width = 100;
+            gridViewCommandColumn3.EnableExpressionEditor = false;
+            gridViewCommandColumn3.ExcelExportType = Telerik.WinControls.UI.Export.DisplayFormatType.MediumTime;
+            gridViewCommandColumn3.HeaderText = "تعديل";
+            gridViewCommandColumn3.ImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            gridViewCommandColumn3.Name = "Edit";
+            gridViewCommandColumn3.SortOrder = Telerik.WinControls.UI.RadSortOrder.Ascending;
+            gridViewCommandColumn4.EnableExpressionEditor = false;
+            gridViewCommandColumn4.HeaderText = "حذف";
+            gridViewCommandColumn4.ImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            gridViewCommandColumn4.Name = "Delete";
+            gridViewTextBoxColumn10.FieldName = "IsEnabled";
+            gridViewTextBoxColumn10.HeaderText = "column2";
+            gridViewTextBoxColumn10.IsVisible = false;
+            gridViewTextBoxColumn10.Name = "IsEnabled";
             this.GRDMedical.MasterTemplate.Columns.AddRange(new Telerik.WinControls.UI.GridViewDataColumn[] {
-            gridViewTextBoxColumn1,
-            gridViewTextBoxColumn2,
-            gridViewTextBoxColumn3,
-            gridViewTextBoxColumn4,
-            gridViewCheckBoxColumn1,
-            gridViewCommandColumn1,
-            gridViewCommandColumn2});
+            gridViewTextBoxColumn6,
+            gridViewTextBoxColumn7,
+            gridViewTextBoxColumn8,
+            gridViewTextBoxColumn9,
+            gridViewCheckBoxColumn2,
+            gridViewCommandColumn3,
+            gridViewCommandColumn4,
+            gridViewTextBoxColumn10});
             this.GRDMedical.MasterTemplate.EnableFiltering = true;
-            sortDescriptor1.PropertyName = "Edit";
+            sortDescriptor2.PropertyName = "Edit";
             this.GRDMedical.MasterTemplate.SortDescriptors.AddRange(new Telerik.WinControls.Data.SortDescriptor[] {
-            sortDescriptor1});
-            this.GRDMedical.MasterTemplate.ViewDefinition = tableViewDefinition1;
+            sortDescriptor2});
+            this.GRDMedical.MasterTemplate.ViewDefinition = tableViewDefinition2;
             this.GRDMedical.Name = "GRDMedical";
             this.GRDMedical.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.GRDMedical.ShowGroupPanel = false;
-            this.GRDMedical.Size = new System.Drawing.Size(982, 294);
+            this.GRDMedical.Size = new System.Drawing.Size(982, 274);
             this.GRDMedical.TabIndex = 444;
             this.GRDMedical.ThemeName = "Office2010Blue";
+            this.GRDMedical.RowFormatting += new Telerik.WinControls.UI.RowFormattingEventHandler(this.GRDMedical_RowFormatting);
             this.GRDMedical.CellFormatting += new Telerik.WinControls.UI.CellFormattingEventHandler(this.GRDMedical_CellFormatting);
             this.GRDMedical.CommandCellClick += new Telerik.WinControls.UI.CommandCellClickEventHandler(this.GRDMedical_CommandCellClick);
             // 
@@ -294,11 +301,13 @@ namespace MedicalServiceSystem.Reclaims
             this.Button2.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.Button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.Button2.Font = new System.Drawing.Font("Sakkal Majalla", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
+            this.Button2.Image = global::MedicalServiceSystem.Properties.Resources.icons8_usb_connected_32;
             this.Button2.Location = new System.Drawing.Point(392, 598);
             this.Button2.Name = "Button2";
             this.Button2.Size = new System.Drawing.Size(148, 44);
             this.Button2.TabIndex = 449;
             this.Button2.Text = "تطبيق التعديلات";
+            this.Button2.TextAlignment = System.Drawing.ContentAlignment.MiddleRight;
             this.Button2.ThemeName = "Office2010Blue";
             this.Button2.Click += new System.EventHandler(this.Button2_Click);
             // 
@@ -308,9 +317,10 @@ namespace MedicalServiceSystem.Reclaims
             this.BtnAdd.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.BtnAdd.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.BtnAdd.Font = new System.Drawing.Font("Sakkal Majalla", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
-            this.BtnAdd.Location = new System.Drawing.Point(12, 248);
+            this.BtnAdd.Image = global::MedicalServiceSystem.Properties.Resources.icons8_downloading_updates_48;
+            this.BtnAdd.Location = new System.Drawing.Point(12, 259);
             this.BtnAdd.Name = "BtnAdd";
-            this.BtnAdd.Size = new System.Drawing.Size(169, 42);
+            this.BtnAdd.Size = new System.Drawing.Size(200, 53);
             this.BtnAdd.TabIndex = 10;
             this.BtnAdd.Text = "حفظ";
             this.BtnAdd.ThemeName = "Office2010Blue";
@@ -321,11 +331,13 @@ namespace MedicalServiceSystem.Reclaims
             this.Button4.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.Button4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.Button4.Font = new System.Drawing.Font("Sakkal Majalla", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
+            this.Button4.Image = global::MedicalServiceSystem.Properties.Resources.icons8_logout_rounded_left_32;
             this.Button4.Location = new System.Drawing.Point(827, 598);
             this.Button4.Name = "Button4";
             this.Button4.Size = new System.Drawing.Size(148, 44);
             this.Button4.TabIndex = 451;
             this.Button4.Text = "خروج";
+            this.Button4.TextAlignment = System.Drawing.ContentAlignment.MiddleRight;
             this.Button4.ThemeName = "Office2010Blue";
             this.Button4.Click += new System.EventHandler(this.Button4_Click);
             // 
@@ -335,11 +347,13 @@ namespace MedicalServiceSystem.Reclaims
             this.Button1.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.Button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Button1.Font = new System.Drawing.Font("Sakkal Majalla", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Button1.Location = new System.Drawing.Point(790, 248);
+            this.Button1.Image = global::MedicalServiceSystem.Properties.Resources.icons8_add_32;
+            this.Button1.Location = new System.Drawing.Point(776, 259);
             this.Button1.Name = "Button1";
-            this.Button1.Size = new System.Drawing.Size(148, 44);
+            this.Button1.Size = new System.Drawing.Size(192, 53);
             this.Button1.TabIndex = 11;
             this.Button1.Text = "اضافة خدمة جديدة";
+            this.Button1.TextAlignment = System.Drawing.ContentAlignment.MiddleRight;
             this.Button1.ThemeName = "Office2010Blue";
             this.Button1.Click += new System.EventHandler(this.Button1_Click);
             // 
@@ -348,11 +362,13 @@ namespace MedicalServiceSystem.Reclaims
             this.Button3.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.Button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.Button3.Font = new System.Drawing.Font("Sakkal Majalla", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
+            this.Button3.Image = global::MedicalServiceSystem.Properties.Resources.icons8_undo_alt_32;
             this.Button3.Location = new System.Drawing.Point(12, 598);
             this.Button3.Name = "Button3";
             this.Button3.Size = new System.Drawing.Size(148, 44);
             this.Button3.TabIndex = 452;
             this.Button3.Text = "تراجع";
+            this.Button3.TextAlignment = System.Drawing.ContentAlignment.MiddleRight;
             this.Button3.ThemeName = "Office2010Blue";
             this.Button3.Click += new System.EventHandler(this.Button3_Click);
             // 
@@ -411,7 +427,6 @@ namespace MedicalServiceSystem.Reclaims
             this.Duration.TabIndex = 8;
             this.Duration.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.Duration.ThemeName = "Office2010Blue";
-            this.Duration.Visible = false;
             this.Duration.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Duration_KeyPress);
             // 
             // Label7
@@ -450,11 +465,13 @@ namespace MedicalServiceSystem.Reclaims
             this.Button5.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.Button5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Button5.Font = new System.Drawing.Font("Sakkal Majalla", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
+            this.Button5.Image = global::MedicalServiceSystem.Properties.Resources.icons8_add_property_501;
             this.Button5.Location = new System.Drawing.Point(12, 5);
             this.Button5.Name = "Button5";
-            this.Button5.Size = new System.Drawing.Size(169, 44);
+            this.Button5.Size = new System.Drawing.Size(200, 63);
             this.Button5.TabIndex = 459;
             this.Button5.Text = "اعداد مجموعة الخدمات";
+            this.Button5.TextAlignment = System.Drawing.ContentAlignment.MiddleRight;
             this.Button5.ThemeName = "Office2010Blue";
             this.Button5.Click += new System.EventHandler(this.Button5_Click);
             // 
@@ -464,11 +481,13 @@ namespace MedicalServiceSystem.Reclaims
             this.Button6.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.Button6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Button6.Font = new System.Drawing.Font("Sakkal Majalla", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
-            this.Button6.Location = new System.Drawing.Point(12, 55);
+            this.Button6.Image = global::MedicalServiceSystem.Properties.Resources.icons8_separated_lists_32;
+            this.Button6.Location = new System.Drawing.Point(12, 74);
             this.Button6.Name = "Button6";
-            this.Button6.Size = new System.Drawing.Size(169, 44);
+            this.Button6.Size = new System.Drawing.Size(200, 63);
             this.Button6.TabIndex = 460;
             this.Button6.Text = "اعداد المجموعات الفرعية";
+            this.Button6.TextAlignment = System.Drawing.ContentAlignment.MiddleRight;
             this.Button6.ThemeName = "Office2010Blue";
             this.Button6.Click += new System.EventHandler(this.Button6_Click);
             // 

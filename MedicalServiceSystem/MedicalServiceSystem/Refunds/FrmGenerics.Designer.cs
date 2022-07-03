@@ -78,10 +78,11 @@
             // Savebtn
             // 
             this.Savebtn.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Savebtn.Location = new System.Drawing.Point(12, 67);
+            this.Savebtn.Image = global::MedicalServiceSystem.Properties.Resources.icons8_downloading_updates_48;
+            this.Savebtn.Location = new System.Drawing.Point(12, 80);
             this.Savebtn.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Savebtn.Name = "Savebtn";
-            this.Savebtn.Size = new System.Drawing.Size(128, 32);
+            this.Savebtn.Size = new System.Drawing.Size(147, 52);
             this.Savebtn.TabIndex = 2;
             this.Savebtn.Text = "Save";
             this.Savebtn.Click += new System.EventHandler(this.Savebtn_Click);
@@ -96,7 +97,7 @@
             this.GrdGenerics.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.GrdGenerics.ForeColor = System.Drawing.SystemColors.ControlText;
             this.GrdGenerics.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.GrdGenerics.Location = new System.Drawing.Point(12, 106);
+            this.GrdGenerics.Location = new System.Drawing.Point(12, 139);
             // 
             // 
             // 
@@ -144,7 +145,7 @@
             this.GrdGenerics.ReadOnly = true;
             this.GrdGenerics.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.GrdGenerics.ShowGroupPanel = false;
-            this.GrdGenerics.Size = new System.Drawing.Size(869, 322);
+            this.GrdGenerics.Size = new System.Drawing.Size(869, 289);
             this.GrdGenerics.TabIndex = 15;
             this.GrdGenerics.RowFormatting += new Telerik.WinControls.UI.RowFormattingEventHandler(this.GrdGenerics_RowFormatting);
             this.GrdGenerics.CellFormatting += new Telerik.WinControls.UI.CellFormattingEventHandler(this.GrdTrades_CellFormatting);
@@ -153,10 +154,11 @@
             // radButton1
             // 
             this.radButton1.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radButton1.Location = new System.Drawing.Point(742, 67);
+            this.radButton1.Image = global::MedicalServiceSystem.Properties.Resources.icons8_add_32;
+            this.radButton1.Location = new System.Drawing.Point(723, 80);
             this.radButton1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.radButton1.Name = "radButton1";
-            this.radButton1.Size = new System.Drawing.Size(128, 32);
+            this.radButton1.Size = new System.Drawing.Size(147, 52);
             this.radButton1.TabIndex = 16;
             this.radButton1.Text = "New Generic";
             this.radButton1.Click += new System.EventHandler(this.radButton1_Click);
@@ -164,12 +166,13 @@
             // radButton2
             // 
             this.radButton2.Font = new System.Drawing.Font("Sakkal Majalla", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radButton2.Location = new System.Drawing.Point(742, 443);
+            this.radButton2.Image = global::MedicalServiceSystem.Properties.Resources.icons8_logout_rounded_left_32;
+            this.radButton2.ImageAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.radButton2.Location = new System.Drawing.Point(331, 443);
             this.radButton2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.radButton2.Name = "radButton2";
-            this.radButton2.Size = new System.Drawing.Size(128, 32);
+            this.radButton2.Size = new System.Drawing.Size(147, 32);
             this.radButton2.TabIndex = 3;
-            this.radButton2.Text = "Close";
             this.radButton2.Click += new System.EventHandler(this.radButton2_Click);
             // 
             // radLabel1

@@ -105,7 +105,7 @@ namespace MedicalServiceSystem.Reclaims
                     int AtcId = Convert.ToInt32(ATCclassification.SelectedValue.ToString());
                     using (dbContext db = new dbContext())
                     {
-                        var Geneiclst = db.Medicines.Where(p => p.ATCId == AtcId).Select(p => new { p.Id, p.Generic_name, p.Unit.Unit_Name, p.PL, HICKS_DC= p.HICKS_DCS.HICKSDC, p.NOTE, p.DDD,U= p.US.U, Adm_R = p.AdmRS.AdmR }).ToList();
+                        var Geneiclst = db.Medicines.Where(p => p.ATCId == AtcId).Select(p => new { p.Id, p.Generic_name, p.Unit.Unit_Name, p.PL, HICKS_DC= p.HICKS_DCS.HICKSDC, p.NOTE, p.DDD,U= p.US.U, Adm_R = p.AdmRS.AdmR,p.Activated }).ToList();
                         GRDMedicine.DataSource = Geneiclst;
                        
 
@@ -316,73 +316,7 @@ namespace MedicalServiceSystem.Reclaims
 
         private void GRDMedicine_CommandCellClick(object sender, Telerik.WinControls.UI.GridViewCellEventArgs e)
         {
-            if (GRDMedicine.RowCount > 0)
-            {
-                using (dbContext db = new dbContext())
-                {
-                    MedicineId = Convert.ToInt32(e.Row.Cells["Id"].Value.ToString());
-                    if (GRDMedicine.CurrentColumn.Name == "Edit")
-                    {
-                        var Getgeneric = db.MedicineTemps.Where(p => p.Id == MedicineId).ToList();
-                        if (Getgeneric.Count > 0)
-                        {
-                            MedicineId = Getgeneric[0].Id;
-                            AtcCode.Text = Getgeneric[0].ATC_code;
-                            ListType.SelectedIndex=(int) Getgeneric[0].PL-1;
-                            ATCclassification.SelectedValue = Getgeneric[0].ATCId;
-                            GenericName.SelectedValue = Getgeneric[0].Id;
-                            GenericId.Text = Getgeneric[0].GenericId.ToString();
-                            TermsOfUse.Text = Getgeneric[0].TermsOfUse;
-                            Regestration.Text = Getgeneric[0].Regestration;
-                            Unit.SelectedValue = Getgeneric[0].Unit_Id;
-                            HICKS_DC.SelectedValue = Getgeneric[0].HICKS_DC;
-                            U.SelectedValue = Getgeneric[0].U;
-                            Adm_R.SelectedValue = Getgeneric[0].Adm_R;
-                            Note.Text = Getgeneric[0].NOTE;
-                        }
-                    }
-                    else if (GRDMedicine.CurrentColumn.Name == "Delete")
-                    {
-
-
-                        var Getgeneric = db.MedicineTemps.Where(p => p.Id == MedicineId).ToList();
-                        if (Getgeneric.Count > 0)
-                        {
-
-                            if (Getgeneric[0].Activated == 1)
-                            {
-                                DialogResult a = 0;
-                                a = MessageBox.Show("Data of this Medicine Will be Disabled ?", "النظام", MessageBoxButtons.YesNo, MessageBoxIcon.None, MessageBoxDefaultButton.Button2);
-                                if (a == DialogResult.Yes)
-                                {
-                                    Getgeneric[0].Activated = 0;
-                                    Getgeneric[0].DeleteUser = UserId;
-                                    Getgeneric[0].EditeMode = EditeMode.Delete;
-                                    db.SaveChanges();
-                                    MessageBox.Show("Data has been Disabled", "System", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                    Fill();
-                                }
-                            }
-                            else if (Getgeneric[0].Activated == 0)
-                            {
-                                DialogResult a = 0;
-                                a = MessageBox.Show("Data of this Medicine Will be Enabled?", "System", MessageBoxButtons.YesNo, MessageBoxIcon.None, MessageBoxDefaultButton.Button2);
-                                if (a == DialogResult.Yes)
-                                {
-                                    Getgeneric[0].Activated = 1;
-                                    Getgeneric[0].DeleteUser = UserId;
-                                    Getgeneric[0].EditeMode = EditeMode.Delete;
-                                    db.SaveChanges();
-                                    MessageBox.Show("Data has been Enabled", "System", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                    Fill();
-                                }
-                            }
-                        }
-                    }
-
-
-                }
-            }
+            
         }
 
         private void GRDMedicine_CellFormatting(object sender, Telerik.WinControls.UI.CellFormattingEventArgs e)
@@ -597,10 +531,86 @@ namespace MedicalServiceSystem.Reclaims
                     e.RowElement.DrawFill = true;
                     e.RowElement.BackColor = System.Drawing.Color.Gray;
                 }
-                else if (Convert.ToInt32(e.RowElement.RowInfo.Cells["Activated"].Value) == 1)
+                else
                 {
                     e.RowElement.DrawFill = true;
                     e.RowElement.BackColor = System.Drawing.Color.White;
+                }
+            }
+        }
+
+        private void Button6_Click(object sender, EventArgs e)
+        {
+            FrmMedicineATC.Default.ShowDialog();
+        }
+
+        private void GRDMedicine_CellClick(object sender, Telerik.WinControls.UI.GridViewCellEventArgs e)
+        {
+            if (GRDMedicine.RowCount > 0)
+            {
+                using (dbContext db = new dbContext())
+                {
+                    MedicineId = Convert.ToInt32(e.Row.Cells["Id"].Value.ToString());
+                    if (GRDMedicine.CurrentColumn.Name == "Edit")
+                    {
+                        var Getgeneric = db.MedicineTemps.Where(p => p.Id == MedicineId).ToList();
+                        if (Getgeneric.Count > 0)
+                        {
+                            MedicineId = Getgeneric[0].Id;
+                            AtcCode.Text = Getgeneric[0].ATC_code;
+                            ListType.SelectedIndex =Convert.ToInt32( Getgeneric[0].PL);
+                            ATCclassification.SelectedValue = Getgeneric[0].ATCId;
+                            GenericName.SelectedValue = Getgeneric[0].Id;
+                            GenericId.Text = Getgeneric[0].GenericId.ToString();
+                            TermsOfUse.Text = Getgeneric[0].TermsOfUse;
+                            Regestration.Text = Getgeneric[0].Regestration;
+                            Unit.SelectedValue = Getgeneric[0].Unit_Id;
+                            HICKS_DC.SelectedValue = Getgeneric[0].HICKS_DC;
+                            U.SelectedValue = Getgeneric[0].U;
+                            Adm_R.SelectedValue = Getgeneric[0].Adm_R;
+                            Note.Text = Getgeneric[0].NOTE;
+                        }
+                    }
+                    else if (GRDMedicine.CurrentColumn.Name == "Delete")
+                    {
+
+
+                        var Getgeneric = db.MedicineTemps.Where(p => p.Id == MedicineId).ToList();
+                        if (Getgeneric.Count > 0)
+                        {
+
+                            if (Getgeneric[0].Activated == 1)
+                            {
+                                DialogResult a = 0;
+                                a = MessageBox.Show("Data of this Medicine Will be Disabled ?", "النظام", MessageBoxButtons.YesNo, MessageBoxIcon.None, MessageBoxDefaultButton.Button2);
+                                if (a == DialogResult.Yes)
+                                {
+                                    Getgeneric[0].Activated = 0;
+                                    Getgeneric[0].DeleteUser = UserId;
+                                    Getgeneric[0].EditeMode = EditeMode.Delete;
+                                    db.SaveChanges();
+                                    MessageBox.Show("Data has been Disabled", "System", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    Fill();
+                                }
+                            }
+                            else if (Getgeneric[0].Activated == 0)
+                            {
+                                DialogResult a = 0;
+                                a = MessageBox.Show("Data of this Medicine Will be Enabled?", "System", MessageBoxButtons.YesNo, MessageBoxIcon.None, MessageBoxDefaultButton.Button2);
+                                if (a == DialogResult.Yes)
+                                {
+                                    Getgeneric[0].Activated = 1;
+                                    Getgeneric[0].DeleteUser = UserId;
+                                    Getgeneric[0].EditeMode = EditeMode.Delete;
+                                    db.SaveChanges();
+                                    MessageBox.Show("Data has been Enabled", "System", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    Fill();
+                                }
+                            }
+                        }
+                    }
+
+
                 }
             }
         }

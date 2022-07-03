@@ -62,7 +62,7 @@ namespace MedicalServiceSystem.Reclaims
                 MedicaGroup.ValueMember = "Id";
                 MedicaGroup.DisplayMember = "MainGroupArabicName";
                 MedicaGroup.SelectedIndex = -1;
-                var SerA = db.MedicalServices.ToList();
+                var SerA = db.MedicalServices.Where(p=>p.IsVisible==true).ToList();
                 MedicalEnglish.DataSource = SerA;
                 MedicalEnglish.ValueMember = "Id";
                 MedicalEnglish.DropDownListElement.AutoCompleteSuggest.SuggestMode = Telerik.WinControls.UI.SuggestMode.Contains;
@@ -288,7 +288,9 @@ namespace MedicalServiceSystem.Reclaims
                             ServiceFrequency.Text = FSer[0].ServiceFrequency.ToString();
                             Duration.Text = FSer[0].Duration.ToString();
                             Sessions.Text = FSer[0].Sessions.ToString();
-
+                            UnitMaxPrice.Text = FSer[0].ServicePrice.ToString();
+                            ServiceFrequency.Text = FSer[0].ServiceFrequency.ToString();
+                            Duration.Text = FSer[0].Duration.ToString();
                         }
                     }
 
@@ -530,17 +532,7 @@ namespace MedicalServiceSystem.Reclaims
 
         private void GRDMedical_CellFormatting(object sender, CellFormattingEventArgs e)
         {
-            if (GRDMedical.RowCount > 0)
-            {
-                if (Convert.ToBoolean(e.Row.Cells["IsEnabled"].Value) == true)
-                {
-                    e.CellElement.BackColor = Color.White;
-                }
-                else
-                {
-                    e.CellElement.BackColor = Color.LightBlue;
-                }
-            }
+          
         }
 
         private void Button3_Click(object sender, EventArgs e)
@@ -599,6 +591,21 @@ namespace MedicalServiceSystem.Reclaims
                     }
                 }
 
+            }
+        }
+
+        private void GRDMedical_RowFormatting(object sender, RowFormattingEventArgs e)
+        {
+            if (GRDMedical.RowCount > 0)
+            {
+                if (Convert.ToBoolean(e.RowElement.RowInfo.Cells["IsEnabled"].Value) == true)
+                {
+                    e.RowElement.BackColor = Color.White;
+                }
+                else
+                {
+                    e.RowElement.BackColor = Color.LightBlue;
+                }
             }
         }
     }

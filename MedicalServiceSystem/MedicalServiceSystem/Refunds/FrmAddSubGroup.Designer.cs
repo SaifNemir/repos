@@ -56,17 +56,18 @@ namespace MedicalServiceSystem.Reclaims
             this.GroupEname.Font = new System.Drawing.Font("Sakkal Majalla", 14.25F);
             this.GroupEname.Location = new System.Drawing.Point(12, 50);
             this.GroupEname.Name = "GroupEname";
-            this.GroupEname.Size = new System.Drawing.Size(378, 27);
+            this.GroupEname.Size = new System.Drawing.Size(378, 32);
             this.GroupEname.TabIndex = 0;
             this.GroupEname.ThemeName = "Office2010Blue";
             // 
             // Button1
             // 
-            this.Button1.Location = new System.Drawing.Point(353, 91);
+            this.Button1.Image = global::MedicalServiceSystem.Properties.Resources.icons8_downloading_updates_48;
+            this.Button1.ImageAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.Button1.Location = new System.Drawing.Point(298, 91);
             this.Button1.Name = "Button1";
-            this.Button1.Size = new System.Drawing.Size(92, 42);
+            this.Button1.Size = new System.Drawing.Size(92, 52);
             this.Button1.TabIndex = 4;
-            this.Button1.Text = "موافق";
             this.Button1.ThemeName = "Office2010Blue";
             this.Button1.Click += new System.EventHandler(this.Button1_Click_1);
             // 
@@ -75,7 +76,7 @@ namespace MedicalServiceSystem.Reclaims
             this.Label1.Font = new System.Drawing.Font("Sakkal Majalla", 14.25F);
             this.Label1.Location = new System.Drawing.Point(396, 49);
             this.Label1.Name = "Label1";
-            this.Label1.Size = new System.Drawing.Size(266, 26);
+            this.Label1.Size = new System.Drawing.Size(234, 31);
             this.Label1.TabIndex = 2;
             this.Label1.Text = "اسم المجموعة الفرعية باللغة الانجليزية :";
             this.Label1.TextAlignment = System.Drawing.ContentAlignment.TopRight;
@@ -86,7 +87,7 @@ namespace MedicalServiceSystem.Reclaims
             this.Label2.Font = new System.Drawing.Font("Sakkal Majalla", 14.25F);
             this.Label2.Location = new System.Drawing.Point(396, 12);
             this.Label2.Name = "Label2";
-            this.Label2.Size = new System.Drawing.Size(247, 26);
+            this.Label2.Size = new System.Drawing.Size(221, 31);
             this.Label2.TabIndex = 4;
             this.Label2.Text = "اسم المجموعة الفرعية باللغة العربية :";
             this.Label2.TextAlignment = System.Drawing.ContentAlignment.TopRight;
@@ -98,19 +99,21 @@ namespace MedicalServiceSystem.Reclaims
             this.GroupAName.Font = new System.Drawing.Font("Sakkal Majalla", 14.25F);
             this.GroupAName.Location = new System.Drawing.Point(12, 12);
             this.GroupAName.Name = "GroupAName";
-            this.GroupAName.Size = new System.Drawing.Size(378, 27);
+            this.GroupAName.Size = new System.Drawing.Size(378, 32);
             this.GroupAName.TabIndex = 1;
             this.GroupAName.ThemeName = "Office2010Blue";
             // 
             // Button2
             // 
             this.Button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.Button2.Location = new System.Drawing.Point(173, 91);
+            this.Button2.Image = global::MedicalServiceSystem.Properties.Resources.icons8_logout_rounded_left_32;
+            this.Button2.ImageAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.Button2.Location = new System.Drawing.Point(200, 91);
             this.Button2.Name = "Button2";
-            this.Button2.Size = new System.Drawing.Size(92, 42);
+            this.Button2.Size = new System.Drawing.Size(92, 52);
             this.Button2.TabIndex = 5;
-            this.Button2.Text = "خروج";
             this.Button2.ThemeName = "Office2010Blue";
+            this.Button2.Click += new System.EventHandler(this.Button2_Click_1);
             // 
             // Label4
             // 
@@ -118,7 +121,7 @@ namespace MedicalServiceSystem.Reclaims
             this.Label4.ForeColor = System.Drawing.Color.Crimson;
             this.Label4.Location = new System.Drawing.Point(382, 242);
             this.Label4.Name = "Label4";
-            this.Label4.Size = new System.Drawing.Size(41, 22);
+            this.Label4.Size = new System.Drawing.Size(36, 26);
             this.Label4.TabIndex = 9;
             this.Label4.Text = "خروج";
             this.Label4.TextAlignment = System.Drawing.ContentAlignment.TopRight;
@@ -129,7 +132,7 @@ namespace MedicalServiceSystem.Reclaims
             this.Label7.ForeColor = System.Drawing.Color.Crimson;
             this.Label7.Location = new System.Drawing.Point(262, 242);
             this.Label7.Name = "Label7";
-            this.Label7.Size = new System.Drawing.Size(31, 22);
+            this.Label7.Size = new System.Drawing.Size(34, 26);
             this.Label7.TabIndex = 9;
             this.Label7.Text = "حفظ";
             this.Label7.TextAlignment = System.Drawing.ContentAlignment.TopRight;
@@ -138,7 +141,7 @@ namespace MedicalServiceSystem.Reclaims
             // 
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(623, 140);
+            this.ClientSize = new System.Drawing.Size(623, 152);
             this.Controls.Add(this.Label7);
             this.Controls.Add(this.Label4);
             this.Controls.Add(this.Button2);

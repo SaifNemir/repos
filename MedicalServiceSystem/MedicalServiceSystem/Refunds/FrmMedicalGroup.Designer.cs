@@ -44,10 +44,12 @@ namespace MedicalServiceSystem.Reclaims
             this.ToolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.Button2 = new Telerik.WinControls.UI.RadButton();
             this.office2010BlueTheme1 = new Telerik.WinControls.Themes.Office2010BlueTheme();
+            this.Button4 = new Telerik.WinControls.UI.RadButton();
             ((System.ComponentModel.ISupportInitialize)(this.GRDGroup)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GRDGroup.MasterTemplate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Button2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Button4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
             // 
@@ -59,7 +61,7 @@ namespace MedicalServiceSystem.Reclaims
             this.GRDGroup.Font = new System.Drawing.Font("Sakkal Majalla", 12F);
             this.GRDGroup.ForeColor = System.Drawing.Color.Black;
             this.GRDGroup.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.GRDGroup.Location = new System.Drawing.Point(-3, 51);
+            this.GRDGroup.Location = new System.Drawing.Point(-3, 65);
             // 
             // 
             // 
@@ -121,11 +123,11 @@ namespace MedicalServiceSystem.Reclaims
             this.GRDGroup.ReadOnly = true;
             this.GRDGroup.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.GRDGroup.ShowGroupPanel = false;
-            this.GRDGroup.Size = new System.Drawing.Size(800, 568);
+            this.GRDGroup.Size = new System.Drawing.Size(800, 493);
             this.GRDGroup.TabIndex = 0;
             this.GRDGroup.ThemeName = "Office2010Blue";
-            this.GRDGroup.VirtualMode = true;
             this.GRDGroup.CellFormatting += new Telerik.WinControls.UI.CellFormattingEventHandler(this.GRDGroup_CellFormatting);
+            this.GRDGroup.CellClick += new Telerik.WinControls.UI.GridViewCellEventHandler(this.GRDGroup_CellClick);
             this.GRDGroup.CommandCellClick += new Telerik.WinControls.UI.CommandCellClickEventHandler(this.GRDGroup_CommandCellClick);
             // 
             // PictureBox1
@@ -142,23 +144,41 @@ namespace MedicalServiceSystem.Reclaims
             this.Button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Button2.Font = new System.Drawing.Font("Sakkal Majalla", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Button2.Image = global::MedicalServiceSystem.Properties.Resources.icons8_add_32;
             this.Button2.ImeMode = System.Windows.Forms.ImeMode.Katakana;
-            this.Button2.Location = new System.Drawing.Point(638, -2);
+            this.Button2.Location = new System.Drawing.Point(-3, 2);
             this.Button2.Name = "Button2";
-            this.Button2.Size = new System.Drawing.Size(159, 47);
+            this.Button2.Size = new System.Drawing.Size(188, 47);
             this.Button2.TabIndex = 3;
             this.Button2.Text = "اضافة مجموعة جديدة";
             this.Button2.ThemeName = "Office2010Blue";
             this.ToolTip1.SetToolTip(this.Button2, "اضافة مجموعة للمستخدمين");
             this.Button2.Click += new System.EventHandler(this.Button2_Click);
             // 
+            // Button4
+            // 
+            this.Button4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.Button4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.Button4.Font = new System.Drawing.Font("Sakkal Majalla", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
+            this.Button4.Image = global::MedicalServiceSystem.Properties.Resources.icons8_logout_rounded_left_32;
+            this.Button4.Location = new System.Drawing.Point(-3, 564);
+            this.Button4.Name = "Button4";
+            this.Button4.Size = new System.Drawing.Size(188, 44);
+            this.Button4.TabIndex = 452;
+            this.Button4.Text = "خروج";
+            this.Button4.TextAlignment = System.Drawing.ContentAlignment.MiddleRight;
+            this.Button4.ThemeName = "Office2010Blue";
+            this.Button4.Click += new System.EventHandler(this.Button4_Click);
+            // 
             // FrmMedicalGroup
             // 
             this.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.ClientSize = new System.Drawing.Size(795, 620);
+            this.ClientSize = new System.Drawing.Size(795, 610);
+            this.Controls.Add(this.Button4);
             this.Controls.Add(this.Button2);
             this.Controls.Add(this.GRDGroup);
             this.Font = new System.Drawing.Font("Sakkal Majalla", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ForeColor = System.Drawing.Color.Black;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "FrmMedicalGroup";
@@ -174,6 +194,7 @@ namespace MedicalServiceSystem.Reclaims
             ((System.ComponentModel.ISupportInitialize)(this.GRDGroup)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Button2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Button4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
             this.ResumeLayout(false);
 
@@ -192,6 +213,8 @@ namespace MedicalServiceSystem.Reclaims
         internal Telerik.WinControls.UI.GridViewCheckBoxColumn IsEnabled;
         private Telerik.WinControls.Themes.Office2010BlueTheme office2010BlueTheme1;
         private static FrmMedicalGroup _Default;
+        internal Telerik.WinControls.UI.RadButton Button4;
+
         public static FrmMedicalGroup Default
         {
             get

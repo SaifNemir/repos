@@ -136,23 +136,25 @@
             // 
             this.Button1.Font = new System.Drawing.Font("Sakkal Majalla", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Button1.ForeColor = System.Drawing.Color.Crimson;
+            this.Button1.Image = global::MedicalServiceSystem.Properties.Resources.icons8_downloading_updates_48;
+            this.Button1.ImageAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.Button1.Location = new System.Drawing.Point(389, 185);
             this.Button1.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.Button1.Name = "Button1";
-            this.Button1.Size = new System.Drawing.Size(117, 31);
+            this.Button1.Size = new System.Drawing.Size(117, 59);
             this.Button1.TabIndex = 26;
-            this.Button1.Text = "اضافة";
             this.Button1.Click += new System.EventHandler(this.Button1_Click);
             // 
             // radButton1
             // 
             this.radButton1.Font = new System.Drawing.Font("Sakkal Majalla", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radButton1.Image = global::MedicalServiceSystem.Properties.Resources.icons8_logout_rounded_left_32;
+            this.radButton1.ImageAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.radButton1.Location = new System.Drawing.Point(264, 185);
             this.radButton1.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.radButton1.Name = "radButton1";
-            this.radButton1.Size = new System.Drawing.Size(117, 31);
+            this.radButton1.Size = new System.Drawing.Size(117, 59);
             this.radButton1.TabIndex = 29;
-            this.radButton1.Text = "خروج";
             this.radButton1.Click += new System.EventHandler(this.RadButton1_Click_1);
             // 
             // radLabel4
@@ -244,7 +246,7 @@
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(776, 224);
+            this.ClientSize = new System.Drawing.Size(776, 250);
             this.Controls.Add(this.radLabel1);
             this.Controls.Add(this.University);
             this.Controls.Add(this.radLabel4);

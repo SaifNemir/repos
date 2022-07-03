@@ -24,6 +24,7 @@ namespace MedicalServiceSystem.Reclaims
         public int LocalityId = 0;
         public int ReclaimId = 0;
         public int ClientId = 0;
+        public string ReNo = "";
         private void card_no_TextChanged(object sender, EventArgs e)
         {
             if (InsuranceNo.Text.Length == 0)
@@ -69,6 +70,7 @@ namespace MedicalServiceSystem.Reclaims
 
         private void Reception_Load(object sender, EventArgs e)
         {
+            OperationDate.Value = PLC.getdate();
             UserId = LoginForm.Default.UserId;
             LocalityId = LoginForm.Default.LocalityId;
             BillDate.Value = PLC.getdate();
@@ -106,6 +108,18 @@ namespace MedicalServiceSystem.Reclaims
                             dasearch.Fill(dtsearch);
                             if (dtsearch.Rows.Count > 0)
                             {
+                                //int Clint = Convert.ToInt32(dtsearch.Rows[0]["ClientId"]);
+                                //string Srcl = "select top 1 * from Contracts where ClientId=" + Clint + " and RowStatus<>2";
+                                //SqlDataAdapter daclient = new SqlDataAdapter(Srcl, PLC.conNew);
+                                //DataTable dtclient = new DataTable();
+                                //dtclient.Clear();
+                                //daclient.Fill(dtclient);
+                                //if (Convert.ToInt32(dtclient.Rows[0]["contractStatus"]) == 1)
+                                //{
+                                //    MessageBox.Show("عقد المخدم الذي يتبع له هذا المشترك موقوف :" + (char)13 + "واسم العقد هو" + " " + dtclient.Rows[0]["Description"]+" "+ dtclient.Rows[0]["ClientId"], "النظام", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                                //    this.Cursor = Cursors.Default;
+                                //    return;
+                                //}
                                 if (Convert.ToInt32(dtsearch.Rows[0]["Status"]) == 1)
                                 {
                                     MessageBox.Show("هذا المشترك موقوف وسبب الايقاف هو :" + (char)13 + dtsearch.Rows[0]["Comment"], "النظام", MessageBoxButtons.OK, MessageBoxIcon.Stop);
@@ -536,7 +550,7 @@ namespace MedicalServiceSystem.Reclaims
                         int GId = db.Reclaims.Where(p => p.UserId == UserId).Max(p => p.Id);
                         ReclaimId = GId;
                         string ltr = db.Localities.Where(p => p.Id == LocalityId).ToList()[0].LocalityLetter;
-                        string ReNo = ltr + GId.ToString();
+                         ReNo = ltr + GId.ToString();
                         OperationNo.Text = ReNo;
                         var RNo = db.Reclaims.Where(p => p.Id == GId).FirstOrDefault();
                         RNo.ReclaimNo = ReNo;
@@ -649,6 +663,25 @@ namespace MedicalServiceSystem.Reclaims
         {
             FrmSearch frs = new FrmSearch();
             frs.ShowDialog();
+        }
+
+        private void BTNStop_Click(object sender, EventArgs e)
+        {
+            if (InsuranceNo.Text.Length == 0)
+            {
+                MessageBox.Show("يجب ادخال بيانات المشترك", "النظام", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                InsuranceNo.Focus();
+                return;
+            }
+            if (CustName.Text.Length == 0)
+            {
+                MessageBox.Show("يجب ادخال بيانات المشترك", "النظام", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                CustName.Focus();
+                return;
+            }
+            FRMStopSubscriber.Default.card_no.Text = InsuranceNo.Text;
+            FRMStopSubscriber.Default.ful_name.Text = CustName.Text;
+            FRMStopSubscriber.Default.ShowDialog();
         }
     }
 }

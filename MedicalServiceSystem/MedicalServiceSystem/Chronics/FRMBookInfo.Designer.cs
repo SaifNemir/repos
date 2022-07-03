@@ -138,10 +138,11 @@
             // 
             this.Button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.Button3.Font = new System.Drawing.Font("Sakkal Majalla", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
+            this.Button3.Image = global::MedicalServiceSystem.Properties.Resources.icons8_remove_48;
             this.Button3.Location = new System.Drawing.Point(267, 394);
             this.Button3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Button3.Name = "Button3";
-            this.Button3.Size = new System.Drawing.Size(156, 25);
+            this.Button3.Size = new System.Drawing.Size(156, 47);
             this.Button3.TabIndex = 398;
             this.Button3.Text = "حذف";
             this.Button3.ThemeName = "Office2010Blue";
@@ -152,10 +153,11 @@
             // 
             this.Button4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.Button4.Font = new System.Drawing.Font("Sakkal Majalla", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
+            this.Button4.Image = global::MedicalServiceSystem.Properties.Resources.icons8_downloading_updates_48;
             this.Button4.Location = new System.Drawing.Point(427, 394);
             this.Button4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Button4.Name = "Button4";
-            this.Button4.Size = new System.Drawing.Size(156, 25);
+            this.Button4.Size = new System.Drawing.Size(156, 47);
             this.Button4.TabIndex = 4;
             this.Button4.Text = "حفظ";
             this.Button4.ThemeName = "Office2010Blue";
@@ -166,10 +168,11 @@
             // 
             this.Button6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.Button6.Font = new System.Drawing.Font("Sakkal Majalla", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
+            this.Button6.Image = global::MedicalServiceSystem.Properties.Resources.icons8_add_new_24;
             this.Button6.Location = new System.Drawing.Point(587, 394);
             this.Button6.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Button6.Name = "Button6";
-            this.Button6.Size = new System.Drawing.Size(156, 25);
+            this.Button6.Size = new System.Drawing.Size(156, 47);
             this.Button6.TabIndex = 0;
             this.Button6.Text = "اضافة دفتر";
             this.Button6.ThemeName = "Office2010Blue";
@@ -338,7 +341,7 @@
             this.GrdDailyWork.Font = new System.Drawing.Font("Sakkal Majalla", 12F);
             this.GrdDailyWork.ForeColor = System.Drawing.Color.Black;
             this.GrdDailyWork.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.GrdDailyWork.Location = new System.Drawing.Point(12, 423);
+            this.GrdDailyWork.Location = new System.Drawing.Point(12, 447);
             this.GrdDailyWork.Margin = new System.Windows.Forms.Padding(2);
             // 
             // 
@@ -374,7 +377,7 @@
             this.GrdDailyWork.Name = "GrdDailyWork";
             this.GrdDailyWork.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.GrdDailyWork.ShowGroupPanel = false;
-            this.GrdDailyWork.Size = new System.Drawing.Size(1022, 199);
+            this.GrdDailyWork.Size = new System.Drawing.Size(1022, 175);
             this.GrdDailyWork.TabIndex = 438;
             this.GrdDailyWork.ThemeName = "Office2010Blue";
             this.GrdDailyWork.CommandCellClick += new Telerik.WinControls.UI.CommandCellClickEventHandler(this.GrdDailyWork_CommandCellClick);
@@ -407,6 +410,7 @@
             // 
             this.BTNSearch.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.BTNSearch.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.BTNSearch.Image = global::MedicalServiceSystem.Properties.Resources.icons8_search_24;
             this.BTNSearch.Location = new System.Drawing.Point(444, 13);
             this.BTNSearch.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.BTNSearch.Name = "BTNSearch";
@@ -456,6 +460,7 @@
             // 
             this.radButton1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.radButton1.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.radButton1.Image = global::MedicalServiceSystem.Properties.Resources.icons8_search_24;
             this.radButton1.Location = new System.Drawing.Point(401, 6);
             this.radButton1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.radButton1.Name = "radButton1";

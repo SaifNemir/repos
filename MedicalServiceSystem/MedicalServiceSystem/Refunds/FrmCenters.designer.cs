@@ -163,9 +163,10 @@ namespace MedicalServiceSystem
             // Button2
             // 
             this.Button2.Font = new System.Drawing.Font("Sakkal Majalla", 12F);
-            this.Button2.Location = new System.Drawing.Point(1043, 6);
+            this.Button2.Image = global::MedicalServiceSystem.Properties.Resources.icons8_add_32;
+            this.Button2.Location = new System.Drawing.Point(1015, 6);
             this.Button2.Name = "Button2";
-            this.Button2.Size = new System.Drawing.Size(117, 61);
+            this.Button2.Size = new System.Drawing.Size(145, 61);
             this.Button2.TabIndex = 3;
             this.Button2.Text = "اضافة مؤسسة";
             this.Button2.Click += new System.EventHandler(this.Button2_Click);
@@ -191,9 +192,10 @@ namespace MedicalServiceSystem
             this.Button3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Button3.BackgroundImage")));
             this.Button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Button3.Font = new System.Drawing.Font("Sakkal Majalla", 12F);
-            this.Button3.Location = new System.Drawing.Point(28, 6);
+            this.Button3.Image = global::MedicalServiceSystem.Properties.Resources.icons8_logout_rounded_left_32;
+            this.Button3.Location = new System.Drawing.Point(5, 6);
             this.Button3.Name = "Button3";
-            this.Button3.Size = new System.Drawing.Size(117, 61);
+            this.Button3.Size = new System.Drawing.Size(145, 61);
             this.Button3.TabIndex = 5;
             this.Button3.Text = "خروج";
             this.Button3.Click += new System.EventHandler(this.Button3_Click);

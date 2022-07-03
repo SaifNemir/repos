@@ -39,9 +39,9 @@ namespace MedicalServiceSystem.Reclaims
             Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn7 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
             Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn8 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
             Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn9 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn10 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
             Telerik.WinControls.UI.GridViewCommandColumn gridViewCommandColumn1 = new Telerik.WinControls.UI.GridViewCommandColumn();
             Telerik.WinControls.UI.GridViewCommandColumn gridViewCommandColumn2 = new Telerik.WinControls.UI.GridViewCommandColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn10 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
             Telerik.WinControls.Data.SortDescriptor sortDescriptor1 = new Telerik.WinControls.Data.SortDescriptor();
             Telerik.WinControls.UI.TableViewDefinition tableViewDefinition1 = new Telerik.WinControls.UI.TableViewDefinition();
             this.Label5 = new Telerik.WinControls.UI.RadLabel();
@@ -225,21 +225,20 @@ namespace MedicalServiceSystem.Reclaims
             gridViewTextBoxColumn9.FieldName = "Adm_R";
             gridViewTextBoxColumn9.HeaderText = "Adm.R";
             gridViewTextBoxColumn9.Name = "Adm_R";
-            gridViewCommandColumn1.EnableExpressionEditor = false;
-            gridViewCommandColumn1.ExcelExportType = Telerik.WinControls.UI.Export.DisplayFormatType.MediumTime;
-            gridViewCommandColumn1.HeaderText = "EDIT";
-            gridViewCommandColumn1.ImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            gridViewCommandColumn1.Name = "Edit";
-            gridViewCommandColumn1.SortOrder = Telerik.WinControls.UI.RadSortOrder.Ascending;
-            gridViewCommandColumn2.EnableExpressionEditor = false;
-            gridViewCommandColumn2.HeaderText = "Disable/Enable";
-            gridViewCommandColumn2.ImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            gridViewCommandColumn2.Name = "Delete";
-            gridViewCommandColumn2.Width = 100;
             gridViewTextBoxColumn10.FieldName = "Activated";
             gridViewTextBoxColumn10.HeaderText = "column1";
             gridViewTextBoxColumn10.IsVisible = false;
             gridViewTextBoxColumn10.Name = "Activated";
+            gridViewCommandColumn1.DefaultText = "Edit";
+            gridViewCommandColumn1.HeaderText = "Edit";
+            gridViewCommandColumn1.Name = "Edit";
+            gridViewCommandColumn1.SortOrder = Telerik.WinControls.UI.RadSortOrder.Ascending;
+            gridViewCommandColumn1.UseDefaultText = true;
+            gridViewCommandColumn2.DefaultText = "Enable\\Disable";
+            gridViewCommandColumn2.HeaderText = "Enable\\Disable";
+            gridViewCommandColumn2.Name = "Delete";
+            gridViewCommandColumn2.UseDefaultText = true;
+            gridViewCommandColumn2.Width = 120;
             this.GRDMedicine.MasterTemplate.Columns.AddRange(new Telerik.WinControls.UI.GridViewDataColumn[] {
             gridViewTextBoxColumn1,
             gridViewTextBoxColumn2,
@@ -250,9 +249,9 @@ namespace MedicalServiceSystem.Reclaims
             gridViewTextBoxColumn7,
             gridViewTextBoxColumn8,
             gridViewTextBoxColumn9,
+            gridViewTextBoxColumn10,
             gridViewCommandColumn1,
-            gridViewCommandColumn2,
-            gridViewTextBoxColumn10});
+            gridViewCommandColumn2});
             this.GRDMedicine.MasterTemplate.EnableFiltering = true;
             sortDescriptor1.PropertyName = "Edit";
             this.GRDMedicine.MasterTemplate.SortDescriptors.AddRange(new Telerik.WinControls.Data.SortDescriptor[] {
@@ -266,6 +265,7 @@ namespace MedicalServiceSystem.Reclaims
             this.GRDMedicine.ThemeName = "Office2010Blue";
             this.GRDMedicine.RowFormatting += new Telerik.WinControls.UI.RowFormattingEventHandler(this.GRDMedicine_RowFormatting);
             this.GRDMedicine.CellFormatting += new Telerik.WinControls.UI.CellFormattingEventHandler(this.GRDMedicine_CellFormatting);
+            this.GRDMedicine.CellClick += new Telerik.WinControls.UI.GridViewCellEventHandler(this.GRDMedicine_CellClick);
             this.GRDMedicine.CommandCellClick += new Telerik.WinControls.UI.CommandCellClickEventHandler(this.GRDMedicine_CommandCellClick);
             // 
             // Button2
@@ -286,9 +286,10 @@ namespace MedicalServiceSystem.Reclaims
             this.BtnAdd.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.BtnAdd.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.BtnAdd.Font = new System.Drawing.Font("Sakkal Majalla", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
-            this.BtnAdd.Location = new System.Drawing.Point(817, 296);
+            this.BtnAdd.Image = global::MedicalServiceSystem.Properties.Resources.icons8_usb_connected_32;
+            this.BtnAdd.Location = new System.Drawing.Point(764, 299);
             this.BtnAdd.Name = "BtnAdd";
-            this.BtnAdd.Size = new System.Drawing.Size(99, 42);
+            this.BtnAdd.Size = new System.Drawing.Size(130, 42);
             this.BtnAdd.TabIndex = 10;
             this.BtnAdd.Text = "Save";
             this.BtnAdd.ThemeName = "Office2010Blue";
@@ -312,9 +313,10 @@ namespace MedicalServiceSystem.Reclaims
             this.Button1.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.Button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Button1.Font = new System.Drawing.Font("Sakkal Majalla", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Button1.Location = new System.Drawing.Point(932, 296);
+            this.Button1.Image = global::MedicalServiceSystem.Properties.Resources.icons8_add_32;
+            this.Button1.Location = new System.Drawing.Point(900, 299);
             this.Button1.Name = "Button1";
-            this.Button1.Size = new System.Drawing.Size(98, 42);
+            this.Button1.Size = new System.Drawing.Size(130, 42);
             this.Button1.TabIndex = 11;
             this.Button1.Text = "Add New";
             this.Button1.ThemeName = "Office2010Blue";
@@ -396,12 +398,15 @@ namespace MedicalServiceSystem.Reclaims
             this.Button6.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.Button6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Button6.Font = new System.Drawing.Font("Sakkal Majalla", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
-            this.Button6.Location = new System.Drawing.Point(861, 12);
+            this.Button6.Image = global::MedicalServiceSystem.Properties.Resources.icons8_job_32;
+            this.Button6.Location = new System.Drawing.Point(764, 12);
             this.Button6.Name = "Button6";
-            this.Button6.Size = new System.Drawing.Size(169, 44);
+            this.Button6.Size = new System.Drawing.Size(266, 38);
             this.Button6.TabIndex = 460;
             this.Button6.Text = "ATC Setting";
+            this.Button6.TextAlignment = System.Drawing.ContentAlignment.BottomCenter;
             this.Button6.ThemeName = "Office2010Blue";
+            this.Button6.Click += new System.EventHandler(this.Button6_Click);
             // 
             // Unit
             // 
@@ -570,9 +575,10 @@ namespace MedicalServiceSystem.Reclaims
             this.radButton1.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.radButton1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.radButton1.Font = new System.Drawing.Font("Sakkal Majalla", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radButton1.Image = global::MedicalServiceSystem.Properties.Resources.icons8_data_transfer_32;
             this.radButton1.Location = new System.Drawing.Point(306, 103);
             this.radButton1.Name = "radButton1";
-            this.radButton1.Size = new System.Drawing.Size(50, 28);
+            this.radButton1.Size = new System.Drawing.Size(93, 28);
             this.radButton1.TabIndex = 476;
             this.radButton1.Text = "...";
             this.radButton1.ThemeName = "Office2010Blue";

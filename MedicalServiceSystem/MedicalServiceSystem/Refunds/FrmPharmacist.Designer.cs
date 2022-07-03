@@ -66,6 +66,7 @@
             // Savebtn
             // 
             this.Savebtn.Font = new System.Drawing.Font("Sakkal Majalla", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Savebtn.Image = global::MedicalServiceSystem.Properties.Resources.icons8_usb_connected_32;
             this.Savebtn.Location = new System.Drawing.Point(18, 75);
             this.Savebtn.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Savebtn.Name = "Savebtn";
@@ -160,6 +161,7 @@
             // radButton1
             // 
             this.radButton1.Font = new System.Drawing.Font("Sakkal Majalla", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radButton1.Image = global::MedicalServiceSystem.Properties.Resources.icons8_add_32;
             this.radButton1.Location = new System.Drawing.Point(1060, 75);
             this.radButton1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.radButton1.Name = "radButton1";
@@ -186,6 +188,7 @@
             // 
             this.radButton2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.radButton2.Font = new System.Drawing.Font("Sakkal Majalla", 14.25F);
+            this.radButton2.Image = global::MedicalServiceSystem.Properties.Resources.icons8_logout_rounded_left_32;
             this.radButton2.Location = new System.Drawing.Point(1060, 495);
             this.radButton2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.radButton2.Name = "radButton2";

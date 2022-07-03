@@ -34,6 +34,7 @@
             Telerik.WinControls.UI.GridViewCommandColumn gridViewCommandColumn2 = new Telerik.WinControls.UI.GridViewCommandColumn();
             Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn3 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
             Telerik.WinControls.UI.TableViewDefinition tableViewDefinition1 = new Telerik.WinControls.UI.TableViewDefinition();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmChronics));
             this.namelbl = new Telerik.WinControls.UI.RadLabel();
             this.Savebtn = new Telerik.WinControls.UI.RadButton();
             this.radTextBox1 = new Telerik.WinControls.UI.RadTextBox();
@@ -66,10 +67,11 @@
             // Savebtn
             // 
             this.Savebtn.Font = new System.Drawing.Font("Sakkal Majalla", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Savebtn.Location = new System.Drawing.Point(18, 75);
+            this.Savebtn.Image = global::MedicalServiceSystem.Properties.Resources.icons8_downloading_updates_48;
+            this.Savebtn.Location = new System.Drawing.Point(18, 53);
             this.Savebtn.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Savebtn.Name = "Savebtn";
-            this.Savebtn.Size = new System.Drawing.Size(182, 36);
+            this.Savebtn.Size = new System.Drawing.Size(182, 58);
             this.Savebtn.TabIndex = 2;
             this.Savebtn.Text = "حفظ";
             this.Savebtn.Click += new System.EventHandler(this.Savebtn_Click);
@@ -151,7 +153,7 @@
             this.GrdTrades.ReadOnly = true;
             this.GrdTrades.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.GrdTrades.ShowGroupPanel = false;
-            this.GrdTrades.Size = new System.Drawing.Size(1241, 360);
+            this.GrdTrades.Size = new System.Drawing.Size(1241, 355);
             this.GrdTrades.TabIndex = 15;
             this.GrdTrades.RowFormatting += new Telerik.WinControls.UI.RowFormattingEventHandler(this.GrdTrades_RowFormatting);
             this.GrdTrades.CellFormatting += new Telerik.WinControls.UI.CellFormattingEventHandler(this.GrdTrades_CellFormatting);
@@ -160,10 +162,11 @@
             // radButton1
             // 
             this.radButton1.Font = new System.Drawing.Font("Sakkal Majalla", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radButton1.Location = new System.Drawing.Point(1060, 75);
+            this.radButton1.Image = ((System.Drawing.Image)(resources.GetObject("radButton1.Image")));
+            this.radButton1.Location = new System.Drawing.Point(1060, 53);
             this.radButton1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.radButton1.Name = "radButton1";
-            this.radButton1.Size = new System.Drawing.Size(182, 36);
+            this.radButton1.Size = new System.Drawing.Size(182, 58);
             this.radButton1.TabIndex = 16;
             this.radButton1.Text = "ادخال مرض جديد";
             this.radButton1.Click += new System.EventHandler(this.radButton1_Click);
@@ -187,10 +190,11 @@
             // 
             this.radButton2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.radButton2.Font = new System.Drawing.Font("Sakkal Majalla", 14.25F);
-            this.radButton2.Location = new System.Drawing.Point(1060, 495);
+            this.radButton2.Image = global::MedicalServiceSystem.Properties.Resources.icons8_logout_rounded_left_32;
+            this.radButton2.Location = new System.Drawing.Point(1060, 483);
             this.radButton2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.radButton2.Name = "radButton2";
-            this.radButton2.Size = new System.Drawing.Size(182, 36);
+            this.radButton2.Size = new System.Drawing.Size(182, 48);
             this.radButton2.TabIndex = 3;
             this.radButton2.Text = "خروج";
             this.radButton2.Click += new System.EventHandler(this.radButton2_Click);
@@ -199,7 +203,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1260, 545);
+            this.ClientSize = new System.Drawing.Size(1260, 540);
             this.Controls.Add(this.radButton2);
             this.Controls.Add(this.ChronicList);
             this.Controls.Add(this.radButton1);
@@ -214,7 +218,7 @@
             this.MinimizeBox = false;
             this.Name = "FrmChronics";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Add New Pharmacist";
+            this.Text = "اعداد قائمة الأمراض المزمنة";
             this.Load += new System.EventHandler(this.AddNewItem_Load);
             ((System.ComponentModel.ISupportInitialize)(this.namelbl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Savebtn)).EndInit();

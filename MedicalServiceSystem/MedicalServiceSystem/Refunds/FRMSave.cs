@@ -18,7 +18,12 @@ namespace MedicalServiceSystem.Reclaims
         private void Button1_Click(object sender, System.EventArgs e)
         {
             FRMReception.Default.OperationNo.Text = OPr.Text.Trim();
-            this.Dispose();
+            Close();
+        }
+
+        private void FRMSave_Load(object sender, EventArgs e)
+        {
+            OPr.Text = FRMReception.Default.ReNo;
         }
     }
 }

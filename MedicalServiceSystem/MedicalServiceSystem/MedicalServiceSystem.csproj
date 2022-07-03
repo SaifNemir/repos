@@ -28,7 +28,7 @@
     <MapFileExtensions>true</MapFileExtensions>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>41</ApplicationRevision>
+    <ApplicationRevision>50</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -95,20 +95,11 @@
     <Reference Include="System.Xml" />
     <Reference Include="Telerik.Reporting, Version=14.0.20.115, Culture=neutral, PublicKeyToken=a9d7983dfcc261be" />
     <Reference Include="Telerik.ReportViewer.WinForms, Version=14.0.20.115, Culture=neutral, PublicKeyToken=a9d7983dfcc261be, processorArchitecture=MSIL" />
-    <Reference Include="Telerik.WinControls, Version=2020.1.113.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
-      <HintPath>..\lib\RCWF\2020.1.113.40\Telerik.WinControls.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
+    <Reference Include="Telerik.WinControls, Version=2020.1.113.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
     <Reference Include="Telerik.WinControls.GridView, Version=2020.1.113.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
     <Reference Include="Telerik.WinControls.Themes.Office2010Blue, Version=2020.1.113.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
-    <Reference Include="Telerik.WinControls.UI, Version=2020.1.113.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
-      <HintPath>..\lib\RCWF\2020.1.113.40\Telerik.WinControls.UI.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="TelerikCommon, Version=2020.1.113.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
-      <HintPath>..\lib\RCWF\2020.1.113.40\TelerikCommon.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
+    <Reference Include="Telerik.WinControls.UI, Version=2020.1.113.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.WinControls.UI.Design, Version=2020.1.113.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Chronics\FRMBookInfo.cs">
@@ -122,6 +113,36 @@
     </Compile>
     <Compile Include="Refunds\FRMApproveSearch.Designer.cs">
       <DependentUpon>FRMApproveSearch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Refunds\FrmMedicalReasons.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Refunds\FrmMedicalReasons.Designer.cs">
+      <DependentUpon>FrmMedicalReasons.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Refunds\FrmMedicineReasons.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Refunds\FrmMedicineReasons.Designer.cs">
+      <DependentUpon>FrmMedicineReasons.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Refunds\FrmMedicineATC.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Refunds\FrmMedicineATC.Designer.cs">
+      <DependentUpon>FrmMedicineATC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Refunds\FrmMedicineList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Refunds\FrmMedicineList.Designer.cs">
+      <DependentUpon>FrmMedicineList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Refunds\FRMEstrdadhistory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Refunds\FRMEstrdadhistory.Designer.cs">
+      <DependentUpon>FRMEstrdadhistory.cs</DependentUpon>
     </Compile>
     <Compile Include="ReportForAll.cs" />
     <Compile Include="Refunds\AllSupplierRPT.cs">
@@ -336,6 +357,12 @@
     <Compile Include="Reports\RPTِApproveDWACount.Designer.cs">
       <DependentUpon>RPTِApproveDWACount.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reports\RPTِEstrdadCommittee.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\RPTِEstrdadCommittee.Designer.cs">
+      <DependentUpon>RPTِEstrdadCommittee.cs</DependentUpon>
+    </Compile>
     <Compile Include="Reports\RPTِEstrdadCountLoc.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -462,11 +489,26 @@
     <EmbeddedResource Include="Refunds\FrmAppMedicineTyp.resx">
       <DependentUpon>FrmAppMedicineTyp.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Refunds\FrmMedicalReasons.resx">
+      <DependentUpon>FrmMedicalReasons.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Refunds\FrmMedicineReasons.resx">
+      <DependentUpon>FrmMedicineReasons.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Refunds\FrmChronics.resx">
       <DependentUpon>FrmChronics.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Refunds\FRMApproveSearch.resx">
       <DependentUpon>FRMApproveSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Refunds\FrmMedicineATC.resx">
+      <DependentUpon>FrmMedicineATC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Refunds\FrmMedicineList.resx">
+      <DependentUpon>FrmMedicineList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Refunds\FRMEstrdadhistory.resx">
+      <DependentUpon>FRMEstrdadhistory.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Refunds\FrmPharmacist.resx">
       <DependentUpon>FrmPharmacist.cs</DependentUpon>
@@ -554,6 +596,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\RPTِApproveDWACount.resx">
       <DependentUpon>RPTِApproveDWACount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\RPTِEstrdadCommittee.resx">
+      <DependentUpon>RPTِEstrdadCommittee.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\RPTِEstrdadCountLoc.resx">
       <DependentUpon>RPTِEstrdadCountLoc.cs</DependentUpon>
@@ -847,6 +892,117 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\UsersSetting.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-add-property-50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-servers-group-80.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-medicine-64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-medical-64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-medicine-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-medical-641.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-add-new-24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-downloading-updates-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-remove-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-stop-gesture-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-search-64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-search-24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Medical_setup_96px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_job_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_add_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_save_close_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_usb_connected_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_data_transfer_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_send_to_printer_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_print_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-remove-481.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_logout_rounded_left_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_do_not_touch_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-add-property-501.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MedicalSubGrouping_96px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_undo_alt_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_pills_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_separated_lists_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_ecg_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_pill_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_location_off_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_copy_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_paste_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_list_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_list1_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_list_of_thumbnails_48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_list_of_thumbnails1_48.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

@@ -41,7 +41,6 @@ namespace MedicalServiceSystem
 		[System.Diagnostics.DebuggerStepThrough()]
 		private void InitializeComponent()
 		{
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmAddCenter));
             this.Button1 = new System.Windows.Forms.Button();
             this.Label1 = new System.Windows.Forms.Label();
             this.Button2 = new System.Windows.Forms.Button();
@@ -58,8 +57,8 @@ namespace MedicalServiceSystem
             // 
             // Button1
             // 
-            this.Button1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Button1.BackgroundImage")));
             this.Button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Button1.Image = global::MedicalServiceSystem.Properties.Resources.icons8_downloading_updates_48;
             this.Button1.Location = new System.Drawing.Point(247, 149);
             this.Button1.Name = "Button1";
             this.Button1.Size = new System.Drawing.Size(59, 42);
@@ -79,8 +78,8 @@ namespace MedicalServiceSystem
             // 
             // Button2
             // 
-            this.Button2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Button2.BackgroundImage")));
             this.Button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Button2.Image = global::MedicalServiceSystem.Properties.Resources.icons8_logout_rounded_left_32;
             this.Button2.Location = new System.Drawing.Point(346, 149);
             this.Button2.Name = "Button2";
             this.Button2.Size = new System.Drawing.Size(59, 42);
@@ -154,9 +153,9 @@ namespace MedicalServiceSystem
             this.LblCount.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.LblCount.Font = new System.Drawing.Font("Sakkal Majalla", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblCount.ForeColor = System.Drawing.Color.Crimson;
-            this.LblCount.Location = new System.Drawing.Point(1, 2);
+            this.LblCount.Location = new System.Drawing.Point(0, 0);
             this.LblCount.Name = "LblCount";
-            this.LblCount.Size = new System.Drawing.Size(631, 42);
+            this.LblCount.Size = new System.Drawing.Size(633, 42);
             this.LblCount.TabIndex = 6;
             this.LblCount.Text = "اضافة/تعديل مؤسسة علاجية";
             this.LblCount.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;

@@ -162,6 +162,7 @@ namespace MedicalServiceSystem.Reclaims
                             {
                                 FRMpatienthistory.Default.Grid_service.Rows[i].Cells[0].Value = i + 1;
                             }
+                            FRMpatienthistory.Default.Totals.Text = FrHistoryMd.Sum(p => p.Cost).ToString();
                             FRMpatienthistory.Default.ShowDialog();
 
                         }

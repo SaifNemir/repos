@@ -253,6 +253,18 @@ namespace MedicalServiceSystem.Reclaims
                                 dasearch.Fill(dtsearch);
                                 if (dtsearch.Rows.Count > 0)
                                 {
+                                    //int Clint = Convert.ToInt32(dtsearch.Rows[0]["ClientId"]);
+                                    //string Srcl = "select top 1 * from Contracts where ClientId=" + Clint + " and RowStatus<>2";
+                                    //SqlDataAdapter daclient = new SqlDataAdapter(Srcl, PLC.conNew);
+                                    //DataTable dtclient = new DataTable();
+                                    //dtclient.Clear();
+                                    //daclient.Fill(dtclient);
+                                    //if (Convert.ToInt32(dtclient.Rows[0]["contractStatus"]) == 1)
+                                    //{
+                                    //    MessageBox.Show("عقد المخدم الذي يتبع له هذا المشترك موقوف :" + (char)13 + "واسم العقد هو" + " " + dtclient.Rows[0]["Description"] + " " +dtclient.Rows[0]["ClientId"], "النظام", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                                    //    this.Cursor = Cursors.Default;
+                                    //    return;
+                                    //}
                                     if (Convert.ToInt32(dtsearch.Rows[0]["Status"]) == 1)
                                     {
                                         MessageBox.Show("هذا المشترك موقوف وسبب الايقاف هو :" + (char)13 + dtsearch.Rows[0]["Comment"], "النظام", MessageBoxButtons.OK, MessageBoxIcon.Stop);

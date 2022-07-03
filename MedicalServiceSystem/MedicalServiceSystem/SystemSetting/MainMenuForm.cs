@@ -388,5 +388,115 @@ namespace MedicalServiceSystem
             form.WindowState = FormWindowState.Maximized;
             form.Show();
         }
+
+        private void FRMMedicineSetting_Click(object sender, EventArgs e)
+        {
+            FRMMedicineSetting form = new FRMMedicineSetting();
+            form.MdiParent = this;
+            form.WindowState = FormWindowState.Maximized;
+            form.Show();
+        }
+
+        private void FRMMedicinePricing_Click(object sender, EventArgs e)
+        {
+            FRMMedicinePricing form = new FRMMedicinePricing();
+            form.MdiParent = this;
+            form.WindowState = FormWindowState.Maximized;
+            form.Show();
+        }
+
+        private void FrmDiagnosis_Click(object sender, EventArgs e)
+        {
+
+            FrmDiagnosis form = new FrmDiagnosis();
+            form.MdiParent = this;
+            form.WindowState = FormWindowState.Maximized;
+            form.Show();
+        }
+
+        private void FrmGenerics_Click(object sender, EventArgs e)
+        {
+            FrmGenerics form = new FrmGenerics();
+            form.MdiParent = this;
+            form.WindowState = FormWindowState.Maximized;
+            form.Show();
+        }
+
+        private void FrmTrades_Click(object sender, EventArgs e)
+        {
+            FrmTrades form = new FrmTrades();
+            form.MdiParent = this;
+            form.WindowState = FormWindowState.Maximized;
+            form.Show();
+        }
+
+        private void FrmMedicineOut_Click(object sender, EventArgs e)
+        {
+            FrmMedicineOut form = new FrmMedicineOut();
+            form.MdiParent = this;
+            form.WindowState = FormWindowState.Maximized;
+            form.Show();
+        }
+
+        private void FRMMedicalSetting_Click(object sender, EventArgs e)
+        {
+            FRMMedicalSetting form = new FRMMedicalSetting();
+            form.MdiParent = this;
+            form.WindowState = FormWindowState.Maximized;
+            form.Show();
+        }
+
+        private void FrmMedicalGroup_Click(object sender, EventArgs e)
+        {
+            FrmMedicalGroup form = new FrmMedicalGroup();
+            form.MdiParent = this;
+            form.WindowState = FormWindowState.Maximized;
+            form.Show();
+        }
+
+        private void FrmMedicalSubGroup_Click(object sender, EventArgs e)
+        {
+            FrmMedicalSubGroup form = new FrmMedicalSubGroup();
+            form.MdiParent = this;
+            form.WindowState = FormWindowState.Maximized;
+            form.Show();
+        }
+
+        private void RadButtonElement5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void RadButtonElement2_Click(object sender, EventArgs e)
+        {
+            FrmDiagnosis form = new FrmDiagnosis();
+            form.MdiParent = this;
+            form.WindowState = FormWindowState.Maximized;
+            form.Show();
+        }
+
+        private void FrmMedicineReasons_Click(object sender, EventArgs e)
+        {
+            FrmMedicineReasons form = new FrmMedicineReasons();
+            form.MdiParent = this;
+            form.WindowState = FormWindowState.Maximized;
+            form.Show();
+        }
+
+        private void FrmMedicalReasons_Click(object sender, EventArgs e)
+        {
+            FrmMedicalReasons form = new FrmMedicalReasons();
+            form.MdiParent = this;
+            form.WindowState = FormWindowState.Maximized;
+            form.Show();
+        }
+
+        private void FRMApproveSearch_Click(object sender, EventArgs e)
+        {
+            FRMApproveSearch form = new FRMApproveSearch();
+            form.MdiParent = this;
+            form.WindowState = FormWindowState.Maximized;
+            form.Show();
+        }
     }
 }

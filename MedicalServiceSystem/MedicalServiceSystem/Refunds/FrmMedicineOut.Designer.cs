@@ -28,12 +28,13 @@
         /// </summary>
         public void InitializeComponent()
         {
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn1 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn2 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewCommandColumn gridViewCommandColumn1 = new Telerik.WinControls.UI.GridViewCommandColumn();
-            Telerik.WinControls.UI.GridViewCommandColumn gridViewCommandColumn2 = new Telerik.WinControls.UI.GridViewCommandColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn3 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition1 = new Telerik.WinControls.UI.TableViewDefinition();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn5 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn6 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn7 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewCommandColumn gridViewCommandColumn3 = new Telerik.WinControls.UI.GridViewCommandColumn();
+            Telerik.WinControls.UI.GridViewCommandColumn gridViewCommandColumn4 = new Telerik.WinControls.UI.GridViewCommandColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn8 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition2 = new Telerik.WinControls.UI.TableViewDefinition();
             this.namelbl = new Telerik.WinControls.UI.RadLabel();
             this.Savebtn = new Telerik.WinControls.UI.RadButton();
             this.radTextBox1 = new Telerik.WinControls.UI.RadTextBox();
@@ -42,6 +43,8 @@
             this.radButton1 = new Telerik.WinControls.UI.RadButton();
             this.TradeName = new Telerik.WinControls.UI.RadDropDownList();
             this.radButton2 = new Telerik.WinControls.UI.RadButton();
+            this.MaxCost = new System.Windows.Forms.TextBox();
+            this.radLabel1 = new Telerik.WinControls.UI.RadLabel();
             ((System.ComponentModel.ISupportInitialize)(this.namelbl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Savebtn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radTextBox1)).BeginInit();
@@ -51,6 +54,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.radButton1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TradeName)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radButton2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radLabel1)).BeginInit();
             this.SuspendLayout();
             // 
             // namelbl
@@ -66,10 +70,11 @@
             // Savebtn
             // 
             this.Savebtn.Font = new System.Drawing.Font("Sakkal Majalla", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Savebtn.Location = new System.Drawing.Point(12, 67);
+            this.Savebtn.Image = global::MedicalServiceSystem.Properties.Resources.icons8_downloading_updates_48;
+            this.Savebtn.Location = new System.Drawing.Point(12, 51);
             this.Savebtn.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Savebtn.Name = "Savebtn";
-            this.Savebtn.Size = new System.Drawing.Size(128, 32);
+            this.Savebtn.Size = new System.Drawing.Size(158, 48);
             this.Savebtn.TabIndex = 2;
             this.Savebtn.Text = "Save";
             this.Savebtn.Click += new System.EventHandler(this.Savebtn_Click);
@@ -111,38 +116,46 @@
             this.GrdTrades.MasterTemplate.AllowAddNewRow = false;
             this.GrdTrades.MasterTemplate.AllowColumnReorder = false;
             this.GrdTrades.MasterTemplate.AllowSearchRow = true;
-            gridViewTextBoxColumn1.DataType = typeof(uint);
-            gridViewTextBoxColumn1.FieldName = "Id";
-            gridViewTextBoxColumn1.HeaderText = "Medicine Code";
-            gridViewTextBoxColumn1.Name = "Id";
-            gridViewTextBoxColumn1.Width = 100;
-            gridViewTextBoxColumn2.FieldName = "TradeName";
-            gridViewTextBoxColumn2.HeaderText = "Medicine Name";
-            gridViewTextBoxColumn2.Name = "TradeName";
-            gridViewTextBoxColumn2.Width = 500;
-            gridViewCommandColumn1.DefaultText = "Edit";
-            gridViewCommandColumn1.EnableExpressionEditor = false;
-            gridViewCommandColumn1.FieldName = "Edit";
-            gridViewCommandColumn1.HeaderText = "Edit";
-            gridViewCommandColumn1.Name = "Edit";
-            gridViewCommandColumn1.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            gridViewCommandColumn1.UseDefaultText = true;
-            gridViewCommandColumn2.HeaderText = "Delete";
-            gridViewCommandColumn2.Name = "Delete";
-            gridViewTextBoxColumn3.FieldName = "Activated";
-            gridViewTextBoxColumn3.HeaderText = "column1";
-            gridViewTextBoxColumn3.IsVisible = false;
-            gridViewTextBoxColumn3.Name = "Activated";
+            gridViewTextBoxColumn5.DataType = typeof(uint);
+            gridViewTextBoxColumn5.FieldName = "Id";
+            gridViewTextBoxColumn5.HeaderText = "Medicine Code";
+            gridViewTextBoxColumn5.Name = "Id";
+            gridViewTextBoxColumn5.Width = 100;
+            gridViewTextBoxColumn6.FieldName = "TradeName";
+            gridViewTextBoxColumn6.HeaderText = "Medicine Name";
+            gridViewTextBoxColumn6.Name = "TradeName";
+            gridViewTextBoxColumn6.Width = 450;
+            gridViewTextBoxColumn7.FieldName = "MaxCost";
+            gridViewTextBoxColumn7.HeaderText = "Max Cost";
+            gridViewTextBoxColumn7.Name = "MaxCost";
+            gridViewTextBoxColumn7.Width = 100;
+            gridViewCommandColumn3.DefaultText = "Edit";
+            gridViewCommandColumn3.EnableExpressionEditor = false;
+            gridViewCommandColumn3.FieldName = "Edit";
+            gridViewCommandColumn3.HeaderText = "Edit";
+            gridViewCommandColumn3.Name = "Edit";
+            gridViewCommandColumn3.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            gridViewCommandColumn3.UseDefaultText = true;
+            gridViewCommandColumn4.DefaultText = "Enable\\Disable";
+            gridViewCommandColumn4.HeaderText = "Enable\\Disable";
+            gridViewCommandColumn4.Name = "Delete";
+            gridViewCommandColumn4.UseDefaultText = true;
+            gridViewCommandColumn4.Width = 120;
+            gridViewTextBoxColumn8.FieldName = "Activated";
+            gridViewTextBoxColumn8.HeaderText = "column1";
+            gridViewTextBoxColumn8.IsVisible = false;
+            gridViewTextBoxColumn8.Name = "Activated";
             this.GrdTrades.MasterTemplate.Columns.AddRange(new Telerik.WinControls.UI.GridViewDataColumn[] {
-            gridViewTextBoxColumn1,
-            gridViewTextBoxColumn2,
-            gridViewCommandColumn1,
-            gridViewCommandColumn2,
-            gridViewTextBoxColumn3});
+            gridViewTextBoxColumn5,
+            gridViewTextBoxColumn6,
+            gridViewTextBoxColumn7,
+            gridViewCommandColumn3,
+            gridViewCommandColumn4,
+            gridViewTextBoxColumn8});
             this.GrdTrades.MasterTemplate.EnableFiltering = true;
             this.GrdTrades.MasterTemplate.EnableGrouping = false;
             this.GrdTrades.MasterTemplate.EnableSorting = false;
-            this.GrdTrades.MasterTemplate.ViewDefinition = tableViewDefinition1;
+            this.GrdTrades.MasterTemplate.ViewDefinition = tableViewDefinition2;
             this.GrdTrades.Name = "GrdTrades";
             this.GrdTrades.ReadOnly = true;
             this.GrdTrades.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -155,10 +168,11 @@
             // radButton1
             // 
             this.radButton1.Font = new System.Drawing.Font("Sakkal Majalla", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radButton1.Location = new System.Drawing.Point(742, 67);
+            this.radButton1.Image = global::MedicalServiceSystem.Properties.Resources.icons8_add_32;
+            this.radButton1.Location = new System.Drawing.Point(675, 51);
             this.radButton1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.radButton1.Name = "radButton1";
-            this.radButton1.Size = new System.Drawing.Size(128, 32);
+            this.radButton1.Size = new System.Drawing.Size(158, 48);
             this.radButton1.TabIndex = 16;
             this.radButton1.Text = "New Medicine";
             this.radButton1.Click += new System.EventHandler(this.radButton1_Click);
@@ -179,19 +193,40 @@
             // radButton2
             // 
             this.radButton2.Font = new System.Drawing.Font("Sakkal Majalla", 14.25F);
-            this.radButton2.Location = new System.Drawing.Point(742, 443);
+            this.radButton2.Image = global::MedicalServiceSystem.Properties.Resources.icons8_logout_rounded_left_32;
+            this.radButton2.ImageAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.radButton2.Location = new System.Drawing.Point(356, 435);
             this.radButton2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.radButton2.Name = "radButton2";
-            this.radButton2.Size = new System.Drawing.Size(128, 32);
+            this.radButton2.Size = new System.Drawing.Size(128, 50);
             this.radButton2.TabIndex = 3;
-            this.radButton2.Text = "Close";
             this.radButton2.Click += new System.EventHandler(this.radButton2_Click);
+            // 
+            // MaxCost
+            // 
+            this.MaxCost.Font = new System.Drawing.Font("Sakkal Majalla", 14.25F);
+            this.MaxCost.Location = new System.Drawing.Point(744, 7);
+            this.MaxCost.Name = "MaxCost";
+            this.MaxCost.Size = new System.Drawing.Size(89, 34);
+            this.MaxCost.TabIndex = 17;
+            // 
+            // radLabel1
+            // 
+            this.radLabel1.Font = new System.Drawing.Font("Sakkal Majalla", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radLabel1.Location = new System.Drawing.Point(675, 9);
+            this.radLabel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.radLabel1.Name = "radLabel1";
+            this.radLabel1.Size = new System.Drawing.Size(66, 31);
+            this.radLabel1.TabIndex = 18;
+            this.radLabel1.Text = "Max Cost";
             // 
             // FrmMedicineOut
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(882, 488);
+            this.Controls.Add(this.radLabel1);
+            this.Controls.Add(this.MaxCost);
             this.Controls.Add(this.radButton2);
             this.Controls.Add(this.TradeName);
             this.Controls.Add(this.radButton1);
@@ -217,6 +252,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.radButton1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TradeName)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radButton2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radLabel1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -233,6 +269,9 @@
         public Telerik.WinControls.UI.RadButton radButton2;
 
         private static FrmMedicineOut _Default;
+        private System.Windows.Forms.TextBox MaxCost;
+        public Telerik.WinControls.UI.RadLabel radLabel1;
+
         public static FrmMedicineOut Default
         {
             get

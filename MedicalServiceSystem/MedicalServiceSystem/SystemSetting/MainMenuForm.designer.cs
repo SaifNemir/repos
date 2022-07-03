@@ -34,8 +34,6 @@
             this.radRibbonBarGroup5 = new Telerik.WinControls.UI.RadRibbonBarGroup();
             this.FRMMedicineSetting = new Telerik.WinControls.UI.RadButtonElement();
             this.FRMMedicinePricing = new Telerik.WinControls.UI.RadButtonElement();
-            this.radRibbonBarGroup6 = new Telerik.WinControls.UI.RadRibbonBarGroup();
-            this.FrmDiagnosis = new Telerik.WinControls.UI.RadButtonElement();
             this.radRibbonBarGroup13 = new Telerik.WinControls.UI.RadRibbonBarGroup();
             this.FrmGenerics = new Telerik.WinControls.UI.RadButtonElement();
             this.FrmTrades = new Telerik.WinControls.UI.RadButtonElement();
@@ -45,6 +43,7 @@
             this.FRMMedicalSetting = new Telerik.WinControls.UI.RadButtonElement();
             this.FrmMedicalGroup = new Telerik.WinControls.UI.RadButtonElement();
             this.FrmMedicalSubGroup = new Telerik.WinControls.UI.RadButtonElement();
+            this.radButtonElement2 = new Telerik.WinControls.UI.RadButtonElement();
             this.radRibbonBarGroup29 = new Telerik.WinControls.UI.RadRibbonBarGroup();
             this.radButtonElement5 = new Telerik.WinControls.UI.RadButtonElement();
             this.radButtonElement6 = new Telerik.WinControls.UI.RadButtonElement();
@@ -73,6 +72,10 @@
             this.FRMmedicalCoPay = new Telerik.WinControls.UI.RadButtonElement();
             this.radRibbonBarGroup25 = new Telerik.WinControls.UI.RadRibbonBarGroup();
             this.FRMRPTMedicalEStrdad = new Telerik.WinControls.UI.RadButtonElement();
+            this.FRMRPTMedicineEStrdad = new Telerik.WinControls.UI.RadButtonElement();
+            this.radRibbonBarGroup6 = new Telerik.WinControls.UI.RadRibbonBarGroup();
+            this.FrmMedicineReasons = new Telerik.WinControls.UI.RadButtonElement();
+            this.FrmMedicalReasons = new Telerik.WinControls.UI.RadButtonElement();
             this.ribbonTab4 = new Telerik.WinControls.UI.RibbonTab();
             this.radRibbonBarGroup27 = new Telerik.WinControls.UI.RadRibbonBarGroup();
             this.FRMApproveWindowAll = new Telerik.WinControls.UI.RadButtonElement();
@@ -87,6 +90,8 @@
             this.radRibbonBarGroup7 = new Telerik.WinControls.UI.RadRibbonBarGroup();
             this.FrmAppMedicineTyp = new Telerik.WinControls.UI.RadButtonElement();
             this.FrmPharmacist = new Telerik.WinControls.UI.RadButtonElement();
+            this.radRibbonBarGroup35 = new Telerik.WinControls.UI.RadRibbonBarGroup();
+            this.FRMApproveSearch = new Telerik.WinControls.UI.RadButtonElement();
             this.ribbonTab7 = new Telerik.WinControls.UI.RibbonTab();
             this.radRibbonBarGroup32 = new Telerik.WinControls.UI.RadRibbonBarGroup();
             this.FRMBookInfo = new Telerik.WinControls.UI.RadButtonElement();
@@ -115,7 +120,6 @@
             this.radRibbonBarGroup8 = new Telerik.WinControls.UI.RadRibbonBarGroup();
             this.printCardBTN = new Telerik.WinControls.UI.RadButtonElement();
             this.radStatusStrip1 = new Telerik.WinControls.UI.RadStatusStrip();
-            this.FRMRPTMedicineEStrdad = new Telerik.WinControls.UI.RadButtonElement();
             ((System.ComponentModel.ISupportInitialize)(this.radRibbonBar1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radMenuComboItem1.ComboBoxElement)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radStatusStrip1)).BeginInit();
@@ -163,10 +167,9 @@
             // 
             // ribbonTab5
             // 
-            this.ribbonTab5.IsSelected = true;
+            this.ribbonTab5.IsSelected = false;
             this.ribbonTab5.Items.AddRange(new Telerik.WinControls.RadItem[] {
             this.radRibbonBarGroup5,
-            this.radRibbonBarGroup6,
             this.radRibbonBarGroup13,
             this.radRibbonBarGroup14,
             this.radRibbonBarGroup15,
@@ -182,7 +185,7 @@
             this.FRMMedicineSetting,
             this.FRMMedicinePricing});
             this.radRibbonBarGroup5.Name = "radRibbonBarGroup5";
-            this.radRibbonBarGroup5.Text = "قائمة الدواء";
+            this.radRibbonBarGroup5.Text = "اعداد قائمة الدواء";
             // 
             // FRMMedicineSetting
             // 
@@ -192,6 +195,7 @@
             this.FRMMedicineSetting.Name = "FRMMedicineSetting";
             this.FRMMedicineSetting.Text = "قائمة الدواء";
             this.FRMMedicineSetting.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.FRMMedicineSetting.Click += new System.EventHandler(this.FRMMedicineSetting_Click);
             // 
             // FRMMedicinePricing
             // 
@@ -201,23 +205,7 @@
             this.FRMMedicinePricing.Name = "FRMMedicinePricing";
             this.FRMMedicinePricing.Text = "أسعار الأدوية";
             this.FRMMedicinePricing.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            // 
-            // radRibbonBarGroup6
-            // 
-            this.radRibbonBarGroup6.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold);
-            this.radRibbonBarGroup6.Items.AddRange(new Telerik.WinControls.RadItem[] {
-            this.FrmDiagnosis});
-            this.radRibbonBarGroup6.Name = "radRibbonBarGroup6";
-            this.radRibbonBarGroup6.Text = "التشخيصات";
-            // 
-            // FrmDiagnosis
-            // 
-            this.FrmDiagnosis.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold);
-            this.FrmDiagnosis.Image = ((System.Drawing.Image)(resources.GetObject("FrmDiagnosis.Image")));
-            this.FrmDiagnosis.ImageAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            this.FrmDiagnosis.Name = "FrmDiagnosis";
-            this.FrmDiagnosis.Text = "التشخيصات";
-            this.FrmDiagnosis.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.FRMMedicinePricing.Click += new System.EventHandler(this.FRMMedicinePricing_Click);
             // 
             // radRibbonBarGroup13
             // 
@@ -226,23 +214,27 @@
             this.FrmGenerics,
             this.FrmTrades});
             this.radRibbonBarGroup13.Name = "radRibbonBarGroup13";
-            this.radRibbonBarGroup13.Text = "قائمة الأدوية والسموم";
+            this.radRibbonBarGroup13.Text = "اعداد قائمة الأدوية والسموم";
             // 
             // FrmGenerics
             // 
             this.FrmGenerics.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(66)))), ((int)(((byte)(139)))));
+            this.FrmGenerics.Image = global::MedicalServiceSystem.Properties.Resources.icons8_pills_32;
             this.FrmGenerics.ImageAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.FrmGenerics.Name = "FrmGenerics";
             this.FrmGenerics.Text = " الاسم العلمي";
             this.FrmGenerics.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.FrmGenerics.Click += new System.EventHandler(this.FrmGenerics_Click);
             // 
             // FrmTrades
             // 
             this.FrmTrades.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(66)))), ((int)(((byte)(139)))));
+            this.FrmTrades.Image = global::MedicalServiceSystem.Properties.Resources.icons8_medicine_48;
             this.FrmTrades.ImageAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.FrmTrades.Name = "FrmTrades";
             this.FrmTrades.Text = "الاسم التجاري";
             this.FrmTrades.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.FrmTrades.Click += new System.EventHandler(this.FrmTrades_Click);
             // 
             // radRibbonBarGroup14
             // 
@@ -260,6 +252,7 @@
             this.FrmMedicineOut.Name = "FrmMedicineOut";
             this.FrmMedicineOut.Text = "اضافة أدوية خارج القائمة";
             this.FrmMedicineOut.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.FrmMedicineOut.Click += new System.EventHandler(this.FrmMedicineOut_Click);
             // 
             // radRibbonBarGroup15
             // 
@@ -267,9 +260,10 @@
             this.radRibbonBarGroup15.Items.AddRange(new Telerik.WinControls.RadItem[] {
             this.FRMMedicalSetting,
             this.FrmMedicalGroup,
-            this.FrmMedicalSubGroup});
+            this.FrmMedicalSubGroup,
+            this.radButtonElement2});
             this.radRibbonBarGroup15.Name = "radRibbonBarGroup15";
-            this.radRibbonBarGroup15.Text = "الخدمة الطبية";
+            this.radRibbonBarGroup15.Text = "اعداد الخدمة الطبية";
             // 
             // FRMMedicalSetting
             // 
@@ -279,22 +273,38 @@
             this.FRMMedicalSetting.Name = "FRMMedicalSetting";
             this.FRMMedicalSetting.Text = "قائمة الخدمات الطبية";
             this.FRMMedicalSetting.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.FRMMedicalSetting.Click += new System.EventHandler(this.FRMMedicalSetting_Click);
             // 
             // FrmMedicalGroup
             // 
             this.FrmMedicalGroup.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(66)))), ((int)(((byte)(139)))));
+            this.FrmMedicalGroup.Image = global::MedicalServiceSystem.Properties.Resources.icons8_add_property_50;
             this.FrmMedicalGroup.ImageAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.FrmMedicalGroup.Name = "FrmMedicalGroup";
             this.FrmMedicalGroup.Text = "المجموعة الرئيسية";
             this.FrmMedicalGroup.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.FrmMedicalGroup.Click += new System.EventHandler(this.FrmMedicalGroup_Click);
             // 
             // FrmMedicalSubGroup
             // 
             this.FrmMedicalSubGroup.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(66)))), ((int)(((byte)(139)))));
+            this.FrmMedicalSubGroup.Image = global::MedicalServiceSystem.Properties.Resources.icons8_separated_lists_32;
             this.FrmMedicalSubGroup.ImageAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.FrmMedicalSubGroup.Name = "FrmMedicalSubGroup";
             this.FrmMedicalSubGroup.Text = "المجموعة الفرعية";
             this.FrmMedicalSubGroup.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.FrmMedicalSubGroup.Click += new System.EventHandler(this.FrmMedicalSubGroup_Click);
+            // 
+            // radButtonElement2
+            // 
+            this.radButtonElement2.Enabled = false;
+            this.radButtonElement2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(66)))), ((int)(((byte)(139)))));
+            this.radButtonElement2.Image = ((System.Drawing.Image)(resources.GetObject("radButtonElement2.Image")));
+            this.radButtonElement2.ImageAlignment = System.Drawing.ContentAlignment.TopCenter;
+            this.radButtonElement2.Name = "radButtonElement2";
+            this.radButtonElement2.Text = "التشخيصات";
+            this.radButtonElement2.TextAlignment = System.Drawing.ContentAlignment.BottomCenter;
+            this.radButtonElement2.Click += new System.EventHandler(this.RadButtonElement2_Click);
             // 
             // radRibbonBarGroup29
             // 
@@ -311,6 +321,7 @@
             this.radButtonElement5.Name = "radButtonElement5";
             this.radButtonElement5.Text = "داخل التعاقد";
             this.radButtonElement5.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.radButtonElement5.Click += new System.EventHandler(this.RadButtonElement5_Click);
             // 
             // radButtonElement6
             // 
@@ -450,9 +461,11 @@
             this.radRibbonBarGroup23,
             this.radRibbonBarGroup24,
             this.radRibbonBarGroup26,
-            this.radRibbonBarGroup25});
+            this.radRibbonBarGroup25,
+            this.radRibbonBarGroup6});
             this.ribbonTab3.Name = "ribbonTab3";
             this.ribbonTab3.Text = "الاسترداد";
+            this.ribbonTab3.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
             this.ribbonTab3.UseMnemonic = false;
             // 
             // radRibbonBarGroup22
@@ -541,6 +554,46 @@
             this.FRMRPTMedicalEStrdad.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.FRMRPTMedicalEStrdad.Click += new System.EventHandler(this.FRMRPTMedicalEStrdad_Click);
             // 
+            // FRMRPTMedicineEStrdad
+            // 
+            this.FRMRPTMedicineEStrdad.Enabled = false;
+            this.FRMRPTMedicineEStrdad.Image = ((System.Drawing.Image)(resources.GetObject("FRMRPTMedicineEStrdad.Image")));
+            this.FRMRPTMedicineEStrdad.ImageAlignment = System.Drawing.ContentAlignment.TopCenter;
+            this.FRMRPTMedicineEStrdad.Name = "FRMRPTMedicineEStrdad";
+            this.FRMRPTMedicineEStrdad.Text = "تقارير استرداد الخدمة الدوائية";
+            this.FRMRPTMedicineEStrdad.TextAlignment = System.Drawing.ContentAlignment.BottomCenter;
+            this.FRMRPTMedicineEStrdad.Click += new System.EventHandler(this.FRMRPTMedicineEStrdad_Click);
+            // 
+            // radRibbonBarGroup6
+            // 
+            this.radRibbonBarGroup6.AutoSize = false;
+            this.radRibbonBarGroup6.Bounds = new System.Drawing.Rectangle(0, 0, 350, 100);
+            this.radRibbonBarGroup6.Items.AddRange(new Telerik.WinControls.RadItem[] {
+            this.FrmMedicineReasons,
+            this.FrmMedicalReasons});
+            this.radRibbonBarGroup6.Name = "radRibbonBarGroup6";
+            this.radRibbonBarGroup6.Text = "اعدادات الاسترداد";
+            // 
+            // FrmMedicineReasons
+            // 
+            this.FrmMedicineReasons.Enabled = false;
+            this.FrmMedicineReasons.Image = global::MedicalServiceSystem.Properties.Resources.icons8_list_of_thumbnails_48;
+            this.FrmMedicineReasons.ImageAlignment = System.Drawing.ContentAlignment.TopCenter;
+            this.FrmMedicineReasons.Name = "FrmMedicineReasons";
+            this.FrmMedicineReasons.Text = "أسباب استرداد الخدمة الدوائية";
+            this.FrmMedicineReasons.TextAlignment = System.Drawing.ContentAlignment.BottomCenter;
+            this.FrmMedicineReasons.Click += new System.EventHandler(this.FrmMedicineReasons_Click);
+            // 
+            // FrmMedicalReasons
+            // 
+            this.FrmMedicalReasons.Enabled = false;
+            this.FrmMedicalReasons.Image = global::MedicalServiceSystem.Properties.Resources.icons8_list_of_thumbnails1_48;
+            this.FrmMedicalReasons.ImageAlignment = System.Drawing.ContentAlignment.TopCenter;
+            this.FrmMedicalReasons.Name = "FrmMedicalReasons";
+            this.FrmMedicalReasons.Text = "اسباب استرداد الخدمة الطبية";
+            this.FrmMedicalReasons.TextAlignment = System.Drawing.ContentAlignment.BottomCenter;
+            this.FrmMedicalReasons.Click += new System.EventHandler(this.FrmMedicalReasons_Click);
+            // 
             // ribbonTab4
             // 
             this.ribbonTab4.IsSelected = false;
@@ -601,7 +654,8 @@
             this.ribbonTab6.Items.AddRange(new Telerik.WinControls.RadItem[] {
             this.radRibbonBarGroup30,
             this.radRibbonBarGroup31,
-            this.radRibbonBarGroup7});
+            this.radRibbonBarGroup7,
+            this.radRibbonBarGroup35});
             this.ribbonTab6.Name = "ribbonTab6";
             this.ribbonTab6.Text = "تصاديق الأدوية";
             this.ribbonTab6.UseMnemonic = false;
@@ -666,6 +720,23 @@
             this.FrmPharmacist.Text = "قائمة الصيادلة";
             this.FrmPharmacist.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.FrmPharmacist.Click += new System.EventHandler(this.FrmPharmacist_Click);
+            // 
+            // radRibbonBarGroup35
+            // 
+            this.radRibbonBarGroup35.Items.AddRange(new Telerik.WinControls.RadItem[] {
+            this.FRMApproveSearch});
+            this.radRibbonBarGroup35.Name = "radRibbonBarGroup35";
+            this.radRibbonBarGroup35.Text = "البحث عن تصديق";
+            // 
+            // FRMApproveSearch
+            // 
+            this.FRMApproveSearch.Enabled = false;
+            this.FRMApproveSearch.Image = global::MedicalServiceSystem.Properties.Resources.icons8_search_24;
+            this.FRMApproveSearch.ImageAlignment = System.Drawing.ContentAlignment.TopCenter;
+            this.FRMApproveSearch.Name = "FRMApproveSearch";
+            this.FRMApproveSearch.Text = "البحث عن كود تصديق";
+            this.FRMApproveSearch.TextAlignment = System.Drawing.ContentAlignment.BottomCenter;
+            this.FRMApproveSearch.Click += new System.EventHandler(this.FRMApproveSearch_Click);
             // 
             // ribbonTab7
             // 
@@ -923,16 +994,6 @@
             this.radStatusStrip1.TabIndex = 1;
             this.radStatusStrip1.ThemeName = "Breeze";
             // 
-            // FRMRPTMedicineEStrdad
-            // 
-            this.FRMRPTMedicineEStrdad.Enabled = false;
-            this.FRMRPTMedicineEStrdad.Image = ((System.Drawing.Image)(resources.GetObject("FRMRPTMedicineEStrdad.Image")));
-            this.FRMRPTMedicineEStrdad.ImageAlignment = System.Drawing.ContentAlignment.TopCenter;
-            this.FRMRPTMedicineEStrdad.Name = "FRMRPTMedicineEStrdad";
-            this.FRMRPTMedicineEStrdad.Text = "تقارير استرداد الخدمة الدوائية";
-            this.FRMRPTMedicineEStrdad.TextAlignment = System.Drawing.ContentAlignment.BottomCenter;
-            this.FRMRPTMedicineEStrdad.Click += new System.EventHandler(this.FRMRPTMedicineEStrdad_Click);
-            // 
             // MainMenuForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -974,8 +1035,6 @@
         private Telerik.WinControls.UI.RadButtonElement NewCard;
         private Telerik.WinControls.UI.RadRibbonBarGroup radRibbonBarGroup5;
         private Telerik.WinControls.UI.RadButtonElement FRMMedicineSetting;
-        private Telerik.WinControls.UI.RadRibbonBarGroup radRibbonBarGroup6;
-        private Telerik.WinControls.UI.RadButtonElement FrmDiagnosis;
         private Telerik.WinControls.UI.RadRibbonBarGroup radRibbonBarGroup8;
         private Telerik.WinControls.UI.RadButtonElement printCardBTN;
         private Telerik.WinControls.UI.RadRibbonBarGroup radRibbonBarGroup9;
@@ -1049,5 +1108,11 @@
         private Telerik.WinControls.UI.RadRibbonBarGroup radRibbonBarGroup34;
         private Telerik.WinControls.UI.RadButtonElement FrmChronics;
         private Telerik.WinControls.UI.RadButtonElement FRMRPTMedicineEStrdad;
+        private Telerik.WinControls.UI.RadButtonElement radButtonElement2;
+        private Telerik.WinControls.UI.RadRibbonBarGroup radRibbonBarGroup6;
+        private Telerik.WinControls.UI.RadButtonElement FrmMedicineReasons;
+        private Telerik.WinControls.UI.RadButtonElement FrmMedicalReasons;
+        private Telerik.WinControls.UI.RadRibbonBarGroup radRibbonBarGroup35;
+        private Telerik.WinControls.UI.RadButtonElement FRMApproveSearch;
     }
 }

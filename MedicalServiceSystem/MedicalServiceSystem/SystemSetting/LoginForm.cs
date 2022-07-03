@@ -193,9 +193,17 @@ namespace MedicalServiceSystem.SystemSetting
                     ServerIp = GetServerIp;
                     string IP = PLC.GetIP();
                     string IP3 = IP.Substring(0, 8);
-                    LocalityId = db.Localities.Where(x => x.LocalityIP.Equals(IP3)).First().Id;
+                    var getLoc = db.Localities.Where(x => x.LocalityIP.Equals(IP3)).ToList();
+                    if (getLoc.Count > 0)
+                    {
+                        LocalityId = db.Localities.Where(x => x.LocalityIP.Equals(IP3)).First().Id;
+                    }
+                    else
+                    {
+                        LocalityId = 0;
+                    }
                 }
-
+                
                 else
                 {
                     SystemSettingFRM.Default.ShowDialog();

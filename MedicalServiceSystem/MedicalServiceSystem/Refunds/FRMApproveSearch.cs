@@ -71,7 +71,7 @@ namespace MedicalServiceSystem.Reclaims
             using (dbContext db = new dbContext())
             {
                 db.Database.CommandTimeout = 0;
-                var GetDet = db.Database.SqlQuery<ReportForAll>(StrRPT).Where(p => (p.Row13 >= d_start.Value && p.Row13 <= d_end.Value) && p.Row19 == ApproveCode.Text).OrderBy(p => p.Row13).ToList();
+                var GetDet = db.Database.SqlQuery<ReportForAll>(StrRPT).Where(p => (p.Row13 >= d_start.Value && p.Row13 <= d_end.Value) && (p.Row19 == ApproveCode.Text || p.Row20== ApproveCode.Text)).OrderBy(p => p.Row13).ToList();
                 Cursor = Cursors.WaitCursor;
                 Grid_service.DataSource = GetDet;
                 if (GetDet.Count > 0)

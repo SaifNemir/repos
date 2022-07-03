@@ -28,12 +28,12 @@
         /// </summary>
         public void InitializeComponent()
         {
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn4 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn5 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewCommandColumn gridViewCommandColumn3 = new Telerik.WinControls.UI.GridViewCommandColumn();
-            Telerik.WinControls.UI.GridViewCommandColumn gridViewCommandColumn4 = new Telerik.WinControls.UI.GridViewCommandColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn6 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition2 = new Telerik.WinControls.UI.TableViewDefinition();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn1 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn2 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewCommandColumn gridViewCommandColumn1 = new Telerik.WinControls.UI.GridViewCommandColumn();
+            Telerik.WinControls.UI.GridViewCommandColumn gridViewCommandColumn2 = new Telerik.WinControls.UI.GridViewCommandColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn3 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition1 = new Telerik.WinControls.UI.TableViewDefinition();
             this.namelbl = new Telerik.WinControls.UI.RadLabel();
             this.Savebtn = new Telerik.WinControls.UI.RadButton();
             this.radTextBox1 = new Telerik.WinControls.UI.RadTextBox();
@@ -66,10 +66,11 @@
             // Savebtn
             // 
             this.Savebtn.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Savebtn.Location = new System.Drawing.Point(12, 67);
+            this.Savebtn.Image = global::MedicalServiceSystem.Properties.Resources.icons8_downloading_updates_48;
+            this.Savebtn.Location = new System.Drawing.Point(12, 43);
             this.Savebtn.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Savebtn.Name = "Savebtn";
-            this.Savebtn.Size = new System.Drawing.Size(128, 32);
+            this.Savebtn.Size = new System.Drawing.Size(164, 56);
             this.Savebtn.TabIndex = 2;
             this.Savebtn.Text = "Save";
             this.Savebtn.Click += new System.EventHandler(this.Savebtn_Click);
@@ -109,38 +110,38 @@
             this.GrdTrades.MasterTemplate.AllowAddNewRow = false;
             this.GrdTrades.MasterTemplate.AllowColumnReorder = false;
             this.GrdTrades.MasterTemplate.AllowSearchRow = true;
-            gridViewTextBoxColumn4.DataType = typeof(uint);
-            gridViewTextBoxColumn4.FieldName = "Id";
-            gridViewTextBoxColumn4.HeaderText = "Code";
-            gridViewTextBoxColumn4.Name = "Id";
-            gridViewTextBoxColumn4.Width = 100;
-            gridViewTextBoxColumn5.FieldName = "DiagnosisName";
-            gridViewTextBoxColumn5.HeaderText = "Diagnosis Name";
-            gridViewTextBoxColumn5.Name = "DiagnosisName";
-            gridViewTextBoxColumn5.Width = 500;
-            gridViewCommandColumn3.DefaultText = "Edit";
-            gridViewCommandColumn3.EnableExpressionEditor = false;
-            gridViewCommandColumn3.FieldName = "Edit";
-            gridViewCommandColumn3.HeaderText = "Edit";
-            gridViewCommandColumn3.Name = "Edit";
-            gridViewCommandColumn3.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            gridViewCommandColumn3.UseDefaultText = true;
-            gridViewCommandColumn4.HeaderText = "Delete";
-            gridViewCommandColumn4.Name = "Delete";
-            gridViewTextBoxColumn6.FieldName = "Activated";
-            gridViewTextBoxColumn6.HeaderText = "column1";
-            gridViewTextBoxColumn6.IsVisible = false;
-            gridViewTextBoxColumn6.Name = "Activated";
+            gridViewTextBoxColumn1.DataType = typeof(uint);
+            gridViewTextBoxColumn1.FieldName = "Id";
+            gridViewTextBoxColumn1.HeaderText = "Code";
+            gridViewTextBoxColumn1.Name = "Id";
+            gridViewTextBoxColumn1.Width = 100;
+            gridViewTextBoxColumn2.FieldName = "DiagnosisName";
+            gridViewTextBoxColumn2.HeaderText = "Diagnosis Name";
+            gridViewTextBoxColumn2.Name = "DiagnosisName";
+            gridViewTextBoxColumn2.Width = 500;
+            gridViewCommandColumn1.DefaultText = "Edit";
+            gridViewCommandColumn1.EnableExpressionEditor = false;
+            gridViewCommandColumn1.FieldName = "Edit";
+            gridViewCommandColumn1.HeaderText = "Edit";
+            gridViewCommandColumn1.Name = "Edit";
+            gridViewCommandColumn1.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            gridViewCommandColumn1.UseDefaultText = true;
+            gridViewCommandColumn2.HeaderText = "Delete";
+            gridViewCommandColumn2.Name = "Delete";
+            gridViewTextBoxColumn3.FieldName = "Activated";
+            gridViewTextBoxColumn3.HeaderText = "column1";
+            gridViewTextBoxColumn3.IsVisible = false;
+            gridViewTextBoxColumn3.Name = "Activated";
             this.GrdTrades.MasterTemplate.Columns.AddRange(new Telerik.WinControls.UI.GridViewDataColumn[] {
-            gridViewTextBoxColumn4,
-            gridViewTextBoxColumn5,
-            gridViewCommandColumn3,
-            gridViewCommandColumn4,
-            gridViewTextBoxColumn6});
+            gridViewTextBoxColumn1,
+            gridViewTextBoxColumn2,
+            gridViewCommandColumn1,
+            gridViewCommandColumn2,
+            gridViewTextBoxColumn3});
             this.GrdTrades.MasterTemplate.EnableFiltering = true;
             this.GrdTrades.MasterTemplate.EnableGrouping = false;
             this.GrdTrades.MasterTemplate.EnableSorting = false;
-            this.GrdTrades.MasterTemplate.ViewDefinition = tableViewDefinition2;
+            this.GrdTrades.MasterTemplate.ViewDefinition = tableViewDefinition1;
             this.GrdTrades.Name = "GrdTrades";
             this.GrdTrades.ReadOnly = true;
             this.GrdTrades.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -153,10 +154,11 @@
             // radButton1
             // 
             this.radButton1.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radButton1.Location = new System.Drawing.Point(742, 67);
+            this.radButton1.Image = global::MedicalServiceSystem.Properties.Resources.icons8_add_32;
+            this.radButton1.Location = new System.Drawing.Point(712, 43);
             this.radButton1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.radButton1.Name = "radButton1";
-            this.radButton1.Size = new System.Drawing.Size(128, 32);
+            this.radButton1.Size = new System.Drawing.Size(158, 56);
             this.radButton1.TabIndex = 16;
             this.radButton1.Text = "New Diagnosis";
             this.radButton1.Click += new System.EventHandler(this.radButton1_Click);
@@ -177,12 +179,13 @@
             // radButton2
             // 
             this.radButton2.Font = new System.Drawing.Font("Sakkal Majalla", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radButton2.Location = new System.Drawing.Point(742, 443);
+            this.radButton2.Image = global::MedicalServiceSystem.Properties.Resources.icons8_logout_rounded_left_32;
+            this.radButton2.ImageAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.radButton2.Location = new System.Drawing.Point(712, 435);
             this.radButton2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.radButton2.Name = "radButton2";
-            this.radButton2.Size = new System.Drawing.Size(128, 32);
+            this.radButton2.Size = new System.Drawing.Size(158, 50);
             this.radButton2.TabIndex = 3;
-            this.radButton2.Text = "Close";
             this.radButton2.Click += new System.EventHandler(this.radButton2_Click);
             // 
             // FrmDiagnosis

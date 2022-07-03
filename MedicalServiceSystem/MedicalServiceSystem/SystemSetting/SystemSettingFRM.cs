@@ -33,15 +33,25 @@ namespace MedicalServiceSystem.SystemSetting
             LocalityName.DataSource = itemsLocal;
             LocalityName.ValueMember = "Id";
             LocalityName.DisplayMember = "LocalityName";
-            string Local = context.Localities.Where(x => x.LocalityIP.Equals(IP3)).First().LocalityName;
-            if (Local.Any())
+            var GetLOcal = context.Localities.Where(x => x.LocalityIP.Equals(IP3)).ToList();
+            if (GetLOcal.Count > 0)
             {
-                LocalityName.Text = Local;
+
+
+                string Local = context.Localities.Where(x => x.LocalityIP.Equals(IP3)).First().LocalityName;
+                if (Local.Any())
+                {
+                    LocalityName.Text = Local;
+                }
+                else
+                {
+
+                    LocalityName.SelectedIndex = -1;
+                }
             }
             else
             {
-
-                LocalityName.SelectedIndex = -1;
+                LocalityName.SelectedIndex = 0;
             }
             try
             {

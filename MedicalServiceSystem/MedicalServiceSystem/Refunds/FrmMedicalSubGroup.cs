@@ -60,26 +60,63 @@ namespace MedicalServiceSystem.Reclaims
             LoadData();
         }
 
-        private void GRDSubGroup_CommandCellClick(object sender, GridViewCellEventArgs e)
+        private void GRDSubGroup_CommandCellClick(object sender, Telerik.WinControls.UI.GridViewCellEventArgs e)
         {
+        
+        }
+
+        private void GRDSubGroup_CellFormatting(object sender, CellFormattingEventArgs e)
+        {
+            if (Convert.ToBoolean(e.Row.Cells["IsEnabled"].Value) == false)
+            {
+                e.CellElement.BackColor = Color.LightYellow;
+            }
+            else
+            {
+                e.CellElement.BackColor = Color.White;
+            }
+
+        }
+
+        private void Button2_Click(object sender, EventArgs e)
+        {
+            FrmAddSubGroup frs = new FrmAddSubGroup();
+            frs.ShowDialog();
+        }
+
+        private void Button4_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void GRDSubGroup_CommandCellClick_1(object sender, GridViewCellEventArgs e)
+        {
+        }
+
+        private void GRDSubGroup_CellClick(object sender, GridViewCellEventArgs e)
+        {
+
             if (GRDSubGroup.RowCount > 0)
             {
-                int SubGroupId = Convert.ToInt32(GRDSubGroup.CurrentRow.Cells["Id"].Value);
-                if (e.ColumnIndex == GRDSubGroup.Columns["BtnEditing"].Index)
+                int SubGroupId = Convert.ToInt32(e.Row.Cells["Id"].Value);
+               // MessageBox.Show(GRDSubGroup.CurrentColumn.Name);
+                if (GRDSubGroup.CurrentColumn.Name == "BtnEditing")
                 {
+
+
 
                     FrmAddSubGroup FrmAddSubGroup = new FrmAddSubGroup();
                     //flag = 1;
 
-                    FrmAddSubGroup.GroupEname.Text = (GRDSubGroup.CurrentRow.Cells["SerEName"].Value).ToString();
-                    FrmAddSubGroup.GroupAName.Text = (GRDSubGroup.CurrentRow.Cells["SerANAme"].Value).ToString();
-                    // FrmAddSubGroup.GroupCode.Text = GRDSubGroup.CurrentRow.Cells("SerCode").Value
-                    FrmAddSubGroup.SubGroupId = Convert.ToInt32(GRDSubGroup.CurrentRow.Cells["Id"].Value.ToString());
-                    FrmAddSubGroup.GroupId = Convert.ToInt32(TxtGrp.SelectedValue.ToString());
+                    FrmAddSubGroup.GroupEname.Text= e.Row.Cells["serename"].Value.ToString();
+                    FrmAddSubGroup.GroupAName.Text = e.Row.Cells["seraname"].Value.ToString();
+                    // frmaddsubgroup.groupcode.text = grdsubgroup.currentrow.cells("sercode").value
+                    FrmAddSubGroup.SubGroupId =Convert.ToInt32(GRDSubGroup.CurrentRow.Cells["Id"].Value.ToString());
+                    //frmaddsubgroup.groupid = convert.toint32(txtgrp.selectedvalue.tostring());
                     // FrmAddSubGroup.flag = 1;
                     FrmAddSubGroup.ShowDialog();
                 }
-                else if (e.ColumnIndex == GRDSubGroup.Columns["BtnDeleting"].Index)
+                else if (GRDSubGroup.CurrentColumn.Name == "BtnDeleting")
                 {
                     // flag = 0;
 
@@ -104,19 +141,6 @@ namespace MedicalServiceSystem.Reclaims
                     }
                 }
             }
-        }
-
-        private void GRDSubGroup_CellFormatting(object sender, CellFormattingEventArgs e)
-        {
-            if (Convert.ToBoolean(e.Row.Cells["IsEnabled"].Value) == false)
-            {
-                e.CellElement.BackColor = Color.LightYellow;
-            }
-            else
-            {
-                e.CellElement.BackColor = Color.White;
-            }
-
         }
     }
 }

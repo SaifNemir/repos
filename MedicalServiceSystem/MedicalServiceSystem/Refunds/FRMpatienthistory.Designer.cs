@@ -155,6 +155,7 @@ namespace MedicalServiceSystem.Reclaims
             this.Grid_service.Size = new System.Drawing.Size(1294, 538);
             this.Grid_service.TabIndex = 24;
             this.Grid_service.ThemeName = "Office2010Blue";
+            this.Grid_service.RowFormatting += new Telerik.WinControls.UI.RowFormattingEventHandler(this.Grid_service_RowFormatting);
             // 
             // grid_transfer
             // 
@@ -194,12 +195,14 @@ namespace MedicalServiceSystem.Reclaims
             // Button1
             // 
             this.Button1.Font = new System.Drawing.Font("Sakkal Majalla", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Button1.Image = global::MedicalServiceSystem.Properties.Resources.icons8_logout_rounded_left_32;
             this.Button1.Location = new System.Drawing.Point(13, 542);
             this.Button1.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.Button1.Name = "Button1";
-            this.Button1.Size = new System.Drawing.Size(200, 31);
+            this.Button1.Size = new System.Drawing.Size(183, 31);
             this.Button1.TabIndex = 26;
             this.Button1.Text = "رجوع إلى الشاشة السابقة";
+            this.Button1.TextAlignment = System.Drawing.ContentAlignment.MiddleRight;
             this.Button1.ThemeName = "Office2010Blue";
             this.Button1.Click += new System.EventHandler(this.Button1_Click);
             // 
@@ -255,6 +258,7 @@ namespace MedicalServiceSystem.Reclaims
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "";
             this.ThemeName = "Office2010Blue";
+            this.Load += new System.EventHandler(this.FRMpatienthistory_Load);
             ((System.ComponentModel.ISupportInitialize)(this.Grid_service.MasterTemplate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Grid_service)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grid_transfer.MasterTemplate)).EndInit();

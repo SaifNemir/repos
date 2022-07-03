@@ -28,16 +28,16 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn28 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn29 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn30 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn31 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn32 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn33 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn34 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn35 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn36 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition4 = new Telerik.WinControls.UI.TableViewDefinition();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn19 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn20 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn21 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn22 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn23 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn24 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn25 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn26 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn27 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition3 = new Telerik.WinControls.UI.TableViewDefinition();
             this.office2010BlueTheme1 = new Telerik.WinControls.Themes.Office2010BlueTheme();
             this.ToolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.Button8 = new Telerik.WinControls.UI.RadButton();
@@ -53,11 +53,16 @@
             this.initMoney = new Telerik.WinControls.UI.RadTextBox();
             this.Label15 = new Telerik.WinControls.UI.RadLabel();
             this.GroupBox2 = new Telerik.WinControls.UI.RadGroupBox();
+            this.radLabel4 = new Telerik.WinControls.UI.RadLabel();
+            this.radLabel3 = new Telerik.WinControls.UI.RadLabel();
+            this.radLabel2 = new Telerik.WinControls.UI.RadLabel();
+            this.radLabel1 = new Telerik.WinControls.UI.RadLabel();
             this.RequistingParty = new Telerik.WinControls.UI.RadDropDownList();
             this.ExcutingParty = new Telerik.WinControls.UI.RadDropDownList();
             this.approvereason = new Telerik.WinControls.UI.RadDropDownList();
             this.BillStatus = new Telerik.WinControls.UI.RadDropDownList();
             this.GroupBox1 = new Telerik.WinControls.UI.RadGroupBox();
+            this.UnitInfo = new Telerik.WinControls.UI.RadLabel();
             this.medicalsum = new Telerik.WinControls.UI.RadTextBox();
             this.Label26 = new Telerik.WinControls.UI.RadLabel();
             this.Label10 = new Telerik.WinControls.UI.RadLabel();
@@ -88,10 +93,8 @@
             this.CustName = new Telerik.WinControls.UI.RadTextBox();
             this.card_no = new Telerik.WinControls.UI.RadTextBox();
             this.ServerName = new Telerik.WinControls.UI.RadTextBox();
-            this.radLabel1 = new Telerik.WinControls.UI.RadLabel();
-            this.radLabel2 = new Telerik.WinControls.UI.RadLabel();
-            this.radLabel3 = new Telerik.WinControls.UI.RadLabel();
-            this.radLabel4 = new Telerik.WinControls.UI.RadLabel();
+            this.radLabel5 = new Telerik.WinControls.UI.RadLabel();
+            this.MaxCost = new Telerik.WinControls.UI.RadTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.Button8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Button3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Button4)).BeginInit();
@@ -107,12 +110,17 @@
             ((System.ComponentModel.ISupportInitialize)(this.Label15)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GroupBox2)).BeginInit();
             this.GroupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.radLabel4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radLabel3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radLabel2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radLabel1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.RequistingParty)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ExcutingParty)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.approvereason)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BillStatus)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GroupBox1)).BeginInit();
             this.GroupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.UnitInfo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.medicalsum)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Label26)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Label10)).BeginInit();
@@ -144,10 +152,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.CustName)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.card_no)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ServerName)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radLabel1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radLabel2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radLabel3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radLabel4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radLabel5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MaxCost)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
             // 
@@ -156,7 +162,8 @@
             this.Button8.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.Button8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.Button8.Font = new System.Drawing.Font("Sakkal Majalla", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
-            this.Button8.Location = new System.Drawing.Point(260, 603);
+            this.Button8.Image = global::MedicalServiceSystem.Properties.Resources.icons8_print_32;
+            this.Button8.Location = new System.Drawing.Point(202, 603);
             this.Button8.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Button8.Name = "Button8";
             this.Button8.Size = new System.Drawing.Size(156, 48);
@@ -171,7 +178,8 @@
             this.Button3.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.Button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.Button3.Font = new System.Drawing.Font("Sakkal Majalla", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
-            this.Button3.Location = new System.Drawing.Point(420, 603);
+            this.Button3.Image = global::MedicalServiceSystem.Properties.Resources.icons8_remove_481;
+            this.Button3.Location = new System.Drawing.Point(362, 603);
             this.Button3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Button3.Name = "Button3";
             this.Button3.Size = new System.Drawing.Size(156, 48);
@@ -186,7 +194,8 @@
             this.Button4.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.Button4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.Button4.Font = new System.Drawing.Font("Sakkal Majalla", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
-            this.Button4.Location = new System.Drawing.Point(584, 603);
+            this.Button4.Image = global::MedicalServiceSystem.Properties.Resources.icons8_downloading_updates_48;
+            this.Button4.Location = new System.Drawing.Point(526, 603);
             this.Button4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Button4.Name = "Button4";
             this.Button4.Size = new System.Drawing.Size(156, 48);
@@ -201,7 +210,8 @@
             this.Button6.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.Button6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.Button6.Font = new System.Drawing.Font("Sakkal Majalla", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
-            this.Button6.Location = new System.Drawing.Point(746, 603);
+            this.Button6.Image = global::MedicalServiceSystem.Properties.Resources.icons8_add_32;
+            this.Button6.Location = new System.Drawing.Point(688, 603);
             this.Button6.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Button6.Name = "Button6";
             this.Button6.Size = new System.Drawing.Size(156, 48);
@@ -249,7 +259,7 @@
             // 
             // mahliah
             // 
-            this.mahliah.Location = new System.Drawing.Point(522, 327);
+            this.mahliah.Location = new System.Drawing.Point(522, 319);
             this.mahliah.Name = "mahliah";
             this.mahliah.Size = new System.Drawing.Size(2, 2);
             this.mahliah.TabIndex = 436;
@@ -262,6 +272,7 @@
             this.BTNSearch.BackColor = System.Drawing.Color.White;
             this.BTNSearch.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.BTNSearch.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.BTNSearch.Image = global::MedicalServiceSystem.Properties.Resources.icons8_search_24;
             this.BTNSearch.Location = new System.Drawing.Point(591, 16);
             this.BTNSearch.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.BTNSearch.Name = "BTNSearch";
@@ -328,7 +339,7 @@
             this.Label15.BackColor = System.Drawing.Color.Transparent;
             this.Label15.Font = new System.Drawing.Font("Sakkal Majalla", 14.25F);
             this.Label15.ForeColor = System.Drawing.Color.Black;
-            this.Label15.Location = new System.Drawing.Point(963, 107);
+            this.Label15.Location = new System.Drawing.Point(963, 99);
             this.Label15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Label15.Name = "Label15";
             this.Label15.Size = new System.Drawing.Size(45, 31);
@@ -350,12 +361,68 @@
             this.GroupBox2.Controls.Add(this.approvereason);
             this.GroupBox2.Controls.Add(this.BillStatus);
             this.GroupBox2.HeaderText = "";
-            this.GroupBox2.Location = new System.Drawing.Point(7, 141);
+            this.GroupBox2.Location = new System.Drawing.Point(7, 133);
             this.GroupBox2.Name = "GroupBox2";
             this.GroupBox2.Size = new System.Drawing.Size(1033, 93);
             this.GroupBox2.TabIndex = 4;
             this.GroupBox2.TabStop = false;
             this.GroupBox2.ThemeName = "Office2010Blue";
+            // 
+            // radLabel4
+            // 
+            this.radLabel4.BackColor = System.Drawing.Color.Transparent;
+            this.radLabel4.Font = new System.Drawing.Font("Sakkal Majalla", 14.25F);
+            this.radLabel4.ForeColor = System.Drawing.Color.Black;
+            this.radLabel4.Location = new System.Drawing.Point(919, 9);
+            this.radLabel4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.radLabel4.Name = "radLabel4";
+            this.radLabel4.Size = new System.Drawing.Size(83, 31);
+            this.radLabel4.TabIndex = 415;
+            this.radLabel4.Text = "حالة الوصفة";
+            this.radLabel4.TextAlignment = System.Drawing.ContentAlignment.TopRight;
+            this.radLabel4.ThemeName = "Office2010Blue";
+            // 
+            // radLabel3
+            // 
+            this.radLabel3.BackColor = System.Drawing.Color.Transparent;
+            this.radLabel3.Font = new System.Drawing.Font("Sakkal Majalla", 14.25F);
+            this.radLabel3.ForeColor = System.Drawing.Color.Black;
+            this.radLabel3.Location = new System.Drawing.Point(426, 49);
+            this.radLabel3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.radLabel3.Name = "radLabel3";
+            this.radLabel3.Size = new System.Drawing.Size(82, 31);
+            this.radLabel3.TabIndex = 414;
+            this.radLabel3.Text = "الجهة المنفذة";
+            this.radLabel3.TextAlignment = System.Drawing.ContentAlignment.TopRight;
+            this.radLabel3.ThemeName = "Office2010Blue";
+            // 
+            // radLabel2
+            // 
+            this.radLabel2.BackColor = System.Drawing.Color.Transparent;
+            this.radLabel2.Font = new System.Drawing.Font("Sakkal Majalla", 14.25F);
+            this.radLabel2.ForeColor = System.Drawing.Color.Black;
+            this.radLabel2.Location = new System.Drawing.Point(919, 49);
+            this.radLabel2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.radLabel2.Name = "radLabel2";
+            this.radLabel2.Size = new System.Drawing.Size(85, 31);
+            this.radLabel2.TabIndex = 413;
+            this.radLabel2.Text = "الجهة الطالبة";
+            this.radLabel2.TextAlignment = System.Drawing.ContentAlignment.TopRight;
+            this.radLabel2.ThemeName = "Office2010Blue";
+            // 
+            // radLabel1
+            // 
+            this.radLabel1.BackColor = System.Drawing.Color.Transparent;
+            this.radLabel1.Font = new System.Drawing.Font("Sakkal Majalla", 14.25F);
+            this.radLabel1.ForeColor = System.Drawing.Color.Black;
+            this.radLabel1.Location = new System.Drawing.Point(426, 6);
+            this.radLabel1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.radLabel1.Name = "radLabel1";
+            this.radLabel1.Size = new System.Drawing.Size(91, 31);
+            this.radLabel1.TabIndex = 412;
+            this.radLabel1.Text = "سبب الاسترداد";
+            this.radLabel1.TextAlignment = System.Drawing.ContentAlignment.TopRight;
+            this.radLabel1.ThemeName = "Office2010Blue";
             // 
             // RequistingParty
             // 
@@ -405,6 +472,9 @@
             // 
             this.GroupBox1.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping;
             this.GroupBox1.BackColor = System.Drawing.Color.Transparent;
+            this.GroupBox1.Controls.Add(this.radLabel5);
+            this.GroupBox1.Controls.Add(this.MaxCost);
+            this.GroupBox1.Controls.Add(this.UnitInfo);
             this.GroupBox1.Controls.Add(this.medicalsum);
             this.GroupBox1.Controls.Add(this.Label26);
             this.GroupBox1.Controls.Add(this.Label10);
@@ -428,7 +498,7 @@
             this.GroupBox1.Controls.Add(this.Button1);
             this.GroupBox1.Controls.Add(this.Button2);
             this.GroupBox1.HeaderText = "";
-            this.GroupBox1.Location = new System.Drawing.Point(7, 239);
+            this.GroupBox1.Location = new System.Drawing.Point(7, 231);
             this.GroupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.GroupBox1.Name = "GroupBox1";
             this.GroupBox1.Padding = new System.Windows.Forms.Padding(2);
@@ -436,6 +506,21 @@
             this.GroupBox1.TabIndex = 5;
             this.GroupBox1.TabStop = false;
             this.GroupBox1.ThemeName = "Office2010Blue";
+            // 
+            // UnitInfo
+            // 
+            this.UnitInfo.BackColor = System.Drawing.Color.Transparent;
+            this.UnitInfo.BorderVisible = true;
+            this.UnitInfo.Font = new System.Drawing.Font("Sakkal Majalla", 14.25F);
+            this.UnitInfo.ForeColor = System.Drawing.Color.Crimson;
+            this.UnitInfo.Location = new System.Drawing.Point(563, 69);
+            this.UnitInfo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.UnitInfo.Name = "UnitInfo";
+            this.UnitInfo.Size = new System.Drawing.Size(153, 31);
+            this.UnitInfo.TabIndex = 439;
+            this.UnitInfo.Text = "تكتب الكمية بأصغر وحدة";
+            this.UnitInfo.TextAlignment = System.Drawing.ContentAlignment.TopRight;
+            this.UnitInfo.ThemeName = "Office2010Blue";
             // 
             // medicalsum
             // 
@@ -519,74 +604,74 @@
             // 
             this.GrdDwa.MasterTemplate.AllowAddNewRow = false;
             this.GrdDwa.MasterTemplate.AllowDeleteRow = false;
-            gridViewTextBoxColumn28.DataType = typeof(int);
-            gridViewTextBoxColumn28.EnableExpressionEditor = false;
-            gridViewTextBoxColumn28.HeaderText = "م";
-            gridViewTextBoxColumn28.Name = "clmSer";
-            gridViewTextBoxColumn28.ReadOnly = true;
-            gridViewTextBoxColumn29.EnableExpressionEditor = false;
-            gridViewTextBoxColumn29.FieldName = "Generic_name";
-            gridViewTextBoxColumn29.HeaderText = "الدواء";
-            gridViewTextBoxColumn29.Name = "Generic_name";
-            gridViewTextBoxColumn29.ReadOnly = true;
-            gridViewTextBoxColumn29.Width = 300;
-            gridViewTextBoxColumn30.EnableExpressionEditor = false;
-            gridViewTextBoxColumn30.FieldName = "InContract";
-            gridViewTextBoxColumn30.HeaderText = "قائمة التأمين";
-            gridViewTextBoxColumn30.Name = "cmlMedicineType";
-            gridViewTextBoxColumn30.ReadOnly = true;
-            gridViewTextBoxColumn30.Width = 80;
-            gridViewTextBoxColumn31.DataType = typeof(decimal);
-            gridViewTextBoxColumn31.EnableExpressionEditor = false;
-            gridViewTextBoxColumn31.FieldName = "ReclaimCost";
-            gridViewTextBoxColumn31.HeaderText = "unitprice";
-            gridViewTextBoxColumn31.IsVisible = false;
-            gridViewTextBoxColumn31.Name = "clmUnitPrice";
-            gridViewTextBoxColumn32.DataType = typeof(int);
-            gridViewTextBoxColumn32.EnableExpressionEditor = false;
-            gridViewTextBoxColumn32.FieldName = "Quantity";
-            gridViewTextBoxColumn32.HeaderText = "quantity";
-            gridViewTextBoxColumn32.IsVisible = false;
-            gridViewTextBoxColumn32.Name = "clmQuantity";
-            gridViewTextBoxColumn33.DataType = typeof(decimal);
-            gridViewTextBoxColumn33.EnableExpressionEditor = false;
-            gridViewTextBoxColumn33.FieldName = "ReclaimTotal";
-            gridViewTextBoxColumn33.HeaderText = "المبلغ";
-            gridViewTextBoxColumn33.Name = "ReclaimCost";
-            gridViewTextBoxColumn33.ReadOnly = true;
-            gridViewTextBoxColumn33.Width = 100;
-            gridViewTextBoxColumn34.DataType = typeof(int);
-            gridViewTextBoxColumn34.EnableExpressionEditor = false;
-            gridViewTextBoxColumn34.FieldName = "Percentages";
-            gridViewTextBoxColumn34.HeaderText = "النسبة";
-            gridViewTextBoxColumn34.Name = "clmPercentage";
-            gridViewTextBoxColumn34.ReadOnly = true;
-            gridViewTextBoxColumn34.Width = 70;
-            gridViewTextBoxColumn35.DataType = typeof(decimal);
-            gridViewTextBoxColumn35.EnableExpressionEditor = false;
-            gridViewTextBoxColumn35.FieldName = "ReclaimCost";
-            gridViewTextBoxColumn35.HeaderText = "المبلغ المسترد";
-            gridViewTextBoxColumn35.Name = "clmPaiedMoney";
-            gridViewTextBoxColumn35.ReadOnly = true;
-            gridViewTextBoxColumn35.Width = 100;
-            gridViewTextBoxColumn36.DataType = typeof(int);
-            gridViewTextBoxColumn36.EnableExpressionEditor = false;
-            gridViewTextBoxColumn36.FieldName = "Id";
-            gridViewTextBoxColumn36.HeaderText = "Id";
-            gridViewTextBoxColumn36.IsVisible = false;
-            gridViewTextBoxColumn36.Name = "Id";
+            gridViewTextBoxColumn19.DataType = typeof(int);
+            gridViewTextBoxColumn19.EnableExpressionEditor = false;
+            gridViewTextBoxColumn19.HeaderText = "م";
+            gridViewTextBoxColumn19.Name = "clmSer";
+            gridViewTextBoxColumn19.ReadOnly = true;
+            gridViewTextBoxColumn20.EnableExpressionEditor = false;
+            gridViewTextBoxColumn20.FieldName = "Generic_name";
+            gridViewTextBoxColumn20.HeaderText = "الدواء";
+            gridViewTextBoxColumn20.Name = "Generic_name";
+            gridViewTextBoxColumn20.ReadOnly = true;
+            gridViewTextBoxColumn20.Width = 300;
+            gridViewTextBoxColumn21.EnableExpressionEditor = false;
+            gridViewTextBoxColumn21.FieldName = "InContract";
+            gridViewTextBoxColumn21.HeaderText = "قائمة التأمين";
+            gridViewTextBoxColumn21.Name = "cmlMedicineType";
+            gridViewTextBoxColumn21.ReadOnly = true;
+            gridViewTextBoxColumn21.Width = 80;
+            gridViewTextBoxColumn22.DataType = typeof(decimal);
+            gridViewTextBoxColumn22.EnableExpressionEditor = false;
+            gridViewTextBoxColumn22.FieldName = "ReclaimCost";
+            gridViewTextBoxColumn22.HeaderText = "unitprice";
+            gridViewTextBoxColumn22.IsVisible = false;
+            gridViewTextBoxColumn22.Name = "clmUnitPrice";
+            gridViewTextBoxColumn23.DataType = typeof(int);
+            gridViewTextBoxColumn23.EnableExpressionEditor = false;
+            gridViewTextBoxColumn23.FieldName = "Quantity";
+            gridViewTextBoxColumn23.HeaderText = "quantity";
+            gridViewTextBoxColumn23.IsVisible = false;
+            gridViewTextBoxColumn23.Name = "clmQuantity";
+            gridViewTextBoxColumn24.DataType = typeof(decimal);
+            gridViewTextBoxColumn24.EnableExpressionEditor = false;
+            gridViewTextBoxColumn24.FieldName = "ReclaimTotal";
+            gridViewTextBoxColumn24.HeaderText = "المبلغ";
+            gridViewTextBoxColumn24.Name = "ReclaimCost";
+            gridViewTextBoxColumn24.ReadOnly = true;
+            gridViewTextBoxColumn24.Width = 100;
+            gridViewTextBoxColumn25.DataType = typeof(int);
+            gridViewTextBoxColumn25.EnableExpressionEditor = false;
+            gridViewTextBoxColumn25.FieldName = "Percentages";
+            gridViewTextBoxColumn25.HeaderText = "النسبة";
+            gridViewTextBoxColumn25.Name = "clmPercentage";
+            gridViewTextBoxColumn25.ReadOnly = true;
+            gridViewTextBoxColumn25.Width = 70;
+            gridViewTextBoxColumn26.DataType = typeof(decimal);
+            gridViewTextBoxColumn26.EnableExpressionEditor = false;
+            gridViewTextBoxColumn26.FieldName = "ReclaimCost";
+            gridViewTextBoxColumn26.HeaderText = "المبلغ المسترد";
+            gridViewTextBoxColumn26.Name = "clmPaiedMoney";
+            gridViewTextBoxColumn26.ReadOnly = true;
+            gridViewTextBoxColumn26.Width = 100;
+            gridViewTextBoxColumn27.DataType = typeof(int);
+            gridViewTextBoxColumn27.EnableExpressionEditor = false;
+            gridViewTextBoxColumn27.FieldName = "Id";
+            gridViewTextBoxColumn27.HeaderText = "Id";
+            gridViewTextBoxColumn27.IsVisible = false;
+            gridViewTextBoxColumn27.Name = "Id";
             this.GrdDwa.MasterTemplate.Columns.AddRange(new Telerik.WinControls.UI.GridViewDataColumn[] {
-            gridViewTextBoxColumn28,
-            gridViewTextBoxColumn29,
-            gridViewTextBoxColumn30,
-            gridViewTextBoxColumn31,
-            gridViewTextBoxColumn32,
-            gridViewTextBoxColumn33,
-            gridViewTextBoxColumn34,
-            gridViewTextBoxColumn35,
-            gridViewTextBoxColumn36});
+            gridViewTextBoxColumn19,
+            gridViewTextBoxColumn20,
+            gridViewTextBoxColumn21,
+            gridViewTextBoxColumn22,
+            gridViewTextBoxColumn23,
+            gridViewTextBoxColumn24,
+            gridViewTextBoxColumn25,
+            gridViewTextBoxColumn26,
+            gridViewTextBoxColumn27});
             this.GrdDwa.MasterTemplate.EnableFiltering = true;
-            this.GrdDwa.MasterTemplate.ViewDefinition = tableViewDefinition4;
+            this.GrdDwa.MasterTemplate.ViewDefinition = tableViewDefinition3;
             this.GrdDwa.Name = "GrdDwa";
             this.GrdDwa.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.GrdDwa.ShowGroupPanel = false;
@@ -639,7 +724,7 @@
             this.Label19.BackColor = System.Drawing.Color.Transparent;
             this.Label19.Font = new System.Drawing.Font("Sakkal Majalla", 14.25F);
             this.Label19.ForeColor = System.Drawing.Color.Black;
-            this.Label19.Location = new System.Drawing.Point(224, 42);
+            this.Label19.Location = new System.Drawing.Point(355, 35);
             this.Label19.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Label19.Name = "Label19";
             this.Label19.Size = new System.Drawing.Size(36, 31);
@@ -651,7 +736,7 @@
             // MoneyPaied
             // 
             this.MoneyPaied.Font = new System.Drawing.Font("Sakkal Majalla", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MoneyPaied.Location = new System.Drawing.Point(136, 42);
+            this.MoneyPaied.Location = new System.Drawing.Point(285, 38);
             this.MoneyPaied.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.MoneyPaied.MaxLength = 5;
             this.MoneyPaied.Name = "MoneyPaied";
@@ -665,7 +750,7 @@
             this.Label20.BackColor = System.Drawing.Color.Transparent;
             this.Label20.Font = new System.Drawing.Font("Sakkal Majalla", 14.25F);
             this.Label20.ForeColor = System.Drawing.Color.Black;
-            this.Label20.Location = new System.Drawing.Point(384, 42);
+            this.Label20.Location = new System.Drawing.Point(484, 35);
             this.Label20.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Label20.Name = "Label20";
             this.Label20.Size = new System.Drawing.Size(46, 31);
@@ -677,7 +762,7 @@
             // Percentage
             // 
             this.Percentage.Font = new System.Drawing.Font("Sakkal Majalla", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Percentage.Location = new System.Drawing.Point(298, 42);
+            this.Percentage.Location = new System.Drawing.Point(405, 38);
             this.Percentage.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.Percentage.MaxLength = 5;
             this.Percentage.Name = "Percentage";
@@ -693,7 +778,7 @@
             this.Label13.BackColor = System.Drawing.Color.Transparent;
             this.Label13.Font = new System.Drawing.Font("Sakkal Majalla", 14.25F);
             this.Label13.ForeColor = System.Drawing.Color.Black;
-            this.Label13.Location = new System.Drawing.Point(570, 42);
+            this.Label13.Location = new System.Drawing.Point(630, 38);
             this.Label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Label13.Name = "Label13";
             this.Label13.Size = new System.Drawing.Size(45, 31);
@@ -705,7 +790,7 @@
             // quantity
             // 
             this.quantity.Font = new System.Drawing.Font("Sakkal Majalla", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.quantity.Location = new System.Drawing.Point(476, 42);
+            this.quantity.Location = new System.Drawing.Point(563, 38);
             this.quantity.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.quantity.MaxLength = 5;
             this.quantity.Name = "quantity";
@@ -721,19 +806,19 @@
             this.Label12.BackColor = System.Drawing.Color.Transparent;
             this.Label12.Font = new System.Drawing.Font("Sakkal Majalla", 14.25F);
             this.Label12.ForeColor = System.Drawing.Color.Black;
-            this.Label12.Location = new System.Drawing.Point(739, 42);
+            this.Label12.Location = new System.Drawing.Point(776, 38);
             this.Label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Label12.Name = "Label12";
-            this.Label12.Size = new System.Drawing.Size(77, 31);
+            this.Label12.Size = new System.Drawing.Size(44, 31);
             this.Label12.TabIndex = 397;
-            this.Label12.Text = "سعر الوحدة";
+            this.Label12.Text = "السعر";
             this.Label12.TextAlignment = System.Drawing.ContentAlignment.TopRight;
             this.Label12.ThemeName = "Office2010Blue";
             // 
             // UnitPrice
             // 
             this.UnitPrice.Font = new System.Drawing.Font("Sakkal Majalla", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.UnitPrice.Location = new System.Drawing.Point(645, 42);
+            this.UnitPrice.Location = new System.Drawing.Point(706, 38);
             this.UnitPrice.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.UnitPrice.MaxLength = 9;
             this.UnitPrice.Name = "UnitPrice";
@@ -776,7 +861,7 @@
             // 
             this.ServiceListType.Enabled = false;
             this.ServiceListType.Font = new System.Drawing.Font("Sakkal Majalla", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ServiceListType.Location = new System.Drawing.Point(821, 42);
+            this.ServiceListType.Location = new System.Drawing.Point(860, 38);
             this.ServiceListType.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.ServiceListType.MaxLength = 20;
             this.ServiceListType.Name = "ServiceListType";
@@ -784,6 +869,7 @@
             this.ServiceListType.TabIndex = 3;
             this.ServiceListType.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.ServiceListType.ThemeName = "Office2010Blue";
+            this.ServiceListType.TextChanged += new System.EventHandler(this.ServiceListType_TextChanged);
             // 
             // Button1
             // 
@@ -846,7 +932,7 @@
             this.Label9.BackColor = System.Drawing.Color.Transparent;
             this.Label9.Font = new System.Drawing.Font("Sakkal Majalla", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label9.ForeColor = System.Drawing.Color.Black;
-            this.Label9.Location = new System.Drawing.Point(507, 173);
+            this.Label9.Location = new System.Drawing.Point(507, 165);
             this.Label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Label9.Name = "Label9";
             this.Label9.Size = new System.Drawing.Size(2, 2);
@@ -859,7 +945,7 @@
             this.Label7.BackColor = System.Drawing.Color.Transparent;
             this.Label7.Font = new System.Drawing.Font("Sakkal Majalla", 14.25F);
             this.Label7.ForeColor = System.Drawing.Color.Black;
-            this.Label7.Location = new System.Drawing.Point(939, 68);
+            this.Label7.Location = new System.Drawing.Point(939, 60);
             this.Label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Label7.Name = "Label7";
             this.Label7.Size = new System.Drawing.Size(71, 31);
@@ -873,7 +959,7 @@
             this.Label3.BackColor = System.Drawing.Color.Transparent;
             this.Label3.Font = new System.Drawing.Font("Sakkal Majalla", 14.25F);
             this.Label3.ForeColor = System.Drawing.Color.Black;
-            this.Label3.Location = new System.Drawing.Point(616, 68);
+            this.Label3.Location = new System.Drawing.Point(616, 60);
             this.Label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Label3.Name = "Label3";
             this.Label3.Size = new System.Drawing.Size(40, 31);
@@ -887,7 +973,7 @@
             this.CustName.BackColor = System.Drawing.Color.White;
             this.CustName.Font = new System.Drawing.Font("Sakkal Majalla", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CustName.ForeColor = System.Drawing.Color.Crimson;
-            this.CustName.Location = new System.Drawing.Point(242, 71);
+            this.CustName.Location = new System.Drawing.Point(242, 63);
             this.CustName.Margin = new System.Windows.Forms.Padding(2);
             this.CustName.MaxLength = 200;
             this.CustName.Name = "CustName";
@@ -902,7 +988,7 @@
             this.card_no.BackColor = System.Drawing.Color.White;
             this.card_no.Font = new System.Drawing.Font("Sakkal Majalla", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.card_no.ForeColor = System.Drawing.Color.Crimson;
-            this.card_no.Location = new System.Drawing.Point(680, 71);
+            this.card_no.Location = new System.Drawing.Point(680, 63);
             this.card_no.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.card_no.MaxLength = 20;
             this.card_no.Name = "card_no";
@@ -917,7 +1003,7 @@
             this.ServerName.BackColor = System.Drawing.Color.White;
             this.ServerName.Font = new System.Drawing.Font("Sakkal Majalla", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ServerName.ForeColor = System.Drawing.Color.Crimson;
-            this.ServerName.Location = new System.Drawing.Point(680, 107);
+            this.ServerName.Location = new System.Drawing.Point(680, 99);
             this.ServerName.Margin = new System.Windows.Forms.Padding(2);
             this.ServerName.MaxLength = 200;
             this.ServerName.Name = "ServerName";
@@ -927,61 +1013,32 @@
             this.ServerName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.ServerName.ThemeName = "Office2010Blue";
             // 
-            // radLabel1
+            // radLabel5
             // 
-            this.radLabel1.BackColor = System.Drawing.Color.Transparent;
-            this.radLabel1.Font = new System.Drawing.Font("Sakkal Majalla", 14.25F);
-            this.radLabel1.ForeColor = System.Drawing.Color.Black;
-            this.radLabel1.Location = new System.Drawing.Point(426, 6);
-            this.radLabel1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.radLabel1.Name = "radLabel1";
-            this.radLabel1.Size = new System.Drawing.Size(91, 31);
-            this.radLabel1.TabIndex = 412;
-            this.radLabel1.Text = "سبب الاسترداد";
-            this.radLabel1.TextAlignment = System.Drawing.ContentAlignment.TopRight;
-            this.radLabel1.ThemeName = "Office2010Blue";
+            this.radLabel5.BackColor = System.Drawing.Color.Transparent;
+            this.radLabel5.Font = new System.Drawing.Font("Sakkal Majalla", 14.25F);
+            this.radLabel5.ForeColor = System.Drawing.Color.Black;
+            this.radLabel5.Location = new System.Drawing.Point(207, 38);
+            this.radLabel5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.radLabel5.Name = "radLabel5";
+            this.radLabel5.Size = new System.Drawing.Size(71, 31);
+            this.radLabel5.TabIndex = 441;
+            this.radLabel5.Text = "أقصى مبلغ";
+            this.radLabel5.TextAlignment = System.Drawing.ContentAlignment.TopRight;
+            this.radLabel5.ThemeName = "Office2010Blue";
             // 
-            // radLabel2
+            // MaxCost
             // 
-            this.radLabel2.BackColor = System.Drawing.Color.Transparent;
-            this.radLabel2.Font = new System.Drawing.Font("Sakkal Majalla", 14.25F);
-            this.radLabel2.ForeColor = System.Drawing.Color.Black;
-            this.radLabel2.Location = new System.Drawing.Point(919, 49);
-            this.radLabel2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.radLabel2.Name = "radLabel2";
-            this.radLabel2.Size = new System.Drawing.Size(85, 31);
-            this.radLabel2.TabIndex = 413;
-            this.radLabel2.Text = "الجهة الطالبة";
-            this.radLabel2.TextAlignment = System.Drawing.ContentAlignment.TopRight;
-            this.radLabel2.ThemeName = "Office2010Blue";
-            // 
-            // radLabel3
-            // 
-            this.radLabel3.BackColor = System.Drawing.Color.Transparent;
-            this.radLabel3.Font = new System.Drawing.Font("Sakkal Majalla", 14.25F);
-            this.radLabel3.ForeColor = System.Drawing.Color.Black;
-            this.radLabel3.Location = new System.Drawing.Point(426, 49);
-            this.radLabel3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.radLabel3.Name = "radLabel3";
-            this.radLabel3.Size = new System.Drawing.Size(82, 31);
-            this.radLabel3.TabIndex = 414;
-            this.radLabel3.Text = "الجهة المنفذة";
-            this.radLabel3.TextAlignment = System.Drawing.ContentAlignment.TopRight;
-            this.radLabel3.ThemeName = "Office2010Blue";
-            // 
-            // radLabel4
-            // 
-            this.radLabel4.BackColor = System.Drawing.Color.Transparent;
-            this.radLabel4.Font = new System.Drawing.Font("Sakkal Majalla", 14.25F);
-            this.radLabel4.ForeColor = System.Drawing.Color.Black;
-            this.radLabel4.Location = new System.Drawing.Point(919, 9);
-            this.radLabel4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.radLabel4.Name = "radLabel4";
-            this.radLabel4.Size = new System.Drawing.Size(83, 31);
-            this.radLabel4.TabIndex = 415;
-            this.radLabel4.Text = "حالة الوصفة";
-            this.radLabel4.TextAlignment = System.Drawing.ContentAlignment.TopRight;
-            this.radLabel4.ThemeName = "Office2010Blue";
+            this.MaxCost.BackColor = System.Drawing.Color.Gainsboro;
+            this.MaxCost.Font = new System.Drawing.Font("Sakkal Majalla", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MaxCost.Location = new System.Drawing.Point(137, 38);
+            this.MaxCost.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.MaxCost.MaxLength = 5;
+            this.MaxCost.Name = "MaxCost";
+            this.MaxCost.Size = new System.Drawing.Size(66, 28);
+            this.MaxCost.TabIndex = 440;
+            this.MaxCost.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.MaxCost.ThemeName = "Office2010Blue";
             // 
             // FRMmedicine
             // 
@@ -1019,6 +1076,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.GroupBox2)).EndInit();
             this.GroupBox2.ResumeLayout(false);
             this.GroupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.radLabel4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radLabel3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radLabel2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radLabel1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.RequistingParty)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ExcutingParty)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.approvereason)).EndInit();
@@ -1026,6 +1087,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.GroupBox1)).EndInit();
             this.GroupBox1.ResumeLayout(false);
             this.GroupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.UnitInfo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.medicalsum)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Label26)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Label10)).EndInit();
@@ -1057,10 +1119,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.CustName)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.card_no)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ServerName)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radLabel1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radLabel2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radLabel3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radLabel4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radLabel5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MaxCost)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
             this.ResumeLayout(false);
 
@@ -1130,6 +1190,9 @@
         internal Telerik.WinControls.UI.RadLabel radLabel3;
         internal Telerik.WinControls.UI.RadLabel radLabel2;
         internal Telerik.WinControls.UI.RadLabel radLabel1;
+        internal Telerik.WinControls.UI.RadLabel UnitInfo;
+        internal Telerik.WinControls.UI.RadLabel radLabel5;
+        internal Telerik.WinControls.UI.RadTextBox MaxCost;
 
         public static FRMmedicine Default
         {

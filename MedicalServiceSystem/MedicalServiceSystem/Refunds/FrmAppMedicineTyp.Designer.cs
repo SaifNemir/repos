@@ -69,10 +69,11 @@
             // 
             this.Savebtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Savebtn.Font = new System.Drawing.Font("Sakkal Majalla", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Savebtn.Location = new System.Drawing.Point(10, 87);
+            this.Savebtn.Image = global::MedicalServiceSystem.Properties.Resources.icons8_downloading_updates_48;
+            this.Savebtn.Location = new System.Drawing.Point(10, 76);
             this.Savebtn.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.Savebtn.Name = "Savebtn";
-            this.Savebtn.Size = new System.Drawing.Size(110, 41);
+            this.Savebtn.Size = new System.Drawing.Size(160, 52);
             this.Savebtn.TabIndex = 2;
             this.Savebtn.Text = "حفظ";
             this.Savebtn.Click += new System.EventHandler(this.Savebtn_Click);
@@ -164,10 +165,11 @@
             // 
             this.radButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.radButton1.Font = new System.Drawing.Font("Sakkal Majalla", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radButton1.Location = new System.Drawing.Point(676, 87);
+            this.radButton1.Image = global::MedicalServiceSystem.Properties.Resources.icons8_add_32;
+            this.radButton1.Location = new System.Drawing.Point(615, 76);
             this.radButton1.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.radButton1.Name = "radButton1";
-            this.radButton1.Size = new System.Drawing.Size(110, 41);
+            this.radButton1.Size = new System.Drawing.Size(160, 52);
             this.radButton1.TabIndex = 16;
             this.radButton1.Text = "تصديق جديد";
             this.radButton1.Click += new System.EventHandler(this.radButton1_Click);
@@ -189,12 +191,13 @@
             // radButton2
             // 
             this.radButton2.Font = new System.Drawing.Font("Sakkal Majalla", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radButton2.Location = new System.Drawing.Point(636, 573);
+            this.radButton2.Image = global::MedicalServiceSystem.Properties.Resources.icons8_logout_rounded_left_32;
+            this.radButton2.ImageAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.radButton2.Location = new System.Drawing.Point(310, 563);
             this.radButton2.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.radButton2.Name = "radButton2";
-            this.radButton2.Size = new System.Drawing.Size(110, 41);
+            this.radButton2.Size = new System.Drawing.Size(110, 55);
             this.radButton2.TabIndex = 3;
-            this.radButton2.Text = "Close";
             this.radButton2.Click += new System.EventHandler(this.radButton2_Click);
             // 
             // FrmAppMedicineTyp

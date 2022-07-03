@@ -163,6 +163,14 @@
     <Compile Include="Migrations\202206191242375_saif1_2022_05_19_2.designer.cs">
       <DependentUpon>202206191242375_saif1_2022_05_19_2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202206211213592_saif2022-06-21.cs" />
+    <Compile Include="Migrations\202206211213592_saif2022-06-21.designer.cs">
+      <DependentUpon>202206211213592_saif2022-06-21.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202207030540106_saif_2022_07_03.cs" />
+    <Compile Include="Migrations\202207030540106_saif_2022_07_03.designer.cs">
+      <DependentUpon>202207030540106_saif_2022_07_03.cs</DependentUpon>
+    </Compile>
     <Compile Include="US.cs" />
     <Compile Include="HICKSDCS.cs" />
     <Compile Include="ApproveMedicineDetails.cs" />
@@ -190,7 +198,7 @@
     <Compile Include="Pharmacist.cs" />
     <Compile Include="Generic.cs" />
     <Compile Include="GroupPermission.cs" />
-    <Compile Include="MedicineForRefund.cs" />
+    <Compile Include="MedicineForReclaim.cs" />
     <Compile Include="Diagnosis.cs" />
     <Compile Include="Trade.cs" />
     <Compile Include="Locality.cs" />
@@ -306,6 +314,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202206191242375_saif1_2022_05_19_2.resx">
       <DependentUpon>202206191242375_saif1_2022_05_19_2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202206211213592_saif2022-06-21.resx">
+      <DependentUpon>202206211213592_saif2022-06-21.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202207030540106_saif_2022_07_03.resx">
+      <DependentUpon>202207030540106_saif_2022_07_03.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <!--<Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -140,21 +140,21 @@ namespace MedicalServiceSystem.Reclaims
                         }
                         medicalsum.Text = MedSum.ToString();
                         string CardNo = card_no.Text;
-                        var FrHistoryMc = db.Database.SqlQuery<ReportForAll>("SELECT dbo.Reclaims.Id AS Row1, dbo.Reclaims.ReclaimNo AS Row6, dbo.Reclaims.ReclaimDate AS Row13, dbo.MedicineForReclaims.Generic_name AS Row7, dbo.ReclaimMedicines.Quantity AS Row2,  dbo.ReclaimMedicines.ReclaimCost AS Row11, dbo.ReclaimMedicines.ReclaimTotal AS Row12, CenterInfoes_1.CenterName AS Row8, dbo.CenterInfoes.CenterName AS Row9, dbo.Subscribers.InsurNo AS Row10,  dbo.Subscribers.InsurName AS Row15 FROM  dbo.Reclaims INNER JOIN dbo.ReclaimMedicines ON dbo.Reclaims.Id = dbo.ReclaimMedicines.ReclaimId INNER JOIN dbo.MedicineForReclaims ON dbo.ReclaimMedicines.MedicineId = dbo.MedicineForReclaims.Id INNER JOIN dbo.CenterInfoes AS CenterInfoes_1 ON dbo.Reclaims.RefMedicineExcCenterId = CenterInfoes_1.Id INNER JOIN dbo.CenterInfoes ON dbo.Reclaims.RefMedicineReqCenterId = dbo.CenterInfoes.Id INNER JOIN dbo.Subscribers  ON dbo.Reclaims.SubscriberId = dbo.Subscribers.Id Where (dbo.Reclaims.RowStatus <> 2) AND (dbo.Subscribers.InsurNo = '" + CardNo.ToString() + "')").Select(p => new { ReclaimNo= p.Row6, ServiceName=p.Row7, ReclaimDate=p.Row13, System = "الاسترداد", Quantity = p.Row2, Cost=p.Row11, RequestParty=p.Row9, ExcuteParty = p.Row8 }).ToList();
+                        var FrHistoryMc = db.Database.SqlQuery<ReportForAll>("SELECT dbo.Reclaims.Id AS Row1, dbo.Reclaims.ReclaimNo AS Row6, dbo.Reclaims.ReclaimDate AS Row13, dbo.MedicineForReclaims.Generic_name AS Row7, dbo.ReclaimMedicines.Quantity AS Row2,  dbo.ReclaimMedicines.ReclaimCost AS Row11, dbo.ReclaimMedicines.ReclaimTotal AS Row12, CenterInfoes_1.CenterName AS Row8, dbo.CenterInfoes.CenterName AS Row9, dbo.Subscribers.InsurNo AS Row10,  dbo.Subscribers.InsurName AS Row15, dbo.Reclaims.RowStatus AS Row20, dbo.ReclaimMedicineReasonsLists.MedicineReason FROM dbo.Reclaims INNER JOIN dbo.ReclaimMedicines ON dbo.Reclaims.Id = dbo.ReclaimMedicines.ReclaimId INNER JOIN  dbo.MedicineForReclaims ON dbo.ReclaimMedicines.MedicineId = dbo.MedicineForReclaims.Id INNER JOIN  dbo.CenterInfoes AS CenterInfoes_1 ON dbo.Reclaims.RefMedicineExcCenterId = CenterInfoes_1.Id INNER JOIN dbo.CenterInfoes ON dbo.Reclaims.RefMedicineReqCenterId = dbo.CenterInfoes.Id INNER JOIN dbo.Subscribers ON dbo.Reclaims.SubscriberId = dbo.Subscribers.Id INNER JOIN  dbo.ReclaimMedicineReasonsLists ON dbo.Reclaims.ReclaimMedicineResonId = dbo.ReclaimMedicineReasonsLists.Id WHERE dbo.Reclaims.RowStatus <> 2) AND (dbo.Subscribers.InsurNo = '" + CardNo.ToString() + "')").Select(p => new { ReclaimNo= p.Row6, ServiceName=p.Row7, ReclaimDate=p.Row13, System = "الاسترداد", Quantity = p.Row2, ReclaimCost=p.Row11, RequestParty=p.Row9, ExcuteParty = p.Row8,ApproveReason=p.Row20 }).ToList();
                        // var FrHistoryMd = db.Database.SqlQuery<ReportForAll>("SELECT  dbo.Reclaims.Id AS Row1, dbo.Reclaims.ReclaimNo AS Row6, dbo.Reclaims.ReclaimDate AS Row13, CenterInfoes_1.CenterName AS Row8, dbo.CenterInfoes.CenterName AS Row9, dbo.Subscribers.InsurNo AS Row10,  dbo.Subscribers.InsurName AS Row15, dbo.MedicalServices.ServiceAName AS Row7, dbo.ReclaimMedicals.Quantity AS Row2, dbo.ReclaimMedicals.ReclaimCost AS Row11 FROM dbo.Reclaims INNER JOIN dbo.CenterInfoes AS CenterInfoes_1 ON dbo.Reclaims.RefMedicineExcCenterId = CenterInfoes_1.Id INNER JOIN dbo.CenterInfoes ON dbo.Reclaims.RefMedicineReqCenterId = dbo.CenterInfoes.Id INNER JOIN dbo.Subscribers ON dbo.Reclaims.SubscriberId = dbo.Subscribers.Id INNER JOIN dbo.ReclaimMedicals ON dbo.Reclaims.Id = dbo.ReclaimMedicals.ReclaimId INNER JOIN dbo.MedicalServices ON dbo.ReclaimMedicals.MedicalId = dbo.MedicalServices.Id").Where(p => p.Row10 == CardNo).Select(p => new { ReclaimNo = p.Row6, ServiceName = p.Row7, ReclaimDate = p.Row13, System = "الاسترداد", Qunatity = p.Row2, ReclaimCost = p.Row11 }).ToList();
                         if (FrHistoryMc.Count > 0)
                         {
-                            FRMpatienthistory.Default.Grid_service.DataSource = FrHistoryMc;
+                            FRMEstrdadhistory.Default.Grid_service.DataSource = FrHistoryMc;
                             if (FrHistoryMc.Count > 0)
                             {
                                 for (int i = 0; i < FrHistoryMc.Count; i++)
                                 {
-                                    FRMpatienthistory.Default.Grid_service.Rows[i].Cells[0].Value = i + 1;
+                                    FRMEstrdadhistory.Default.Grid_service.Rows[i].Cells[0].Value = i + 1;
                                 }
 
                             }
-
-                            FRMpatienthistory.Default.ShowDialog();
+                            FRMEstrdadhistory.Default.Totals.Text = FrHistoryMc.Sum(p => p.ReclaimCost).ToString();
+                            FRMEstrdadhistory.Default.ShowDialog();
                         }
                         //if (FrefMl.Count > 0)
                         //{
@@ -197,7 +197,9 @@ namespace MedicalServiceSystem.Reclaims
                                 {
                                     ServiceListType.Text = "خارج العقد";
                                 }
+                                UnitInfo.Text = "تكتب بأصغر وحدة " + " " + "وأصغر وحدة هي "+ db.Medicines.Where(p => p.Id == ServiceId).ToList()[0].Unit.Unit_Name.ToString();
                                 UnitPrice.Text = getSer[0].UnitCost.ToString();
+                                MaxCost.Text= getSer[0].MaxCost.ToString();
                                 Percentage.Text = 75.ToString();
                                 quantity.Text = 1.ToString();
                             }
@@ -312,6 +314,12 @@ namespace MedicalServiceSystem.Reclaims
             {
                 MessageBox.Show("يجب اختيار سبب الاسترداد", "النظام", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 approvereason.Focus();
+                return;
+            }
+            if (Convert.ToDecimal(MoneyPaied.Text) > Convert.ToDecimal(MaxCost.Text))
+            {
+                MessageBox.Show("المبلغ المدخل أكبر من أقصى مبلغ لاسترداد هذا الدواء", "النظام", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                NewMedical();
                 return;
             }
             decimal MedSum = Convert.ToDecimal(MoneySum.Text) + Convert.ToDecimal(MoneyPaied.Text) + Convert.ToDecimal(medicalsum.Text);
@@ -453,7 +461,7 @@ namespace MedicalServiceSystem.Reclaims
         {
             try
             {
-                MoneyPaied.Text = Convert.ToDecimal(Convert.ToDecimal(UnitPrice.Text) * Convert.ToInt32(quantity.Text) * Convert.ToInt32(Percentage.Text) / 100).ToString();
+                MoneyPaied.Text = Convert.ToDecimal(Convert.ToDecimal(UnitPrice.Text)  * Convert.ToInt32(Percentage.Text) / 100).ToString();
             }
             catch (Exception)
             {
@@ -515,6 +523,11 @@ namespace MedicalServiceSystem.Reclaims
         }
 
         private void GroupBox3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ServiceListType_TextChanged(object sender, EventArgs e)
         {
 
         }

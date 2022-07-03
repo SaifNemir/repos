@@ -92,12 +92,13 @@
             // radButton2
             // 
             this.radButton2.Font = new System.Drawing.Font("Sakkal Majalla", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radButton2.Image = global::MedicalServiceSystem.Properties.Resources.icons8_logout_rounded_left_32;
+            this.radButton2.ImageAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.radButton2.Location = new System.Drawing.Point(345, 521);
             this.radButton2.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.radButton2.Name = "radButton2";
             this.radButton2.Size = new System.Drawing.Size(146, 38);
             this.radButton2.TabIndex = 3;
-            this.radButton2.Text = "Ok";
             this.radButton2.Click += new System.EventHandler(this.radButton2_Click);
             // 
             // FrmGenericLis

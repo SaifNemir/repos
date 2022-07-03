@@ -28,7 +28,7 @@ namespace MedicalServiceSystem
         {
             using (dbContext db = new dbContext())
             {
-                var Tlist = db.MedicineForReclaims.Where(p=>p.InContract==false).Select(p => new { p.Id, p.Generic_name, p.Activated }).ToList();
+                var Tlist = db.MedicineForReclaims.Where(p=>p.InContract==false).Select(p => new { p.Id, p.Generic_name,p.MaxCost, p.Activated }).ToList();
 
                 TradeName.DataSource = Tlist;
                 TradeName.DisplayMember = "Generic_name";
@@ -47,7 +47,12 @@ namespace MedicalServiceSystem
                 TradeName.Focus();
                 return;
             }
-
+            if (MaxCost.Text.Length==0)
+            {
+                MessageBox.Show("Please insert Max Cost!");
+                MaxCost.Focus();
+                return;
+            }
             using (dbContext db = new dbContext())
             {
                 if (TradeId == 0)
@@ -61,6 +66,7 @@ namespace MedicalServiceSystem
                     MedicineForReclaim tr = new MedicineForReclaim();
                     tr.Id = MaxId;
                     tr.Generic_name= TradeName.Text.Trim();
+                    tr.MaxCost = Convert.ToDecimal(MaxCost.Text);
                     tr.Activated = 1;
                     tr.InContract = false;
                     db.MedicineForReclaims.Add(tr);
@@ -75,6 +81,7 @@ namespace MedicalServiceSystem
                     if (Gtrade.Count > 0)
                     {
                         Gtrade[0].Generic_name= TradeName.Text.Trim();
+                        Gtrade[0].MaxCost = Convert.ToDecimal(MaxCost.Text);
                         db.SaveChanges();
                         FillCombo();
                         radButton1.PerformClick();
@@ -264,6 +271,7 @@ namespace MedicalServiceSystem
 
                             TradeName.SelectedValue = Gtrade[0].Id;
                             TradeId= Gtrade[0].Id;
+                            MaxCost.Text = Gtrade[0].MaxCost.ToString();
                     }
 
                     }
@@ -275,6 +283,7 @@ namespace MedicalServiceSystem
         {
             TradeId = 0;
             TradeName.SelectedIndex = -1;
+            MaxCost.Clear();
         }
 
         private void TradeName_SelectedIndexChanged(object sender, Telerik.WinControls.UI.Data.PositionChangedEventArgs e)
@@ -302,10 +311,11 @@ namespace MedicalServiceSystem
                     // TradeId = Convert.ToInt32(TradeName.SelectedValue.ToString());
                     using (dbContext db = new dbContext())
                     {
-                        var gtrade = db.Trades.Where(p => p.TradeName == TradeName.Text).ToList();
+                        var gtrade = db.MedicineForReclaims.Where(p => p.Generic_name== TradeName.Text).ToList();
                         if (gtrade.Count > 0)
                         {
                             TradeId = gtrade[0].Id;
+                            MaxCost.Text = gtrade[0].MaxCost.ToString();
                         }
                     }
 
@@ -332,6 +342,11 @@ namespace MedicalServiceSystem
         private void radButton2_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void ContextMenuStrip1_Opening(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+
         }
     }
 }

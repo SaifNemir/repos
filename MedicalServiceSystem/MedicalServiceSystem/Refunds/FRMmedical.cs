@@ -122,15 +122,16 @@ namespace MedicalServiceSystem.Reclaims
                         string CardNo = card_no.Text;
                        // var FrHistoryMc = db.ReclaimMedicines.Where(p => p.Reclaim.Subscriber.InsurNo == CardNo).Select(p => new { p.Reclaim.ReclaimNo, ServiceName = p.MedicineForReclaim.Generic_name, p.Reclaim.ReclaimDate }).ToList();
                         //var FrHistoryMd = db.ReclaimMedicals.Where(p => p.Reclaim.Subscriber.InsurNo == CardNo).Select(p => new { p.Reclaim.ReclaimNo, ServiceName = p.MedicalServices.ServiceAName, p.Reclaim.ReclaimDate,System="النظام" }).ToList();
-                         var FrHistoryMd = db.Database.SqlQuery<ReportForAll>("SELECT  dbo.Reclaims.Id AS Row1, dbo.Reclaims.ReclaimNo AS Row6, dbo.Reclaims.ReclaimDate AS Row13, CenterInfoes_1.CenterName AS Row8, dbo.CenterInfoes.CenterName AS Row9, dbo.Subscribers.InsurNo AS Row10,  dbo.Subscribers.InsurName AS Row15, dbo.MedicalServices.ServiceAName AS Row7, dbo.ReclaimMedicals.Quantity AS Row2, dbo.ReclaimMedicals.ReclaimCost AS Row11 FROM dbo.Reclaims INNER JOIN dbo.CenterInfoes AS CenterInfoes_1 ON dbo.Reclaims.RefMedicineExcCenterId = CenterInfoes_1.Id INNER JOIN dbo.CenterInfoes ON dbo.Reclaims.RefMedicineReqCenterId = dbo.CenterInfoes.Id INNER JOIN dbo.Subscribers ON dbo.Reclaims.SubscriberId = dbo.Subscribers.Id INNER JOIN dbo.ReclaimMedicals ON dbo.Reclaims.Id = dbo.ReclaimMedicals.ReclaimId INNER JOIN dbo.MedicalServices ON dbo.ReclaimMedicals.MedicalId = dbo.MedicalServices.Id").Where(p => p.Row10 == CardNo).Select(p => new { ReclaimNo = p.Row6, ServiceName = p.Row7, ReclaimDate = p.Row13, System = "الاسترداد", Quantity = p.Row2, Cost = p.Row11, RequestParty = p.Row9, ExcuteParty = p.Row8 }).ToList();
-                        FRMpatienthistory.Default.Grid_service.DataSource = FrHistoryMd;
+                         var FrHistoryMd = db.Database.SqlQuery<ReportForAll>("SELECT dbo.Reclaims.Id AS Row1, dbo.Reclaims.ReclaimNo AS Row6, dbo.Reclaims.ReclaimDate AS Row13, CenterInfoes_1.CenterName AS Row8, dbo.CenterInfoes.CenterName AS Row9, dbo.Subscribers.InsurNo AS Row10,  dbo.Subscribers.InsurName AS Row15, dbo.MedicalServices.ServiceAName AS Row7, dbo.ReclaimMedicals.Quantity AS Row2, dbo.ReclaimMedicals.ReclaimCost AS Row11, dbo.ReclaimMedicalReasonsLists.MedicalReason AS Row20 FROM dbo.Reclaims INNER JOIN dbo.CenterInfoes AS CenterInfoes_1 ON dbo.Reclaims.RefMedicineExcCenterId = CenterInfoes_1.Id INNER JOIN dbo.CenterInfoes ON dbo.Reclaims.RefMedicineReqCenterId = dbo.CenterInfoes.Id INNER JOIN dbo.Subscribers ON dbo.Reclaims.SubscriberId = dbo.Subscribers.Id INNER JOIN dbo.ReclaimMedicals ON dbo.Reclaims.Id = dbo.ReclaimMedicals.ReclaimId INNER JOIN dbo.MedicalServices ON dbo.ReclaimMedicals.MedicalId = dbo.MedicalServices.Id INNER JOIN dbo.ReclaimMedicalReasonsLists ON dbo.Reclaims.ReclaimMedicalResonId = dbo.ReclaimMedicalReasonsLists.Id").Where(p => p.Row10 == CardNo).Select(p => new { ReclaimNo = p.Row6, ServiceName = p.Row7, ReclaimDate = p.Row13, System = "الاسترداد", Quantity = p.Row2, ReclaimCost = p.Row11, RequestParty = p.Row9, ExcuteParty = p.Row8, ApproveReason=p.Row20 }).ToList();
+                        FRMEstrdadhistory.Default.Grid_service.DataSource = FrHistoryMd;
                         if (FrHistoryMd.Count > 0)
                         {
                             for (int i = 0; i < FrHistoryMd.Count; i++)
                             {
-                                FRMpatienthistory.Default.Grid_service.Rows[i].Cells[0].Value = i + 1;
+                                FRMEstrdadhistory.Default.Grid_service.Rows[i].Cells[0].Value = i + 1;
                             }
-                            FRMpatienthistory.Default.ShowDialog();
+                            FRMEstrdadhistory.Default.Totals.Text = FrHistoryMd.Sum(p => p.ReclaimCost).ToString();
+                            FRMEstrdadhistory.Default.ShowDialog();
 
                         }
                       

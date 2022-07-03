@@ -57,11 +57,12 @@
             // 
             this.Button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Button1.Font = new System.Drawing.Font("Sakkal Majalla", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Button1.Location = new System.Drawing.Point(135, 116);
+            this.Button1.Image = global::MedicalServiceSystem.Properties.Resources.icons8_downloading_updates_48;
+            this.Button1.ImageAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.Button1.Location = new System.Drawing.Point(301, 107);
             this.Button1.Name = "Button1";
-            this.Button1.Size = new System.Drawing.Size(80, 42);
+            this.Button1.Size = new System.Drawing.Size(80, 51);
             this.Button1.TabIndex = 4;
-            this.Button1.Text = "خروج";
             this.Button1.ThemeName = "Office2010Blue";
             this.Button1.Click += new System.EventHandler(this.Button1_Click);
             // 
@@ -100,11 +101,12 @@
             // 
             this.Button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Button2.Font = new System.Drawing.Font("Sakkal Majalla", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Button2.Location = new System.Drawing.Point(375, 116);
+            this.Button2.Image = global::MedicalServiceSystem.Properties.Resources.icons8_logout_rounded_left_32;
+            this.Button2.ImageAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.Button2.Location = new System.Drawing.Point(215, 107);
             this.Button2.Name = "Button2";
-            this.Button2.Size = new System.Drawing.Size(80, 42);
+            this.Button2.Size = new System.Drawing.Size(80, 51);
             this.Button2.TabIndex = 5;
-            this.Button2.Text = "موافق";
             this.Button2.ThemeName = "Office2010Blue";
             this.Button2.Click += new System.EventHandler(this.Button2_Click);
             // 
@@ -129,6 +131,7 @@
             // 
             // 
             this.RootElement.ApplyShapeToControl = true;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "تعديل أو اضافة مجموعة للخدمات الطبية";
             this.ThemeName = "Office2010Blue";
             this.Load += new System.EventHandler(this.FrmAddGroup_Load);
