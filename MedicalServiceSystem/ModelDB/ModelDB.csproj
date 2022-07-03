@@ -64,6 +64,19 @@
     <Compile Include="ChkUpdate.cs" />
     <Compile Include="ChronicBookType.cs" />
     <Compile Include="Chronics.cs" />
+    <Compile Include="ClmContractType.cs" />
+    <Compile Include="ClmDetailsData.cs" />
+    <Compile Include="ClmErrorDataEnter.cs" />
+    <Compile Include="ClmErrorType.cs" />
+    <Compile Include="ClmImpFile.cs" />
+    <Compile Include="ClmMasterData.cs" />
+    <Compile Include="ClmNonConfirmDet.cs" />
+    <Compile Include="ClmNonConfirmType.cs" />
+    <Compile Include="ClmReceiptClaims.cs" />
+    <Compile Include="ClmReceiptClaimsDet.cs" />
+    <Compile Include="ClmSortedDeg.cs" />
+    <Compile Include="ClmTempDet.cs" />
+    <Compile Include="ClmTempMaster.cs" />
     <Compile Include="Migrations\202201121056569_ThirdMig.cs" />
     <Compile Include="Migrations\202201121056569_ThirdMig.designer.cs">
       <DependentUpon>202201121056569_ThirdMig.cs</DependentUpon>
