@@ -12,6 +12,37 @@ namespace MedicalServiceSystem
         public FrmAppMedicineTyp()
         {
             InitializeComponent();
+            if (defaultInstance == null)
+                defaultInstance = this;
+        }
+
+
+
+        private static FrmAppMedicineTyp defaultInstance;
+
+        /// <summary>
+        /// Added by the VB.Net to C# Converter to support default instance behavour in C#
+        /// </summary>
+        public static FrmAppMedicineTyp Default
+        {
+            get
+            {
+                if (defaultInstance == null)
+                {
+                    defaultInstance = new FrmAppMedicineTyp();
+                    defaultInstance.FormClosed += new FormClosedEventHandler(defaultInstance_FormClosed);
+                }
+
+                return defaultInstance;
+            }
+            set
+            {
+                defaultInstance = value;
+            }
+        }
+        static void defaultInstance_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            defaultInstance = null;
         }
 
         private void AddNewItem_Load(object sender, EventArgs e)

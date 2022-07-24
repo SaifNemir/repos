@@ -270,16 +270,16 @@
         public Telerik.WinControls.UI.RadDropDownList TradeName;
         public Telerik.WinControls.UI.RadButton radButton2;
 
-        private static FrmTrades _Default;
-        public static FrmTrades Default
-        {
-            get
-            {
-                if (_Default == null)
-                    _Default = new FrmTrades();
+        //private static FrmTrades _Default;
+        //public static FrmTrades Default
+        //{
+        //    get
+        //    {
+        //        if (_Default == null)
+        //            _Default = new FrmTrades();
 
-                return _Default;
-            }
-        }
+        //        return _Default;
+        //    }
+        //}
     }
 }

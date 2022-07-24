@@ -662,23 +662,23 @@ namespace MedicalServiceSystem.Reclaims
         internal Telerik.WinControls.UI.RadButton Button5;
         internal Telerik.WinControls.UI.RadButton Button6;
         private Telerik.WinControls.Themes.Office2010BlueTheme office2010BlueTheme1;
-        private static FRMMedicalSetting _Default;
+        
         internal RadLabel radLabel1;
         internal RadTextBox Sessions;
         private RadCheckBox NeedApprovement;
         internal RadLabel radLabel2;
         internal RadDropDownList ListType;
+        //private static FRMMedicalSetting _Default;
+        //public static FRMMedicalSetting Default
+        //{
+        //    get
+        //    {
+        //        if (_Default == null)
+        //            _Default = new FRMMedicalSetting();
 
-        public static FRMMedicalSetting Default
-        {
-            get
-            {
-                if (_Default == null)
-                    _Default = new FRMMedicalSetting();
-
-                return _Default;
-            }
-        }
+        //        return _Default;
+        //    }
+        //}
     }
 
 

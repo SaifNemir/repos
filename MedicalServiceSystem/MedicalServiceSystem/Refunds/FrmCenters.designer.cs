@@ -164,11 +164,11 @@ namespace MedicalServiceSystem
             // 
             this.Button2.Font = new System.Drawing.Font("Sakkal Majalla", 12F);
             this.Button2.Image = global::MedicalServiceSystem.Properties.Resources.icons8_add_32;
-            this.Button2.Location = new System.Drawing.Point(1015, 6);
+            this.Button2.Location = new System.Drawing.Point(876, 6);
             this.Button2.Name = "Button2";
-            this.Button2.Size = new System.Drawing.Size(145, 61);
+            this.Button2.Size = new System.Drawing.Size(284, 61);
             this.Button2.TabIndex = 3;
-            this.Button2.Text = "اضافة مؤسسة";
+            this.Button2.Text = "اضافة مؤسسة (تأكد من عدم وجود المؤسسة)";
             this.Button2.Click += new System.EventHandler(this.Button2_Click);
             // 
             // GroupBox1
@@ -245,17 +245,18 @@ namespace MedicalServiceSystem
 		internal GridViewTextBoxColumn ServiceState;
 		
 
-		private static FrmCenters _DefaultInstance;
-		public static FrmCenters Default
-		{
-			get
-			{
-				if (_DefaultInstance == null)
-					_DefaultInstance = new FrmCenters();
+	
+        //private static FrmCenters _Default;
+        //public static FrmCenters Default
+        //{
+        //    get
+        //    {
+        //        if (_Default == null)
+        //            _Default = new FrmCenters();
 
-				return _DefaultInstance;
-			}
-		}
-	}
+        //        return _Default;
+        //    }
+        //}
+    }
 
 }

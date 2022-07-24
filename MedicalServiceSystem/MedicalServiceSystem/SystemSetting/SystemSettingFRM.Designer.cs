@@ -161,17 +161,17 @@
         internal Telerik.WinControls.UI.RadLabel radLabel3;
         internal System.Windows.Forms.Timer timer1;
 
-        private static SystemSettingFRM _Default;
-        public static SystemSettingFRM Default
-        {
-            get
-            {
-                if (_Default == null)
-                    _Default = new SystemSettingFRM();
+        //private static SystemSettingFRM _Default;
+        //public static SystemSettingFRM Default
+        //{
+        //    get
+        //    {
+        //        if (_Default == null)
+        //            _Default = new SystemSettingFRM();
 
-                return _Default;
-            }
-        }
+        //        return _Default;
+        //    }
+        //}
     }
 }
 

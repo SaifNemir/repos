@@ -620,21 +620,21 @@
         private Telerik.WinControls.UI.RadDateTimePicker EndDate;
         private Telerik.WinControls.UI.RadLabel label4;
         private Telerik.WinControls.UI.RadLabel label6;
-        public static UserFRM _Default;
+       
         private Telerik.WinControls.UI.RadCheckBox UserStatus;
         internal Telerik.WinControls.UI.RadDropDownList UserType;
         internal Telerik.WinControls.UI.RadLabel radLabel8;
+        //public static UserFRM _Default;
+        //public static UserFRM Default
+        //{
+        //    get
+        //    {
+        //        if (_Default == null)
+        //            _Default = new UserFRM();
 
-        public static UserFRM Default
-        {
-            get
-            {
-                if (_Default == null)
-                    _Default = new UserFRM();
-
-                return _Default;
-            }
-        }
+        //        return _Default;
+        //    }
+        //}
     }
 }
  

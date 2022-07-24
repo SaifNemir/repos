@@ -16,8 +16,42 @@ namespace MedicalServiceSystem.Reclaims
         public FRMStopSubscriber()
         {
             InitializeComponent();
+            if (defaultInstance == null)
+                defaultInstance = this;
         }
-		public string UserName = "";
+
+        #region Default Instance
+
+        private static FRMStopSubscriber defaultInstance;
+
+        /// <summary>
+        /// Added by the VB.Net to C# Converter to support default instance behavour in C#
+        /// </summary>
+        public static FRMStopSubscriber Default
+        {
+            get
+            {
+                if (defaultInstance == null)
+                {
+                    defaultInstance = new FRMStopSubscriber();
+                    defaultInstance.FormClosed += new FormClosedEventHandler(defaultInstance_FormClosed);
+                }
+
+                return defaultInstance;
+            }
+            set
+            {
+                defaultInstance = value;
+            }
+        }
+
+        static void defaultInstance_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            defaultInstance = null;
+        }
+
+        #endregion
+        public string UserName = "";
 		private void Button1_Click(object sender, System.EventArgs e)
 		{
             if (card_no.Text.Length == 0)

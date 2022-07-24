@@ -178,17 +178,17 @@
         internal Telerik.WinControls.UI.GridViewTextBoxColumn Column5;
         private Telerik.WinControls.Themes.Office2010BlueTheme office2010BlueTheme1;
 
-        private static FrmSearch _Default;
-        public static FrmSearch Default
-        {
-            get
-            {
-                if (_Default == null)
-                    _Default = new FrmSearch();
+        //private static FrmSearch _Default;
+        //public static FrmSearch Default
+        //{
+        //    get
+        //    {
+        //        if (_Default == null)
+        //            _Default = new FrmSearch();
 
-                return _Default;
-            }
-        }
+        //        return _Default;
+        //    }
+        //}
     }
 
 }

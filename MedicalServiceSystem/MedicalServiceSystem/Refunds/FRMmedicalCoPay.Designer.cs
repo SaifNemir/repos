@@ -166,8 +166,6 @@
             this.GroupBox1.Controls.Add(this.GrdMedical);
             this.GroupBox1.Controls.Add(this.MedicalArabic);
             this.GroupBox1.Controls.Add(this.mahliah);
-            this.GroupBox1.Controls.Add(this.dwasum);
-            this.GroupBox1.Controls.Add(this.Label26);
             this.GroupBox1.Controls.Add(this.Label10);
             this.GroupBox1.Controls.Add(this.Note);
             this.GroupBox1.Controls.Add(this.Label23);
@@ -299,6 +297,7 @@
             this.MedicalArabic.TabIndex = 449;
             this.MedicalArabic.ThemeName = "Office2010Blue";
             this.MedicalArabic.SelectedIndexChanged += new Telerik.WinControls.UI.Data.PositionChangedEventHandler(this.MedicalArabic_SelectedIndexChanged);
+            this.MedicalArabic.GotFocus += new System.EventHandler(this.MedicalArabic_Leave);
             // 
             // mahliah
             // 
@@ -313,7 +312,7 @@
             // 
             this.dwasum.BackColor = System.Drawing.Color.WhiteSmoke;
             this.dwasum.Font = new System.Drawing.Font("Sakkal Majalla", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dwasum.Location = new System.Drawing.Point(131, 76);
+            this.dwasum.Location = new System.Drawing.Point(19, 5);
             this.dwasum.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.dwasum.MaxLength = 255;
             this.dwasum.Name = "dwasum";
@@ -322,13 +321,14 @@
             this.dwasum.TabIndex = 436;
             this.dwasum.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.dwasum.ThemeName = "Office2010Blue";
+            this.dwasum.Visible = false;
             // 
             // Label26
             // 
             this.Label26.BackColor = System.Drawing.Color.Transparent;
             this.Label26.Font = new System.Drawing.Font("Sakkal Majalla", 14.25F);
             this.Label26.ForeColor = System.Drawing.Color.Maroon;
-            this.Label26.Location = new System.Drawing.Point(252, 76);
+            this.Label26.Location = new System.Drawing.Point(140, 5);
             this.Label26.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Label26.Name = "Label26";
             this.Label26.Size = new System.Drawing.Size(109, 31);
@@ -336,6 +336,7 @@
             this.Label26.Text = "اجمالي مبلغ الدواء";
             this.Label26.TextAlignment = System.Drawing.ContentAlignment.TopRight;
             this.Label26.ThemeName = "Office2010Blue";
+            this.Label26.Visible = false;
             // 
             // Label10
             // 
@@ -362,6 +363,7 @@
             this.Note.TabIndex = 428;
             this.Note.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.Note.ThemeName = "Office2010Blue";
+            this.Note.GotFocus += new System.EventHandler(this.Note_Leave);
             // 
             // Label23
             // 
@@ -479,6 +481,7 @@
             this.quantity.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.quantity.ThemeName = "Office2010Blue";
             this.quantity.TextChanged += new System.EventHandler(this.Quantity_TextChanged);
+            this.quantity.GotFocus += new System.EventHandler(this.Quantity_Leave);
             // 
             // Label12
             // 
@@ -507,6 +510,7 @@
             this.UnitPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.UnitPrice.ThemeName = "Office2010Blue";
             this.UnitPrice.TextChanged += new System.EventHandler(this.UnitPrice_TextChanged);
+            this.UnitPrice.GotFocus += new System.EventHandler(this.UnitPrice_Leave);
             // 
             // Label14
             // 
@@ -537,6 +541,7 @@
             this.ServiceList.TabIndex = 1;
             this.ServiceList.ThemeName = "Office2010Blue";
             this.ServiceList.SelectedIndexChanged += new Telerik.WinControls.UI.Data.PositionChangedEventHandler(this.ServiceList_SelectedIndexChanged);
+            this.ServiceList.GotFocus += new System.EventHandler(this.ServiceList_Leave);
             // 
             // ServiceListType
             // 
@@ -783,6 +788,7 @@
             this.ApproveReason.Size = new System.Drawing.Size(347, 28);
             this.ApproveReason.TabIndex = 1;
             this.ApproveReason.ThemeName = "Office2010Blue";
+            this.ApproveReason.GotFocus += new System.EventHandler(this.ApproveReason_Leave);
             // 
             // RequistingParty
             // 
@@ -796,6 +802,8 @@
             this.RequistingParty.Size = new System.Drawing.Size(322, 28);
             this.RequistingParty.TabIndex = 2;
             this.RequistingParty.ThemeName = "Office2010Blue";
+            this.RequistingParty.SelectedIndexChanged += new Telerik.WinControls.UI.Data.PositionChangedEventHandler(this.RequistingParty_SelectedIndexChanged);
+            this.RequistingParty.GotFocus += new System.EventHandler(this.RequistingParty_Leave);
             // 
             // BillStatus
             // 
@@ -824,6 +832,7 @@
             this.ExcutingParty.Size = new System.Drawing.Size(347, 28);
             this.ExcutingParty.TabIndex = 3;
             this.ExcutingParty.ThemeName = "Office2010Blue";
+            this.ExcutingParty.GotFocus += new System.EventHandler(this.ExcutingParty_Leave);
             // 
             // Button3
             // 
@@ -884,6 +893,7 @@
             this.OperationNo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.OperationNo.ThemeName = "Office2010Blue";
             this.OperationNo.TextChanged += new System.EventHandler(this.OperationNo_TextChanged);
+            this.OperationNo.GotFocus += new System.EventHandler(this.OperationNo_Leave);
             // 
             // Label9
             // 
@@ -1005,7 +1015,9 @@
             this.GroupBox2.Controls.Add(this.OperationDate);
             this.GroupBox2.Controls.Add(this.Label25);
             this.GroupBox2.Controls.Add(this.initMoney);
+            this.GroupBox2.Controls.Add(this.dwasum);
             this.GroupBox2.Controls.Add(this.Label24);
+            this.GroupBox2.Controls.Add(this.Label26);
             this.GroupBox2.Controls.Add(this.Button8);
             this.GroupBox2.Controls.Add(this.GroupBox4);
             this.GroupBox2.Controls.Add(this.Button3);
@@ -1177,23 +1189,23 @@
         internal Telerik.WinControls.UI.RadDropDownList MedicalArabic;
         internal Telerik.WinControls.UI.RadButton Button9;
         private Telerik.WinControls.Themes.Office2010BlueTheme office2010BlueTheme1;
-        private static FRMmedicalCoPay _Default;
+       
         internal Telerik.WinControls.UI.RadGridView GrdMedical;
         internal Telerik.WinControls.UI.RadLabel radLabel1;
         internal Telerik.WinControls.UI.RadLabel radLabel2;
         internal Telerik.WinControls.UI.RadLabel radLabel3;
         internal Telerik.WinControls.UI.RadLabel radLabel4;
+        //private static FRMmedicalCoPay _Default;
+        //public static FRMmedicalCoPay Default
+        //{
+        //    get
+        //    {
+        //        if (_Default == null)
+        //            _Default = new FRMmedicalCoPay();
 
-        public static FRMmedicalCoPay Default
-        {
-            get
-            {
-                if (_Default == null)
-                    _Default = new FRMmedicalCoPay();
-
-                return _Default;
-            }
-        }
+        //        return _Default;
+        //    }
+        //}
     }
 
 }

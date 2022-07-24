@@ -12,7 +12,41 @@ namespace MedicalServiceSystem
         public FrmMedicalReasons()
         {
             InitializeComponent();
+            if (defaultInstance == null)
+                defaultInstance = this;
         }
+
+        #region Default Instance
+
+        private static FrmMedicalReasons defaultInstance;
+
+        /// <summary>
+        /// Added by the VB.Net to C# Converter to support default instance behavour in C#
+        /// </summary>
+        public static FrmMedicalReasons Default
+        {
+            get
+            {
+                if (defaultInstance == null)
+                {
+                    defaultInstance = new FrmMedicalReasons();
+                    defaultInstance.FormClosed += new FormClosedEventHandler(defaultInstance_FormClosed);
+                }
+
+                return defaultInstance;
+            }
+            set
+            {
+                defaultInstance = value;
+            }
+        }
+
+        static void defaultInstance_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            defaultInstance = null;
+        }
+
+        #endregion
 
         private void AddNewItem_Load(object sender, EventArgs e)
         {
@@ -29,10 +63,10 @@ namespace MedicalServiceSystem
 
             using (dbContext db = new dbContext())
             {
-                var Tlist = db.ReclaimMedicalReasonsLists.Select(p => new { p.Id, p.MedicineReason, p.Activated }).ToList();
+                var Tlist = db.ReclaimMedicalReasonsLists.Select(p => new { p.Id, p.MedicalReason, p.Activated }).ToList();
 
                 ChronicList.DataSource = Tlist;
-                ChronicList.DisplayMember = "MedicineReason";
+                ChronicList.DisplayMember = "MedicalReason";
                 ChronicList.ValueMember = "Id";
                 ChronicList.SelectedIndex = -1;
                 ChronicList.DropDownListElement.AutoCompleteSuggest.SuggestMode = Telerik.WinControls.UI.SuggestMode.Contains;
@@ -56,8 +90,8 @@ namespace MedicalServiceSystem
                 {
                     ReclaimMedicineReasonsList tr = new ReclaimMedicineReasonsList();
                     tr.MedicineReason = ChronicList.Text.Trim();
-                    tr.Activated = 1;
-                    db.ReclaimMedicalReasonsLists.Add(tr);
+                    tr.Activated = true;
+                    db.ReclaimMedicineReasonsLists.Add(tr);
                     db.SaveChanges();
                     FillCombo();
                     radButton1.PerformClick();
@@ -68,7 +102,7 @@ namespace MedicalServiceSystem
                     var Gtrade = db.ReclaimMedicalReasonsLists.Where(p => p.Id == ChronicId).ToList();
                     if (Gtrade.Count > 0)
                     {
-                        Gtrade[0].MedicineReason = ChronicList.Text.Trim();
+                        Gtrade[0].MedicalReason = ChronicList.Text.Trim();
                         db.SaveChanges();
                         FillCombo();
                         radButton1.PerformClick();
@@ -296,7 +330,7 @@ namespace MedicalServiceSystem
                     // TradeId = Convert.ToInt32(TradeName.SelectedValue.ToString());
                     using (dbContext db = new dbContext())
                     {
-                        var gtrade = db.ReclaimMedicalReasonsLists.Where(p => p.MedicineReason == ChronicList.Text).ToList();
+                        var gtrade = db.ReclaimMedicalReasonsLists.Where(p => p.MedicalReason == ChronicList.Text).ToList();
                         if (gtrade.Count > 0)
                         {
                             ChronicId = gtrade[0].Id;

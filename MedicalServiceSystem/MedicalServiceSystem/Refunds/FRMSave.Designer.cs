@@ -30,12 +30,11 @@
             this.Label2 = new Telerik.WinControls.UI.RadLabel();
             this.Button1 = new Telerik.WinControls.UI.RadButton();
             this.PictureBox1 = new System.Windows.Forms.PictureBox();
-            this.OPr = new Telerik.WinControls.UI.RadLabel();
             this.radLabel1 = new Telerik.WinControls.UI.RadLabel();
+            this.OPr = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.Label2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Button1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.OPr)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
@@ -72,18 +71,6 @@
             this.PictureBox1.TabIndex = 31;
             this.PictureBox1.TabStop = false;
             // 
-            // OPr
-            // 
-            this.OPr.AutoSize = false;
-            this.OPr.BorderVisible = true;
-            this.OPr.Font = new System.Drawing.Font("Sakkal Majalla", 20.25F);
-            this.OPr.ForeColor = System.Drawing.Color.Black;
-            this.OPr.Location = new System.Drawing.Point(1, 99);
-            this.OPr.Name = "OPr";
-            this.OPr.Size = new System.Drawing.Size(350, 31);
-            this.OPr.TabIndex = 32;
-            this.OPr.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // radLabel1
             // 
             this.radLabel1.AutoSize = false;
@@ -97,14 +84,23 @@
             this.radLabel1.Text = "النظام";
             this.radLabel1.TextAlignment = System.Drawing.ContentAlignment.TopRight;
             // 
+            // OPr
+            // 
+            this.OPr.Font = new System.Drawing.Font("Sakkal Majalla", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.OPr.Location = new System.Drawing.Point(12, 99);
+            this.OPr.Name = "OPr";
+            this.OPr.Size = new System.Drawing.Size(327, 43);
+            this.OPr.TabIndex = 32;
+            this.OPr.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // FRMSave
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(351, 230);
-            this.Controls.Add(this.radLabel1);
+            this.BackColor = System.Drawing.Color.Gainsboro;
+            this.ClientSize = new System.Drawing.Size(351, 262);
             this.Controls.Add(this.OPr);
+            this.Controls.Add(this.radLabel1);
             this.Controls.Add(this.Button1);
             this.Controls.Add(this.Label2);
             this.Controls.Add(this.PictureBox1);
@@ -123,7 +119,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.Label2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Button1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.OPr)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
             this.ResumeLayout(false);
@@ -132,28 +127,22 @@
 		}
 		internal Telerik.WinControls.UI.RadLabel Label2;
 		internal Telerik.WinControls.UI.RadButton Button1;
-		internal Telerik.WinControls.UI.GridViewTextBoxColumn Column1;
-		internal Telerik.WinControls.UI.GridViewTextBoxColumn Column3;
 		internal System.Windows.Forms.PictureBox PictureBox1;
-		//internal Microsoft.VisualBasic.PowerPacks.ShapeContainer ShapeContainer1;
-		//internal Microsoft.VisualBasic.PowerPacks.RectangleShape RectangleShape1;
-		//internal DevExpress.XtraEditors.LabelControl OperationNo;
-		//internal DevExpress.XtraEditors.LabelControl LabelControl2;
-		internal Telerik.WinControls.UI.RadLabel OPr;
 
-		private static FRMSave _Default;
+		
         internal Telerik.WinControls.UI.RadLabel radLabel1;
+        private System.Windows.Forms.Label OPr;
+  //      private static FRMSave _Default;
+  //      public static FRMSave Default
+		//{
+		//	get
+		//	{
+		//		if (_Default == null)
+		//			_Default = new FRMSave();
 
-        public static FRMSave Default
-		{
-			get
-			{
-				if (_Default == null)
-					_Default = new FRMSave();
-
-				return _Default;
-			}
-		}
+		//		return _Default;
+		//	}
+		//}
 	}
 
 }

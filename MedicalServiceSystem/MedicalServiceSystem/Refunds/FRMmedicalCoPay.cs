@@ -19,7 +19,41 @@ namespace MedicalServiceSystem.Reclaims
         public FRMmedicalCoPay()
         {
             InitializeComponent();
+            if (defaultInstance == null)
+                defaultInstance = this;
         }
+
+        #region Default Instance
+
+        private static FRMmedicalCoPay defaultInstance;
+
+        /// <summary>
+        /// Added by the VB.Net to C# Converter to support default instance behavour in C#
+        /// </summary>
+        public static FRMmedicalCoPay Default
+        {
+            get
+            {
+                if (defaultInstance == null)
+                {
+                    defaultInstance = new FRMmedicalCoPay();
+                    defaultInstance.FormClosed += new FormClosedEventHandler(defaultInstance_FormClosed);
+                }
+
+                return defaultInstance;
+            }
+            set
+            {
+                defaultInstance = value;
+            }
+        }
+
+        static void defaultInstance_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            defaultInstance = null;
+        }
+
+        #endregion
         public int UserId = 0;
         public int LocalityId = 0;
         public int ReclaimId = 0;
@@ -495,6 +529,119 @@ namespace MedicalServiceSystem.Reclaims
             {
 
 
+            }
+        }
+
+        private void OperationNo_Leave(object sender, EventArgs e)
+        {
+            if (InputLanguage.InstalledInputLanguages[0].Culture.Name.ToLower().Contains("ar"))
+            {
+                InputLanguage.CurrentInputLanguage = InputLanguage.InstalledInputLanguages[1];
+            }
+            else
+            {
+                InputLanguage.CurrentInputLanguage = InputLanguage.InstalledInputLanguages[0];
+            }
+        }
+
+        private void ApproveReason_Leave(object sender, EventArgs e)
+        {
+            if (InputLanguage.InstalledInputLanguages[0].Culture.Name.ToLower().Contains("en"))
+            {
+                InputLanguage.CurrentInputLanguage = InputLanguage.InstalledInputLanguages[1];
+            }
+            else
+            {
+                InputLanguage.CurrentInputLanguage = InputLanguage.InstalledInputLanguages[0];
+            }
+        }
+
+        private void RequistingParty_SelectedIndexChanged(object sender, Telerik.WinControls.UI.Data.PositionChangedEventArgs e)
+        {
+
+        }
+
+        private void RequistingParty_Leave(object sender, EventArgs e)
+        {
+            if (InputLanguage.InstalledInputLanguages[0].Culture.Name.ToLower().Contains("en"))
+            {
+                InputLanguage.CurrentInputLanguage = InputLanguage.InstalledInputLanguages[1];
+            }
+            else
+            {
+                InputLanguage.CurrentInputLanguage = InputLanguage.InstalledInputLanguages[0];
+            }
+        }
+
+        private void ExcutingParty_Leave(object sender, EventArgs e)
+        {
+            if (InputLanguage.InstalledInputLanguages[0].Culture.Name.ToLower().Contains("en"))
+            {
+                InputLanguage.CurrentInputLanguage = InputLanguage.InstalledInputLanguages[1];
+            }
+            else
+            {
+                InputLanguage.CurrentInputLanguage = InputLanguage.InstalledInputLanguages[0];
+            }
+        }
+
+        private void ServiceList_Leave(object sender, EventArgs e)
+        {
+            if (InputLanguage.InstalledInputLanguages[0].Culture.Name.ToLower().Contains("ar"))
+            {
+                InputLanguage.CurrentInputLanguage = InputLanguage.InstalledInputLanguages[1];
+            }
+            else
+            {
+                InputLanguage.CurrentInputLanguage = InputLanguage.InstalledInputLanguages[0];
+            }
+        }
+
+        private void MedicalArabic_Leave(object sender, EventArgs e)
+        {
+            if (InputLanguage.InstalledInputLanguages[0].Culture.Name.ToLower().Contains("en"))
+            {
+                InputLanguage.CurrentInputLanguage = InputLanguage.InstalledInputLanguages[1];
+            }
+            else
+            {
+                InputLanguage.CurrentInputLanguage = InputLanguage.InstalledInputLanguages[0];
+            }
+        }
+
+        private void UnitPrice_Leave(object sender, EventArgs e)
+        {
+            if (InputLanguage.InstalledInputLanguages[0].Culture.Name.ToLower().Contains("ar"))
+            {
+                InputLanguage.CurrentInputLanguage = InputLanguage.InstalledInputLanguages[1];
+            }
+            else
+            {
+                InputLanguage.CurrentInputLanguage = InputLanguage.InstalledInputLanguages[0];
+            }
+        }
+
+        private void Quantity_Leave(object sender, EventArgs e)
+        {
+            if (InputLanguage.InstalledInputLanguages[0].Culture.Name.ToLower().Contains("ar"))
+            {
+                InputLanguage.CurrentInputLanguage = InputLanguage.InstalledInputLanguages[1];
+            }
+            else
+            {
+                InputLanguage.CurrentInputLanguage = InputLanguage.InstalledInputLanguages[0];
+            }
+        }
+
+        private void Note_Leave(object sender, EventArgs e)
+        {
+            if (InputLanguage.InstalledInputLanguages[0].Culture.Name.ToLower().Contains("en"))
+            {
+                InputLanguage.CurrentInputLanguage = InputLanguage.InstalledInputLanguages[1];
+            }
+            else
+            {
+                InputLanguage.CurrentInputLanguage = InputLanguage.InstalledInputLanguages[0];
             }
         }
     }

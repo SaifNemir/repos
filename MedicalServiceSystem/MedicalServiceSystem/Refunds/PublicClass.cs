@@ -292,5 +292,6 @@ internal static class PLC
 		}
 		return accum;
 	}
-
+    public static string Opr { get; set; }
+    public static int Flag { get; set; }
 }

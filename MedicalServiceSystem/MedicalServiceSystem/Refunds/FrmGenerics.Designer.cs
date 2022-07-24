@@ -239,19 +239,19 @@
         public Telerik.WinControls.UI.RadButton radButton1;
         public Telerik.WinControls.UI.RadButton radButton2;
 
-        private static FrmGenerics _Default;
+        
         public Telerik.WinControls.UI.RadLabel radLabel1;
         public Telerik.WinControls.UI.RadDropDownList Unit;
+        //private static FrmGenerics _Default;
+        //public static FrmGenerics Default
+        //{
+        //    get
+        //    {
+        //        if (_Default == null)
+        //            _Default = new FrmGenerics();
 
-        public static FrmGenerics Default
-        {
-            get
-            {
-                if (_Default == null)
-                    _Default = new FrmGenerics();
-
-                return _Default;
-            }
-        }
+        //        return _Default;
+        //    }
+        //}
     }
 }

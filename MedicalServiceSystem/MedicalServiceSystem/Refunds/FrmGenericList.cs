@@ -14,7 +14,41 @@ namespace MedicalServiceSystem
         public FrmGenericLis()
         {
             InitializeComponent();
+            if (defaultInstance == null)
+                defaultInstance = this;
         }
+
+        #region Default Instance
+
+        private static FrmGenericLis defaultInstance;
+
+        /// <summary>
+        /// Added by the VB.Net to C# Converter to support default instance behavour in C#
+        /// </summary>
+        public static FrmGenericLis Default
+        {
+            get
+            {
+                if (defaultInstance == null)
+                {
+                    defaultInstance = new FrmGenericLis();
+                    defaultInstance.FormClosed += new FormClosedEventHandler(defaultInstance_FormClosed);
+                }
+
+                return defaultInstance;
+            }
+            set
+            {
+                defaultInstance = value;
+            }
+        }
+
+        static void defaultInstance_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            defaultInstance = null;
+        }
+
+        #endregion
 
         private void AddNewItem_Load(object sender, EventArgs e)
         {

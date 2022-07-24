@@ -32,6 +32,11 @@ namespace ModelDB
         public int ReclaimMedicineResonId { get; set; }
         [ForeignKey("ReclaimMedicineResonId")]
         public virtual ReclaimMedicineReasonsList ReclaimMedicineReasonsList { get; set; }
+        public bool? IsMedicine { get; set; }
+        public bool? IsMedical { get; set; }
+        public bool? RefuseMedical { get; set; }
+        public bool? RefuseMedicine { get; set; }
+
 
     }
     public enum ReclaimStatus

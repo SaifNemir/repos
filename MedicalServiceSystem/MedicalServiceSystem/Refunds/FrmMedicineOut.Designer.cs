@@ -28,13 +28,13 @@
         /// </summary>
         public void InitializeComponent()
         {
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn5 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn6 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn7 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewCommandColumn gridViewCommandColumn3 = new Telerik.WinControls.UI.GridViewCommandColumn();
-            Telerik.WinControls.UI.GridViewCommandColumn gridViewCommandColumn4 = new Telerik.WinControls.UI.GridViewCommandColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn8 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition2 = new Telerik.WinControls.UI.TableViewDefinition();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn1 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn2 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn3 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewCommandColumn gridViewCommandColumn1 = new Telerik.WinControls.UI.GridViewCommandColumn();
+            Telerik.WinControls.UI.GridViewCommandColumn gridViewCommandColumn2 = new Telerik.WinControls.UI.GridViewCommandColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn4 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition1 = new Telerik.WinControls.UI.TableViewDefinition();
             this.namelbl = new Telerik.WinControls.UI.RadLabel();
             this.Savebtn = new Telerik.WinControls.UI.RadButton();
             this.radTextBox1 = new Telerik.WinControls.UI.RadTextBox();
@@ -101,9 +101,6 @@
             // 
             // GrdTrades
             // 
-            this.GrdTrades.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.GrdTrades.BackColor = System.Drawing.SystemColors.Control;
             this.GrdTrades.Cursor = System.Windows.Forms.Cursors.Default;
             this.GrdTrades.Font = new System.Drawing.Font("Sakkal Majalla", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -116,46 +113,46 @@
             this.GrdTrades.MasterTemplate.AllowAddNewRow = false;
             this.GrdTrades.MasterTemplate.AllowColumnReorder = false;
             this.GrdTrades.MasterTemplate.AllowSearchRow = true;
-            gridViewTextBoxColumn5.DataType = typeof(uint);
-            gridViewTextBoxColumn5.FieldName = "Id";
-            gridViewTextBoxColumn5.HeaderText = "Medicine Code";
-            gridViewTextBoxColumn5.Name = "Id";
-            gridViewTextBoxColumn5.Width = 100;
-            gridViewTextBoxColumn6.FieldName = "TradeName";
-            gridViewTextBoxColumn6.HeaderText = "Medicine Name";
-            gridViewTextBoxColumn6.Name = "TradeName";
-            gridViewTextBoxColumn6.Width = 450;
-            gridViewTextBoxColumn7.FieldName = "MaxCost";
-            gridViewTextBoxColumn7.HeaderText = "Max Cost";
-            gridViewTextBoxColumn7.Name = "MaxCost";
-            gridViewTextBoxColumn7.Width = 100;
-            gridViewCommandColumn3.DefaultText = "Edit";
-            gridViewCommandColumn3.EnableExpressionEditor = false;
-            gridViewCommandColumn3.FieldName = "Edit";
-            gridViewCommandColumn3.HeaderText = "Edit";
-            gridViewCommandColumn3.Name = "Edit";
-            gridViewCommandColumn3.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            gridViewCommandColumn3.UseDefaultText = true;
-            gridViewCommandColumn4.DefaultText = "Enable\\Disable";
-            gridViewCommandColumn4.HeaderText = "Enable\\Disable";
-            gridViewCommandColumn4.Name = "Delete";
-            gridViewCommandColumn4.UseDefaultText = true;
-            gridViewCommandColumn4.Width = 120;
-            gridViewTextBoxColumn8.FieldName = "Activated";
-            gridViewTextBoxColumn8.HeaderText = "column1";
-            gridViewTextBoxColumn8.IsVisible = false;
-            gridViewTextBoxColumn8.Name = "Activated";
+            gridViewTextBoxColumn1.DataType = typeof(uint);
+            gridViewTextBoxColumn1.FieldName = "Id";
+            gridViewTextBoxColumn1.HeaderText = "Medicine Code";
+            gridViewTextBoxColumn1.Name = "Id";
+            gridViewTextBoxColumn1.Width = 100;
+            gridViewTextBoxColumn2.FieldName = "Generic_name";
+            gridViewTextBoxColumn2.HeaderText = "Medicine Name";
+            gridViewTextBoxColumn2.Name = "Generic_name";
+            gridViewTextBoxColumn2.Width = 450;
+            gridViewTextBoxColumn3.FieldName = "MaxCost";
+            gridViewTextBoxColumn3.HeaderText = "Max Cost";
+            gridViewTextBoxColumn3.Name = "MaxCost";
+            gridViewTextBoxColumn3.Width = 100;
+            gridViewCommandColumn1.DefaultText = "Edit";
+            gridViewCommandColumn1.EnableExpressionEditor = false;
+            gridViewCommandColumn1.FieldName = "Edit";
+            gridViewCommandColumn1.HeaderText = "Edit";
+            gridViewCommandColumn1.Name = "Edit";
+            gridViewCommandColumn1.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            gridViewCommandColumn1.UseDefaultText = true;
+            gridViewCommandColumn2.DefaultText = "Enable\\Disable";
+            gridViewCommandColumn2.HeaderText = "Enable\\Disable";
+            gridViewCommandColumn2.Name = "Delete";
+            gridViewCommandColumn2.UseDefaultText = true;
+            gridViewCommandColumn2.Width = 120;
+            gridViewTextBoxColumn4.FieldName = "Activated";
+            gridViewTextBoxColumn4.HeaderText = "column1";
+            gridViewTextBoxColumn4.IsVisible = false;
+            gridViewTextBoxColumn4.Name = "Activated";
             this.GrdTrades.MasterTemplate.Columns.AddRange(new Telerik.WinControls.UI.GridViewDataColumn[] {
-            gridViewTextBoxColumn5,
-            gridViewTextBoxColumn6,
-            gridViewTextBoxColumn7,
-            gridViewCommandColumn3,
-            gridViewCommandColumn4,
-            gridViewTextBoxColumn8});
+            gridViewTextBoxColumn1,
+            gridViewTextBoxColumn2,
+            gridViewTextBoxColumn3,
+            gridViewCommandColumn1,
+            gridViewCommandColumn2,
+            gridViewTextBoxColumn4});
             this.GrdTrades.MasterTemplate.EnableFiltering = true;
             this.GrdTrades.MasterTemplate.EnableGrouping = false;
             this.GrdTrades.MasterTemplate.EnableSorting = false;
-            this.GrdTrades.MasterTemplate.ViewDefinition = tableViewDefinition2;
+            this.GrdTrades.MasterTemplate.ViewDefinition = tableViewDefinition1;
             this.GrdTrades.Name = "GrdTrades";
             this.GrdTrades.ReadOnly = true;
             this.GrdTrades.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -268,19 +265,19 @@
         public Telerik.WinControls.UI.RadDropDownList TradeName;
         public Telerik.WinControls.UI.RadButton radButton2;
 
-        private static FrmMedicineOut _Default;
+       
         private System.Windows.Forms.TextBox MaxCost;
         public Telerik.WinControls.UI.RadLabel radLabel1;
+        //private static FrmMedicineOut _Default;
+        //public static FrmMedicineOut Default
+        //{
+        //    get
+        //    {
+        //        if (_Default == null)
+        //            _Default = new FrmMedicineOut();
 
-        public static FrmMedicineOut Default
-        {
-            get
-            {
-                if (_Default == null)
-                    _Default = new FrmMedicineOut();
-
-                return _Default;
-            }
-        }
+        //        return _Default;
+        //    }
+        //}
     }
 }

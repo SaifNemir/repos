@@ -16,8 +16,42 @@ namespace MedicalServiceSystem.Reclaims
         public FrmSearch()
         {
             InitializeComponent();
+            if (defaultInstance == null)
+                defaultInstance = this;
         }
-		private void txtname_TextChanged(object sender, System.EventArgs e)
+
+        #region Default Instance
+
+        private static FrmSearch defaultInstance;
+
+        /// <summary>
+        /// Added by the VB.Net to C# Converter to support default instance behavour in C#
+        /// </summary>
+        public static FrmSearch Default
+        {
+            get
+            {
+                if (defaultInstance == null)
+                {
+                    defaultInstance = new FrmSearch();
+                    defaultInstance.FormClosed += new FormClosedEventHandler(defaultInstance_FormClosed);
+                }
+
+                return defaultInstance;
+            }
+            set
+            {
+                defaultInstance = value;
+            }
+        }
+
+        static void defaultInstance_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            defaultInstance = null;
+        }
+
+        #endregion
+        private void txtname_TextChanged(object sender, System.EventArgs e)
 		{
             if (!string.IsNullOrEmpty(txtname.Text))
             {

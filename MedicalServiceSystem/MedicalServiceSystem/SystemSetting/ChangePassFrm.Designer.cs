@@ -224,17 +224,17 @@
         private Telerik.WinControls.UI.RadLabel radLabel1;
         private Telerik.WinControls.UI.RadGroupBox radGroupBox1;
 
-        private static ChangePassFrm _Default;
-        public static ChangePassFrm Default
-        {
-            get
-            {
-                if (_Default == null)
-                    _Default = new ChangePassFrm();
+        //private static ChangePassFrm _Default;
+        //public static ChangePassFrm Default
+        //{
+        //    get
+        //    {
+        //        if (_Default == null)
+        //            _Default = new ChangePassFrm();
 
-                return _Default;
-            }
-        }
+        //        return _Default;
+        //    }
+        //}
     }
 }
 

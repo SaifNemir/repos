@@ -21,7 +21,41 @@ namespace MedicalServiceSystem.Reclaims
         public FRMApproveMedicine()
         {
             InitializeComponent();
+            if (defaultInstance == null)
+                defaultInstance = this;
         }
+
+        #region Default Instance
+
+        private static FRMApproveMedicine defaultInstance;
+
+        /// <summary>
+        /// Added by the VB.Net to C# Converter to support default instance behavour in C#
+        /// </summary>
+        public static FRMApproveMedicine Default
+        {
+            get
+            {
+                if (defaultInstance == null)
+                {
+                    defaultInstance = new FRMApproveMedicine();
+                    defaultInstance.FormClosed += new FormClosedEventHandler(defaultInstance_FormClosed);
+                }
+
+                return defaultInstance;
+            }
+            set
+            {
+                defaultInstance = value;
+            }
+        }
+
+        static void defaultInstance_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            defaultInstance = null;
+        }
+
+        #endregion
         public int UserId = 0;
         public int LocalityId = 0;
         public int ApproveNo = 0;
@@ -256,7 +290,17 @@ namespace MedicalServiceSystem.Reclaims
                 try
                 {
                     this.Cursor = Cursors.WaitCursor;
-                    using (dbContext db = new dbContext())
+                if (SubscriberType.SelectedIndex == 0 && !card_no.Text.Contains("/"))
+                {
+                    if (card_no.Text.Length < 9 || card_no.Text.Length > 11 || card_no.Text.Length==10)
+                    {
+                        MessageBox.Show("رقم التأمين المدخل غير صحيح لأن طوله " + card_no.Text.Length, "النظام", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        card_no.Focus();
+                        this.Cursor = Cursors.Default;
+                        return;
+                    }
+                }
+                using (dbContext db = new dbContext())
                 {
 
                     var ser = db.Subscribers.Where(p => p.InsurNo == card_no.Text).Take(1).ToList();
@@ -304,9 +348,9 @@ namespace MedicalServiceSystem.Reclaims
                             Sex.Text = ser[0].Gender;
                             insurId = ser[0].Id;
                             Age.Text = DateAndTime.DateDiff(DateInterval.Year, ser[0].BirthDate, PLC.getdate()).ToString();
-                            var FrHistoryMc = db.ReclaimMedicines.Where(p => p.Reclaim.Subscriber.InsurNo == card_no.Text).Select(p => new { p.Reclaim.ReclaimNo, ServiceName = p.MedicineForReclaim.Generic_name, p.Reclaim.ReclaimDate, Cost = p.ReclaimCost, Quantity = p.Quantity, ApprovedQuantity = 0, UserName = "", System = "الاسترداد", RequestParty = (int)p.Reclaim.RefMedicalReqCenterId, ExcuteParty = (int)p.Reclaim.RefMedicineExcCenterId, Note = p.Reclaim.Notes }).ToList();
+                            var FrHistoryMc = db.ReclaimMedicines.Where(p => p.Reclaim.Subscriber.InsurNo == card_no.Text).Select(p => new { p.Reclaim.Id, p.Reclaim.ReclaimNo, ServiceName = p.MedicineForReclaim.Generic_name, p.Reclaim.ReclaimDate, Cost = p.ReclaimCost, Quantity = p.Quantity, ApprovedQuantity = 0, UserName = "", System = "الاسترداد", RequestParty = (int)p.Reclaim.RefMedicalReqCenterId, ExcuteParty = (int)p.Reclaim.RefMedicineExcCenterId, Note = p.Reclaim.Notes, ApproveCode = "0" }).ToList();
                             decimal Cost = 0;
-                            var FamHistory = db.ApproveMedicineDetails.Where(p => p.ApproveMedicine.Subscriber.InsurNo == card_no.Text).Select(p => new { ReclaimNo = p.ApproveMedicineId.ToString(), ServiceName = p.MedicineForReclaim.Generic_name, ReclaimDate = p.ApproveMedicine.ApproveDate, Cost = Cost, Quantity = p.Quantity, ApprovedQuantity = p.ApprovedQuantity, UserName = p.ApproveMedicine.Pharmacist.pharmacistName, System = "التصديق", RequestParty = p.ApproveMedicine.ReqCenterId, ExcuteParty = p.ApproveMedicine.ExcCenterId, Note = p.ApproveMedicine.Atachment }).ToList();
+                            var FamHistory = db.ApproveMedicineDetails.Where(p => p.ApproveMedicine.Subscriber.InsurNo == card_no.Text).Select(p => new { p.ApproveMedicine.Id, ReclaimNo = p.ApproveMedicineId.ToString(), ServiceName = p.MedicineForReclaim.Generic_name, ReclaimDate = p.ApproveMedicine.ApproveDate, Cost = Cost, Quantity = p.Quantity, ApprovedQuantity = p.ApprovedQuantity, UserName = p.ApproveMedicine.Pharmacist.pharmacistName, System = "التصديق", RequestParty = p.ApproveMedicine.ReqCenterId, ExcuteParty = p.ApproveMedicine.ExcCenterId, Note = p.ApproveMedicine.Atachment, p.ApproveMedicine.ApproveCode }).ToList();
                             var Funion = FrHistoryMc.Union(FamHistory).ToList();
                             FRMpatienthistory.Default.Grid_service.Rows.Clear();
                             if (Funion.Count > 0)
@@ -318,15 +362,13 @@ namespace MedicalServiceSystem.Reclaims
                                     int ExcuCenter = Funion[i].ExcuteParty;
                                     string ReqCenter = db.CenterInfos.Where(p => p.Id == ReqCenId).ToList()[0].CenterName;
                                     string ExcCenter = db.CenterInfos.Where(p => p.Id == ExcuCenter).ToList()[0].CenterName;
-                                    FRMpatienthistory.Default.Grid_service.Rows.Add(i + 1, Funion[i].ReclaimNo, Funion[i].ServiceName, Funion[i].Quantity, Funion[i].ApprovedQuantity, Funion[i].Cost, Funion[i].ReclaimDate, Funion[i].UserName, Funion[i].System, ReqCenter, ExcCenter, Funion[i].Note);
+                                    FRMpatienthistory.Default.Grid_service.Rows.Add("Show", i + 1, Funion[i].ReclaimNo, Funion[i].ApproveCode, Funion[i].ServiceName, Funion[i].Quantity, Funion[i].ApprovedQuantity, Funion[i].Cost, Funion[i].ReclaimDate.ToShortDateString(), Funion[i].UserName, Funion[i].System, ReqCenter, ExcCenter, Funion[i].Note, Funion[i].Id);
                                 }
                                 FRMpatienthistory.Default.Totals.Text = SumCost.ToString();
                                 FRMpatienthistory.Default.ShowDialog();
                                 this.Cursor = Cursors.Default;
                                 return;
                             }
-
-
                             this.Cursor = Cursors.Default;
                         }
                         else
@@ -809,7 +851,7 @@ namespace MedicalServiceSystem.Reclaims
 
                         else
                         {
-
+                            this.Cursor = Cursors.Default;
                             FRMAddStudent.Default.card_no.Text = card_no.Text;
                             FRMAddStudent.Default.ful_name.Clear();
                             FRMAddStudent.Default.Age.Clear();
@@ -822,7 +864,7 @@ namespace MedicalServiceSystem.Reclaims
 
 
             }
-                catch (Exception ex)
+                    catch (Exception ex)
             {
 
                 MessageBox.Show("توجد مشلكلة في جلب البيانات" + (char)13 + "تأكد من الرقم الصحيح" + (char)13 + ex.Message, "النظام", MessageBoxButtons.OK, MessageBoxIcon.None);
@@ -852,7 +894,7 @@ namespace MedicalServiceSystem.Reclaims
                 return;
             }
         }
-        private void FillGrid()
+        public void FillGrid()
         {
             using (dbContext db = new dbContext())
             {
@@ -889,7 +931,7 @@ namespace MedicalServiceSystem.Reclaims
             using (dbContext db = new dbContext())
             {
 
-                var pharm = db.Pharmacists.Where(p => p.Activated == 1 && p.Id>0).ToList();
+                var pharm = db.Pharmacists.Where(p => p.Activated == 1 && p.Id > 0).ToList();
                 pharmacist.DataSource = pharm;
                 pharmacist.DisplayMember = "pharmacistName";
                 pharmacist.ValueMember = "Id";
@@ -1316,6 +1358,131 @@ namespace MedicalServiceSystem.Reclaims
             FRMStopSubscriber.Default.card_no.Text = card_no.Text;
             FRMStopSubscriber.Default.ful_name.Text = CustName.Text;
             FRMStopSubscriber.Default.ShowDialog();
+        }
+
+        private void RadButton1_Click_1(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void ApproveType_GotFocus(object sender, EventArgs e)
+        {
+            if (InputLanguage.InstalledInputLanguages[0].Culture.Name.ToLower().Contains("en"))
+            {
+                InputLanguage.CurrentInputLanguage = InputLanguage.InstalledInputLanguages[1];
+            }
+            else
+            {
+                InputLanguage.CurrentInputLanguage = InputLanguage.InstalledInputLanguages[0];
+            }
+        }
+
+        private void CustName_Leave(object sender, EventArgs e)
+        {
+            if (InputLanguage.InstalledInputLanguages[0].Culture.Name.ToLower().Contains("en"))
+            {
+                InputLanguage.CurrentInputLanguage = InputLanguage.InstalledInputLanguages[1];
+            }
+            else
+            {
+                InputLanguage.CurrentInputLanguage = InputLanguage.InstalledInputLanguages[0];
+            }
+        }
+
+        private void RouchitaNo_Leave(object sender, EventArgs e)
+        {
+            if (InputLanguage.InstalledInputLanguages[0].Culture.Name.ToLower().Contains("ar"))
+            {
+                InputLanguage.CurrentInputLanguage = InputLanguage.InstalledInputLanguages[1];
+            }
+            else
+            {
+                InputLanguage.CurrentInputLanguage = InputLanguage.InstalledInputLanguages[0];
+            }
+        }
+
+        private void RequistingParty_Leave(object sender, EventArgs e)
+        {
+            if (InputLanguage.InstalledInputLanguages[0].Culture.Name.ToLower().Contains("en"))
+            {
+                InputLanguage.CurrentInputLanguage = InputLanguage.InstalledInputLanguages[1];
+            }
+            else
+            {
+                InputLanguage.CurrentInputLanguage = InputLanguage.InstalledInputLanguages[0];
+            }
+        }
+
+        private void ExcutingParty_Leave(object sender, EventArgs e)
+        {
+            if (InputLanguage.InstalledInputLanguages[0].Culture.Name.ToLower().Contains("en"))
+            {
+                InputLanguage.CurrentInputLanguage = InputLanguage.InstalledInputLanguages[1];
+            }
+            else
+            {
+                InputLanguage.CurrentInputLanguage = InputLanguage.InstalledInputLanguages[0];
+            }
+        }
+
+        private void Pharmacist_Leave(object sender, EventArgs e)
+        {
+            if (InputLanguage.InstalledInputLanguages[0].Culture.Name.ToLower().Contains("en"))
+            {
+                InputLanguage.CurrentInputLanguage = InputLanguage.InstalledInputLanguages[1];
+            }
+            else
+            {
+                InputLanguage.CurrentInputLanguage = InputLanguage.InstalledInputLanguages[0];
+            }
+        }
+
+        private void Dwalist_Leave(object sender, EventArgs e)
+        {
+            if (InputLanguage.InstalledInputLanguages[0].Culture.Name.ToLower().Contains("ar"))
+            {
+                InputLanguage.CurrentInputLanguage = InputLanguage.InstalledInputLanguages[1];
+            }
+            else
+            {
+                InputLanguage.CurrentInputLanguage = InputLanguage.InstalledInputLanguages[0];
+            }
+        }
+
+        private void Quantity_Leave(object sender, EventArgs e)
+        {
+            if (InputLanguage.InstalledInputLanguages[0].Culture.Name.ToLower().Contains("ar"))
+            {
+                InputLanguage.CurrentInputLanguage = InputLanguage.InstalledInputLanguages[1];
+            }
+            else
+            {
+                InputLanguage.CurrentInputLanguage = InputLanguage.InstalledInputLanguages[0];
+            }
+        }
+
+        private void ApprovedQuantity_Leave(object sender, EventArgs e)
+        {
+            if (InputLanguage.InstalledInputLanguages[0].Culture.Name.ToLower().Contains("ar"))
+            {
+                InputLanguage.CurrentInputLanguage = InputLanguage.InstalledInputLanguages[1];
+            }
+            else
+            {
+                InputLanguage.CurrentInputLanguage = InputLanguage.InstalledInputLanguages[0];
+            }
+        }
+
+        private void ApproveDuration_Leave(object sender, EventArgs e)
+        {
+            if (InputLanguage.InstalledInputLanguages[0].Culture.Name.ToLower().Contains("ar"))
+            {
+                InputLanguage.CurrentInputLanguage = InputLanguage.InstalledInputLanguages[1];
+            }
+            else
+            {
+                InputLanguage.CurrentInputLanguage = InputLanguage.InstalledInputLanguages[0];
+            }
         }
     }
 }

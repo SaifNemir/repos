@@ -14,6 +14,7 @@ using Microsoft.VisualBasic.CompilerServices; // Install-Package Microsoft.Visua
 using Telerik.WinControls.UI;
 using ModelDB;
 using MedicalServiceSystem.SystemSetting;
+using MedicalServiceSystem.Reclaims;
 
 namespace MedicalServiceSystem
 {
@@ -21,7 +22,44 @@ namespace MedicalServiceSystem
 
     public partial class FrmCenters : Telerik.WinControls.UI.RadForm
     {
+        public FrmCenters()
+        {
+            InitializeComponent();
+            if (defaultInstance == null)
+                defaultInstance = this;
+        }
 
+        #region Default Instance
+
+        private static FrmCenters defaultInstance;
+
+        /// <summary>
+        /// Added by the VB.Net to C# Converter to support default instance behavour in C#
+        /// </summary>
+        public static FrmCenters Default
+        {
+            get
+            {
+                if (defaultInstance == null)
+                {
+                    defaultInstance = new FrmCenters();
+                    defaultInstance.FormClosed += new FormClosedEventHandler(defaultInstance_FormClosed);
+                }
+
+                return defaultInstance;
+            }
+            set
+            {
+                defaultInstance = value;
+            }
+        }
+
+        static void defaultInstance_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            defaultInstance = null;
+        }
+
+        #endregion
 
         public int flag = 0;
         public int CenterId = 0;
@@ -164,13 +202,15 @@ namespace MedicalServiceSystem
         {
             using (dbContext db = new dbContext())
             {
-                var CInfo = db.CenterInfos.Where(p=>p.HasContract==false && p.IsVisible && p.IsVisible==true).Select(p => new { p.Id, p.CenterName, p.Level1, p.Level2, p.Level3, p.CenterTypeId, p.HasContract, p.IsEnabled }).ToList();
+                var CInfo = db.CenterInfos.Where(p => p.HasContract == false && p.IsVisible && p.IsVisible == true).Select(p => new { p.Id, p.CenterName, p.Level1, p.Level2, p.Level3, p.CenterTypeId, p.HasContract, p.IsEnabled }).ToList();
                 GRDCenter.DataSource = CInfo;
                 if (GRDCenter.RowCount > 0)
                 {
                     for (int i = 0; i < GRDCenter.RowCount; i++)
                     {
                         GRDCenter.Rows[i].Cells["Serial"].Value = i + 1;
+                        GRDCenter.Rows[i].Cells["BtnEditing"].Value = "تعديل";
+                        GRDCenter.Rows[i].Cells["BtnDeleting"].Value = "حذف";
                     }
                 }
             }
@@ -423,6 +463,53 @@ namespace MedicalServiceSystem
 
         private void Button3_Click(object sender, EventArgs e)
         {
+            using (dbContext db = new dbContext())
+            {
+
+                if (PLC.Flag == 1)
+                {
+                    var ExcCenter = db.CenterInfos.Where(p => p.IsVisible == true && p.IsEnabled == true).ToList();
+                    FRMmedicine.Default.ExcutingParty.DataSource = ExcCenter;
+                    FRMmedicine.Default.ExcutingParty.ValueMember = "Id";
+                    FRMmedicine.Default.ExcutingParty.DisplayMember = "CenterName";
+                    FRMmedicine.Default.ExcutingParty.DropDownListElement.AutoCompleteSuggest.SuggestMode = Telerik.WinControls.UI.SuggestMode.Contains;
+                    FRMmedicine.Default.ExcutingParty.SelectedIndex = -1;
+
+                    var ReqCenter = db.CenterInfos.Where(p => p.IsVisible == true && p.IsEnabled == true).ToList();
+                    FRMmedicine.Default.RequistingParty.DataSource = ReqCenter;
+                    FRMmedicine.Default.RequistingParty.ValueMember = "Id";
+                    FRMmedicine.Default.RequistingParty.DisplayMember = "CenterName";
+                    FRMmedicine.Default.RequistingParty.DropDownListElement.AutoCompleteSuggest.SuggestMode = Telerik.WinControls.UI.SuggestMode.Contains;
+                    FRMmedicine.Default.RequistingParty.SelectedIndex = -1;
+                }
+                if (PLC.Flag == 2)
+                {
+
+                    var ExcCenter = db.CenterInfos.Where(p => p.IsVisible == true && p.IsEnabled == true).ToList();
+                    FRMmedical.Default.ExcutingParty.DataSource = ExcCenter;
+                    FRMmedical.Default.ExcutingParty.ValueMember = "Id";
+                    FRMmedical.Default.ExcutingParty.DisplayMember = "CenterName";
+                    FRMmedical.Default.ExcutingParty.DropDownListElement.AutoCompleteSuggest.SuggestMode = Telerik.WinControls.UI.SuggestMode.Contains;
+                    FRMmedical.Default.ExcutingParty.SelectedIndex = -1;
+
+                    var ReqCenter = db.CenterInfos.Where(p => p.IsVisible == true && p.IsEnabled == true).ToList();
+                    FRMmedical.Default.RequistingParty.DataSource = ReqCenter;
+                    FRMmedical.Default.RequistingParty.ValueMember = "Id";
+                    FRMmedical.Default.RequistingParty.DisplayMember = "CenterName";
+                    FRMmedical.Default.RequistingParty.DropDownListElement.AutoCompleteSuggest.SuggestMode = Telerik.WinControls.UI.SuggestMode.Contains;
+                    FRMmedical.Default.RequistingParty.SelectedIndex = -1;
+                }
+                if (PLC.Flag == 3)
+                {
+                    var Gcenter = db.CenterInfos.Where(p => p.IsEnabled == true && p.IsVisible == true).ToList();
+                    FRMReception.Default.CenterList.DataSource = Gcenter;
+                    FRMReception.Default.CenterList.ValueMember = "Id";
+                    FRMReception.Default.CenterList.DisplayMember = "CenterName";
+                    FRMReception.Default.CenterList.SelectedIndex = -1;
+                    FRMReception.Default.CenterList.DropDownListElement.AutoCompleteSuggest.SuggestMode = Telerik.WinControls.UI.SuggestMode.Contains;
+                }
+
+            }
             Close();
         }
 

@@ -12,7 +12,41 @@ namespace MedicalServiceSystem
         public FrmMedicineReasons()
         {
             InitializeComponent();
+            if (defaultInstance == null)
+                defaultInstance = this;
         }
+
+        #region Default Instance
+
+        private static FrmMedicineReasons defaultInstance;
+
+        /// <summary>
+        /// Added by the VB.Net to C# Converter to support default instance behavour in C#
+        /// </summary>
+        public static FrmMedicineReasons Default
+        {
+            get
+            {
+                if (defaultInstance == null)
+                {
+                    defaultInstance = new FrmMedicineReasons();
+                    defaultInstance.FormClosed += new FormClosedEventHandler(defaultInstance_FormClosed);
+                }
+
+                return defaultInstance;
+            }
+            set
+            {
+                defaultInstance = value;
+            }
+        }
+
+        static void defaultInstance_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            defaultInstance = null;
+        }
+
+        #endregion
 
         private void AddNewItem_Load(object sender, EventArgs e)
         {
@@ -56,7 +90,7 @@ namespace MedicalServiceSystem
                 {
                     ReclaimMedicineReasonsList tr = new ReclaimMedicineReasonsList();
                     tr.MedicineReason = ChronicList.Text.Trim();
-                    tr.Activated = 1;
+                    tr.Activated = true;
                     db.ReclaimMedicineReasonsLists.Add(tr);
                     db.SaveChanges();
                     FillCombo();

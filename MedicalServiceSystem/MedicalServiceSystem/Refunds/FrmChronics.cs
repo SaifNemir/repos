@@ -12,7 +12,41 @@ namespace MedicalServiceSystem
         public FrmChronics()
         {
             InitializeComponent();
+            if (defaultInstance == null)
+                defaultInstance = this;
         }
+
+        #region Default Instance
+
+        private static FrmChronics defaultInstance;
+
+        /// <summary>
+        /// Added by the VB.Net to C# Converter to support default instance behavour in C#
+        /// </summary>
+        public static FrmChronics Default
+        {
+            get
+            {
+                if (defaultInstance == null)
+                {
+                    defaultInstance = new FrmChronics();
+                    defaultInstance.FormClosed += new FormClosedEventHandler(defaultInstance_FormClosed);
+                }
+
+                return defaultInstance;
+            }
+            set
+            {
+                defaultInstance = value;
+            }
+        }
+
+        static void defaultInstance_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            defaultInstance = null;
+        }
+
+        #endregion
 
         private void AddNewItem_Load(object sender, EventArgs e)
         {
@@ -37,6 +71,14 @@ namespace MedicalServiceSystem
                 ChronicList.SelectedIndex = -1;
                 ChronicList.DropDownListElement.AutoCompleteSuggest.SuggestMode = Telerik.WinControls.UI.SuggestMode.Contains;
                 GrdTrades.DataSource = Tlist;
+                if (GrdTrades.RowCount > 0)
+                {
+                    for (int i = 0; i < GrdTrades.RowCount; i++)
+                    {
+                        GrdTrades.Rows[i].Cells["Edit"].Value = "تعديل";
+                        GrdTrades.Rows[i].Cells["Delete"].Value = "حذف";
+                    }
+                }
                 
             }
         }

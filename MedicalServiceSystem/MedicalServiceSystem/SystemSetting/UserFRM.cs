@@ -17,7 +17,41 @@ namespace MedicalServiceSystem.SystemSetting
         public UserFRM()
         {
             InitializeComponent();
+            if (defaultInstance == null)
+                defaultInstance = this;
         }
+
+        #region Default Instance
+
+        private static UserFRM defaultInstance;
+
+        /// <summary>
+        /// Added by the VB.Net to C# Converter to support default instance behavour in C#
+        /// </summary>
+        public static UserFRM Default
+        {
+            get
+            {
+                if (defaultInstance == null)
+                {
+                    defaultInstance = new UserFRM();
+                    defaultInstance.FormClosed += new FormClosedEventHandler(defaultInstance_FormClosed);
+                }
+
+                return defaultInstance;
+            }
+            set
+            {
+                defaultInstance = value;
+            }
+        }
+
+        static void defaultInstance_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            defaultInstance = null;
+        }
+
+        #endregion
         public int flag = 0;
         private void RadButton3_Click(object sender, EventArgs e)
         {

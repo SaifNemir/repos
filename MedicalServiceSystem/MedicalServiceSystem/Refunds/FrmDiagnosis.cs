@@ -12,7 +12,41 @@ namespace MedicalServiceSystem
         public FrmDiagnosis()
         {
             InitializeComponent();
+            if (defaultInstance == null)
+                defaultInstance = this;
         }
+
+        #region Default Instance
+
+        private static FrmDiagnosis defaultInstance;
+
+        /// <summary>
+        /// Added by the VB.Net to C# Converter to support default instance behavour in C#
+        /// </summary>
+        public static FrmDiagnosis Default
+        {
+            get
+            {
+                if (defaultInstance == null)
+                {
+                    defaultInstance = new FrmDiagnosis();
+                    defaultInstance.FormClosed += new FormClosedEventHandler(defaultInstance_FormClosed);
+                }
+
+                return defaultInstance;
+            }
+            set
+            {
+                defaultInstance = value;
+            }
+        }
+
+        static void defaultInstance_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            defaultInstance = null;
+        }
+
+        #endregion
 
         private void AddNewItem_Load(object sender, EventArgs e)
         {
@@ -36,6 +70,14 @@ namespace MedicalServiceSystem
                 DiagnosisList.SelectedIndex = -1;
                 DiagnosisList.DropDownListElement.AutoCompleteSuggest.SuggestMode = Telerik.WinControls.UI.SuggestMode.Contains;
                 GrdTrades.DataSource = Tlist;
+                if (GrdTrades.RowCount > 0)
+                {
+                    for (int i = 0; i < GrdTrades.RowCount; i++)
+                    {
+                        GrdTrades.Rows[i].Cells["Edit"].Value = "Edit";
+                        GrdTrades.Rows[i].Cells["Delete"].Value = "Delete";
+                    }
+                }
             }
         }
 

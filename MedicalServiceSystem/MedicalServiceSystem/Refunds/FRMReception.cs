@@ -19,7 +19,41 @@ namespace MedicalServiceSystem.Reclaims
         public FRMReception()
         {
             InitializeComponent();
+            if (defaultInstance == null)
+                defaultInstance = this;
         }
+
+        #region Default Instance
+
+        private static FRMReception defaultInstance;
+
+        /// <summary>
+        /// Added by the VB.Net to C# Converter to support default instance behavour in C#
+        /// </summary>
+        public static FRMReception Default
+        {
+            get
+            {
+                if (defaultInstance == null)
+                {
+                    defaultInstance = new FRMReception();
+                    defaultInstance.FormClosed += new FormClosedEventHandler(defaultInstance_FormClosed);
+                }
+
+                return defaultInstance;
+            }
+            set
+            {
+                defaultInstance = value;
+            }
+        }
+
+        static void defaultInstance_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            defaultInstance = null;
+        }
+
+        #endregion
         public int UserId = 0;
         public int LocalityId = 0;
         public int ReclaimId = 0;
@@ -76,7 +110,7 @@ namespace MedicalServiceSystem.Reclaims
             BillDate.Value = PLC.getdate();
             using (dbContext db = new dbContext())
             {
-                var Gcenter = db.CenterInfos.ToList();
+                var Gcenter = db.CenterInfos.Where(p => p.IsEnabled == true && p.IsVisible == true).ToList();
                 CenterList.DataSource = Gcenter;
                 CenterList.ValueMember = "Id";
                 CenterList.DisplayMember = "CenterName";
@@ -131,7 +165,7 @@ namespace MedicalServiceSystem.Reclaims
                         if (ser[0].IsStoped == false)
                         {
                             this.Cursor = Cursors.WaitCursor;
-                          
+
                             CustName.Text = ser[0].InsurName;
                             Birthdate.Value = ser[0].BirthDate;
                             sex.Text = ser[0].Gender;
@@ -404,6 +438,12 @@ namespace MedicalServiceSystem.Reclaims
                     InsuranceNo.Focus();
                     return;
                 }
+                if (ChkMedical.Checked == false && ChkMedicine.Checked == false)
+                {
+                    MessageBox.Show("يجب اختيار توع الخدمة", "النظام", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    ChkMedical.Focus();
+                    return;
+                }
                 if (GrdBill.RowCount > 0)
                 {
                     for (int i = 0; i < GrdBill.RowCount; i++)
@@ -414,7 +454,7 @@ namespace MedicalServiceSystem.Reclaims
                         }
                     }
                 }
-                GrdBill.Rows.Add(GrdBill.RowCount + 1, CenterList.Text, Convert.ToDouble(PartMoney.Text), BillNo.Text, BillDate.Value,CenterList.SelectedValue.ToString());
+                GrdBill.Rows.Add(GrdBill.RowCount + 1, CenterList.Text, Convert.ToDouble(PartMoney.Text), BillNo.Text, BillDate.Value, CenterList.SelectedValue.ToString());
                 if (GrdBill.RowCount > 0)
                 {
                     double a = 0;
@@ -484,7 +524,7 @@ namespace MedicalServiceSystem.Reclaims
             {
                 using (dbContext db = new dbContext())
                 {
-                    db.Database.CommandTimeout= 0;
+                    db.Database.CommandTimeout = 0;
                     var Fref = db.Reclaims.Where(p => p.ReclaimNo == OperationNo.Text.Trim() && p.RowStatus != RowStatus.Deleted).ToList();
                     if (Fref.Count > 0)
                     {
@@ -545,12 +585,20 @@ namespace MedicalServiceSystem.Reclaims
                         Rf.LocalityId = LocalityId;
                         Rf.ReclaimMedicalResonId = 0;
                         Rf.ReclaimMedicineResonId = 0;
+                        Rf.RefMedicalExcCenterId = 50000;
+                        Rf.RefMedicalReqCenterId = 50000;
+                        Rf.RefMedicineExcCenterId = 50000;
+                        Rf.RefMedicineReqCenterId = 50000;
+                        Rf.IsMedical = Convert.ToBoolean(ChkMedical.CheckState);
+                        Rf.IsMedicine = Convert.ToBoolean(ChkMedicine.CheckState);
+                        Rf.RefuseMedical = false;
+                        Rf.RefuseMedicine = false;
                         db.Reclaims.Add(Rf);
                         db.SaveChanges();
                         int GId = db.Reclaims.Where(p => p.UserId == UserId).Max(p => p.Id);
                         ReclaimId = GId;
                         string ltr = db.Localities.Where(p => p.Id == LocalityId).ToList()[0].LocalityLetter;
-                         ReNo = ltr + GId.ToString();
+                        ReNo = ltr + GId.ToString();
                         OperationNo.Text = ReNo;
                         var RNo = db.Reclaims.Where(p => p.Id == GId).FirstOrDefault();
                         RNo.ReclaimNo = ReNo;
@@ -566,8 +614,12 @@ namespace MedicalServiceSystem.Reclaims
                             db.ReclaimBills.Add(Reb);
                             db.SaveChanges();
                         }
-                        FRMSave.Default.OPr.Text = ReNo;
-                        FRMSave.Default.ShowDialog();
+                        FRMSave frms = new FRMSave();
+
+                        PLC.Opr = ReNo;
+                        //FRMSave.Default.OPr.Text = ReNo;
+                        frms.ShowDialog();
+
 
                     }
 
@@ -627,7 +679,7 @@ namespace MedicalServiceSystem.Reclaims
             {
                 DateTime date1 = OperationDate.Value;
                 DateTime date2 = PLC.getdate();
-                int Datedif =(int)DateAndTime.DateDiff (DateInterval.Day, date1, date2);
+                int Datedif = (int)DateAndTime.DateDiff(DateInterval.Day, date1, date2);
                 if (Datedif <= 30)
                 {
                     using (dbContext db = new dbContext())
@@ -682,6 +734,84 @@ namespace MedicalServiceSystem.Reclaims
             FRMStopSubscriber.Default.card_no.Text = InsuranceNo.Text;
             FRMStopSubscriber.Default.ful_name.Text = CustName.Text;
             FRMStopSubscriber.Default.ShowDialog();
+        }
+
+        private void RadButton1_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void RadButton2_Click(object sender, EventArgs e)
+        {
+
+            PLC.Flag = 3;
+            FrmCenters.Default.ShowDialog();
+
+        }
+
+        private void InsuranceNo_Leave(object sender, EventArgs e)
+        {
+            if (InputLanguage.InstalledInputLanguages[0].Culture.Name.ToLower().Contains("ar"))
+            {
+                InputLanguage.CurrentInputLanguage = InputLanguage.InstalledInputLanguages[1];
+            }
+            else
+            {
+                InputLanguage.CurrentInputLanguage = InputLanguage.InstalledInputLanguages[0];
+            }
+        }
+
+        private void CenterList_Leave(object sender, EventArgs e)
+        {
+            if (InputLanguage.InstalledInputLanguages[0].Culture.Name.ToLower().Contains("en"))
+            {
+                InputLanguage.CurrentInputLanguage = InputLanguage.InstalledInputLanguages[1];
+            }
+            else
+            {
+                InputLanguage.CurrentInputLanguage = InputLanguage.InstalledInputLanguages[0];
+            }
+        }
+
+        private void PartMoney_Leave(object sender, EventArgs e)
+        {
+            if (InputLanguage.InstalledInputLanguages[0].Culture.Name.ToLower().Contains("ar"))
+            {
+                InputLanguage.CurrentInputLanguage = InputLanguage.InstalledInputLanguages[1];
+            }
+            else
+            {
+                InputLanguage.CurrentInputLanguage = InputLanguage.InstalledInputLanguages[0];
+            }
+        }
+
+        private void BillNo_Leave(object sender, EventArgs e)
+        {
+            if (InputLanguage.InstalledInputLanguages[0].Culture.Name.ToLower().Contains("ar"))
+            {
+                InputLanguage.CurrentInputLanguage = InputLanguage.InstalledInputLanguages[1];
+            }
+            else
+            {
+                InputLanguage.CurrentInputLanguage = InputLanguage.InstalledInputLanguages[0];
+            }
+        }
+
+        private void OperationNo_Leave(object sender, EventArgs e)
+        {
+            if (InputLanguage.InstalledInputLanguages[0].Culture.Name.ToLower().Contains("ar"))
+            {
+                InputLanguage.CurrentInputLanguage = InputLanguage.InstalledInputLanguages[1];
+            }
+            else
+            {
+                InputLanguage.CurrentInputLanguage = InputLanguage.InstalledInputLanguages[0];
+            }
+        }
+
+        private void RadGroupBox2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

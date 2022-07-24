@@ -246,16 +246,16 @@
         public Telerik.WinControls.UI.RadDropDownList ApproveType;
         public Telerik.WinControls.UI.RadButton radButton2;
 
-        private static FrmAppMedicineTyp _Default;
-        public static FrmAppMedicineTyp Default
-        {
-            get
-            {
-                if (_Default == null)
-                    _Default = new FrmAppMedicineTyp();
+        //private static FrmAppMedicineTyp _Default;
+        //public static FrmAppMedicineTyp Default
+        //{
+        //    get
+        //    {
+        //        if (_Default == null)
+        //            _Default = new FrmAppMedicineTyp();
 
-                return _Default;
-            }
-        }
+        //        return _Default;
+        //    }
+        //}
     }
 }

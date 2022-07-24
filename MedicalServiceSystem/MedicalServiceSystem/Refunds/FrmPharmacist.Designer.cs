@@ -242,16 +242,16 @@
         public Telerik.WinControls.UI.RadDropDownList PharmacistList;
         public Telerik.WinControls.UI.RadButton radButton2;
 
-        private static FrmPharmacist _Default;
-        public static FrmPharmacist Default
-        {
-            get
-            {
-                if (_Default == null)
-                    _Default = new FrmPharmacist();
+        //private static FrmPharmacist _Default;
+        //public static FrmPharmacist Default
+        //{
+        //    get
+        //    {
+        //        if (_Default == null)
+        //            _Default = new FrmPharmacist();
 
-                return _Default;
-            }
-        }
+        //        return _Default;
+        //    }
+        //}
     }
 }

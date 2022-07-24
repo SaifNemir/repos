@@ -14,7 +14,41 @@ namespace MedicalServiceSystem.SystemSetting
         public ChangePassFrm()
         {
             InitializeComponent();
+            if (defaultInstance == null)
+                defaultInstance = this;
         }
+
+        #region Default Instance
+
+        private static ChangePassFrm defaultInstance;
+
+        /// <summary>
+        /// Added by the VB.Net to C# Converter to support default instance behavour in C#
+        /// </summary>
+        public static ChangePassFrm Default
+        {
+            get
+            {
+                if (defaultInstance == null)
+                {
+                    defaultInstance = new ChangePassFrm();
+                    defaultInstance.FormClosed += new FormClosedEventHandler(defaultInstance_FormClosed);
+                }
+
+                return defaultInstance;
+            }
+            set
+            {
+                defaultInstance = value;
+            }
+        }
+
+        static void defaultInstance_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            defaultInstance = null;
+        }
+
+        #endregion
 
         //private void Updatebtn_Click(object sender, EventArgs e)
         //{

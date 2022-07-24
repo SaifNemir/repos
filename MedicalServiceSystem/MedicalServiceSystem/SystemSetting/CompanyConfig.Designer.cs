@@ -228,20 +228,20 @@
         private Telerik.WinControls.Themes.Office2010BlueTheme office2010BlueTheme1;
         private Telerik.WinControls.UI.RadButton retreiveBTN;
 
-        private static CompanyConfig _Default;
+       
         private Telerik.WinControls.UI.RadTextBox Management;
         private Telerik.WinControls.UI.RadTextBox Department;
         private System.Windows.Forms.PictureBox pictureBox2;
+        //private static CompanyConfig _Default;
+        //public static CompanyConfig Default
+        //{
+        //    get
+        //    {
+        //        if (_Default == null)
+        //            _Default = new CompanyConfig();
 
-        public static CompanyConfig Default
-        {
-            get
-            {
-                if (_Default == null)
-                    _Default = new CompanyConfig();
-
-                return _Default;
-            }
-        }
+        //        return _Default;
+        //    }
+        //}
     }
 }

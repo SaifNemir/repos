@@ -278,20 +278,20 @@ namespace MedicalServiceSystem.Reclaims
         internal Telerik.WinControls.UI.RadButton Button4;
         internal Telerik.WinControls.UI.RadButton Button5;
         private Telerik.WinControls.Themes.Office2010BlueTheme office2010BlueTheme1;
-        private static FRMMedicinePricing _Default;
+       
         internal RadButton radButton1;
         internal RadButton radButton2;
+        //private static FRMMedicinePricing _Default;
+        //public static FRMMedicinePricing Default
+        //{
+        //    get
+        //    {
+        //        if (_Default == null)
+        //            _Default = new FRMMedicinePricing();
 
-        public static FRMMedicinePricing Default
-        {
-            get
-            {
-                if (_Default == null)
-                    _Default = new FRMMedicinePricing();
-
-                return _Default;
-            }
-        }
+        //        return _Default;
+        //    }
+        //}
     }
 
 

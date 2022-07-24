@@ -309,19 +309,19 @@ namespace MedicalServiceSystem
         internal Telerik.WinControls.UI.RadButton radButton1;
         internal Telerik.WinControls.UI.RadGridView GRDGroups;
         //private Telerik.WinControls.Themes.BreezeTheme breezeTheme1;
-        public static UserGroupFRM _Default;
+        
         internal ComboBox SystemName;
         internal Telerik.WinControls.UI.RadLabel radLabel2;
+        //public static UserGroupFRM _Default;
+        //public static UserGroupFRM Default
+        //{
+        //    get
+        //    {
+        //        if (_Default == null)
+        //            _Default = new UserGroupFRM();
 
-        public static UserGroupFRM Default
-        {
-            get
-            {
-                if (_Default == null)
-                    _Default = new UserGroupFRM();
-
-                return _Default;
-            }
-        }
+        //        return _Default;
+        //    }
+        //}
     }
 }

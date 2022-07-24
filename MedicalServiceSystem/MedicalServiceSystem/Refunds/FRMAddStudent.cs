@@ -17,6 +17,37 @@ namespace MedicalServiceSystem.Reclaims
         public FRMAddStudent()
         {
             InitializeComponent();
+            if (defaultInstance == null)
+                defaultInstance = this;
+        }
+
+
+
+        private static FRMAddStudent defaultInstance;
+
+        /// <summary>
+        /// Added by the VB.Net to C# Converter to support default instance behavour in C#
+        /// </summary>
+        public static FRMAddStudent Default
+        {
+            get
+            {
+                if (defaultInstance == null)
+                {
+                    defaultInstance = new FRMAddStudent();
+                    defaultInstance.FormClosed += new FormClosedEventHandler(defaultInstance_FormClosed);
+                }
+
+                return defaultInstance;
+            }
+            set
+            {
+                defaultInstance = value;
+            }
+        }
+        static void defaultInstance_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            defaultInstance = null;
         }
         public int LocalityId ;
 		public string UserName = "";

@@ -212,19 +212,19 @@ namespace MedicalServiceSystem.Reclaims
         internal Telerik.WinControls.UI.GridViewImageColumn BtnDeleting;
         internal Telerik.WinControls.UI.GridViewCheckBoxColumn IsEnabled;
         private Telerik.WinControls.Themes.Office2010BlueTheme office2010BlueTheme1;
-        private static FrmMedicalGroup _Default;
+     
         internal Telerik.WinControls.UI.RadButton Button4;
+        //private static FrmMedicalGroup _Default;
+        //public static FrmMedicalGroup Default
+        //{
+        //    get
+        //    {
+        //        if (_Default == null)
+        //            _Default = new FrmMedicalGroup();
 
-        public static FrmMedicalGroup Default
-        {
-            get
-            {
-                if (_Default == null)
-                    _Default = new FrmMedicalGroup();
-
-                return _Default;
-            }
-        }
+        //        return _Default;
+        //    }
+        //}
     }
 
 }

@@ -128,6 +128,7 @@
             gridViewCommandColumn1.UseDefaultText = true;
             gridViewCommandColumn2.HeaderText = "Delete";
             gridViewCommandColumn2.Name = "Delete";
+            gridViewCommandColumn2.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             gridViewTextBoxColumn3.FieldName = "Activated";
             gridViewTextBoxColumn3.HeaderText = "column1";
             gridViewTextBoxColumn3.IsVisible = false;
@@ -233,16 +234,16 @@
         public Telerik.WinControls.UI.RadDropDownList DiagnosisList;
         public Telerik.WinControls.UI.RadButton radButton2;
 
-        private static FrmDiagnosis _Default;
-        public static FrmDiagnosis Default
-        {
-            get
-            {
-                if (_Default == null)
-                    _Default = new FrmDiagnosis();
+        //private static FrmDiagnosis _Default;
+        //public static FrmDiagnosis Default
+        //{
+        //    get
+        //    {
+        //        if (_Default == null)
+        //            _Default = new FrmDiagnosis();
 
-                return _Default;
-            }
-        }
+        //        return _Default;
+        //    }
+        //}
     }
 }

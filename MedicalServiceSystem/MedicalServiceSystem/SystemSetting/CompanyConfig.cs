@@ -20,7 +20,41 @@ namespace MedicalServiceSystem.SystemSetting
         public CompanyConfig()
         {
             InitializeComponent();
+            if (defaultInstance == null)
+                defaultInstance = this;
         }
+
+        #region Default Instance
+
+        private static CompanyConfig defaultInstance;
+
+        /// <summary>
+        /// Added by the VB.Net to C# Converter to support default instance behavour in C#
+        /// </summary>
+        public static CompanyConfig Default
+        {
+            get
+            {
+                if (defaultInstance == null)
+                {
+                    defaultInstance = new CompanyConfig();
+                    defaultInstance.FormClosed += new FormClosedEventHandler(defaultInstance_FormClosed);
+                }
+
+                return defaultInstance;
+            }
+            set
+            {
+                defaultInstance = value;
+            }
+        }
+
+        static void defaultInstance_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            defaultInstance = null;
+        }
+
+        #endregion
 
         public static byte[] Imagetobyte(string ImgePath)
         {

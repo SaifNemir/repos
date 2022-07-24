@@ -189,18 +189,18 @@ namespace MedicalServiceSystem.Reclaims
         private Telerik.WinControls.Themes.Office2010BlueTheme office2010BlueTheme1;
         //internal PowerPacks.ShapeContainer ShapeContainer1;
         //internal PowerPacks.RectangleShape RectangleShape1;
-        private static FrmAddSubGroup _Default;
+        
         private Telerik.WinControls.Themes.Office2010BlueTheme office2010BlueTheme2;
+        //private static FrmAddSubGroup _Default;
+        //public static FrmAddSubGroup Default
+        //{
+        //    get
+        //    {
+        //        if (_Default == null)
+        //            _Default = new FrmAddSubGroup();
 
-        public static FrmAddSubGroup Default
-        {
-            get
-            {
-                if (_Default == null)
-                    _Default = new FrmAddSubGroup();
-
-                return _Default;
-            }
-        }
+        //        return _Default;
+        //    }
+        //}
     }
 }

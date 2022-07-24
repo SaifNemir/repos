@@ -224,19 +224,19 @@
         internal Telerik.WinControls.UI.RadButton Button1;
         internal Telerik.WinControls.UI.RadLabel Label1;
         internal Telerik.WinControls.UI.RadTextBox StopCause;
-        private static FRMStopSubscriber _Default;
+        
         internal Telerik.WinControls.UI.RadButton radButton1;
+        //private static FRMStopSubscriber _Default;
+        //public static FRMStopSubscriber Default
+        //{
+        //    get
+        //    {
+        //        if (_Default == null)
+        //            _Default = new FRMStopSubscriber();
 
-        public static FRMStopSubscriber Default
-        {
-            get
-            {
-                if (_Default == null)
-                    _Default = new FRMStopSubscriber();
-
-                return _Default;
-            }
-        }
+        //        return _Default;
+        //    }
+        //}
     }
 
 }

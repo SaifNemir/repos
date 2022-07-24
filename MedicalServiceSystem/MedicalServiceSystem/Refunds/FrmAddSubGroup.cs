@@ -16,8 +16,39 @@ namespace MedicalServiceSystem.Reclaims
         public FrmAddSubGroup()
         {
             InitializeComponent();
+            if (defaultInstance == null)
+                defaultInstance = this;
         }
-		public int SubGroupId = 0;
+
+
+
+        private static FrmAddSubGroup defaultInstance;
+
+        /// <summary>
+        /// Added by the VB.Net to C# Converter to support default instance behavour in C#
+        /// </summary>
+        public static FrmAddSubGroup Default
+        {
+            get
+            {
+                if (defaultInstance == null)
+                {
+                    defaultInstance = new FrmAddSubGroup();
+                    defaultInstance.FormClosed += new FormClosedEventHandler(defaultInstance_FormClosed);
+                }
+
+                return defaultInstance;
+            }
+            set
+            {
+                defaultInstance = value;
+            }
+        }
+        static void defaultInstance_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            defaultInstance = null;
+        }
+        public int SubGroupId = 0;
 		public int GroupId = 0;
 		private void Button2_Click(object sender, EventArgs e)
 		{

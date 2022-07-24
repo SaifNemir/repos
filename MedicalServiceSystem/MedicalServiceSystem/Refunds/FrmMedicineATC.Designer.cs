@@ -229,16 +229,16 @@
         public Telerik.WinControls.UI.RadDropDownList ATC_classification;
         public Telerik.WinControls.UI.RadButton radButton2;
 
-        private static FrmMedicineATC _Default;
-        public static FrmMedicineATC Default
-        {
-            get
-            {
-                if (_Default == null)
-                    _Default = new FrmMedicineATC();
+        //private static FrmMedicineATC _Default;
+        //public static FrmMedicineATC Default
+        //{
+        //    get
+        //    {
+        //        if (_Default == null)
+        //            _Default = new FrmMedicineATC();
 
-                return _Default;
-            }
-        }
+        //        return _Default;
+        //    }
+        //}
     }
 }

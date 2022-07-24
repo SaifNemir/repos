@@ -154,18 +154,18 @@
         internal Telerik.WinControls.UI.RadTextBox GroupAName;
         internal Telerik.WinControls.UI.RadButton Button2;
         private Telerik.WinControls.Themes.Office2010BlueTheme office2010BlueTheme1;
-        private static FrmAddGroup _Default;
+        //private static FrmAddGroup _Default;
 
-        public static FrmAddGroup Default
-        {
-            get
-            {
-                if (_Default == null)
-                    _Default = new FrmAddGroup();
+        //public static FrmAddGroup Default
+        //{
+        //    get
+        //    {
+        //        if (_Default == null)
+        //            _Default = new FrmAddGroup();
 
-                return _Default;
-            }
-        }
+        //        return _Default;
+        //    }
+        //}
         #endregion
     }
 

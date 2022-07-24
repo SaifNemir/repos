@@ -127,17 +127,17 @@
         public Telerik.WinControls.UI.RadGridView GrdGenerics;
         public Telerik.WinControls.UI.RadButton radButton2;
 
-        private static FrmGenericLis _Default;
+        //private static FrmGenericLis _Default;
 
-        public static FrmGenericLis Default
-        {
-            get
-            {
-                if (_Default == null)
-                    _Default = new FrmGenericLis();
+        //public static FrmGenericLis Default
+        //{
+        //    get
+        //    {
+        //        if (_Default == null)
+        //            _Default = new FrmGenericLis();
 
-                return _Default;
-            }
-        }
+        //        return _Default;
+        //    }
+        //}
     }
 }

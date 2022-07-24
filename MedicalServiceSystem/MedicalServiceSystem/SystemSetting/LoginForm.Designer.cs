@@ -260,19 +260,19 @@
         private Telerik.WinControls.UI.RadLabel radLabel3;
         private Telerik.WinControls.UI.RadGroupBox QualityImage1;
         private Telerik.WinControls.UI.RadLabel PublishVersion;
-        public static LoginForm _Default;
+       
         private System.Windows.Forms.PictureBox QualityImage;
         private System.Windows.Forms.PictureBox CompanyImage;
+        //public static LoginForm _Default;
+        //public static LoginForm Default
+        //{
+        //    get
+        //    {
+        //        if (_Default == null)
+        //            _Default = new LoginForm();
 
-        public static LoginForm Default
-        {
-            get
-            {
-                if (_Default == null)
-                    _Default = new LoginForm();
-
-                return _Default;
-            }
-        }
+        //        return _Default;
+        //    }
+        //}
     }
 }

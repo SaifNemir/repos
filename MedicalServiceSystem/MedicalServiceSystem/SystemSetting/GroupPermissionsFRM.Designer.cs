@@ -414,17 +414,17 @@
         private Telerik.WinControls.Themes.Office2010BlueTheme office2010BlueTheme1;
 
 
-        private static GroupPermissionsFRM _Default;
-        public static GroupPermissionsFRM Default
-        {
-            get
-            {
-                if (_Default == null)
-                    _Default = new GroupPermissionsFRM();
+        //private static GroupPermissionsFRM _Default;
+        //public static GroupPermissionsFRM Default
+        //{
+        //    get
+        //    {
+        //        if (_Default == null)
+        //            _Default = new GroupPermissionsFRM();
 
-                return _Default;
-            }
-        }
+        //        return _Default;
+        //    }
+        //}
     }
 }
 

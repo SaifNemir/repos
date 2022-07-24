@@ -463,6 +463,16 @@ namespace MedicalServiceSystem.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_add_red_32 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_add_red_32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_copy_32 {
             get {
                 object obj = ResourceManager.GetObject("icons8_copy_32", resourceCulture);
@@ -746,6 +756,16 @@ namespace MedicalServiceSystem.Properties {
         internal static System.Drawing.Bitmap icons8_stop_gesture_48 {
             get {
                 object obj = ResourceManager.GetObject("icons8-stop-gesture-48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_unavailable_32 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_unavailable_32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

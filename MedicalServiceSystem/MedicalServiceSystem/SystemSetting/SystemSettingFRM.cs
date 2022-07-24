@@ -17,7 +17,41 @@ namespace MedicalServiceSystem.SystemSetting
         public SystemSettingFRM()
         {
             InitializeComponent();
+            if (defaultInstance == null)
+                defaultInstance = this;
         }
+
+        #region Default Instance
+
+        private static SystemSettingFRM defaultInstance;
+
+        /// <summary>
+        /// Added by the VB.Net to C# Converter to support default instance behavour in C#
+        /// </summary>
+        public static SystemSettingFRM Default
+        {
+            get
+            {
+                if (defaultInstance == null)
+                {
+                    defaultInstance = new SystemSettingFRM();
+                    defaultInstance.FormClosed += new FormClosedEventHandler(defaultInstance_FormClosed);
+                }
+
+                return defaultInstance;
+            }
+            set
+            {
+                defaultInstance = value;
+            }
+        }
+
+        static void defaultInstance_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            defaultInstance = null;
+        }
+
+        #endregion
         public int flag = 0;
         private void SystemSettingFRM_Load(object sender, EventArgs e)
         {
@@ -120,7 +154,7 @@ namespace MedicalServiceSystem.SystemSetting
                 config.Save();
 
                 ConfigurationManager.RefreshSection("appSettings");
-                LoginForm.Default.Show();
+                SystemSettingFRM.Default.Show();
                 this.Hide();
             }
             else
@@ -134,7 +168,7 @@ namespace MedicalServiceSystem.SystemSetting
                 config.Save();
 
                 ConfigurationManager.RefreshSection("appSettings");
-                LoginForm.Default.Show();
+                SystemSettingFRM.Default.Show();
                 this.Hide();
                 //Interaction.MsgBox(config.AppSettings.Settings["SystemName"].Value);
             }

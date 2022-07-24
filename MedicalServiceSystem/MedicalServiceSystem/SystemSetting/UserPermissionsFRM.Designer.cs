@@ -443,19 +443,19 @@
         private Telerik.WinControls.UI.RadCheckBox ChkTo;
         private Telerik.WinControls.UI.RadCheckBox ChkFrom;
         private Telerik.WinControls.Themes.Office2010BlueTheme office2010BlueTheme1;
-        private static UserPermissionsFRM _Default;
+       
         private Telerik.WinControls.UI.RadCheckBox radCheckBox1;
         private Telerik.WinControls.UI.RadCheckBox radCheckBox2;
+        //private static UserPermissionsFRM _Default;
+        //public static UserPermissionsFRM Default
+        //{
+        //    get
+        //    {
+        //        if (_Default == null)
+        //            _Default = new UserPermissionsFRM();
 
-        public static UserPermissionsFRM Default
-        {
-            get
-            {
-                if (_Default == null)
-                    _Default = new UserPermissionsFRM();
-
-                return _Default;
-            }
-        }
+        //        return _Default;
+        //    }
+        //}
     }
 }

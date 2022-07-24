@@ -16,7 +16,38 @@ namespace MedicalServiceSystem.Reclaims
         public FRMApproveSearch()
         {
             InitializeComponent();
+            if (defaultInstance == null)
+                defaultInstance = this;
         }
+
+
+
+        private static FRMApproveSearch defaultInstance;
+
+        /// <summary>
+        /// Added by the VB.Net to C# Converter to support default instance behavour in C#
+        /// </summary>
+        public static FRMApproveSearch Default
+        {
+            get
+            {
+                if (defaultInstance == null)
+                {
+                    defaultInstance = new FRMApproveSearch();
+                    defaultInstance.FormClosed += new FormClosedEventHandler(defaultInstance_FormClosed);
+                }
+
+                return defaultInstance;
+            }
+            set
+            {
+                defaultInstance = value;
+            }
+        }
+        static void defaultInstance_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            defaultInstance = null;
+        } 
         public string StrRPT;
 
         private void Button1_Click(object sender, EventArgs e)
@@ -89,6 +120,13 @@ namespace MedicalServiceSystem.Reclaims
                     return;
                 }
             }
+        }
+
+        private void Button4_Click(object sender, EventArgs e)
+        {
+            card_no.Clear();
+            ApproveCode.Clear();
+            Grid_service.DataSource = null;
         }
     }
     }

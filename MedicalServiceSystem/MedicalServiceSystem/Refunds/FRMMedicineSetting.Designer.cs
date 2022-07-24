@@ -777,20 +777,20 @@ namespace MedicalServiceSystem.Reclaims
         internal RadTextBox TermsOfUse;
         internal RadTextBox Regestration;
         internal RadLabel radLabel7;
-        private static FRMMedicineSetting _Default;
+        
         internal RadTextBox AtcCode;
         internal RadLabel radLabel8;
+        //private static FRMMedicineSetting _Default;
+        //public static FRMMedicineSetting Default
+        //{
+        //    get
+        //    {
+        //        if (_Default == null)
+        //            _Default = new FRMMedicineSetting();
 
-        public static FRMMedicineSetting Default
-        {
-            get
-            {
-                if (_Default == null)
-                    _Default = new FRMMedicineSetting();
-
-                return _Default;
-            }
-        }
+        //        return _Default;
+        //    }
+        //}
     }
 
 

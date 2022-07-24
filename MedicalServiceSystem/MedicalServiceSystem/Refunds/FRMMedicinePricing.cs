@@ -20,7 +20,41 @@ namespace MedicalServiceSystem.Reclaims
         public FRMMedicinePricing()
         {
             InitializeComponent();
+            if (defaultInstance == null)
+                defaultInstance = this;
         }
+
+        #region Default Instance
+
+        private static FRMMedicinePricing defaultInstance;
+
+        /// <summary>
+        /// Added by the VB.Net to C# Converter to support default instance behavour in C#
+        /// </summary>
+        public static FRMMedicinePricing Default
+        {
+            get
+            {
+                if (defaultInstance == null)
+                {
+                    defaultInstance = new FRMMedicinePricing();
+                    defaultInstance.FormClosed += new FormClosedEventHandler(defaultInstance_FormClosed);
+                }
+
+                return defaultInstance;
+            }
+            set
+            {
+                defaultInstance = value;
+            }
+        }
+
+        static void defaultInstance_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            defaultInstance = null;
+        }
+
+        #endregion
 
         private void Button1_Click(object sender, EventArgs e)
         {
@@ -211,7 +245,7 @@ namespace MedicalServiceSystem.Reclaims
 
         private void Button5_Click(object sender, EventArgs e)
         {
-            FrmMedicineList.Default.ShowDialog();
+            FRMMedicinePricing.Default.ShowDialog();
         }
 
         private void GRDMedicine_CellEndEdit(object sender, Telerik.WinControls.UI.GridViewCellEventArgs e)

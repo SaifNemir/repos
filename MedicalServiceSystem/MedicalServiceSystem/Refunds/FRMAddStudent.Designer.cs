@@ -300,7 +300,7 @@
         internal Telerik.WinControls.UI.RadTextBox card_no;
         internal Telerik.WinControls.UI.RadLabel Label3;
         internal Telerik.WinControls.UI.RadButton Button1;
-        private static FRMAddStudent _Default;
+        
         internal Telerik.WinControls.UI.RadButton radButton1;
         internal Telerik.WinControls.UI.RadLabel radLabel4;
         internal Telerik.WinControls.UI.RadTextBox Age;
@@ -308,17 +308,17 @@
         internal Telerik.WinControls.UI.RadDropDownList Sex;
         internal Telerik.WinControls.UI.RadLabel radLabel1;
         internal Telerik.WinControls.UI.RadDropDownList University;
+        //private static FRMAddStudent _Default;
+        //public static FRMAddStudent Default
+        //{
+        //    get
+        //    {
+        //        if (_Default == null)
+        //            _Default = new FRMAddStudent();
 
-        public static FRMAddStudent Default
-        {
-            get
-            {
-                if (_Default == null)
-                    _Default = new FRMAddStudent();
-
-                return _Default;
-            }
-        }
+        //        return _Default;
+        //    }
+        //}
     }
 
 }

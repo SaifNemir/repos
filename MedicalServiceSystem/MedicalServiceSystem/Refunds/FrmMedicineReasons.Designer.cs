@@ -56,6 +56,7 @@
             // 
             // namelbl
             // 
+            this.namelbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.namelbl.Font = new System.Drawing.Font("Sakkal Majalla", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.namelbl.Location = new System.Drawing.Point(1118, 11);
             this.namelbl.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -68,6 +69,7 @@
             // 
             // Savebtn
             // 
+            this.Savebtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Savebtn.Font = new System.Drawing.Font("Sakkal Majalla", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Savebtn.Image = global::MedicalServiceSystem.Properties.Resources.icons8_downloading_updates_48;
             this.Savebtn.Location = new System.Drawing.Point(18, 53);
@@ -100,9 +102,7 @@
             // 
             // GrdTrades
             // 
-            this.GrdTrades.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.GrdTrades.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.GrdTrades.BackColor = System.Drawing.SystemColors.Control;
             this.GrdTrades.Cursor = System.Windows.Forms.Cursors.Default;
             this.GrdTrades.Font = new System.Drawing.Font("Sakkal Majalla", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -163,6 +163,7 @@
             // 
             // radButton1
             // 
+            this.radButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.radButton1.Font = new System.Drawing.Font("Sakkal Majalla", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radButton1.Image = ((System.Drawing.Image)(resources.GetObject("radButton1.Image")));
             this.radButton1.Location = new System.Drawing.Point(1060, 53);
@@ -175,6 +176,7 @@
             // 
             // ChronicList
             // 
+            this.ChronicList.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.ChronicList.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.ChronicList.DropDownHeight = 151;
             this.ChronicList.Font = new System.Drawing.Font("Sakkal Majalla", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -246,16 +248,16 @@
         public Telerik.WinControls.UI.RadDropDownList ChronicList;
         public Telerik.WinControls.UI.RadButton radButton2;
 
-        private static FrmMedicineReasons _Default;
-        public static FrmMedicineReasons Default
-        {
-            get
-            {
-                if (_Default == null)
-                    _Default = new FrmMedicineReasons();
+        //private static FrmMedicineReasons _Default;
+        //public static FrmMedicineReasons Default
+        //{
+        //    get
+        //    {
+        //        if (_Default == null)
+        //            _Default = new FrmMedicineReasons();
 
-                return _Default;
-            }
-        }
+        //        return _Default;
+        //    }
+        //}
     }
 }

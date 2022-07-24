@@ -229,16 +229,16 @@
         public Telerik.WinControls.UI.RadDropDownList ListName;
         public Telerik.WinControls.UI.RadButton radButton2;
 
-        private static FrmMedicineList _Default;
-        public static FrmMedicineList Default
-        {
-            get
-            {
-                if (_Default == null)
-                    _Default = new FrmMedicineList();
+        //private static FrmMedicineList _Default;
+        //public static FrmMedicineList Default
+        //{
+        //    get
+        //    {
+        //        if (_Default == null)
+        //            _Default = new FrmMedicineList();
 
-                return _Default;
-            }
-        }
+        //        return _Default;
+        //    }
+        //}
     }
 }
