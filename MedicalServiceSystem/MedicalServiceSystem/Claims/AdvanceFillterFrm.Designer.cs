@@ -74,6 +74,8 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.radGridView1 = new Telerik.WinControls.UI.RadGridView();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.ExpBtn = new Telerik.WinControls.UI.RadButton();
+            this.PrintBtn = new Telerik.WinControls.UI.RadButton();
             this.LMonthDrp = new Telerik.WinControls.UI.RadDropDownList();
             this.radLabel4 = new Telerik.WinControls.UI.RadLabel();
             this.radLabel5 = new Telerik.WinControls.UI.RadLabel();
@@ -85,13 +87,13 @@
             this.radLabel3 = new Telerik.WinControls.UI.RadLabel();
             this.FYearTxt = new Telerik.WinControls.UI.RadTextBox();
             this.ViewBtn = new Telerik.WinControls.UI.RadButton();
-            this.PrintBtn = new Telerik.WinControls.UI.RadButton();
-            this.ExpBtn = new Telerik.WinControls.UI.RadButton();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.radGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radGridView1.MasterTemplate)).BeginInit();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ExpBtn)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PrintBtn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.LMonthDrp)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel5)).BeginInit();
@@ -103,8 +105,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.radLabel3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.FYearTxt)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ViewBtn)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PrintBtn)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ExpBtn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
             // 
@@ -266,6 +266,24 @@
             this.panel2.Size = new System.Drawing.Size(1212, 100);
             this.panel2.TabIndex = 0;
             // 
+            // ExpBtn
+            // 
+            this.ExpBtn.Location = new System.Drawing.Point(11, 1);
+            this.ExpBtn.Name = "ExpBtn";
+            this.ExpBtn.Size = new System.Drawing.Size(95, 91);
+            this.ExpBtn.TabIndex = 29;
+            this.ExpBtn.Text = "تصدير ";
+            this.ExpBtn.Click += new System.EventHandler(this.ExpBtn_Click);
+            // 
+            // PrintBtn
+            // 
+            this.PrintBtn.Location = new System.Drawing.Point(112, 3);
+            this.PrintBtn.Name = "PrintBtn";
+            this.PrintBtn.Size = new System.Drawing.Size(95, 91);
+            this.PrintBtn.TabIndex = 28;
+            this.PrintBtn.Text = "طباعة";
+            this.PrintBtn.Click += new System.EventHandler(this.PrintBtn_Click);
+            // 
             // LMonthDrp
             // 
             this.LMonthDrp.Font = new System.Drawing.Font("Segoe UI", 11F);
@@ -293,7 +311,7 @@
             this.LMonthDrp.Items.Add(radListDataItem10);
             this.LMonthDrp.Items.Add(radListDataItem11);
             this.LMonthDrp.Items.Add(radListDataItem12);
-            this.LMonthDrp.Location = new System.Drawing.Point(316, 12);
+            this.LMonthDrp.Location = new System.Drawing.Point(316, 14);
             this.LMonthDrp.Name = "LMonthDrp";
             this.LMonthDrp.NullText = "Select Month";
             this.LMonthDrp.Size = new System.Drawing.Size(139, 25);
@@ -302,7 +320,7 @@
             // radLabel4
             // 
             this.radLabel4.Font = new System.Drawing.Font("Sakkal Majalla", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radLabel4.Location = new System.Drawing.Point(457, 12);
+            this.radLabel4.Location = new System.Drawing.Point(457, 14);
             this.radLabel4.Name = "radLabel4";
             this.radLabel4.Size = new System.Drawing.Size(51, 31);
             this.radLabel4.TabIndex = 25;
@@ -311,7 +329,7 @@
             // radLabel5
             // 
             this.radLabel5.Font = new System.Drawing.Font("Sakkal Majalla", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radLabel5.Location = new System.Drawing.Point(459, 43);
+            this.radLabel5.Location = new System.Drawing.Point(459, 45);
             this.radLabel5.Name = "radLabel5";
             this.radLabel5.Size = new System.Drawing.Size(47, 31);
             this.radLabel5.TabIndex = 26;
@@ -320,7 +338,7 @@
             // LYearTxt
             // 
             this.LYearTxt.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.LYearTxt.Location = new System.Drawing.Point(316, 43);
+            this.LYearTxt.Location = new System.Drawing.Point(316, 45);
             this.LYearTxt.Name = "LYearTxt";
             this.LYearTxt.NullText = "Enter Year";
             this.LYearTxt.Size = new System.Drawing.Size(139, 25);
@@ -414,24 +432,6 @@
             this.ViewBtn.Text = "عرض";
             this.ViewBtn.Click += new System.EventHandler(this.ViewBtn_Click);
             // 
-            // PrintBtn
-            // 
-            this.PrintBtn.Location = new System.Drawing.Point(112, 3);
-            this.PrintBtn.Name = "PrintBtn";
-            this.PrintBtn.Size = new System.Drawing.Size(95, 91);
-            this.PrintBtn.TabIndex = 28;
-            this.PrintBtn.Text = "طباعة";
-            this.PrintBtn.Click += new System.EventHandler(this.PrintBtn_Click);
-            // 
-            // ExpBtn
-            // 
-            this.ExpBtn.Location = new System.Drawing.Point(11, 1);
-            this.ExpBtn.Name = "ExpBtn";
-            this.ExpBtn.Size = new System.Drawing.Size(95, 91);
-            this.ExpBtn.TabIndex = 29;
-            this.ExpBtn.Text = "تصدير ";
-            this.ExpBtn.Click += new System.EventHandler(this.ExpBtn_Click);
-            // 
             // AdvanceFillterFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -452,6 +452,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.radGridView1)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ExpBtn)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PrintBtn)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.LMonthDrp)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel5)).EndInit();
@@ -463,8 +465,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.radLabel3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.FYearTxt)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ViewBtn)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PrintBtn)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ExpBtn)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
             this.ResumeLayout(false);
 
