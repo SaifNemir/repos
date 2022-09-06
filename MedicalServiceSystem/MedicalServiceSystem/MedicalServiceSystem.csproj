@@ -54,10 +54,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>091CDDFCE6DB4CCA01329B5CF93CB3D952F19535</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>1E4E1B217FFB774ABC1A325E3454344CE90EE99A</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>MedicalServiceSystem_2_TemporaryKey.pfx</ManifestKeyFile>
+    <ManifestKeyFile>MedicalServiceSystem_3_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
     <GenerateManifests>true</GenerateManifests>
@@ -870,6 +870,7 @@
     </EmbeddedResource>
     <None Include="MedicalServiceSystem_1_TemporaryKey.pfx" />
     <None Include="MedicalServiceSystem_2_TemporaryKey.pfx" />
+    <None Include="MedicalServiceSystem_3_TemporaryKey.pfx" />
     <None Include="MedicalServiceSystem_TemporaryKey.pfx" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

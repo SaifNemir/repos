@@ -56,5 +56,18 @@ namespace ModelDB
         public DbSet<ChronicBooksDetails> ChronicBooksDetails { get; set; }
         public DbSet<ApproveMedicineType > ApproveMedicineTypes { get; set; }
         public DbSet<ChronicBookType> ChronicBookTypes { get; set; }
+        public DbSet<ClmContractType> ClmContractType { get; set; }
+        public DbSet<ClmDetailsData> ClmDetailsData { get; set; }
+        public DbSet<ClmImpFile> ClmImpFile { get; set; }
+        public DbSet<ClmMasterData> ClmMasterData { get; set; }
+        public DbSet<ClmReceiptClaims> ClmReceiptClaims { get; set; }
+        public DbSet<ClmReceiptClaimsDet> ClmReceiptClaimsDet { get; set; }
+        public DbSet<ClmTempDet> ClmTempDet { get; set; }
+        public DbSet<ClmTempMaster> ClmTempMaster { get; set; }
+        public DbSet<ClmNonConfirmDet> ClmNonConfirmDet { get; set; }
+        public DbSet<ClmNonConfirmType> ClmNonConfirmType { get; set; }
+        public DbSet<ClmErrorType> ClmErrorType { get; set; }
+        public DbSet<ClmSortedDeg> ClmSortedDeg { get; set; }
+        public DbSet<ClmErrorDataEnter> ClmErrorDataEnter { get; set; }
     }
 }

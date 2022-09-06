@@ -188,6 +188,10 @@
     <Compile Include="Migrations\202207060614036_saif_2022_07_06.designer.cs">
       <DependentUpon>202207060614036_saif_2022_07_06.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202209060739187_ggg.cs" />
+    <Compile Include="Migrations\202209060739187_ggg.designer.cs">
+      <DependentUpon>202209060739187_ggg.cs</DependentUpon>
+    </Compile>
     <Compile Include="US.cs" />
     <Compile Include="HICKSDCS.cs" />
     <Compile Include="ApproveMedicineDetails.cs" />
@@ -340,6 +344,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202207060614036_saif_2022_07_06.resx">
       <DependentUpon>202207060614036_saif_2022_07_06.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202209060739187_ggg.resx">
+      <DependentUpon>202209060739187_ggg.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <!--<Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
