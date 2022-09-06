@@ -55,8 +55,5 @@ namespace ModelDB
         public DbSet<ChronicBooksDetails> ChronicBooksDetails { get; set; }
         public DbSet<ApproveMedicineType > ApproveMedicineTypes { get; set; }
         public DbSet<ChronicBookType> ChronicBookTypes { get; set; }
-        public DbSet<RefuseMedicine> RefuseMedicines { get; set; }
-        public DbSet<RefuseMedicineDetails> RefuseMedicineDetails { get; set; }
-        public DbSet<StopSubsriber> StopSubsribers { get; set; }
     }
 }

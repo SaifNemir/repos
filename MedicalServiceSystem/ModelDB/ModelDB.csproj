@@ -99,6 +99,46 @@
     <Compile Include="ApproveMedicineType.cs" />
     <Compile Include="ChronicsBooks.cs" />
     <Compile Include="ChronicBooksDetails.cs" />
+    <Compile Include="Migrations\202203281157275_20220328Sa.cs" />
+    <Compile Include="Migrations\202203281157275_20220328Sa.designer.cs">
+      <DependentUpon>202203281157275_20220328Sa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202204131130377_sa2022413.cs" />
+    <Compile Include="Migrations\202204131130377_sa2022413.designer.cs">
+      <DependentUpon>202204131130377_sa2022413.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202205190803346_saifUser22.cs" />
+    <Compile Include="Migrations\202205190803346_saifUser22.designer.cs">
+      <DependentUpon>202205190803346_saifUser22.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202206061053091_saif456.cs" />
+    <Compile Include="Migrations\202206061053091_saif456.designer.cs">
+      <DependentUpon>202206061053091_saif456.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202206190838162_Saif2022_05_19.cs" />
+    <Compile Include="Migrations\202206190838162_Saif2022_05_19.designer.cs">
+      <DependentUpon>202206190838162_Saif2022_05_19.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202206190845432_saif1_2022_05_19.cs" />
+    <Compile Include="Migrations\202206190845432_saif1_2022_05_19.designer.cs">
+      <DependentUpon>202206190845432_saif1_2022_05_19.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202206191242375_saif1_2022_05_19_2.cs" />
+    <Compile Include="Migrations\202206191242375_saif1_2022_05_19_2.designer.cs">
+      <DependentUpon>202206191242375_saif1_2022_05_19_2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202206211213592_saif2022-06-21.cs" />
+    <Compile Include="Migrations\202206211213592_saif2022-06-21.designer.cs">
+      <DependentUpon>202206211213592_saif2022-06-21.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202207030540106_saif_2022_07_03.cs" />
+    <Compile Include="Migrations\202207030540106_saif_2022_07_03.designer.cs">
+      <DependentUpon>202207030540106_saif_2022_07_03.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202207060614036_saif_2022_07_06.cs" />
+    <Compile Include="Migrations\202207060614036_saif_2022_07_06.designer.cs">
+      <DependentUpon>202207060614036_saif_2022_07_06.cs</DependentUpon>
+    </Compile>
     <Compile Include="US.cs" />
     <Compile Include="HICKSDCS.cs" />
     <Compile Include="ApproveMedicineDetails.cs" />
@@ -167,6 +207,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202209040911158_Saif_2022_9_4.resx">
       <DependentUpon>202209040911158_Saif_2022_9_4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202209060739187_ggg.resx">
+      <DependentUpon>202209060739187_ggg.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <!--<Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
