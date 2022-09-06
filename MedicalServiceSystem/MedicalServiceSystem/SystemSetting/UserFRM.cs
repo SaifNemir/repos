@@ -78,6 +78,11 @@ namespace MedicalServiceSystem.SystemSetting
                 UserGroup.DisplayMember = "GroupName";
                 UserGroup.ValueMember = "Id";
                 UserGroup.SelectedIndex = -1;
+                var Loc = db.Localities.ToList();
+                Locality.DataSource = Loc;
+                Locality.DisplayMember = "LocalityName";
+                Locality.ValueMember = "Id";
+                Locality.SelectedIndex = -1;
                 // MessageBox.Show(UserGroup.Items.Count.ToString());
                 UserStatus.Checked = true;
                 var u = (from us in db.Users
@@ -202,6 +207,7 @@ namespace MedicalServiceSystem.SystemSetting
                             user.UserStatus = 0;
                         }
                         user.StartDate = StartDate.Value.Date;
+                        user.LocalityId = Convert.ToInt32(Locality.SelectedValue.ToString());
                         user.EndDate = EndDate.Value.Date;
                         db.Users.Add(user);
                         db.SaveChanges();
@@ -296,7 +302,8 @@ namespace MedicalServiceSystem.SystemSetting
                                 v2[0].UserPass = UserPassWord.Text;
                                 v2[0].StartDate = StartDate.Value.Date;
                                 v2[0].EndDate = EndDate.Value.Date;
-                                v2[0].UserType = (UserType)Enum.Parse(typeof(UserType), UserType.SelectedText);
+                                v2[0].LocalityId = Convert.ToInt32(Locality.SelectedValue.ToString());
+                                v2[0].UserType = (UserType)Enum.Parse(typeof(UserType), UserType.Text);
                                 if (UserStatus.Checked == true)
                                 {
                                     v2[0].UserStatus = 1;
@@ -395,6 +402,7 @@ namespace MedicalServiceSystem.SystemSetting
                                           new
                                           {
                                               UserId = us.Id,
+                                              LocalityId = us.LocalityId,
                                               FulName = us.FullName,
                                               UserName = us.UserName,
                                               UserPassWord = us.UserPass,
@@ -433,6 +441,7 @@ namespace MedicalServiceSystem.SystemSetting
                                 UserGroup.Text = usr[0].UserGroup;
                                 UserId.Text = usr[0].UserId.ToString();
                                 UsId.Text = usr[0].UserId.ToString();
+                                Locality.SelectedValue = usr[0].LocalityId;
                                 UserPassWord.Text = usr[0].UserPassWord;
                                 //AddUserFRM.Default.OperationType.SelectedIndex = -1;
                                 UserName.Text = usr[0].UserName;

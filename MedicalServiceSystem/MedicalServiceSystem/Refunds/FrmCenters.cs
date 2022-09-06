@@ -193,7 +193,7 @@ namespace MedicalServiceSystem
         private void FrmGroup_Load(object sender, EventArgs e)
         {
 
-            LocalityId = LoginForm.Default.LocalityId;
+            LocalityId = PLC.LocalityId;
             LoadData();
 
         }
@@ -202,7 +202,7 @@ namespace MedicalServiceSystem
         {
             using (dbContext db = new dbContext())
             {
-                var CInfo = db.CenterInfos.Where(p => p.HasContract == false && p.IsVisible && p.IsVisible == true).Select(p => new { p.Id, p.CenterName, p.Level1, p.Level2, p.Level3, p.CenterTypeId, p.HasContract, p.IsEnabled }).ToList();
+                var CInfo = db.CenterInfos.Select(p => new { p.Id, p.CenterName, p.Level1, p.Level2, p.Level3, p.CenterTypeId, p.HasContract, p.IsEnabled }).ToList();
                 GRDCenter.DataSource = CInfo;
                 if (GRDCenter.RowCount > 0)
                 {
@@ -211,6 +211,7 @@ namespace MedicalServiceSystem
                         GRDCenter.Rows[i].Cells["Serial"].Value = i + 1;
                         GRDCenter.Rows[i].Cells["BtnEditing"].Value = "تعديل";
                         GRDCenter.Rows[i].Cells["BtnDeleting"].Value = "حذف";
+                        GRDCenter.Rows[i].Cells["Deleted"].Value = GRDCenter.Rows[i].Cells["IsEnabled"].Value;
                     }
                 }
             }
@@ -278,48 +279,61 @@ namespace MedicalServiceSystem
                 {
                     // Dim result As MsgBoxResult
                     flag = 0;
-                    if ((bool)GRDCenter.CurrentRow.Cells["IsEnabled"].Value == true)
+                    if ((bool)GRDCenter.CurrentRow.Cells["Deleted"].Value == true)
                     {
-                        DialogResult msg;
-                        msg = MessageBox.Show("هل تريد إلغاء تفعيل هذه المؤسسة", "النظام", MessageBoxButtons.OKCancel, System.Windows.Forms.MessageBoxIcon.Warning, System.Windows.Forms.MessageBoxDefaultButton.Button2);
-                        if (msg == DialogResult.OK)
+                        //DialogResult msg;
+                        //msg = MessageBox.Show("هل تريد إلغاء تفعيل هذه المؤسسة", "النظام", MessageBoxButtons.OKCancel, System.Windows.Forms.MessageBoxIcon.Warning, System.Windows.Forms.MessageBoxDefaultButton.Button2);
+                        //if (msg == DialogResult.OK)
+                        //{
+                        CenterId = Convert.ToInt32(e.Row.Cells["Id"].Value.ToString());
+                        int a1 = Convert.ToInt32(GRDCenter.CurrentRow.Cells["Id"].Value);
+                        var chkFound = db.CenterInfos.Where(p => p.Id == CenterId && p.HasContract == false).ToList();
+                        if (chkFound.Count > 0)
                         {
-                            int a1 = Convert.ToInt32(GRDCenter.CurrentRow.Cells["Id"].Value);
-                            var chkFound = db.CenterInfos.Where(p => p.Id == CenterId).ToList();
-                            if (chkFound.Count > 0)
+                            if (chkFound[0].IsEnabled == true )
                             {
-                                if (chkFound[0].IsEnabled == false)
-                                {
-                                    chkFound[0].IsEnabled = true;
-                                }
-                                else if (chkFound[0].IsEnabled == true)
-                                {
-                                    chkFound[0].IsEnabled = false;
-                                }
-
-                                db.SaveChanges();
-                                LoadData();
+                                chkFound[0].IsEnabled = false;
                             }
+                            db.SaveChanges();
+                            using (dbContext con = new dbContext())
+                            {
+                                var chkFound1 = con.CenterInfos.Where(p => p.Id == CenterId && p.HasContract == false).ToList();
+                                if (chkFound.Count > 0)
+                                {
+                                    GRDCenter.CurrentRow.Cells["Deleted"].Value = chkFound[0].IsEnabled;
+                                }
+                            }
+                            // LoadData();
                         }
+                        // }
                     }
-                    else if ((bool)GRDCenter.CurrentRow.Cells["IsEnabled"].Value == false)
+                    else if ((bool)GRDCenter.CurrentRow.Cells["Deleted"].Value == false)
                     {
-                        DialogResult msg;
-                        msg = MessageBox.Show("هل تريد  تفعيل هذه المؤسسة", "النظام", MessageBoxButtons.OKCancel, System.Windows.Forms.MessageBoxIcon.Warning, System.Windows.Forms.MessageBoxDefaultButton.Button2);
-                        if (msg == DialogResult.OK)
+                        //DialogResult msg;
+                        //msg = MessageBox.Show("هل تريد  تفعيل هذه المؤسسة", "النظام", MessageBoxButtons.OKCancel, System.Windows.Forms.MessageBoxIcon.Warning, System.Windows.Forms.MessageBoxDefaultButton.Button2);
+                        //if (msg == DialogResult.OK)
+                        //{
+                        CenterId = Convert.ToInt32(e.Row.Cells["Id"].Value.ToString());
+                        var chkFound = db.CenterInfos.Where(p => p.Id == CenterId && p.HasContract==false).ToList();
+                        if (chkFound.Count > 0)
                         {
-                            var chkFound = db.CenterInfos.Where(p => p.Id == CenterId).ToList();
-                            if (chkFound.Count > 0)
+
+                            if (chkFound[0].IsEnabled == false)
                             {
-
-                                if (chkFound[0].IsEnabled == true)
-                                {
-                                    chkFound[0].IsEnabled = false;
-                                }
-
-                                db.SaveChanges();
-                                LoadData();
+                                chkFound[0].IsEnabled = true;
                             }
+
+                            db.SaveChanges();
+                            using (dbContext con = new dbContext())
+                            {
+                                var chkFound1 = con.CenterInfos.Where(p => p.Id == CenterId && p.HasContract == false).ToList();
+                                if (chkFound.Count > 0)
+                                {
+                                    GRDCenter.CurrentRow.Cells["Deleted"].Value = chkFound[0].IsEnabled;
+                                }
+                            }
+                            //LoadData();
+                            //}
                         }
                     }
                 }
@@ -565,13 +579,25 @@ namespace MedicalServiceSystem
 
         private void GRDCenter_CellFormatting(object sender, CellFormattingEventArgs e)
         {
-            if (Convert.ToBoolean(e.Row.Cells["IsEnabled"].Value) == false)
+
+        }
+
+        private void GRDCenter_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void GRDCenter_RowFormatting(object sender, RowFormattingEventArgs e)
+        {
+            if (Convert.ToBoolean(e.RowElement.RowInfo.Cells["Deleted"].Value) == false)
             {
-                e.CellElement.BackColor = System.Drawing.Color.Gray;
+                e.RowElement.DrawFill = true;
+                e.RowElement.BackColor = System.Drawing.Color.Gray;
             }
             else
             {
-                e.CellElement.BackColor = System.Drawing.Color.White;
+                e.RowElement.DrawFill = true;
+                e.RowElement.BackColor = System.Drawing.Color.White;
             }
         }
     }

@@ -389,7 +389,7 @@ namespace MedicalServiceSystem.Reclaims
             // 
             this.sex.Enabled = false;
             this.sex.Font = new System.Drawing.Font("Sakkal Majalla", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.sex.Location = new System.Drawing.Point(216, 144);
+            this.sex.Location = new System.Drawing.Point(67, 201);
             this.sex.MaxLength = 12;
             this.sex.Name = "sex";
             this.sex.ReadOnly = true;
@@ -773,6 +773,7 @@ namespace MedicalServiceSystem.Reclaims
             // 
             // InsuranceNo
             // 
+            this.InsuranceNo.BackColor = System.Drawing.Color.AliceBlue;
             this.InsuranceNo.Font = new System.Drawing.Font("Sakkal Majalla", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.InsuranceNo.Location = new System.Drawing.Point(387, 12);
             this.InsuranceNo.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);

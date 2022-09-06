@@ -498,5 +498,13 @@ namespace MedicalServiceSystem
             form.WindowState = FormWindowState.Maximized;
             form.Show();
         }
+
+        private void FRMApproveMedicineReorts_Click(object sender, EventArgs e)
+        {
+            FRMreportApproveMedicine form = new FRMreportApproveMedicine();
+            form.MdiParent = this;
+            form.WindowState = FormWindowState.Maximized;
+            form.Show();
+        }
     }
 }

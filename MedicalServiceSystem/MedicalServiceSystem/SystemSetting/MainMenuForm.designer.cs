@@ -86,7 +86,7 @@
             this.radRibbonBarGroup30 = new Telerik.WinControls.UI.RadRibbonBarGroup();
             this.FRMApproveMedicine = new Telerik.WinControls.UI.RadButtonElement();
             this.radRibbonBarGroup31 = new Telerik.WinControls.UI.RadRibbonBarGroup();
-            this.FRMApproveMedicineReorts = new Telerik.WinControls.UI.RadButtonElement();
+            this.FRMreportApproveMedicine = new Telerik.WinControls.UI.RadButtonElement();
             this.radRibbonBarGroup7 = new Telerik.WinControls.UI.RadRibbonBarGroup();
             this.FrmAppMedicineTyp = new Telerik.WinControls.UI.RadButtonElement();
             this.FrmPharmacist = new Telerik.WinControls.UI.RadButtonElement();
@@ -455,7 +455,7 @@
             // 
             // ribbonTab3
             // 
-            this.ribbonTab3.IsSelected = true;
+            this.ribbonTab3.IsSelected = false;
             this.ribbonTab3.Items.AddRange(new Telerik.WinControls.RadItem[] {
             this.radRibbonBarGroup22,
             this.radRibbonBarGroup23,
@@ -650,7 +650,7 @@
             // 
             // ribbonTab6
             // 
-            this.ribbonTab6.IsSelected = false;
+            this.ribbonTab6.IsSelected = true;
             this.ribbonTab6.Items.AddRange(new Telerik.WinControls.RadItem[] {
             this.radRibbonBarGroup30,
             this.radRibbonBarGroup31,
@@ -669,6 +669,7 @@
             // 
             // FRMApproveMedicine
             // 
+            this.FRMApproveMedicine.Enabled = false;
             this.FRMApproveMedicine.Image = ((System.Drawing.Image)(resources.GetObject("FRMApproveMedicine.Image")));
             this.FRMApproveMedicine.ImageAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.FRMApproveMedicine.Name = "FRMApproveMedicine";
@@ -679,19 +680,21 @@
             // radRibbonBarGroup31
             // 
             this.radRibbonBarGroup31.Items.AddRange(new Telerik.WinControls.RadItem[] {
-            this.FRMApproveMedicineReorts});
+            this.FRMreportApproveMedicine});
             this.radRibbonBarGroup31.Name = "radRibbonBarGroup31";
             this.radRibbonBarGroup31.Text = "التقارير";
             // 
-            // FRMApproveMedicineReorts
+            // FRMreportApproveMedicine
             // 
-            this.FRMApproveMedicineReorts.AutoSize = false;
-            this.FRMApproveMedicineReorts.Bounds = new System.Drawing.Rectangle(0, 0, 124, 59);
-            this.FRMApproveMedicineReorts.Image = ((System.Drawing.Image)(resources.GetObject("FRMApproveMedicineReorts.Image")));
-            this.FRMApproveMedicineReorts.ImageAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            this.FRMApproveMedicineReorts.Name = "FRMApproveMedicineReorts";
-            this.FRMApproveMedicineReorts.Text = "تقارير تصديق الأدوية";
-            this.FRMApproveMedicineReorts.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.FRMreportApproveMedicine.AutoSize = false;
+            this.FRMreportApproveMedicine.Bounds = new System.Drawing.Rectangle(0, 0, 124, 59);
+            this.FRMreportApproveMedicine.Enabled = false;
+            this.FRMreportApproveMedicine.Image = ((System.Drawing.Image)(resources.GetObject("FRMreportApproveMedicine.Image")));
+            this.FRMreportApproveMedicine.ImageAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.FRMreportApproveMedicine.Name = "FRMreportApproveMedicine";
+            this.FRMreportApproveMedicine.Text = "تقارير تصديق الأدوية";
+            this.FRMreportApproveMedicine.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.FRMreportApproveMedicine.Click += new System.EventHandler(this.FRMApproveMedicineReorts_Click);
             // 
             // radRibbonBarGroup7
             // 
@@ -1096,7 +1099,7 @@
         private Telerik.WinControls.UI.RadRibbonBarGroup radRibbonBarGroup30;
         private Telerik.WinControls.UI.RadRibbonBarGroup radRibbonBarGroup31;
         private Telerik.WinControls.UI.RadButtonElement FRMApproveMedicine;
-        private Telerik.WinControls.UI.RadButtonElement FRMApproveMedicineReorts;
+        private Telerik.WinControls.UI.RadButtonElement FRMreportApproveMedicine;
         private Telerik.WinControls.UI.RadRibbonBarGroup radRibbonBarGroup7;
         private Telerik.WinControls.UI.RadButtonElement FrmAppMedicineTyp;
         private Telerik.WinControls.UI.RadButtonElement FrmPharmacist;

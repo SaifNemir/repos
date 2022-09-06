@@ -319,20 +319,20 @@ namespace MedicalServiceSystem.SystemSetting
 
                             }
                         }
-                        int x = int.Parse(UserId.Text);
-                        int Getgroid = db.Users.Where(p => p.Id == x).ToList()[0].GroupId;
-                        var SysId = db.UserGroups.Where(p => p.Id == Getgroid).ToList()[0].SystemId;
-                        //Interaction.MsgBox(x.ToString());
-                        var u = (from usr in db.UserPermissions.Where(p => p.UserId == x)
+                        int x = int.Parse(GroupId.Text);
+                        var SysId = db.UserGroups.Where(p => p.Id == x).ToList()[0].SystemId;
+
+                        var u = (from usr in db.GroupPermissions.Where(p => p.GroupId == x)
                                  join r in db.SysForms.Where(p => p.SystemsId == SysId)
                                      on usr.FormId equals r.Id
                                  select new
                                  {
                                      Id = usr.Id,
                                      FormId = usr.FormId,
-                                     UserId = usr.UserId,
-                                     FormEnglishName = r.ArabicFormName
+                                     GroupId = usr.GroupId,
+                                     FormName = r.ArabicFormName
                                  }).ToList();
+
                         GrdPermIssions.DataSource = u;
                         if (u.Count > 0)
                         {
@@ -345,24 +345,22 @@ namespace MedicalServiceSystem.SystemSetting
                             {
                                 GrdPermIssions.Rows[i].Cells["Choose"].Value = false;
                             }
-                            var v1 = db.UserPermissions.Where(p => p.UserId == x).Select(x1 => x1.FormId).ToArray();
-                            var otherObjects =
-                                db.SysForms.Where(x1 => x1.SystemsId == SysId && !v1.Contains(x1.Id))
-                                    .Select(x1 => new { FormId = x1.Id, FormEnglishName = x1.ArabicFormName })
-                                    .ToList();
+                        }
+                        var v1 = db.GroupPermissions.Where(p => p.GroupId == x).Select(x1 => x1.FormId).ToArray();
+                        var otherObjects =
+                            db.SysForms.Where(x1 => x1.SystemsId == SysId && !v1.Contains(x1.Id))
+                                .Select(x1 => new { FormId = x1.Id, FormName = x1.ArabicFormName })
+                                .ToList();
 
-                            GRDForm.DataSource = otherObjects;
-                            if (GRDForm.RowCount > 0)
+                        GRDForm.DataSource = otherObjects;
+                        if (GRDForm.RowCount > 0)
+                            for (int i = 0; i <= GRDForm.RowCount - 1; i++)
                             {
-                                for (int i = 0; i <= GRDForm.RowCount - 1; i++)
-                                {
-                                    GRDForm.Rows[i].Cells[0].Value = i + 1;
-                                }
-                                for (int i = 0; i <= GRDForm.RowCount - 1; i++)
-                                {
-                                    GRDForm.Rows[i].Cells["Choose"].Value = false;
-                                }
+                                GRDForm.Rows[i].Cells[0].Value = i + 1;
                             }
+                        for (int i = 0; i <= GRDForm.RowCount - 1; i++)
+                        {
+                            GRDForm.Rows[i].Cells["Choose"].Value = false;
                         }
                     }
                 }

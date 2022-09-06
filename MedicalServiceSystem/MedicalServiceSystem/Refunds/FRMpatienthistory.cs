@@ -97,24 +97,40 @@ namespace MedicalServiceSystem.Reclaims
                         if (GetApp.Count > 0)
                         {     
                             
-                            FRMApproveMedicine.Default.card_no.Text = GetApp[0].Subscriber.InsurNo;
+                            FRMApproveMedicine.Default.card_no.Text = GetApp[0].InsurNo;
                             FRMApproveMedicine.Default.OperationDate.Value = GetApp[0].ApproveDate;
                             FRMApproveMedicine.Default.RouchitaNo.Text = GetApp[0].RouchitaNo.ToString();
-                            FRMApproveMedicine.Default.Sex.Text = GetApp[0].Subscriber.Gender;
-                            FRMApproveMedicine.Default.CustName.Text = GetApp[0].Subscriber.InsurName;
-                            FRMApproveMedicine.Default.ServerName.Text = GetApp[0].Subscriber.Server;
+                            FRMApproveMedicine.Default.Sex.Text = GetApp[0].Gender;
+                            FRMApproveMedicine.Default.CustName.Text = GetApp[0].InsurName;
+                            FRMApproveMedicine.Default.ServerName.Text = GetApp[0].Server;
                             FRMApproveMedicine.Default.RequistingParty.SelectedValue = GetApp[0].ReqCenterId;
                             FRMApproveMedicine.Default.ExcutingParty.SelectedValue = GetApp[0].ExcCenterId;
                             FRMApproveMedicine.Default.Diagnosis.SelectedValue = GetApp[0].DiagnosisId;
                             FRMApproveMedicine.Default.pharmacist.SelectedValue = GetApp[0].pharmacistId;
                             FRMApproveMedicine.Default.ApproveType.SelectedValue = GetApp[0].ApproveTypeId;
                             FRMApproveMedicine.Default.Atachment.Text = GetApp[0].Atachment;
-                            FRMApproveMedicine.Default.Age.Text = DateAndTime.DateDiff(DateInterval.Year, GetApp[0].Subscriber.BirthDate, PLC.getdate()).ToString();
+                            FRMApproveMedicine.Default.Age.Text = DateAndTime.DateDiff(DateInterval.Year, GetApp[0].BirthDate, PLC.getdate()).ToString();
                             FRMApproveMedicine.Default.Saved = true;
                             FRMApproveMedicine.Default.ApprovementId.Text = "كود التصديق" + ":   " + GetApp[0].ApproveCode.ToString();
                             FRMApproveMedicine.Default.FillGrid();
                             Close();
                         }
+                    }
+                }
+            }
+        }
+
+        private void RadGridView1_CommandCellClick(object sender, Telerik.WinControls.UI.GridViewCellEventArgs e)
+        {
+            if (radGridView1.RowCount > 0)
+            {
+                using (ModelDB.dbContext db = new ModelDB.dbContext())
+                {
+                    int AppId = Convert.ToInt32(e.Row.Cells["Id"].Value);
+                    FrmRefuseMedicine.Default.ApproveId = AppId;
+                    if (radGridView1.CurrentColumn.Name == "Show")
+                    {
+                        FrmRefuseMedicine.Default.ShowDialog();
                     }
                 }
             }

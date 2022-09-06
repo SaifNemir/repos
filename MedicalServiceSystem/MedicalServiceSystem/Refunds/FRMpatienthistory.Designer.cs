@@ -46,24 +46,28 @@ namespace MedicalServiceSystem.Reclaims
             Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn13 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
             Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn14 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
             Telerik.WinControls.UI.TableViewDefinition tableViewDefinition1 = new Telerik.WinControls.UI.TableViewDefinition();
+            Telerik.WinControls.UI.GridViewCommandColumn gridViewCommandColumn2 = new Telerik.WinControls.UI.GridViewCommandColumn();
             Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn15 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
             Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn16 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
             Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn17 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
             Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn18 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn19 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
             Telerik.WinControls.UI.TableViewDefinition tableViewDefinition2 = new Telerik.WinControls.UI.TableViewDefinition();
             this.Grid_service = new Telerik.WinControls.UI.RadGridView();
-            this.grid_transfer = new Telerik.WinControls.UI.RadGridView();
             this.Button1 = new Telerik.WinControls.UI.RadButton();
             this.Label1 = new Telerik.WinControls.UI.RadLabel();
             this.Totals = new Telerik.WinControls.UI.RadTextBox();
             this.office2010BlueTheme1 = new Telerik.WinControls.Themes.Office2010BlueTheme();
+            this.radGridView1 = new Telerik.WinControls.UI.RadGridView();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.Grid_service)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Grid_service.MasterTemplate)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.grid_transfer)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.grid_transfer.MasterTemplate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Button1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Label1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Totals)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radGridView1.MasterTemplate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
             // 
@@ -75,7 +79,7 @@ namespace MedicalServiceSystem.Reclaims
             this.Grid_service.Font = new System.Drawing.Font("Sakkal Majalla", 12F);
             this.Grid_service.ForeColor = System.Drawing.Color.Black;
             this.Grid_service.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.Grid_service.Location = new System.Drawing.Point(0, 0);
+            this.Grid_service.Location = new System.Drawing.Point(0, 268);
             this.Grid_service.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             // 
             // 
@@ -169,46 +173,11 @@ namespace MedicalServiceSystem.Reclaims
             this.Grid_service.Name = "Grid_service";
             this.Grid_service.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.Grid_service.ShowGroupPanel = false;
-            this.Grid_service.Size = new System.Drawing.Size(1294, 538);
+            this.Grid_service.Size = new System.Drawing.Size(1294, 270);
             this.Grid_service.TabIndex = 24;
             this.Grid_service.ThemeName = "Office2010Blue";
             this.Grid_service.RowFormatting += new Telerik.WinControls.UI.RowFormattingEventHandler(this.Grid_service_RowFormatting);
             this.Grid_service.CommandCellClick += new Telerik.WinControls.UI.CommandCellClickEventHandler(this.Grid_service_CommandCellClick);
-            // 
-            // grid_transfer
-            // 
-            this.grid_transfer.Location = new System.Drawing.Point(6, 83);
-            this.grid_transfer.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
-            // 
-            // 
-            // 
-            this.grid_transfer.MasterTemplate.AllowAddNewRow = false;
-            this.grid_transfer.MasterTemplate.AllowDeleteRow = false;
-            gridViewTextBoxColumn15.HeaderText = "م";
-            gridViewTextBoxColumn15.Name = "Column5";
-            gridViewTextBoxColumn15.ReadOnly = true;
-            gridViewTextBoxColumn16.HeaderText = "رقم الخدمة";
-            gridViewTextBoxColumn16.Name = "DataGridViewTextBoxColumn5";
-            gridViewTextBoxColumn16.ReadOnly = true;
-            gridViewTextBoxColumn16.Width = 250;
-            gridViewTextBoxColumn17.HeaderText = "التكلفة";
-            gridViewTextBoxColumn17.Name = "Column6";
-            gridViewTextBoxColumn17.ReadOnly = true;
-            gridViewTextBoxColumn17.Width = 200;
-            gridViewTextBoxColumn18.HeaderText = "التاريخ";
-            gridViewTextBoxColumn18.Name = "DataGridViewTextBoxColumn6";
-            gridViewTextBoxColumn18.ReadOnly = true;
-            gridViewTextBoxColumn18.Width = 150;
-            this.grid_transfer.MasterTemplate.Columns.AddRange(new Telerik.WinControls.UI.GridViewDataColumn[] {
-            gridViewTextBoxColumn15,
-            gridViewTextBoxColumn16,
-            gridViewTextBoxColumn17,
-            gridViewTextBoxColumn18});
-            this.grid_transfer.MasterTemplate.ViewDefinition = tableViewDefinition2;
-            this.grid_transfer.Name = "grid_transfer";
-            this.grid_transfer.ReadOnly = true;
-            this.grid_transfer.Size = new System.Drawing.Size(887, 455);
-            this.grid_transfer.TabIndex = 25;
             // 
             // Button1
             // 
@@ -250,6 +219,81 @@ namespace MedicalServiceSystem.Reclaims
             this.Totals.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.Totals.ThemeName = "Office2010Blue";
             // 
+            // radGridView1
+            // 
+            this.radGridView1.AutoScroll = true;
+            this.radGridView1.BackColor = System.Drawing.Color.White;
+            this.radGridView1.Cursor = System.Windows.Forms.Cursors.Default;
+            this.radGridView1.Font = new System.Drawing.Font("Sakkal Majalla", 12F);
+            this.radGridView1.ForeColor = System.Drawing.Color.Black;
+            this.radGridView1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.radGridView1.Location = new System.Drawing.Point(0, 36);
+            this.radGridView1.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            // 
+            // 
+            // 
+            this.radGridView1.MasterTemplate.AllowAddNewRow = false;
+            this.radGridView1.MasterTemplate.AllowDeleteRow = false;
+            gridViewCommandColumn2.HeaderText = "عرض";
+            gridViewCommandColumn2.Name = "Show";
+            gridViewTextBoxColumn15.EnableExpressionEditor = false;
+            gridViewTextBoxColumn15.HeaderText = "م";
+            gridViewTextBoxColumn15.Name = "DataGridViewTextBoxColumn1";
+            gridViewTextBoxColumn16.EnableExpressionEditor = false;
+            gridViewTextBoxColumn16.FieldName = "ReclaimDate";
+            gridViewTextBoxColumn16.HeaderText = "التاريخ";
+            gridViewTextBoxColumn16.Name = "ReclaimDate";
+            gridViewTextBoxColumn16.ReadOnly = true;
+            gridViewTextBoxColumn16.Width = 150;
+            gridViewTextBoxColumn17.FieldName = "RequestParty";
+            gridViewTextBoxColumn17.HeaderText = "الجهة الطالبة";
+            gridViewTextBoxColumn17.Name = "RequestParty";
+            gridViewTextBoxColumn17.Width = 250;
+            gridViewTextBoxColumn18.FieldName = "ExcuteParty";
+            gridViewTextBoxColumn18.HeaderText = "الجهة المنفذة";
+            gridViewTextBoxColumn18.Name = "ExcuteParty";
+            gridViewTextBoxColumn18.Width = 250;
+            gridViewTextBoxColumn19.HeaderText = "column1";
+            gridViewTextBoxColumn19.IsVisible = false;
+            gridViewTextBoxColumn19.Name = "Id";
+            this.radGridView1.MasterTemplate.Columns.AddRange(new Telerik.WinControls.UI.GridViewDataColumn[] {
+            gridViewCommandColumn2,
+            gridViewTextBoxColumn15,
+            gridViewTextBoxColumn16,
+            gridViewTextBoxColumn17,
+            gridViewTextBoxColumn18,
+            gridViewTextBoxColumn19});
+            this.radGridView1.MasterTemplate.EnableFiltering = true;
+            this.radGridView1.MasterTemplate.ViewDefinition = tableViewDefinition2;
+            this.radGridView1.Name = "radGridView1";
+            this.radGridView1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.radGridView1.ShowGroupPanel = false;
+            this.radGridView1.Size = new System.Drawing.Size(1294, 196);
+            this.radGridView1.TabIndex = 30;
+            this.radGridView1.ThemeName = "Office2010Blue";
+            this.radGridView1.CommandCellClick += new Telerik.WinControls.UI.CommandCellClickEventHandler(this.RadGridView1_CommandCellClick);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Sakkal Majalla", 18F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.Crimson;
+            this.label2.Location = new System.Drawing.Point(1146, 2);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(154, 32);
+            this.label2.TabIndex = 31;
+            this.label2.Text = "التصاديق المرفوضة";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Sakkal Majalla", 18F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(1206, 234);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(85, 32);
+            this.label3.TabIndex = 32;
+            this.label3.Text = "التصاديق";
+            // 
             // FRMpatienthistory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -258,11 +302,13 @@ namespace MedicalServiceSystem.Reclaims
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1292, 579);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.radGridView1);
             this.Controls.Add(this.Label1);
             this.Controls.Add(this.Totals);
             this.Controls.Add(this.Button1);
             this.Controls.Add(this.Grid_service);
-            this.Controls.Add(this.grid_transfer);
             this.Font = new System.Drawing.Font("Sakkal Majalla", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(6);
@@ -279,18 +325,17 @@ namespace MedicalServiceSystem.Reclaims
             this.Load += new System.EventHandler(this.FRMpatienthistory_Load);
             ((System.ComponentModel.ISupportInitialize)(this.Grid_service.MasterTemplate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Grid_service)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.grid_transfer.MasterTemplate)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.grid_transfer)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Button1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Label1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Totals)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radGridView1.MasterTemplate)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
         internal Telerik.WinControls.UI.RadGridView Grid_service;
-        internal Telerik.WinControls.UI.RadGridView grid_transfer;
         internal Telerik.WinControls.UI.RadButton Button1;
         internal Telerik.WinControls.UI.GridViewTextBoxColumn Column5;
         internal Telerik.WinControls.UI.GridViewTextBoxColumn DataGridViewTextBoxColumn5;
@@ -304,6 +349,9 @@ namespace MedicalServiceSystem.Reclaims
         internal Telerik.WinControls.UI.RadLabel Label1;
         internal Telerik.WinControls.UI.RadTextBox Totals;
         private Telerik.WinControls.Themes.Office2010BlueTheme office2010BlueTheme1;
+        internal RadGridView radGridView1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
 
         //private static FRMpatienthistory _Default;
         //public static FRMpatienthistory Default

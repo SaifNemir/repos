@@ -16,7 +16,7 @@
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>\\192.168.100.2\InuranceSystem\MedicalInsurance\</PublishUrl>
+    <PublishUrl>\\192.168.100.10\c%24\MedicineSystem\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Unc</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -28,7 +28,7 @@
     <MapFileExtensions>true</MapFileExtensions>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>56</ApplicationRevision>
+    <ApplicationRevision>127</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -108,97 +108,17 @@
     <Compile Include="Chronics\FRMBookInfo.Designer.cs">
       <DependentUpon>FRMBookInfo.cs</DependentUpon>
     </Compile>
-    <Compile Include="Claims\AdvanceFillterFrm.cs" />
-    <Compile Include="Claims\AdvanceFillterFrm.Designer.cs">
-      <DependentUpon>AdvanceFillterFrm.cs</DependentUpon>
+    <Compile Include="Refunds\FRMBookhistory.cs">
+      <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Claims\AllocationFrm.cs" />
-    <Compile Include="Claims\AllocationFrm.Designer.cs">
-      <DependentUpon>AllocationFrm.cs</DependentUpon>
+    <Compile Include="Refunds\FRMBookhistory.Designer.cs">
+      <DependentUpon>FRMBookhistory.cs</DependentUpon>
     </Compile>
-    <Compile Include="Claims\CenterListNonConfirmReport.cs" />
-    <Compile Include="Claims\CenterListNonConfirmReport.Designer.cs">
-      <DependentUpon>CenterListNonConfirmReport.cs</DependentUpon>
+    <Compile Include="Refunds\FrmRefuseMedicine.cs">
+      <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Claims\CenterNonConfirmRep.cs" />
-    <Compile Include="Claims\CenterNonConfirmRep.Designer.cs">
-      <DependentUpon>CenterNonConfirmRep.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Claims\ClmApproveAndDelFrm.cs" />
-    <Compile Include="Claims\ClmApproveAndDelFrm.Designer.cs">
-      <DependentUpon>ClmApproveAndDelFrm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Claims\ClmConfirmReviewFrm.cs" />
-    <Compile Include="Claims\ClmConfirmReviewFrm.Designer.cs">
-      <DependentUpon>ClmConfirmReviewFrm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Claims\ClmEnableFrm.cs" />
-    <Compile Include="Claims\ClmEnableFrm.Designer.cs">
-      <DependentUpon>ClmEnableFrm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Claims\ClmErrorClmsDataFrm.cs" />
-    <Compile Include="Claims\ClmErrorClmsDataFrm.Designer.cs">
-      <DependentUpon>ClmErrorClmsDataFrm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Claims\ClmReceiptFrm.cs" />
-    <Compile Include="Claims\ClmReceiptFrm.Designer.cs">
-      <DependentUpon>ClmReceiptFrm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Claims\ClmReceiptReport.cs" />
-    <Compile Include="Claims\ClmReceiptReport.Designer.cs">
-      <DependentUpon>ClmReceiptReport.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Claims\ClmRequestFrm.cs" />
-    <Compile Include="Claims\ClmRequestFrm.Designer.cs">
-      <DependentUpon>ClmRequestFrm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Claims\ClmReviewFrm.cs" />
-    <Compile Include="Claims\ClmReviewFrm.Designer.cs">
-      <DependentUpon>ClmReviewFrm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Claims\ClmSendFrm.cs" />
-    <Compile Include="Claims\ClmSendFrm.Designer.cs">
-      <DependentUpon>ClmSendFrm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Claims\CustomerReport.cs" />
-    <Compile Include="Claims\CustomerReport.Designer.cs">
-      <DependentUpon>CustomerReport.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Claims\ImportFileFrm.cs" />
-    <Compile Include="Claims\ImportFileFrm.Designer.cs">
-      <DependentUpon>ImportFileFrm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Claims\ItemsReport.cs" />
-    <Compile Include="Claims\ItemsReport.Designer.cs">
-      <DependentUpon>ItemsReport.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Claims\LastCenterClaimsReport.cs" />
-    <Compile Include="Claims\LastCenterClaimsReport.Designer.cs">
-      <DependentUpon>LastCenterClaimsReport.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Claims\LastClaimsCenterRepFrm.cs" />
-    <Compile Include="Claims\LastClaimsCenterRepFrm.Designer.cs">
-      <DependentUpon>LastClaimsCenterRepFrm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Claims\NonConfirmFiltterFrm.cs" />
-    <Compile Include="Claims\NonConfirmFiltterFrm.Designer.cs">
-      <DependentUpon>NonConfirmFiltterFrm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Claims\PrintCenterReportFrm.cs" />
-    <Compile Include="Claims\PrintCenterReportFrm.Designer.cs">
-      <DependentUpon>PrintCenterReportFrm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Claims\ViewCenterListNonConfirmRepFrm.cs" />
-    <Compile Include="Claims\ViewCenterListNonConfirmRepFrm.Designer.cs">
-      <DependentUpon>ViewCenterListNonConfirmRepFrm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Claims\ViewCenterNonConfirmFrm.cs" />
-    <Compile Include="Claims\ViewCenterNonConfirmFrm.Designer.cs">
-      <DependentUpon>ViewCenterNonConfirmFrm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Claims\ViewReceiptRepFrm.cs" />
-    <Compile Include="Claims\ViewReceiptRepFrm.Designer.cs">
-      <DependentUpon>ViewReceiptRepFrm.cs</DependentUpon>
+    <Compile Include="Refunds\FrmRefuseMedicine.Designer.cs">
+      <DependentUpon>FrmRefuseMedicine.cs</DependentUpon>
     </Compile>
     <Compile Include="Refunds\FRMApproveSearch.cs">
       <SubType>Form</SubType>
@@ -241,6 +161,12 @@
     </Compile>
     <Compile Include="Refunds\FRMEstrdadhistory.Designer.cs">
       <DependentUpon>FRMEstrdadhistory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Refunds\FRMRefuseAlert.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Refunds\FRMRefuseAlert.Designer.cs">
+      <DependentUpon>FRMRefuseAlert.cs</DependentUpon>
     </Compile>
     <Compile Include="ReportForAll.cs" />
     <Compile Include="Refunds\AllSupplierRPT.cs">
@@ -561,75 +487,6 @@
     <EmbeddedResource Include="Chronics\FRMBookInfo.resx">
       <DependentUpon>FRMBookInfo.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Claims\AdvanceFillterFrm.resx">
-      <DependentUpon>AdvanceFillterFrm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Claims\AllocationFrm.resx">
-      <DependentUpon>AllocationFrm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Claims\CenterListNonConfirmReport.resx">
-      <DependentUpon>CenterListNonConfirmReport.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Claims\CenterNonConfirmRep.resx">
-      <DependentUpon>CenterNonConfirmRep.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Claims\ClmApproveAndDelFrm.resx">
-      <DependentUpon>ClmApproveAndDelFrm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Claims\ClmConfirmReviewFrm.resx">
-      <DependentUpon>ClmConfirmReviewFrm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Claims\ClmEnableFrm.resx">
-      <DependentUpon>ClmEnableFrm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Claims\ClmErrorClmsDataFrm.resx">
-      <DependentUpon>ClmErrorClmsDataFrm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Claims\ClmReceiptFrm.resx">
-      <DependentUpon>ClmReceiptFrm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Claims\ClmReceiptReport.resx">
-      <DependentUpon>ClmReceiptReport.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Claims\ClmRequestFrm.resx">
-      <DependentUpon>ClmRequestFrm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Claims\ClmReviewFrm.resx">
-      <DependentUpon>ClmReviewFrm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Claims\ClmSendFrm.resx">
-      <DependentUpon>ClmSendFrm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Claims\CustomerReport.resx">
-      <DependentUpon>CustomerReport.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Claims\ImportFileFrm.resx">
-      <DependentUpon>ImportFileFrm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Claims\ItemsReport.resx">
-      <DependentUpon>ItemsReport.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Claims\LastCenterClaimsReport.resx">
-      <DependentUpon>LastCenterClaimsReport.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Claims\LastClaimsCenterRepFrm.resx">
-      <DependentUpon>LastClaimsCenterRepFrm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Claims\NonConfirmFiltterFrm.resx">
-      <DependentUpon>NonConfirmFiltterFrm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Claims\PrintCenterReportFrm.resx">
-      <DependentUpon>PrintCenterReportFrm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Claims\ViewCenterListNonConfirmRepFrm.resx">
-      <DependentUpon>ViewCenterListNonConfirmRepFrm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Claims\ViewCenterNonConfirmFrm.resx">
-      <DependentUpon>ViewCenterNonConfirmFrm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Claims\ViewReceiptRepFrm.resx">
-      <DependentUpon>ViewReceiptRepFrm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -649,6 +506,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Refunds\FrmAddCenter.resx">
       <DependentUpon>FrmAddCenter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Refunds\FRMBookhistory.resx">
+      <DependentUpon>FRMBookhistory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Refunds\FrmRefuseMedicine.resx">
+      <DependentUpon>FrmRefuseMedicine.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Refunds\FrmCenters.resx">
       <DependentUpon>FrmCenters.cs</DependentUpon>
@@ -703,6 +566,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Refunds\FRMAddStudent.resx">
       <DependentUpon>FRMAddStudent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Refunds\FRMRefuseAlert.resx">
+      <DependentUpon>FRMRefuseAlert.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Refunds\FrmTrades.resx">
       <DependentUpon>FrmTrades.cs</DependentUpon>
@@ -835,7 +701,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Claims\" />
+  </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.6">
       <Visible>False</Visible>
@@ -1177,6 +1045,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\icons8_unavailable_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_stethoscope_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_deleteAll_32.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

@@ -12,9 +12,6 @@ namespace ModelDB
         public int Id { get; set; }
         public string ReclaimNo { get; set; }
         public DateTime ReclaimDate { get; set; }
-        public int SubscriberId { get; set; }
-        [ForeignKey("SubscriberId")]
-        public virtual Subscriber Subscriber { get; set; }
         public decimal BillsTotal { get; set; }
         public decimal ReclaimTotal { get; set; }
         public decimal MedicalTotal { get; set; }
@@ -36,7 +33,16 @@ namespace ModelDB
         public bool? IsMedical { get; set; }
         public bool? RefuseMedical { get; set; }
         public bool? RefuseMedicine { get; set; }
-
+        public string PhoneNo { get; set; }
+        public string InsurNo { get; set; }
+        public string InsurName { get; set; }
+        public string Gender { get; set; }
+        public string Address { get; set; }
+        public string Server { get; set; }
+        public string ClientId { get; set; }
+        public DateTime BirthDate { get; set; }
+        public string SectorName { get; set; }
+        public int? SectorId { get; set; }
 
     }
     public enum ReclaimStatus

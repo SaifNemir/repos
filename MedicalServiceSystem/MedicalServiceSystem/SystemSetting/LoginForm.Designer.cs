@@ -177,6 +177,7 @@
             this.QualityImage1.Size = new System.Drawing.Size(502, 433);
             this.QualityImage1.TabIndex = 10;
             this.QualityImage1.ThemeName = "Office2010Blue";
+            this.QualityImage1.Click += new System.EventHandler(this.QualityImage1_Click);
             // 
             // QualityImage
             // 

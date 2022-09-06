@@ -82,7 +82,7 @@ namespace MedicalServiceSystem.Reclaims
             UserId = LoginForm.Default.UserId;
             ListType.DataSource = Enum.GetValues(typeof(PLS));
             ListType.SelectedIndex = -1;
-            LocalityId = LoginForm.Default.LocalityId;
+            LocalityId = PLC.LocalityId;
             using (dbContext db = new dbContext())
             {
                 var Atc = db.ATCclassifications.ToList();

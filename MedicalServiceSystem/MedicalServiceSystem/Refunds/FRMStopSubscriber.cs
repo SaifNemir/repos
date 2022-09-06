@@ -74,15 +74,37 @@ namespace MedicalServiceSystem.Reclaims
             }
             using (dbContext db = new dbContext())
             {
-                var Ssc = db.Subscribers.Where(p => p.InsurNo == card_no.Text).ToList();
-                if (Ssc.Count > 0)
+                var ser = db.StopSubsribers.Where(p => p.InsurNo == card_no.Text).ToList();
+                if (ser.Count == 0)
                 {
-                    Ssc[0].IsStoped = true;
-                    Ssc[0].Notes = StopCause.Text.Trim();
+                    StopSubsriber Sts = new StopSubsriber();
+                    Sts.InsurNo = card_no.Text;
+                    Sts.StopDate = PLC.getdate();
+                    Sts.IsStoped = true;
+                    Sts.Comment= StopCause.Text.Trim();
+                    db.StopSubsribers.Add(Sts);
+                    db.SaveChanges();
+                    MessageBox.Show("لقد تم ايقاف المشترك", "النظام", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                var ser1 = db.StopSubsribers.Where(p => p.InsurNo == card_no.Text).ToList();
+                if (ser1.Count > 0)
+                {
+
+                    ser1[0].IsStoped = true;
+                    ser1[0].Comment = StopCause.Text.Trim();
                     db.SaveChanges();
                     MessageBox.Show("لقد تم ايقاف المشترك", "النظام", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 }
+                //var Ssc = dbs.Where(p => p.InsurNo == card_no.Text).ToList();
+                //if (Ssc.Count > 0)
+                //{
+                //    Ssc[0].IsStoped = true;
+                //    Ssc[0].Notes = StopCause.Text.Trim();
+                //    db.SaveChanges();
+                //    MessageBox.Show("لقد تم ايقاف المشترك", "النظام", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                //}
             }
             
                 this.Close();
@@ -92,12 +114,12 @@ namespace MedicalServiceSystem.Reclaims
 		{
             using (dbContext db = new dbContext())
             {
-                var Ssc = db.Subscribers.Where(p => p.InsurNo == card_no.Text).ToList();
-                if (Ssc.Count > 0)
-                {
-                    StopCause.Text = Ssc[0].Notes;
+                //var Ssc = dbs.Where(p => p.InsurNo == card_no.Text).ToList();
+                //if (Ssc.Count > 0)
+                //{
+                //    StopCause.Text = Ssc[0].Notes;
 
-                }
+                //}
             }
             }
 
@@ -143,18 +165,19 @@ namespace MedicalServiceSystem.Reclaims
             }
             using (dbContext db = new dbContext())
             {
-                var Ssc = db.Subscribers.Where(p => p.InsurNo == card_no.Text).ToList();
-                if (Ssc.Count > 0)
+                var ser = db.StopSubsribers.Where(p => p.InsurNo == card_no.Text).ToList();
+                if (ser.Count > 0)
                 {
-                    Ssc[0].IsStoped = false;
-                    Ssc[0].Notes = StopCause.Text.Trim();
+
+                    ser[0].IsStoped = false;
+                    ser[0].Comment = StopCause.Text.Trim();
                     db.SaveChanges();
                     MessageBox.Show("لقد تم إلغاءايقاف المشترك", "النظام", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 }
             }
 
-            this.Close();
+                this.Close();
         }
     }
 }

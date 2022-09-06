@@ -71,7 +71,7 @@ namespace MedicalServiceSystem.Reclaims
         private void FRMMedicineSetting_Load(object sender, EventArgs e)
         {
             UserId = LoginForm.Default.UserId;
-            LocalityId = LoginForm.Default.LocalityId;
+            LocalityId = PLC.LocalityId;
             using (dbContext db = new dbContext())
             {
                 var Mlist = db.MedicineLists.ToList();

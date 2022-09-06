@@ -96,8 +96,14 @@ namespace MedicalServiceSystem.SystemSetting
                         db.Users.Where(p => p.UserName == UserName.Text && p.UserPass == UserPassWord.Text && p.UserStatus == 1).ToList();
                     if (chk.Count > 0)
                     {
-
-
+                        if (Convert.IsDBNull(chk[0].LocalityId) == false)
+                        {
+                            PLC.LocalityId = Convert.ToInt32(chk[0].LocalityId);
+                        }
+                        else
+                        {
+                            PLC.LocalityId = 0;
+                        }
                         UserId = chk[0].Id;
                         FulName = chk[0].FullName;
                         // CheckLogin();
@@ -128,6 +134,7 @@ namespace MedicalServiceSystem.SystemSetting
                 //   PLC.GetMAC();
 
                 MainMenuForm mfr = new MainMenuForm();
+                PLC.LocalityId = 0;
                 UserId = 0;
                 FulName = UserName.Text;
                 Hide();
@@ -225,25 +232,21 @@ namespace MedicalServiceSystem.SystemSetting
                     string GetSystemName = MyReader.GetValue("Locality", typeof(string)).ToString();
                     string GetServerIp = MyReader.GetValue("ServerIp", typeof(string)).ToString();
                     ServerIp = GetServerIp;
-                    string IP = PLC.GetIP();
-                    string IP3 = IP.Substring(0, 8);
-                    var getLoc = db.Localities.Where(x => x.LocalityIP.Equals(IP3)).ToList();
-                    if (getLoc.Count > 0)
-                    {
-                        LocalityId = db.Localities.Where(x => x.LocalityIP.Equals(IP3)).First().Id;
-                    }
-                    else
-                    {
-                        LocalityId = 0;
-                    }
+
                 }
-                
+
                 else
                 {
                     SystemSettingFRM.Default.ShowDialog();
                     Hide();
                     return;
                 }
+                //string IP = PLC.GetIP();
+                //string IP3 = IP.Substring(0, 8);
+                //int getLoc = db.Localities.Where(x => x.LocalityIP.Contains(IP3)).First().Id;
+                //PLC.LocalityId= getLoc;
+                //LocalityId = getLoc;
+                // MessageBox.Show(LocalityId.ToString());
                 DateTime NowDate = PLC.getdate();
 
                 var ChkExpire = db.Users.Where(u => u.EndDate < NowDate && u.UserStatus == 1).ToList();
@@ -258,177 +261,177 @@ namespace MedicalServiceSystem.SystemSetting
                 try
                 {
                     DateTime date2 = PLC.getdate().Date;
-                var chk = db.ChkUpdates.Where(o => o.UpdateDate == date2).ToList();
-                if (chk.Count == 0)
-                {
-                    Cursor = Cursors.WaitCursor;
+                    var chk = db.ChkUpdates.Where(o => o.UpdateDate == date2).ToList();
+                    if (chk.Count == 0)
+                    {
+                        Cursor = Cursors.WaitCursor;
 
 
-                    if (PLC.conClame.State == (System.Data.ConnectionState)1)
-                    {
-                        PLC.conClame.Close();
-                    }
-                    PLC.conClame.Open();
-                    SqlDataAdapter daCenter = new SqlDataAdapter("SELECT   [center_id],[center_name],[locals],[center_level] ,[madic] ,[dawa] FROM [cntr].[dbo].[CENTER_DET] ", PLC.conClame);
-                    DataTable dtCenter = new DataTable();
-                    dtCenter.Clear();
-                    daCenter.Fill(dtCenter);
-                    //   MsgBox (dtCenter .Rows .Count)
-                    if (dtCenter.Rows.Count > 0)
-                    {
-                        for (var i = 0; i < dtCenter.Rows.Count; i++)
+                        if (PLC.conClame.State == (System.Data.ConnectionState)1)
                         {
-                            int aa = 0;
-                            aa = Convert.ToInt32(dtCenter.Rows[i]["center_id"]);
-                            var chkc = db.CenterInfos.Where(o => o.Id == aa).ToList();
-                            if (chkc.Count == 0)
+                            PLC.conClame.Close();
+                        }
+                        PLC.conClame.Open();
+                        SqlDataAdapter daCenter = new SqlDataAdapter("SELECT   [center_id],[center_name],[locals],[center_level] ,[madic] ,[dawa] FROM [cntr].[dbo].[CENTER_DET] ", PLC.conClame);
+                        DataTable dtCenter = new DataTable();
+                        dtCenter.Clear();
+                        daCenter.Fill(dtCenter);
+                        //   MsgBox (dtCenter .Rows .Count)
+                        if (dtCenter.Rows.Count > 0)
+                        {
+                            for (var i = 0; i < dtCenter.Rows.Count; i++)
                             {
-                                CenterInfo excc = new CenterInfo();
-
-
-                                excc.Id = aa;
-
-
-                                excc.CenterName = (dtCenter.Rows[i]["center_name"]).ToString().Trim();
-                                if (Convert.IsDBNull(dtCenter.Rows[i]["locals"]) != true)
+                                int aa = 0;
+                                aa = Convert.ToInt32(dtCenter.Rows[i]["center_id"]);
+                                var chkc = db.CenterInfos.Where(o => o.Id == aa).ToList();
+                                if (chkc.Count == 0)
                                 {
-                                    if (Convert.ToInt32(dtCenter.Rows[i]["locals"]) == 2)
+                                    CenterInfo excc = new CenterInfo();
+
+
+                                    excc.Id = aa;
+
+
+                                    excc.CenterName = (dtCenter.Rows[i]["center_name"]).ToString().Trim();
+                                    if (Convert.IsDBNull(dtCenter.Rows[i]["locals"]) != true)
                                     {
-                                        excc.LocalityId = 3;
+                                        if (Convert.ToInt32(dtCenter.Rows[i]["locals"]) == 2)
+                                        {
+                                            excc.LocalityId = 3;
+                                        }
+                                        else if (Convert.ToInt32(dtCenter.Rows[i]["locals"]) == 4)
+                                        {
+                                            excc.LocalityId = 4;
+                                        }
+                                        else if (Convert.ToInt32(dtCenter.Rows[i]["locals"]) == 3)
+                                        {
+                                            excc.LocalityId = 2;
+                                        }
+                                        else if (Convert.ToInt32(dtCenter.Rows[i]["locals"]) == 5)
+                                        {
+                                            excc.LocalityId = 125;
+                                        }
+                                        else if (Convert.ToInt32(dtCenter.Rows[i]["locals"]) == 6)
+                                        {
+                                            excc.LocalityId = 5;
+                                        }
+                                        else if (Convert.ToInt32(dtCenter.Rows[i]["locals"]) == 7)
+                                        {
+                                            excc.LocalityId = 124;
+                                        }
+                                        else if (Convert.ToInt32(dtCenter.Rows[i]["locals"]) == 1)
+                                        {
+                                            excc.LocalityId = 1;
+                                        }
+
                                     }
-                                    else if (Convert.ToInt32(dtCenter.Rows[i]["locals"]) == 4)
-                                    {
-                                        excc.LocalityId = 4;
-                                    }
-                                    else if (Convert.ToInt32(dtCenter.Rows[i]["locals"]) == 3)
-                                    {
-                                        excc.LocalityId = 2;
-                                    }
-                                    else if (Convert.ToInt32(dtCenter.Rows[i]["locals"]) == 5)
-                                    {
-                                        excc.LocalityId = 125;
-                                    }
-                                    else if (Convert.ToInt32(dtCenter.Rows[i]["locals"]) == 6)
-                                    {
-                                        excc.LocalityId = 5;
-                                    }
-                                    else if (Convert.ToInt32(dtCenter.Rows[i]["locals"]) == 7)
-                                    {
-                                        excc.LocalityId = 124;
-                                    }
-                                    else if (Convert.ToInt32(dtCenter.Rows[i]["locals"]) == 1)
+                                    else
                                     {
                                         excc.LocalityId = 1;
                                     }
 
+                                    if (Convert.ToBoolean(dtCenter.Rows[i]["dawa"].ToString()) == true && Convert.ToBoolean(dtCenter.Rows[i]["madic"].ToString()) == false)
+                                    {
+                                        excc.CenterTypeId = CenterType.صيدلية;
+                                    }
+
+                                    else if (Convert.ToBoolean(dtCenter.Rows[i]["dawa"].ToString()) == true && Convert.ToBoolean(dtCenter.Rows[i]["madic"].ToString()) == true)
+                                    {
+                                        excc.CenterTypeId = CenterType.مركزوصيدلية;
+                                    }
+                                    else if (Convert.ToBoolean(dtCenter.Rows[i]["dawa"].ToString()) == false && Convert.ToBoolean(dtCenter.Rows[i]["madic"].ToString()) == true)
+                                    {
+                                        excc.CenterTypeId = CenterType.مركز;
+
+                                    }
+
+                                    else
+                                    {
+                                        excc.CenterTypeId = CenterType.None;
+                                    }
+                                    excc.Level1 = false;
+                                    excc.Level2 = false;
+                                    excc.Level3 = false;
+                                    excc.Level4 = false;
+                                    excc.HasContract = false;
+                                    excc.IsEnabled = false;
+                                    excc.IsVisible = true;
+                                    if (Convert.ToInt32(dtCenter.Rows[i]["center_level"]) == 1)
+                                    {
+                                        excc.Level1 = true;
+                                    }
+
+
+
+
+                                    if (Convert.ToInt32(dtCenter.Rows[i]["center_level"]) == 2)
+                                    {
+                                        excc.Level2 = true;
+                                    }
+
+
+
+
+                                    if (Convert.ToInt32(dtCenter.Rows[i]["center_level"]) == 3)
+                                    {
+                                        excc.Level3 = true;
+                                    }
+
+                                    if (Convert.ToInt32(dtCenter.Rows[i]["center_level"]) == 4)
+                                    {
+                                        excc.Level1 = true;
+                                        excc.Level2 = true;
+                                    }
+                                    if (Convert.ToInt32(dtCenter.Rows[i]["center_level"]) == 5)
+                                    {
+                                        excc.Level2 = true;
+                                        excc.Level3 = true;
+                                    }
+                                    if (Convert.ToInt32(dtCenter.Rows[i]["center_level"]) == 6)
+                                    {
+                                        excc.Level1 = true;
+                                        excc.Level2 = true;
+                                        excc.Level3 = true;
+                                    }
+
+                                    if (Convert.ToInt32(dtCenter.Rows[i]["center_level"]) == 7)
+                                    {
+                                        excc.Level4 = true;
+                                    }
+
+
+                                    excc.HasContract = true;
+                                    excc.IsEnabled = true;
+
+
+                                    db.CenterInfos.Add(excc);
+                                    db.SaveChanges();
+
+
                                 }
-                                else
-                                {
-                                    excc.LocalityId = 1;
-                                }
 
-                                if (Convert.ToBoolean(dtCenter.Rows[i]["dawa"].ToString()) == true && Convert.ToBoolean(dtCenter.Rows[i]["madic"].ToString()) == false)
-                                {
-                                    excc.CenterTypeId = CenterType.صيدلية;
-                                }
-
-                                else if (Convert.ToBoolean(dtCenter.Rows[i]["dawa"].ToString()) == true && Convert.ToBoolean(dtCenter.Rows[i]["madic"].ToString()) == true)
-                                {
-                                    excc.CenterTypeId = CenterType.مركزوصيدلية;
-                                }
-                                else if (Convert.ToBoolean(dtCenter.Rows[i]["dawa"].ToString()) == false && Convert.ToBoolean(dtCenter.Rows[i]["madic"].ToString()) == true)
-                                {
-                                    excc.CenterTypeId = CenterType.مركز;
-
-                                }
-
-                                else
-                                {
-                                    excc.CenterTypeId = CenterType.None;
-                                }
-                                excc.Level1 = false;
-                                excc.Level2 = false;
-                                excc.Level3 = false;
-                                excc.Level4 = false;
-                                excc.HasContract = false;
-                                excc.IsEnabled = false;
-                                excc.IsVisible = true;
-                                if (Convert.ToInt32(dtCenter.Rows[i]["center_level"]) == 1)
-                                {
-                                    excc.Level1 = true;
-                                }
-
-
-
-
-                                if (Convert.ToInt32(dtCenter.Rows[i]["center_level"]) == 2)
-                                {
-                                    excc.Level2 = true;
-                                }
-
-
-
-
-                                if (Convert.ToInt32(dtCenter.Rows[i]["center_level"]) == 3)
-                                {
-                                    excc.Level3 = true;
-                                }
-
-                                if (Convert.ToInt32(dtCenter.Rows[i]["center_level"]) == 4)
-                                {
-                                    excc.Level1 = true;
-                                    excc.Level2 = true;
-                                }
-                                if (Convert.ToInt32(dtCenter.Rows[i]["center_level"]) == 5)
-                                {
-                                    excc.Level2 = true;
-                                    excc.Level3 = true;
-                                }
-                                if (Convert.ToInt32(dtCenter.Rows[i]["center_level"]) == 6)
-                                {
-                                    excc.Level1 = true;
-                                    excc.Level2 = true;
-                                    excc.Level3 = true;
-                                }
-
-                                if (Convert.ToInt32(dtCenter.Rows[i]["center_level"]) == 7)
-                                {
-                                    excc.Level4 = true;
-                                }
-
-
-                                excc.HasContract = true;
-                                excc.IsEnabled = true;
-
-
-                                db.CenterInfos.Add(excc);
                                 db.SaveChanges();
-
-
                             }
 
-                            db.SaveChanges();
+
                         }
-
-
+                        ChkUpdate chk1 = new ChkUpdate();
+                        chk1.Updated = true;
+                        chk1.UpdateDate = PLC.getdate();
+                        db.ChkUpdates.Add(chk1);
+                        db.SaveChanges();
                     }
-                    ChkUpdate chk1 = new ChkUpdate();
-                    chk1.Updated = true;
-                    chk1.UpdateDate = PLC.getdate();
-                    db.ChkUpdates.Add(chk1);
-                    db.SaveChanges();
+
+
                 }
-
-
-            }
                 catch (Exception ex)
-            {
-                
-                return;
+                {
 
-                this.Cursor = Cursors.Default;
-            }
-            UserName.Focus();
+                    return;
+
+                    this.Cursor = Cursors.Default;
+                }
+                UserName.Focus();
                 this.Cursor = Cursors.Default;
             }
         }
@@ -436,6 +439,11 @@ namespace MedicalServiceSystem.SystemSetting
         private void LogoutBTN_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void QualityImage1_Click(object sender, EventArgs e)
+        {
+
         }
         //#region Default Instance
 

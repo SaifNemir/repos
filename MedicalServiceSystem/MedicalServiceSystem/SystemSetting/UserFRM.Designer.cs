@@ -69,6 +69,8 @@
             this.UserStatus = new Telerik.WinControls.UI.RadCheckBox();
             this.UserType = new Telerik.WinControls.UI.RadDropDownList();
             this.radLabel8 = new Telerik.WinControls.UI.RadLabel();
+            this.Locality = new Telerik.WinControls.UI.RadDropDownList();
+            this.radLabel7 = new Telerik.WinControls.UI.RadLabel();
             ((System.ComponentModel.ISupportInitialize)(this.UserId)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GRDUsers)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GRDUsers.MasterTemplate)).BeginInit();
@@ -97,6 +99,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.UserStatus)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.UserType)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel8)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Locality)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radLabel7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
             // 
@@ -230,7 +234,7 @@
             this.RePassWord.Name = "RePassWord";
             this.RePassWord.PasswordChar = '*';
             this.RePassWord.Size = new System.Drawing.Size(568, 24);
-            this.RePassWord.TabIndex = 4;
+            this.RePassWord.TabIndex = 6;
             this.RePassWord.ThemeName = "Office2010Blue";
             // 
             // FulName
@@ -238,10 +242,10 @@
             this.FulName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.FulName.BackColor = System.Drawing.Color.White;
             this.FulName.Font = new System.Drawing.Font("Sakkal Majalla", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FulName.Location = new System.Drawing.Point(220, 102);
+            this.FulName.Location = new System.Drawing.Point(540, 102);
             this.FulName.MaxLength = 150;
             this.FulName.Name = "FulName";
-            this.FulName.Size = new System.Drawing.Size(568, 24);
+            this.FulName.Size = new System.Drawing.Size(248, 24);
             this.FulName.TabIndex = 2;
             this.FulName.ThemeName = "Office2010Blue";
             // 
@@ -344,7 +348,7 @@
             this.UserName.Location = new System.Drawing.Point(220, 135);
             this.UserName.Name = "UserName";
             this.UserName.Size = new System.Drawing.Size(568, 20);
-            this.UserName.TabIndex = 2;
+            this.UserName.TabIndex = 4;
             // 
             // radLabel17
             // 
@@ -368,7 +372,7 @@
             this.UserPassWord.Name = "UserPassWord";
             this.UserPassWord.PasswordChar = '*';
             this.UserPassWord.Size = new System.Drawing.Size(568, 24);
-            this.UserPassWord.TabIndex = 3;
+            this.UserPassWord.TabIndex = 5;
             this.UserPassWord.ThemeName = "Office2010Blue";
             // 
             // radButton4
@@ -439,7 +443,7 @@
             this.StartDate.Location = new System.Drawing.Point(563, 243);
             this.StartDate.Name = "StartDate";
             this.StartDate.Size = new System.Drawing.Size(164, 20);
-            this.StartDate.TabIndex = 5;
+            this.StartDate.TabIndex = 7;
             this.StartDate.TabStop = false;
             this.StartDate.Text = "2020/03/11";
             this.StartDate.ThemeName = "Office2010Blue";
@@ -452,7 +456,7 @@
             this.EndDate.Location = new System.Drawing.Point(230, 243);
             this.EndDate.Name = "EndDate";
             this.EndDate.Size = new System.Drawing.Size(164, 20);
-            this.EndDate.TabIndex = 6;
+            this.EndDate.TabIndex = 8;
             this.EndDate.TabStop = false;
             this.EndDate.Text = "2020/03/11";
             this.EndDate.ThemeName = "Office2010Blue";
@@ -511,12 +515,36 @@
             this.radLabel8.TextAlignment = System.Drawing.ContentAlignment.TopRight;
             this.radLabel8.ThemeName = "Office2010Black";
             // 
+            // Locality
+            // 
+            this.Locality.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.Locality.BackColor = System.Drawing.Color.White;
+            this.Locality.Font = new System.Drawing.Font("Sakkal Majalla", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Locality.Location = new System.Drawing.Point(220, 97);
+            this.Locality.Name = "Locality";
+            this.Locality.Size = new System.Drawing.Size(232, 32);
+            this.Locality.TabIndex = 3;
+            // 
+            // radLabel7
+            // 
+            this.radLabel7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.radLabel7.Font = new System.Drawing.Font("Sakkal Majalla", 12F);
+            this.radLabel7.Location = new System.Drawing.Point(457, 100);
+            this.radLabel7.Name = "radLabel7";
+            this.radLabel7.Size = new System.Drawing.Size(46, 26);
+            this.radLabel7.TabIndex = 114;
+            this.radLabel7.Text = "المحلية :";
+            this.radLabel7.TextAlignment = System.Drawing.ContentAlignment.TopRight;
+            this.radLabel7.ThemeName = "Office2010Black";
+            // 
             // UserFRM
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(246)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(924, 618);
+            this.Controls.Add(this.Locality);
+            this.Controls.Add(this.radLabel7);
             this.Controls.Add(this.UserType);
             this.Controls.Add(this.radLabel8);
             this.Controls.Add(this.UserStatus);
@@ -585,6 +613,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.UserStatus)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.UserType)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Locality)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radLabel7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -624,6 +654,8 @@
         private Telerik.WinControls.UI.RadCheckBox UserStatus;
         internal Telerik.WinControls.UI.RadDropDownList UserType;
         internal Telerik.WinControls.UI.RadLabel radLabel8;
+        internal Telerik.WinControls.UI.RadDropDownList Locality;
+        internal Telerik.WinControls.UI.RadLabel radLabel7;
         //public static UserFRM _Default;
         //public static UserFRM Default
         //{

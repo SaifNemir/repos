@@ -54,6 +54,7 @@ namespace MedicalServiceSystem
             Telerik.WinControls.UI.GridViewCheckBoxColumn gridViewCheckBoxColumn5 = new Telerik.WinControls.UI.GridViewCheckBoxColumn();
             Telerik.WinControls.UI.GridViewImageColumn gridViewImageColumn1 = new Telerik.WinControls.UI.GridViewImageColumn();
             Telerik.WinControls.UI.GridViewImageColumn gridViewImageColumn2 = new Telerik.WinControls.UI.GridViewImageColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn5 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
             Telerik.WinControls.UI.TableViewDefinition tableViewDefinition1 = new Telerik.WinControls.UI.TableViewDefinition();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmCenters));
             this.GRDCenter = new Telerik.WinControls.UI.RadGridView();
@@ -138,6 +139,9 @@ namespace MedicalServiceSystem
             gridViewImageColumn2.HeaderText = "حذف";
             gridViewImageColumn2.Name = "BtnDeleting";
             gridViewImageColumn2.Width = 85;
+            gridViewTextBoxColumn5.DataType = typeof(bool);
+            gridViewTextBoxColumn5.HeaderText = "column1";
+            gridViewTextBoxColumn5.Name = "Deleted";
             this.GRDCenter.MasterTemplate.Columns.AddRange(new Telerik.WinControls.UI.GridViewDataColumn[] {
             gridViewTextBoxColumn1,
             gridViewTextBoxColumn2,
@@ -149,7 +153,8 @@ namespace MedicalServiceSystem
             gridViewCheckBoxColumn4,
             gridViewCheckBoxColumn5,
             gridViewImageColumn1,
-            gridViewImageColumn2});
+            gridViewImageColumn2,
+            gridViewTextBoxColumn5});
             this.GRDCenter.MasterTemplate.EnableFiltering = true;
             this.GRDCenter.MasterTemplate.ViewDefinition = tableViewDefinition1;
             this.GRDCenter.Name = "GRDCenter";
@@ -157,8 +162,10 @@ namespace MedicalServiceSystem
             this.GRDCenter.ShowGroupPanel = false;
             this.GRDCenter.Size = new System.Drawing.Size(1170, 482);
             this.GRDCenter.TabIndex = 10;
+            this.GRDCenter.RowFormatting += new Telerik.WinControls.UI.RowFormattingEventHandler(this.GRDCenter_RowFormatting);
             this.GRDCenter.CellFormatting += new Telerik.WinControls.UI.CellFormattingEventHandler(this.GRDCenter_CellFormatting);
             this.GRDCenter.CellClick += new Telerik.WinControls.UI.GridViewCellEventHandler(this.GRDGroup_CellClick);
+            this.GRDCenter.Click += new System.EventHandler(this.GRDCenter_Click);
             // 
             // Button2
             // 

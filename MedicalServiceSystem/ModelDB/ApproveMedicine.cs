@@ -6,9 +6,6 @@ namespace ModelDB
 	public class ApproveMedicine:BaseEntity
     {
 		public int Id { get; set; }
-		public int InsurId { get; set; }
-		[ForeignKey("InsurId")]
-		public virtual Subscriber Subscriber { get; set; }
 		public int ReqCenterId { get; set; }
         public int RouchitaNo { get; set; }
         public int ExcCenterId { get; set; }
@@ -24,6 +21,15 @@ namespace ModelDB
         [ForeignKey("ApproveTypeId")]
         public virtual ApproveMedicineType ApproveMedicineType { get; set; }
         public string Atachment { get; set; }
+        public string PhoneNo { get; set; }
+        public string InsurNo { get; set; }
+        public string InsurName { get; set; }
+        public string Gender { get; set; }
+        public string Address { get; set; }
+        public string Server { get; set; }
+        public string ClientId { get; set; }
+        public DateTime BirthDate { get; set; }
+        public string Notes { get; set; }
 
     }
 

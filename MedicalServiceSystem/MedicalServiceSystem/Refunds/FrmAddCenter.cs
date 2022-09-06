@@ -111,7 +111,7 @@ namespace MedicalServiceSystem
                     CenterInfo cr = new CenterInfo();
                     cr.Id = CenterId;
                     cr.CenterName = CenterName.Text.Trim();
-                    cr.CenterTypeId = (CenterType)Enum.Parse(typeof(CenterType), CenterType.SelectedText);
+                    cr.CenterTypeId = (CenterType)Enum.Parse(typeof(CenterType), CenterType.Text);
                     cr.Level1 = false;
                     cr.Level2 = false;
                     cr.Level3 = false;

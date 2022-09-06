@@ -38,8 +38,8 @@ namespace MedicalServiceSystem.Reclaims
             {
                 DateTime date1 = PLC.getdate();
                 UserId = LoginForm.Default.UserId;
-                LocalityId = LoginForm.Default.LocalityId;
-                var ApprCnt = db.Approves.Where((p) => p.ApproveDate == date1 && p.LocalityId == LocalityId).ToList();
+                LocalityId = PLC.LocalityId;
+                var ApprCnt = db.Approves.Where((p) => p.ApproveDate == date1 && p.LocalityId == PLC.LocalityId).ToList();
                 if (ApprCnt.Count > 0)
                 {
                     Label13.Text = "عدد الموافقات المدخلة لهذا اليوم : " + ApprCnt.Count;
@@ -108,27 +108,27 @@ namespace MedicalServiceSystem.Reclaims
                 using (dbContext db = new dbContext())
                 {
 
-                    var ser = db.Subscribers.Where(p => p.InsurNo == TXTSearch.Text).Take(1).ToList();
-                    if (ser.Count > 0)
-                    {
-                        if (ser[0].IsStoped == false)
-                        {
-                            this.Cursor = Cursors.WaitCursor;
-                            FulName.Text = ser[0].InsurName;
-                            BirthDate.Value = ser[0].BirthDate;
-                            Gender.Text = ser[0].Gender;
-                            Phone.Text = ser[0].PhoneNo;
-                            ServerName = ser[0].Server;
-                            this.Cursor = Cursors.Default;
-                        }
-                        else
-                        {
-                            MessageBox.Show("هذا المشترك موقوف وسبب الايقاف هو :" + (char)13 + ser[0].Notes, "النظام", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                            return;
-                        }
-                    }
-                    else
-                    {
+                    //var ser = dbs.Where(p => p.InsurNo == TXTSearch.Text).Take(1).ToList();
+                    //if (ser.Count > 0)
+                    //{
+                    //    if (ser[0].IsStoped == false)
+                    //    {
+                    //        this.Cursor = Cursors.WaitCursor;
+                    //        FulName.Text = ser[0].InsurName;
+                    //        BirthDate.Value = ser[0].BirthDate;
+                    //        Gender.Text = ser[0].Gender;
+                    //        Phone.Text = ser[0].PhoneNo;
+                    //        ServerName = ser[0].Server;
+                    //        this.Cursor = Cursors.Default;
+                    //    }
+                    //    else
+                    //    {
+                    //        MessageBox.Show("هذا المشترك موقوف وسبب الايقاف هو :" + (char)13 + ser[0].Notes, "النظام", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    //        return;
+                    //    }
+                    //}
+                    //else
+                    //{
                         if (InsurType.SelectedIndex == 0)
                         {
                             this.Cursor = Cursors.WaitCursor;
@@ -257,7 +257,7 @@ namespace MedicalServiceSystem.Reclaims
 
                                     //Birthdate.Value = dtsearch.Rows(0)("birth_date")
                                     String Rec_No = corNo.ToString() + "/" + recNo.ToString();
-                                    string serv = "select top1 * from corpration where cor_no=" + corNo + " and rec_no=" + recNo + "";
+                                    string serv = "select top 1 * from corpration where cor_no=" + corNo + " and rec_no=" + recNo + "";
                                     SqlDataAdapter DaServ = new SqlDataAdapter(serv, PLC.conOld);
                                     DataTable dtServ = new DataTable();
                                     dtServ.Clear();
@@ -269,17 +269,17 @@ namespace MedicalServiceSystem.Reclaims
 
                                     this.AcceptButton = null;
                                     PLC.conOld.Close();
-                                    Subscriber Sc = new Subscriber();
+                                    //Subscriber Sc = new Subscriber();
 
-                                    Sc.PhoneNo = Phone.Text;
-                                    Sc.InsurNo = TXTSearch.Text;
-                                    Sc.InsurName = FulName.Text;
-                                    Sc.Gender = Gender.Text;
-                                    Sc.Server = ServerName;
-                                    Sc.ClientId = Rec_No;
-                                    Sc.BirthDate = BirthDate.Value;
-                                    Sc.localityId = LocalityId;
-                                    db.Subscribers.Add(Sc);
+                                    //Sc.PhoneNo = Phone.Text;
+                                    //Sc.InsurNo = TXTSearch.Text;
+                                    //Sc.InsurName = FulName.Text;
+                                    //Sc.Gender = Gender.Text;
+                                    //Sc.Server = ServerName;
+                                    //Sc.ClientId = Rec_No;
+                                    //Sc.BirthDate = BirthDate.Value;
+                                    //Sc.LocalityId = PLC.LocalityId;
+                                    //dbs.Add(Sc);
                                     db.SaveChanges();
                                     this.Cursor = Cursors.Default;
                                 }
@@ -351,17 +351,17 @@ namespace MedicalServiceSystem.Reclaims
                                     }
                                     this.AcceptButton = null;
                                     PLC.conOld.Close();
-                                    Subscriber Sc = new Subscriber();
-                                    Sc.PhoneNo = Phone.Text;
-                                    Sc.InsurNo = TXTSearch.Text.Trim();
-                                    Sc.InsurName = FulName.Text;
-                                    Sc.Gender = Gender.Text;
-                                    Sc.Server = ServerName;
-                                    Sc.ClientId = ClientId.ToString();
-                                    Sc.BirthDate = BirthDate.Value;
-                                    Sc.localityId = LocalityId;
-                                    db.Subscribers.Add(Sc);
-                                    db.SaveChanges();
+                                    //Subscriber Sc = new Subscriber();
+                                    //Sc.PhoneNo = Phone.Text;
+                                    //Sc.InsurNo = TXTSearch.Text.Trim();
+                                    //Sc.InsurName = FulName.Text;
+                                    //Sc.Gender = Gender.Text;
+                                    //Sc.Server = ServerName;
+                                    //Sc.ClientId = ClientId.ToString();
+                                    //Sc.BirthDate = BirthDate.Value;
+                                    //Sc.LocalityId = PLC.LocalityId;
+                                    //dbs.Add(Sc);
+                                    //db.SaveChanges();
                                     this.Cursor = Cursors.Default;
                                 }
                                 else
@@ -429,19 +429,19 @@ namespace MedicalServiceSystem.Reclaims
 
 
                                     ServerName = (dtNat.Rows[0]["StateName"]).ToString();
-                                    Subscriber Sc = new Subscriber();
-                                    Sc.InsurNo = TXTSearch.Text.Trim();
-                                    Sc.InsurName = FulName.Text;
-                                    Sc.Gender = Gender.Text;
-                                    Sc.Server = ServerName;
-                                    Sc.ClientId = ClientId.ToString();
-                                    Sc.BirthDate = BirthDate.Value;
-                                    Sc.localityId = LocalityId;
-                                    db.Subscribers.Add(Sc);
-                                    db.SaveChanges();
+                                    //Subscriber Sc = new Subscriber();
+                                    //Sc.InsurNo = TXTSearch.Text.Trim();
+                                    //Sc.InsurName = FulName.Text;
+                                    //Sc.Gender = Gender.Text;
+                                    //Sc.Server = ServerName;
+                                    //Sc.ClientId = ClientId.ToString();
+                                    //Sc.BirthDate = BirthDate.Value;
+                                    //Sc.LocalityId = PLC.LocalityId;
+                                    //dbs.Add(Sc);
+                                    //db.SaveChanges();
                                     this.Cursor = Cursors.Default;
 
-                                }
+                                
                                 ////else
                                 ////{
                                 ////    WebReference.CrService Getinfo = new WebReference.CrService();
@@ -554,7 +554,7 @@ namespace MedicalServiceSystem.Reclaims
 
                                 ////    }
 
-                                //}
+                                }
 
                             }
                             catch (Exception ex)
@@ -572,7 +572,7 @@ namespace MedicalServiceSystem.Reclaims
                         }
                     }
                 }
-            }
+
         }
 
         private void TxtGrp_SelectedIndexChanged(object sender, Telerik.WinControls.UI.Data.PositionChangedEventArgs e)

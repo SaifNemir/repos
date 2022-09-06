@@ -58,13 +58,15 @@ namespace MedicalServiceSystem.Reclaims
                 using (dbContext db = new dbContext())
                 {
                     db.Database.CommandTimeout = 0;
-                    var Fref = db.Reclaims.Where(p => p.Subscriber.InsurName.Contains(txtname.Text.Trim()) && p.RowStatus != RowStatus.Deleted && p.ReclaimDate>=PLC.getdate().AddYears(-1)).ToList();
+                    DateTime dat = PLC.getdate().AddYears(-1);
+                    lstName.Items.Clear();
+                    var Fref = db.Reclaims.Where(p => p.InsurName.StartsWith(txtname.Text.Trim()) && p.RowStatus != RowStatus.Deleted && p.ReclaimDate>=dat).OrderByDescending(p=>p.Id).Take(30).ToList();
                    // GRDSearch.DataSource = Fref;
                     if (Fref.Count > 0)
                     {
                         for (int i = 0; i < Fref.Count; i++)
                         {
-                            lstName.Items.Add(Fref[i].Subscriber.InsurName);
+                            lstName.Items.Add(Fref[i].InsurName);
                         }
                     }
                 }
@@ -88,26 +90,47 @@ namespace MedicalServiceSystem.Reclaims
 
         private void LstName_Click(object sender, EventArgs e)
         {
+         
+        }
+
+        private void LstName_SelectedIndexChanged(object sender, Telerik.WinControls.UI.Data.PositionChangedEventArgs e)
+        {
+            
+        }
+
+        private void LstName_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void LstName_Click_1(object sender, EventArgs e)
+        {
             if (lstName.Items.Count > 0)
             {
                 using (dbContext db = new dbContext())
                 {
                     db.Database.CommandTimeout = 0;
-                    var Fref = db.Reclaims.Where(p => p.Subscriber.InsurName==txtname.Text.Trim() && p.RowStatus != RowStatus.Deleted && p.ReclaimDate >= PLC.getdate().AddYears(-1)).ToList();
-                   GRDSearch.DataSource = Fref;
+                    DateTime dat = PLC.getdate().AddYears(-1);
+                    //MessageBox.Show(lstName.Text);
+                    var Fref = db.Reclaims.Where(p => p.InsurName == lstName.Text.Trim() && p.RowStatus != RowStatus.Deleted && p.ReclaimDate >= dat).Select(p=> new { p.InsurNo,p.ReclaimNo,p.ReclaimDate,p.ReclaimTotal}).Take(30).ToList();
+                    GRDSearch.DataSource = Fref;
                     if (Fref.Count > 0)
                     {
                         for (int i = 0; i < Fref.Count; i++)
                         {
-                            GRDSearch.Rows[i].Cells["Coloumns1"].Value = i + 1;
+                            GRDSearch.Rows[i].Cells["Column1"].Value = i + 1;
 
                         }
+                    }
+                    else
+                    {
+                        GRDSearch.DataSource = null;
                     }
                 }
             }
             else
             {
-                GRDSearch.Rows.Clear();
+                GRDSearch.DataSource = null;
             }
         }
     }

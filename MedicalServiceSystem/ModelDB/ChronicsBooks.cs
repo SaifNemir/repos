@@ -20,9 +20,14 @@ namespace ModelDB
         public int CenterId { get; set; }
         [ForeignKey("CenterId")]
         public virtual CenterInfo CenterInfo { get; set; }
-        public int SubscriberId { get; set; }
-        [ForeignKey("SubscriberId")]
-        public virtual Subscriber Subscriber { get; set; }
+        public string PhoneNo { get; set; }
+        public string InsurNo { get; set; }
+        public string InsurName { get; set; }
+        public string Gender { get; set; }
+        public string Address { get; set; }
+        public string Server { get; set; }
+        public string ClientId { get; set; }
+        public DateTime BirthDate { get; set; }
         public string Notes { get; set; }
 
     }

@@ -17,7 +17,7 @@ namespace ModelDB
         public virtual UserGroup UserGroup { get; set; }
         public int UserStatus { get; set; }
         public string Image { get; set; }
-
+        public int? LocalityId { get; set; }
         public DateTime? StartDate { get; set; }
         public DateTime? EndDate { get; set; }
         public UserType UserType { get; set; }

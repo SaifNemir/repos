@@ -7,8 +7,8 @@ namespace MedicalServiceSystem
 	public class ReportForAll
     {		
 		public int? Row1 { get; set; }
-        public int? Row2 { get; set; }
-        public int? Row3 { get; set; }
+        public decimal? Row2 { get; set; }
+        public decimal? Row3 { get; set; }
         public int? Row4 { get; set; }
         public int? Row5 { get; set; }
         public string Row6 { get; set; }

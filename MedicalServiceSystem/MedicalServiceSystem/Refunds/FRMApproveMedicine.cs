@@ -24,7 +24,7 @@ namespace MedicalServiceSystem.Reclaims
             if (defaultInstance == null)
                 defaultInstance = this;
         }
-
+        public bool ChkSearch = false;
         #region Default Instance
 
         private static FRMApproveMedicine defaultInstance;
@@ -62,9 +62,12 @@ namespace MedicalServiceSystem.Reclaims
         public int ServiceId = 0;
         public int insurId = 0;
         public bool Saved = false;
+        public string Rec_No = "";
+        string Phone;
         public DateTime BirthDate = PLC.getdate();
         private void LoadData()
         {
+            ChkSearch = false;
             SubscriberType.SelectedIndex = 0;
             ApprovementId.Text = "";
             Age.Clear();
@@ -93,7 +96,7 @@ namespace MedicalServiceSystem.Reclaims
             Saved = false;
             using (dbContext db = new dbContext())
             {
-                var ApproveToday = db.ApproveMedicines.Where(p => p.UserId == UserId && p.ApproveDate == OperationDate.Value && p.RowStatus != RowStatus.Deleted).Select(p => new { p.Id, p.Subscriber.InsurName }).ToList();
+                var ApproveToday = db.ApproveMedicines.Where(p => p.UserId == UserId && p.ApproveDate == OperationDate.Value && p.RowStatus != RowStatus.Deleted).Select(p => new { p.Id, p.InsurName }).ToList();
                 GrdDailyWork.DataSource = ApproveToday;
                 if (GrdDailyWork.RowCount > 0)
                 {
@@ -130,9 +133,9 @@ namespace MedicalServiceSystem.Reclaims
             {
                 using (dbContext db = new dbContext())
                 {
-                    insurId = db.Subscribers.Where(p => p.InsurNo == card_no.Text).First().Id;
+                    // insurId = dbs.Where(p => p.InsurNo == card_no.Text).First().Id;
                     ApproveMedicine apv = new ApproveMedicine();
-                    apv.InsurId = insurId;
+                    // apv.InsurId = insurId;
                     apv.ReqCenterId = Convert.ToInt32(RequistingParty.SelectedValue);
                     apv.ExcCenterId = Convert.ToInt32(ExcutingParty.SelectedValue);
                     apv.ApproveDate = OperationDate.Value;
@@ -141,14 +144,21 @@ namespace MedicalServiceSystem.Reclaims
                     apv.pharmacistId = Convert.ToInt32(pharmacist.SelectedValue);
                     apv.RouchitaNo = Convert.ToInt32(RouchitaNo.Text);
                     apv.UserId = UserId;
-                    apv.LocalityId = LocalityId;
+                    apv.LocalityId = PLC.LocalityId;
                     apv.DateIn = OperationDate.Value;
                     apv.RowStatus = RowStatus.NewRow;
                     apv.Status = Status.Active;
                     apv.Atachment = Atachment.Text;
+                    apv.PhoneNo = Phone;
+                    apv.InsurNo = card_no.Text;
+                    apv.InsurName = CustName.Text;
+                    apv.Gender = Sex.Text;
+                    apv.Server = ServerName.Text;
+                    apv.ClientId = Rec_No;
+                    apv.BirthDate = BirthDate;
                     db.ApproveMedicines.Add(apv);
                     db.SaveChanges();
-                    ApproveNo = db.ApproveMedicines.Where(p => p.InsurId == insurId && p.UserId == UserId).Max(p => p.Id);
+                    ApproveNo = db.ApproveMedicines.Where(p => p.InsurNo == card_no.Text && p.UserId == UserId).Max(p => p.Id);
                     var AppCode = db.ApproveMedicines.Where(p => p.Id == ApproveNo).ToList();
                     if (AppCode.Count > 0)
                     {
@@ -253,7 +263,7 @@ namespace MedicalServiceSystem.Reclaims
                     }
 
 
-                    var ApproveToday = db.ApproveMedicines.Where(p => p.UserId == UserId && p.ApproveDate == OperationDate.Value).Select(p => new { p.Id, p.Subscriber.InsurName }).ToList();
+                    var ApproveToday = db.ApproveMedicines.Where(p => p.UserId == UserId && p.ApproveDate == OperationDate.Value).Select(p => new { p.Id, p.InsurName }).ToList();
                     GrdDailyWork.DataSource = ApproveToday;
                     if (GrdDailyWork.RowCount > 0)
                     {
@@ -287,12 +297,12 @@ namespace MedicalServiceSystem.Reclaims
         {
             if (!string.IsNullOrEmpty(card_no.Text))
             {
-                try
-                {
-                    this.Cursor = Cursors.WaitCursor;
+                //try
+                //{
+                this.Cursor = Cursors.WaitCursor;
                 if (SubscriberType.SelectedIndex == 0 && !card_no.Text.Contains("/"))
                 {
-                    if (card_no.Text.Length < 9 || card_no.Text.Length > 11 || card_no.Text.Length==10)
+                    if (card_no.Text.Length < 9 || card_no.Text.Length > 11 || card_no.Text.Length == 10)
                     {
                         MessageBox.Show("رقم التأمين المدخل غير صحيح لأن طوله " + card_no.Text.Length, "النظام", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         card_no.Focus();
@@ -302,11 +312,298 @@ namespace MedicalServiceSystem.Reclaims
                 }
                 using (dbContext db = new dbContext())
                 {
-
-                    var ser = db.Subscribers.Where(p => p.InsurNo == card_no.Text).Take(1).ToList();
+                    var ser = db.StopSubsribers.Where(p => p.InsurNo == card_no.Text).Take(1).ToList();
                     if (ser.Count > 0)
                     {
-                        if (card_no.Text.Length == 9 && !card_no.Text.Contains("/"))
+                        if (ser[0].IsStoped == true)
+                        {
+                            MessageBox.Show("هذا المشترك موقوف وسبب الايقاف هو :" + (char)13 + ser[0].Comment, "النظام", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                            this.Cursor = Cursors.Default;
+                            return;
+                        }
+                    }
+                    //var ser = dbs.Where(p => p.InsurNo == card_no.Text).Take(1).ToList();
+                    //if (ser.Count > 0)
+                    //{
+                    if (card_no.Text.Length == 9 && !card_no.Text.Contains("/"))
+                    {
+                        if (PLC.conNew.State == (System.Data.ConnectionState)1)
+                        {
+                            PLC.conNew.Close();
+                        }
+                        PLC.conNew.Open();
+                        string srr = "select top 1 * from Cards where InsuranceNo=" + card_no.Text + " and RowStatus<>2";
+                        SqlDataAdapter dasearch = new SqlDataAdapter(srr, PLC.conNew);
+                        DataTable dtsearch = new DataTable();
+                        dtsearch.Clear();
+                        dasearch.Fill(dtsearch);
+                        if (dtsearch.Rows.Count > 0)
+                        {
+                            //int Clint = Convert.ToInt32(dtsearch.Rows[0]["ClientId"]);
+                            //string Srcl  = "select top 1 * from Contracts where ClientId=" + Clint + " and RowStatus<>2";
+                            //SqlDataAdapter daclient = new SqlDataAdapter(Srcl, PLC.conNew);
+                            //DataTable dtclient = new DataTable();
+                            //dtclient.Clear();
+                            //daclient.Fill(dtclient);
+                            //if (Convert.ToInt32(dtclient.Rows[0]["contractStatus"]) ==1)
+                            //{
+                            //    MessageBox.Show("عقد المخدم الذي يتبع له هذا المشترك موقوف :" + (char)13 +"واسم العقد هو" +" " + dtclient.Rows[0]["Description"]+ " " + dtclient.Rows[0]["ClientId"], "النظام", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                            //    this.Cursor = Cursors.Default;
+                            //    return;
+                            //}
+                            if (Convert.ToInt32(dtsearch.Rows[0]["Status"]) == 1)
+                            {
+                                MessageBox.Show("هذا المشترك موقوف وسبب الايقاف هو :" + (char)13 + dtsearch.Rows[0]["Comment"], "النظام", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                                this.Cursor = Cursors.Default;
+                                return;
+                            }
+                        }
+                    }
+                    //if (ser[0].IsStoped == false)
+                    //{
+                    //this.Cursor = Cursors.WaitCursor;
+                    //CustName.Text = ser[0].InsurName;
+                    //ServerName.Text = ser[0].Server;
+                    //Sex.Text = ser[0].Gender;
+                    //insurId = ser[0].Id;
+                    // Age.Text = DateAndTime.DateDiff(DateInterval.Year, ser[0].BirthDate, PLC.getdate()).ToString();
+                    var FrHistoryMc = db.ReclaimMedicines.Where(p => p.Reclaim.InsurNo == card_no.Text).Select(p => new { p.Reclaim.Id, p.Reclaim.ReclaimNo, ServiceName = p.MedicineForReclaim.Generic_name, p.Reclaim.ReclaimDate, Cost = p.ReclaimCost, Quantity = p.Quantity, ApprovedQuantity = 0, UserName = "", System = "الاسترداد", RequestParty = (int)p.Reclaim.RefMedicalReqCenterId, ExcuteParty = (int)p.Reclaim.RefMedicineExcCenterId, Note = p.Reclaim.Notes, ApproveCode = "0" }).ToList();
+                    decimal Cost = 0;
+                    DateTime Olddat = PLC.getdate().AddDays(-3);
+                    DateTime dat = PLC.getdate();
+                    var Frefuse1 = db.RefuseMedicines.Where(p => p.InsurNo == card_no.Text && (p.RefuseDate >= Olddat && p.RefuseDate <= dat)).ToList();
+                    if (Frefuse1.Count > 0)
+                    {
+                        // int SubId = Frefuse1[0].InsurId;
+                        //FRMRefuseAlert Rfrt = new FRMRefuseAlert();
+                        //Rfrt.ShowDialog();
+                        var Frf = db.RefuseMedicines.Where(p => p.InsurNo == card_no.Text).ToList();
+                        if (Frf.Count > 0)
+                        {
+                            int MaxId = db.RefuseMedicines.Where(p => p.InsurNo == card_no.Text).Max(p => p.Id);
+                            var Frfd = db.RefuseMedicineDetails.Where(p => p.RefuseId == MaxId).ToList();
+                            string str = "1" + Frfd[0].RefuseReason;
+                            for (int i = 1; i < Frfd.Count; i++)
+                            {
+                                str += (char)13 + (i + 1).ToString() + Frfd[0].RefuseReason;
+                            }
+                            MessageBox.Show("لقد تم رفض التصديق لهذا المشترك بتاريخ" + Frfd[0].RefuseMedicine.RefuseDate.ToShortDateString() + (char)13 + ":" + "للأسباب الآتية" + (char)13 + str, "النظام", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1, MessageBoxOptions.RightAlign);
+                        }
+
+                    }
+                    var Frefuse = db.RefuseMedicines.Where(p => p.InsurNo == card_no.Text).ToList();
+                    if (Frefuse.Count > 0)
+                    {
+                        FRMpatienthistory.Default.radGridView1.Rows.Clear();
+                        for (int i = 0; i < Frefuse.Count; i++)
+                        {
+                            int ReqCenId = Frefuse[i].ReqCenterId;
+                            int ExcuCenter = Frefuse[i].ExcCenterId;
+                            string ReqCenter = db.CenterInfos.Where(p => p.Id == ReqCenId).ToList()[0].CenterName;
+                            string ExcCenter = db.CenterInfos.Where(p => p.Id == ExcuCenter).ToList()[0].CenterName;
+                            FRMpatienthistory.Default.radGridView1.Rows.Add("عرض", i + 1, Frefuse[i].RefuseDate, ReqCenter, ExcCenter, Frefuse[i].Id);
+                        }
+                    }
+                    var FamHistory = db.ApproveMedicineDetails.Where(p => p.ApproveMedicine.InsurNo == card_no.Text).Select(p => new { p.ApproveMedicine.Id, ReclaimNo = p.ApproveMedicineId.ToString(), ServiceName = p.MedicineForReclaim.Generic_name, ReclaimDate = p.ApproveMedicine.ApproveDate, Cost = Cost, Quantity = p.Quantity, ApprovedQuantity = p.ApprovedQuantity, UserName = p.ApproveMedicine.Pharmacist.pharmacistName, System = "التصديق", RequestParty = p.ApproveMedicine.ReqCenterId, ExcuteParty = p.ApproveMedicine.ExcCenterId, Note = p.ApproveMedicine.Atachment, p.ApproveMedicine.ApproveCode }).ToList();
+                    var Funion = FrHistoryMc.Union(FamHistory).ToList();
+                    FRMpatienthistory.Default.Grid_service.Rows.Clear();
+                    if (Funion.Count > 0)
+                    {
+                        var SumCost = Funion.Sum(p => p.Cost);
+                        for (int i = 0; i < Funion.Count; i++)
+                        {
+                            int ReqCenId = Funion[i].RequestParty;
+                            int ExcuCenter = Funion[i].ExcuteParty;
+                            string ReqCenter = db.CenterInfos.Where(p => p.Id == ReqCenId).ToList()[0].CenterName;
+                            string ExcCenter = db.CenterInfos.Where(p => p.Id == ExcuCenter).ToList()[0].CenterName;
+                            FRMpatienthistory.Default.Grid_service.Rows.Add("Show", i + 1, Funion[i].ReclaimNo, Funion[i].ApproveCode, Funion[i].ServiceName, Funion[i].Quantity, Funion[i].ApprovedQuantity, Funion[i].Cost, Funion[i].ReclaimDate.ToShortDateString(), Funion[i].UserName, Funion[i].System, ReqCenter, ExcCenter, Funion[i].Note, Funion[i].Id);
+                        }
+                        FRMpatienthistory.Default.Totals.Text = SumCost.ToString();
+
+
+
+                    }
+                    if (Funion.Count > 0 || Frefuse.Count > 0)
+                    {
+                        FRMpatienthistory.Default.ShowDialog();
+                    }
+
+                    this.Cursor = Cursors.Default;
+                    // return;
+
+
+
+
+
+
+                    if (SubscriberType.SelectedIndex == 0)
+                    {
+                        string Gender;
+                        string ClientId;
+
+                        if (card_no.Text.Contains("/"))
+                        {
+                            this.Cursor = Cursors.WaitCursor;
+                            string str111 = null;
+                            str111 = card_no.Text;
+
+                            int leng = str111.Length;
+                            string r1 = "";
+                            int a1 = 0;
+                            for (var i = 1; i <= leng; i++)
+                            {
+                                string Ostr = str111.Substring(i - 1, 1);
+                                if (char.IsDigit(Convert.ToChar(Ostr)))
+                                {
+                                    r1 = r1 + Ostr;
+
+                                }
+                                else
+                                {
+                                    a1 = i;
+                                    break;
+                                }
+                            }
+                            int corNo = 0;
+                            int recNo = 0;
+                            int cardSer = 0;
+                            int cardNo = 0;
+                            corNo = Convert.ToInt32(r1);
+                            string r2 = "";
+                            int a2 = a1 + 1;
+                            for (var i = a2; i <= leng; i++)
+                            {
+                                string Ostr = str111.Substring(i - 1, 1);
+                                if (char.IsDigit(Convert.ToChar(Ostr)))
+                                {
+                                    r2 = r2 + Ostr;
+
+                                }
+                                else
+                                {
+                                    a2 = i;
+                                    break;
+                                }
+                            }
+                            recNo = Convert.ToInt32(r2);
+                            string r3 = "";
+                            int a3 = a2 + 1;
+                            for (var i = a3; i <= leng; i++)
+                            {
+                                string Ostr = str111.Substring(i - 1, 1);
+                                if (char.IsDigit(Convert.ToChar(Ostr)))
+                                {
+                                    r3 = r3 + Ostr;
+
+                                }
+                                else
+                                {
+                                    a3 = i;
+                                    break;
+                                }
+                            }
+                            cardSer = Convert.ToInt32(r3);
+                            string r4 = "";
+                            int a4 = a3 + 1;
+                            // messagebox.show(a4)
+                            for (var i = a4; i <= leng; i++)
+                            {
+                                string Ostr = str111.Substring(i - 1, 1);
+                                if (char.IsDigit(Convert.ToChar(Ostr)))
+                                {
+                                    r4 = r4 + Ostr;
+
+                                }
+                                else
+                                {
+                                    break;
+                                }
+                            }
+                            cardNo = Convert.ToInt32(r4);
+                            if (PLC.conOld.State == (System.Data.ConnectionState)1)
+                            {
+                                PLC.conOld.Close();
+                            }
+                            PLC.conOld.Open();
+                            string srr = "select top 1 * from data where cor_no=" + corNo + " and rec_no=" + recNo + " and card_no=" + cardNo + " and card_ser=" + cardSer + "";
+                            SqlDataAdapter dasearch = new SqlDataAdapter(srr, PLC.conOld);
+                            DataTable dtsearch = new DataTable();
+                            dtsearch.Clear();
+                            dasearch.Fill(dtsearch);
+                            if (dtsearch.Rows.Count > 0)
+                            {
+                                if (dtsearch.Rows[0]["STOP_CARD"] != null)
+                                {
+                                    DateTime date1 = Convert.ToDateTime(dtsearch.Rows[0]["STOP_CARD"]);
+                                }
+                                // MsgBox(date1.Date)
+                                string stri1 = null;
+                                string str2 = null;
+                                if (Convert.IsDBNull(dtsearch.Rows[0]["name_3"]) == false)
+                                {
+                                    stri1 = Convert.ToString(dtsearch.Rows[0]["name_3"]).Trim(' ');
+                                }
+                                else
+                                {
+                                    stri1 = ".";
+                                }
+                                if (Convert.IsDBNull(dtsearch.Rows[0]["name_4"]) == false)
+                                {
+                                    str2 = Convert.ToString(dtsearch.Rows[0]["name_4"]).Trim(' ');
+                                }
+                                else
+                                {
+                                    str2 = ".";
+                                }
+                                CustName.Text = Convert.ToString(dtsearch.Rows[0]["name_1"]).Trim() + " " + Convert.ToString(dtsearch.Rows[0]["name_2"]).Trim() + " " + stri1 + " " + str2;
+                                Gender = Convert.ToString(dtsearch.Rows[0]["sex"]).Trim();
+                                Sex.Text = Gender;
+                                if (Convert.IsDBNull(dtsearch.Rows[0]["phone"]) == false)
+                                {
+                                    Phone = dtsearch.Rows[0]["phone"].ToString();
+                                }
+                                else
+                                {
+                                    Phone = "";
+                                }
+                                //Info4 = Convert.ToString(dtsearch.Rows[0]["l_add"]).Trim(' ');
+                                BirthDate = Convert.ToDateTime(dtsearch.Rows[0]["birth_date"]);
+                                Age.Text = DateAndTime.DateDiff(DateInterval.Year, BirthDate, PLC.getdate()).ToString();
+                                //Birthdate.Value = dtsearch.Rows(0)("birth_date")
+                                Rec_No = corNo.ToString() + "/" + recNo.ToString();
+                                string serv = "select top 1 * from corpration where cor_no=" + corNo + " and rec_no=" + recNo + "";
+                                SqlDataAdapter DaServ = new SqlDataAdapter(serv, PLC.conOld);
+                                DataTable dtServ = new DataTable();
+                                dtServ.Clear();
+                                DaServ.Fill(dtServ);
+                                if (dtServ.Rows.Count > 0)
+                                {
+                                    ServerName.Text = dtServ.Rows[0]["COR_NAME"].ToString();
+                                }
+                                int LocalId = Convert.ToInt32(dtsearch.Rows[0]["L_PR_NO"].ToString());
+                                DateTime StopCard;
+                                if (Information.IsDBNull(dtsearch.Rows[0]["STOP_CARD"]) == false)
+                                {
+                                    StopCard = Convert.ToDateTime(dtsearch.Rows[0]["STOP_CARD"]);
+                                }
+                                else
+                                {
+                                    StopCard = new DateTime(1900, 1, 1);
+                                }
+
+                                this.AcceptButton = null;
+                                PLC.conOld.Close();
+
+                                this.Cursor = Cursors.Default;
+                            }
+                            else
+                            {
+                                this.Cursor = Cursors.Default;
+                                MessageBox.Show("لا توجد بيانات", "النظام", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                return;
+                            }
+                        }
+                        else if (card_no.Text.Length == 9 && !card_no.Text.Contains("/"))
                         {
                             if (PLC.conNew.State == (System.Data.ConnectionState)1)
                             {
@@ -320,563 +617,333 @@ namespace MedicalServiceSystem.Reclaims
                             dasearch.Fill(dtsearch);
                             if (dtsearch.Rows.Count > 0)
                             {
-                                //int Clint = Convert.ToInt32(dtsearch.Rows[0]["ClientId"]);
-                                //string Srcl  = "select top 1 * from Contracts where ClientId=" + Clint + " and RowStatus<>2";
-                                //SqlDataAdapter daclient = new SqlDataAdapter(Srcl, PLC.conNew);
-                                //DataTable dtclient = new DataTable();
-                                //dtclient.Clear();
-                                //daclient.Fill(dtclient);
-                                //if (Convert.ToInt32(dtclient.Rows[0]["contractStatus"]) ==1)
-                                //{
-                                //    MessageBox.Show("عقد المخدم الذي يتبع له هذا المشترك موقوف :" + (char)13 +"واسم العقد هو" +" " + dtclient.Rows[0]["Description"]+ " " + dtclient.Rows[0]["ClientId"], "النظام", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                                //    this.Cursor = Cursors.Default;
-                                //    return;
-                                //}
                                 if (Convert.ToInt32(dtsearch.Rows[0]["Status"]) == 1)
                                 {
                                     MessageBox.Show("هذا المشترك موقوف وسبب الايقاف هو :" + (char)13 + dtsearch.Rows[0]["Comment"], "النظام", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                                     this.Cursor = Cursors.Default;
                                     return;
                                 }
-                            }
-                        }
-                        if (ser[0].IsStoped == false)
-                        {
-                            this.Cursor = Cursors.WaitCursor;
-                            CustName.Text = ser[0].InsurName;
-                            ServerName.Text = ser[0].Server;
-                            Sex.Text = ser[0].Gender;
-                            insurId = ser[0].Id;
-                            Age.Text = DateAndTime.DateDiff(DateInterval.Year, ser[0].BirthDate, PLC.getdate()).ToString();
-                            var FrHistoryMc = db.ReclaimMedicines.Where(p => p.Reclaim.Subscriber.InsurNo == card_no.Text).Select(p => new { p.Reclaim.Id, p.Reclaim.ReclaimNo, ServiceName = p.MedicineForReclaim.Generic_name, p.Reclaim.ReclaimDate, Cost = p.ReclaimCost, Quantity = p.Quantity, ApprovedQuantity = 0, UserName = "", System = "الاسترداد", RequestParty = (int)p.Reclaim.RefMedicalReqCenterId, ExcuteParty = (int)p.Reclaim.RefMedicineExcCenterId, Note = p.Reclaim.Notes, ApproveCode = "0" }).ToList();
-                            decimal Cost = 0;
-                            var FamHistory = db.ApproveMedicineDetails.Where(p => p.ApproveMedicine.Subscriber.InsurNo == card_no.Text).Select(p => new { p.ApproveMedicine.Id, ReclaimNo = p.ApproveMedicineId.ToString(), ServiceName = p.MedicineForReclaim.Generic_name, ReclaimDate = p.ApproveMedicine.ApproveDate, Cost = Cost, Quantity = p.Quantity, ApprovedQuantity = p.ApprovedQuantity, UserName = p.ApproveMedicine.Pharmacist.pharmacistName, System = "التصديق", RequestParty = p.ApproveMedicine.ReqCenterId, ExcuteParty = p.ApproveMedicine.ExcCenterId, Note = p.ApproveMedicine.Atachment, p.ApproveMedicine.ApproveCode }).ToList();
-                            var Funion = FrHistoryMc.Union(FamHistory).ToList();
-                            FRMpatienthistory.Default.Grid_service.Rows.Clear();
-                            if (Funion.Count > 0)
-                            {
-                                var SumCost = Funion.Sum(p => p.Cost);
-                                for (int i = 0; i < Funion.Count; i++)
+                                this.Cursor = Cursors.WaitCursor;
+                                //DateTime date1 = Convert.ToDateTime(dtsearch.Rows[0]["STOP_CARD"]);
+                                // MsgBox(date1.Date)
+                                string stri1 = null;
+                                string str2 = null;
+                                if (Convert.IsDBNull(dtsearch.Rows[0]["Thirdname"]) == false)
                                 {
-                                    int ReqCenId = Funion[i].RequestParty;
-                                    int ExcuCenter = Funion[i].ExcuteParty;
-                                    string ReqCenter = db.CenterInfos.Where(p => p.Id == ReqCenId).ToList()[0].CenterName;
-                                    string ExcCenter = db.CenterInfos.Where(p => p.Id == ExcuCenter).ToList()[0].CenterName;
-                                    FRMpatienthistory.Default.Grid_service.Rows.Add("Show", i + 1, Funion[i].ReclaimNo, Funion[i].ApproveCode, Funion[i].ServiceName, Funion[i].Quantity, Funion[i].ApprovedQuantity, Funion[i].Cost, Funion[i].ReclaimDate.ToShortDateString(), Funion[i].UserName, Funion[i].System, ReqCenter, ExcCenter, Funion[i].Note, Funion[i].Id);
+                                    stri1 = dtsearch.Rows[0]["Thirdname"].ToString().Trim();
                                 }
-                                FRMpatienthistory.Default.Totals.Text = SumCost.ToString();
-                                FRMpatienthistory.Default.ShowDialog();
+                                else
+                                {
+                                    stri1 = ".";
+                                }
+                                if (Convert.IsDBNull(dtsearch.Rows[0]["Fourthname"]) == false)
+                                {
+                                    str2 = dtsearch.Rows[0]["Fourthname"].ToString().Trim();
+                                }
+                                else
+                                {
+                                    str2 = ".";
+                                }
+                                CustName.Text = Convert.ToString(dtsearch.Rows[0]["Firstname"]).Trim() + " " + Convert.ToString(dtsearch.Rows[0]["Secondname"]).Trim() + " " + stri1 + " " + str2;
+                                string str = dtsearch.Rows[0]["Gender"].ToString();
+                                if (str == "1")
+                                {
+                                    Sex.SelectedIndex = 1;
+                                }
+                                else
+                                {
+                                    Sex.SelectedIndex = 0;
+                                }
+
+
+                                if (Convert.IsDBNull(dtsearch.Rows[0]["Phone"]) == false)
+                                {
+                                    Phone = dtsearch.Rows[0]["Phone"].ToString();
+                                }
+                                else
+                                {
+                                    Phone = "";
+                                }
+                                //Info4 = Convert.ToString(dtsearch.Rows[0]["l_add"]).Trim(' ');
+                                BirthDate = Convert.ToDateTime(dtsearch.Rows[0]["Birthdate"]);
+                                Age.Text = DateAndTime.DateDiff(DateInterval.Year, BirthDate, PLC.getdate()).ToString();
+                                //Birthdate.Value = dtsearch.Rows(0)("birth_date")
+                                Rec_No = dtsearch.Rows[0]["ClientId"].ToString();
+                                string serv = "select top 1 * from Clients where Id=" + Convert.ToInt32(Rec_No) + "";
+                                SqlDataAdapter DaServ = new SqlDataAdapter(serv, PLC.conNew);
+                                DataTable dtServ = new DataTable();
+                                dtServ.Clear();
+                                DaServ.Fill(dtServ);
+                                if (dtServ.Rows.Count > 0)
+                                {
+                                    ServerName.Text = Convert.ToString(dtServ.Rows[0]["ArabicClientName"]).Trim();
+                                }
+                                int LocalId = Convert.ToInt32(dtsearch.Rows[0]["LocalityId"]);
+                                DateTime StopCard;
+                                if (Information.IsDBNull(dtsearch.Rows[0]["ExDate"]) == false)
+                                {
+                                    StopCard = Convert.ToDateTime(dtsearch.Rows[0]["ExDate"]);
+                                }
+                                else
+                                {
+                                    StopCard = new DateTime(1900, 1, 1);
+                                }
+                                this.AcceptButton = null;
+                                PLC.conOld.Close();
+                                //Subscriber Sc = new Subscriber();
+                                //Sc.PhoneNo = Phone;
+                                //Sc.InsurNo = card_no.Text.Trim();
+                                //Sc.InsurName = CustName.Text;
+                                //Sc.Gender = Sex.Text;
+                                //Sc.Server = ServerName.Text;
+                                //Sc.ClientId = ClientId.ToString();
+                                //Sc.BirthDate = BirthDate;
+                                //Sc.localityId = LocalId;
+                                //Sc.IsStoped = false;
+                                //Sc.StopCard = StopCard;
+                                //dbs.Add(Sc);
+                                //db.SaveChanges();
                                 this.Cursor = Cursors.Default;
+                            }
+                            else
+                            {
+                                this.Cursor = Cursors.Default;
+                                MessageBox.Show("لا توجد بيانات", "النظام", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                 return;
                             }
-                            this.Cursor = Cursors.Default;
                         }
-                        else
+
+                        else if (card_no.Text.Length == 11 && !card_no.Text.Contains("/"))
                         {
-                            MessageBox.Show("هذا المشترك موقوف وسبب الايقاف هو :" + (char)13 + ser[0].Notes, "النظام", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                            this.Cursor = Cursors.Default;
-                            return;
-                        }
-                    }
-                    else
-                    {
 
-
-                        if (SubscriberType.SelectedIndex == 0)
-                        {
-                            string Gender;
-                            string ClientId;
-                            string Phone;
-                            if (card_no.Text.Contains("/"))
+                            this.Cursor = Cursors.WaitCursor;
+                            SqlConnection conNat = new SqlConnection("Data Source=192.168.100.4;Initial Catalog=card_natoinal;User ID=sa;Password=123;Trusted_Connection=False");
+                            if (conNat.State == ConnectionState.Open)
                             {
-                                this.Cursor = Cursors.WaitCursor;
-                                string str111 = null;
-                                str111 = card_no.Text;
-
-                                int leng = str111.Length;
-                                string r1 = "";
-                                int a1 = 0;
-                                for (var i = 1; i <= leng; i++)
-                                {
-                                    string Ostr = str111.Substring(i - 1, 1);
-                                    if (char.IsDigit(Convert.ToChar(Ostr)))
-                                    {
-                                        r1 = r1 + Ostr;
-
-                                    }
-                                    else
-                                    {
-                                        a1 = i;
-                                        break;
-                                    }
-                                }
-                                int corNo = 0;
-                                int recNo = 0;
-                                int cardSer = 0;
-                                int cardNo = 0;
-                                corNo = Convert.ToInt32(r1);
-                                string r2 = "";
-                                int a2 = a1 + 1;
-                                for (var i = a2; i <= leng; i++)
-                                {
-                                    string Ostr = str111.Substring(i - 1, 1);
-                                    if (char.IsDigit(Convert.ToChar(Ostr)))
-                                    {
-                                        r2 = r2 + Ostr;
-
-                                    }
-                                    else
-                                    {
-                                        a2 = i;
-                                        break;
-                                    }
-                                }
-                                recNo = Convert.ToInt32(r2);
-                                string r3 = "";
-                                int a3 = a2 + 1;
-                                for (var i = a3; i <= leng; i++)
-                                {
-                                    string Ostr = str111.Substring(i - 1, 1);
-                                    if (char.IsDigit(Convert.ToChar(Ostr)))
-                                    {
-                                        r3 = r3 + Ostr;
-
-                                    }
-                                    else
-                                    {
-                                        a3 = i;
-                                        break;
-                                    }
-                                }
-                                cardSer = Convert.ToInt32(r3);
-                                string r4 = "";
-                                int a4 = a3 + 1;
-                                // messagebox.show(a4)
-                                for (var i = a4; i <= leng; i++)
-                                {
-                                    string Ostr = str111.Substring(i - 1, 1);
-                                    if (char.IsDigit(Convert.ToChar(Ostr)))
-                                    {
-                                        r4 = r4 + Ostr;
-
-                                    }
-                                    else
-                                    {
-                                        break;
-                                    }
-                                }
-                                cardNo = Convert.ToInt32(r4);
-                                if (PLC.conOld.State == (System.Data.ConnectionState)1)
-                                {
-                                    PLC.conOld.Close();
-                                }
-                                PLC.conOld.Open();
-                                string srr = "select top 1 * from data where cor_no=" + corNo + " and rec_no=" + recNo + " and card_no=" + cardNo + " and card_ser=" + cardSer + "";
-                                SqlDataAdapter dasearch = new SqlDataAdapter(srr, PLC.conOld);
-                                DataTable dtsearch = new DataTable();
-                                dtsearch.Clear();
-                                dasearch.Fill(dtsearch);
-                                if (dtsearch.Rows.Count > 0)
-                                {
-                                    if (dtsearch.Rows[0]["STOP_CARD"] != null)
-                                    {
-                                        DateTime date1 = Convert.ToDateTime(dtsearch.Rows[0]["STOP_CARD"]);
-                                    }
-                                    // MsgBox(date1.Date)
-                                    string stri1 = null;
-                                    string str2 = null;
-                                    if (Convert.IsDBNull(dtsearch.Rows[0]["name_3"]) == false)
-                                    {
-                                        stri1 = Convert.ToString(dtsearch.Rows[0]["name_3"]).Trim(' ');
-                                    }
-                                    else
-                                    {
-                                        stri1 = ".";
-                                    }
-                                    if (Convert.IsDBNull(dtsearch.Rows[0]["name_4"]) == false)
-                                    {
-                                        str2 = Convert.ToString(dtsearch.Rows[0]["name_4"]).Trim(' ');
-                                    }
-                                    else
-                                    {
-                                        str2 = ".";
-                                    }
-                                    CustName.Text = Convert.ToString(dtsearch.Rows[0]["name_1"]).Trim() + " " + Convert.ToString(dtsearch.Rows[0]["name_2"]).Trim() + " " + stri1 + " " + str2;
-                                    Gender = Convert.ToString(dtsearch.Rows[0]["sex"]).Trim();
-                                    Sex.Text = Gender;
-                                    if (Convert.IsDBNull(dtsearch.Rows[0]["phone"]) == false)
-                                    {
-                                        Phone = dtsearch.Rows[0]["phone"].ToString();
-                                    }
-                                    else
-                                    {
-                                        Phone = "";
-                                    }
-                                    //Info4 = Convert.ToString(dtsearch.Rows[0]["l_add"]).Trim(' ');
-                                    BirthDate = Convert.ToDateTime(dtsearch.Rows[0]["birth_date"]);
-                                    Age.Text = DateAndTime.DateDiff(DateInterval.Year, BirthDate, PLC.getdate()).ToString();
-                                    //Birthdate.Value = dtsearch.Rows(0)("birth_date")
-                                    String Rec_No = corNo.ToString() + "/" + recNo.ToString();
-                                    string serv = "select top 1 * from corpration where cor_no=" + corNo + " and rec_no=" + recNo + "";
-                                    SqlDataAdapter DaServ = new SqlDataAdapter(serv, PLC.conOld);
-                                    DataTable dtServ = new DataTable();
-                                    dtServ.Clear();
-                                    DaServ.Fill(dtServ);
-                                    if (dtServ.Rows.Count > 0)
-                                    {
-                                        ServerName.Text = dtServ.Rows[0]["COR_NAME"].ToString();
-                                    }
-                                    int LocalId = Convert.ToInt32(dtsearch.Rows[0]["L_PR_NO"].ToString());
-                                    DateTime StopCard;
-                                    if (Information.IsDBNull(dtsearch.Rows[0]["STOP_CARD"]) == false)
-                                    {
-                                        StopCard = Convert.ToDateTime(dtsearch.Rows[0]["STOP_CARD"]);
-                                    }
-                                    else
-                                    {
-                                        StopCard = new DateTime(1900, 1, 1);
-                                    }
-
-                                    this.AcceptButton = null;
-                                    PLC.conOld.Close();
-                                    Subscriber Sc = new Subscriber();
-
-                                    Sc.PhoneNo = Phone;
-                                    Sc.InsurNo = card_no.Text;
-                                    Sc.InsurName = CustName.Text;
-                                    Sc.Gender = Gender;
-                                    Sc.Server = ServerName.Text;
-                                    Sc.ClientId = Rec_No;
-                                    Sc.BirthDate = BirthDate;
-                                    Sc.localityId = LocalId;
-                                    Sc.IsStoped = false;
-                                    Sc.StopCard = StopCard;
-                                    db.Subscribers.Add(Sc);
-                                    db.SaveChanges();
-                                    this.Cursor = Cursors.Default;
-                                }
-                                else
-                                {
-                                    this.Cursor = Cursors.Default;
-                                    MessageBox.Show("لا توجد بيانات", "النظام", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                                    return;
-                                }
-                            }
-                            else if (card_no.Text.Length == 9 && !card_no.Text.Contains("/"))
-                            {
-                                if (PLC.conNew.State == (System.Data.ConnectionState)1)
-                                {
-                                    PLC.conNew.Close();
-                                }
-                                PLC.conNew.Open();
-                                string srr = "select top 1 * from Cards where InsuranceNo=" + card_no.Text + " and RowStatus<>2";
-                                SqlDataAdapter dasearch = new SqlDataAdapter(srr, PLC.conNew);
-                                DataTable dtsearch = new DataTable();
-                                dtsearch.Clear();
-                                dasearch.Fill(dtsearch);
-                                if (dtsearch.Rows.Count > 0)
-                                {
-                                    if (Convert.ToInt32(dtsearch.Rows[0]["Status"]) == 1)
-                                    {
-                                        MessageBox.Show("هذا المشترك موقوف وسبب الايقاف هو :" + (char)13 + dtsearch.Rows[0]["Comment"], "النظام", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                                        this.Cursor = Cursors.Default;
-                                        return;
-                                    }
-                                    this.Cursor = Cursors.WaitCursor;
-                                    //DateTime date1 = Convert.ToDateTime(dtsearch.Rows[0]["STOP_CARD"]);
-                                    // MsgBox(date1.Date)
-                                    string stri1 = null;
-                                    string str2 = null;
-                                    if (dtsearch.Rows[0]["Thirdname"] != null)
-                                    {
-                                        stri1 = dtsearch.Rows[0]["Thirdname"].ToString().Trim();
-                                    }
-                                    else
-                                    {
-                                        stri1 = ".";
-                                    }
-                                    if (dtsearch.Rows[0]["Fourthname"] != null)
-                                    {
-                                        str2 = dtsearch.Rows[0]["Fourthname"].ToString().Trim();
-                                    }
-                                    else
-                                    {
-                                        str2 = ".";
-                                    }
-                                    CustName.Text = Convert.ToString(dtsearch.Rows[0]["Firstname"]).Trim() + " " + Convert.ToString(dtsearch.Rows[0]["Secondname"]).Trim() + " " + stri1 + " " + str2;
-                                    string str = dtsearch.Rows[0]["Gender"].ToString();
-                                    if (str == "1")
-                                    {
-                                        Sex.SelectedIndex = 1;
-                                    }
-                                    else
-                                    {
-                                        Sex.SelectedIndex = 0;
-                                    }
-
-
-                                    if (Convert.IsDBNull(dtsearch.Rows[0]["Phone"]) == false)
-                                    {
-                                        Phone = dtsearch.Rows[0]["Phone"].ToString();
-                                    }
-                                    else
-                                    {
-                                        Phone = "";
-                                    }
-                                    //Info4 = Convert.ToString(dtsearch.Rows[0]["l_add"]).Trim(' ');
-                                    BirthDate = Convert.ToDateTime(dtsearch.Rows[0]["Birthdate"]);
-                                    Age.Text = DateAndTime.DateDiff(DateInterval.Year, BirthDate, PLC.getdate()).ToString();
-                                    //Birthdate.Value = dtsearch.Rows(0)("birth_date")
-                                    ClientId = dtsearch.Rows[0]["ClientId"].ToString();
-                                    string serv = "select top 1 * from Clients where Id=" + Convert.ToInt32(ClientId) + "";
-                                    SqlDataAdapter DaServ = new SqlDataAdapter(serv, PLC.conNew);
-                                    DataTable dtServ = new DataTable();
-                                    dtServ.Clear();
-                                    DaServ.Fill(dtServ);
-                                    if (dtServ.Rows.Count > 0)
-                                    {
-                                        ServerName.Text = Convert.ToString(dtServ.Rows[0]["ArabicClientName"]).Trim();
-                                    }
-                                    int LocalId = Convert.ToInt32(dtsearch.Rows[0]["LocalityId"]);
-                                    DateTime StopCard;
-                                    if (Information.IsDBNull(dtsearch.Rows[0]["ExDate"]) == false)
-                                    {
-                                        StopCard = Convert.ToDateTime(dtsearch.Rows[0]["ExDate"]);
-                                    }
-                                    else
-                                    {
-                                        StopCard = new DateTime(1900, 1, 1);
-                                    }
-                                    this.AcceptButton = null;
-                                    PLC.conOld.Close();
-                                    Subscriber Sc = new Subscriber();
-                                    Sc.PhoneNo = Phone;
-                                    Sc.InsurNo = card_no.Text.Trim();
-                                    Sc.InsurName = CustName.Text;
-                                    Sc.Gender = Sex.Text;
-                                    Sc.Server = ServerName.Text;
-                                    Sc.ClientId = ClientId.ToString();
-                                    Sc.BirthDate = BirthDate;
-                                    Sc.localityId = LocalId;
-                                    Sc.IsStoped = false;
-                                    Sc.StopCard = StopCard;
-                                    db.Subscribers.Add(Sc);
-                                    db.SaveChanges();
-                                    this.Cursor = Cursors.Default;
-                                }
-                                else
-                                {
-                                    this.Cursor = Cursors.Default;
-                                    MessageBox.Show("لا توجد بيانات", "النظام", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                                    return;
-                                }
+                                conNat.Close();
                             }
 
-                            else if (card_no.Text.Length == 11 && !card_no.Text.Contains("/"))
+                            conNat.Open();
+
+                            SqlDataAdapter dNat = new SqlDataAdapter("select top 1 * from NationalCard where InsuranceNo=" + Convert.ToDouble(card_no.Text) + "", conNat);
+
+                            DataTable dtNat = new DataTable();
+
+                            dtNat.Clear();
+
+                            dNat.Fill(dtNat);
+
+                            if (dtNat.Rows.Count > 0)
                             {
-
                                 this.Cursor = Cursors.WaitCursor;
-                                SqlConnection conNat = new SqlConnection("Data Source=192.168.100.4;Initial Catalog=card_natoinal;User ID=sa;Password=123;Trusted_Connection=False");
-                                if (conNat.State == ConnectionState.Open)
+                                ChkSearch = true;
+                                BirthDate = Convert.ToDateTime(dtNat.Rows[0]["BirthDate"]);
+                                Age.Text = DateAndTime.DateDiff(DateInterval.Year, BirthDate, PLC.getdate()).ToString();
+
+                                // Phone.Text = result.phone
+
+                                CustName.Text = (dtNat.Rows[0]["FullName"]).ToString();
+
+
+                                Gender = (dtNat.Rows[0]["Gender"]).ToString();
+                                Sex.Text = Gender;
+                                Rec_No = (dtNat.Rows[0]["Stateid"]).ToString();
+
+
+                                ServerName.Text = (dtNat.Rows[0]["StateName"]).ToString();
+                                //Subscriber Sc = new Subscriber();
+                                //Sc.InsurNo = card_no.Text.Trim();
+                                //Sc.InsurName = CustName.Text;
+                                //Sc.Gender = Gender;
+                                //Sc.Server = ServerName.Text;
+                                //Sc.ClientId = ClientId.ToString();
+                                //Sc.BirthDate = BirthDate;
+                                //Sc.LocalityId = PLC.LocalityId;
+                                //Sc.IsStoped = false;
+                                //dbs.Add(Sc);
+                                //db.SaveChanges();
+                                this.Cursor = Cursors.Default;
+
+                            }
+                            else
+                            {
+                                var ChkN = db.ApproveMedicines.Where(p => p.InsurNo == card_no.Text).Take(1).ToList();
+                                if (ChkN.Count > 0)
                                 {
-                                    conNat.Close();
-                                }
-
-                                conNat.Open();
-
-                                SqlDataAdapter dNat = new SqlDataAdapter("select top 1 * from NationalCard where InsuranceNo=" + Convert.ToDouble(card_no.Text) + "", conNat);
-
-                                DataTable dtNat = new DataTable();
-
-                                dtNat.Clear();
-
-                                dNat.Fill(dtNat);
-
-                                if (dtNat.Rows.Count > 0)
-                                {
-                                    this.Cursor = Cursors.WaitCursor;
-                                    BirthDate = Convert.ToDateTime(dtNat.Rows[0]["BirthDate"]);
+                                    ChkSearch = true;
+                                    BirthDate = ChkN[0].BirthDate;
                                     Age.Text = DateAndTime.DateDiff(DateInterval.Year, BirthDate, PLC.getdate()).ToString();
 
                                     // Phone.Text = result.phone
 
-                                    CustName.Text = (dtNat.Rows[0]["FullName"]).ToString();
+                                    CustName.Text = ChkN[0].InsurName;
 
 
-                                    Gender = (dtNat.Rows[0]["Gender"]).ToString();
+                                    Gender = ChkN[0].Gender;
                                     Sex.Text = Gender;
-                                    ClientId = (dtNat.Rows[0]["Stateid"]).ToString();
+                                    Rec_No = ChkN[0].ClientId;
 
 
-                                    ServerName.Text = (dtNat.Rows[0]["StateName"]).ToString();
-                                    Subscriber Sc = new Subscriber();
-                                    Sc.InsurNo = card_no.Text.Trim();
-                                    Sc.InsurName = CustName.Text;
-                                    Sc.Gender = Gender;
-                                    Sc.Server = ServerName.Text;
-                                    Sc.ClientId = ClientId.ToString();
-                                    Sc.BirthDate = BirthDate;
-                                    Sc.localityId = LocalityId;
-                                    Sc.IsStoped = false;
-                                    db.Subscribers.Add(Sc);
-                                    db.SaveChanges();
-                                    this.Cursor = Cursors.Default;
-
+                                    ServerName.Text = ChkN[0].Server;
                                 }
-                                ////else
-                                ////{
-                                ////    WebReference.CrService Getinfo = new WebReference.CrService();
+                                else
+                                {
+                                    ChkSearch = false;
+                                    MessageBox.Show("لا توجد بيانات لهذا المشترك", "النظام", MessageBoxButtons.OK, MessageBoxIcon.None);
 
-                                ////    string Str11 = Getinfo.GetNifData(TXTSearch.Text);
+                                    this.AcceptButton = null;
 
-                                ////    // MsgBox(Str11)
-
-                                ////    string str = Str11.Replace("\"\"[", "").ToString();
-
-                                ////    string str1 = str.Replace("]\"\"", "").ToString();
-
-                                ////    string str3 = str1.ToString().Replace("\\", "");
-
-                                ////    string str4 = str3.ToString().Replace("\\", "");
-
-                                ////    string str6 = str4.Replace("\"[{", "{").ToString();
-
-                                ////    string str7 = str6.Replace("}]\"", "}").ToString();
-
-                                ////    if (Convert.IsDBNull(str7) == true)
-                                ////    {
-
-                                ////        str7 = null;
-
-                                ////    }
-
-
-                                ////    if (str7 == "\"[]\"")
-                                ////    {
-
-                                ////        str7 = null;
-
-                                ////    }
-
-                                ////    //dim obj as JObject = JObject.Parse(str).tostring
-
-                                ////    //dim d = JArray.Parse(obj(0)).tostring
-
-
-                                ////    //MessageBox.Show(str7)            
-
-                                ////    if (!(string.IsNullOrEmpty(str7)))
-                                ////    {
-
-                                ////        var result = JsonConvert.DeserializeObject<Class2>(str7);
-
-                                ////        //Dim strDay As String = Mid(result.BirthDate, 1, 2)
-
-                                ////        //Dim strMonth As String = Mid(result.BirthDate, 4, 2)
-
-                                ////        //Dim strYear As String = Mid(result.BirthDate, 7, 2)
-
-                                ////        // str1 = strYear & "/" & strMonth & "/" & strDay
-
-                                ////        // BirthDate.Value = New DateTime(Convert.ToInt32(strYear), Convert.ToInt32(strMonth), Convert.ToInt32(strDay))
-
-                                ////        BirthDate.Value = JsonConvert.DeserializeObject<Class2>(str7).BirthDate;
-
-                                ////        int ag = Convert.ToInt32(Simulate.DateDiff(Simulate.DateInterval.Year, BirthDate.Value, getdate));
-
-                                ////        if (ag > 0)
-                                ////        {
-
-                                ////            LblAge.Text = ag.ToString();
-
-                                ////        }
-                                ////        else
-                                ////        {
-
-                                ////            LblAge.Text = "1";
-
-                                ////        }
-
-                                ////        // Phone.Text = result.phone
-
-                                ////        Address.Text = result.StateName;
-
-                                ////        FulName.Text = result.FullName;
-
-                                ////        if (result.Gender == "True")
-                                ////        {
-
-                                ////            Gender.Text = "ذكر";
-
-                                ////        }
-                                ////        else
-                                ////        {
-
-                                ////            Gender.Text = "انثى";
-
-                                ////        }
-
-
-                                ////        Server = "الصندوق القومي";
-
-                                ////        this.Cursor = Cursors.Default;
-
-                                ////    }
-                                ////    else
-                                ////    {
-
-                                ////        MessageBox.Show("لا توجد بيانات لهذا المشترك", "النظام", MessageBoxButtons.OK, MessageBoxIcon.None);
-
-                                ////        this.AcceptButton = null;
-
-                                ////        this.Cursor = Cursors.Default;
-
-                                ////        return;
-
-                                ////    }
-
-                                //}
+                                    this.Cursor = Cursors.Default;
+                                }
                             }
-                            else
-                            {
-                                MessageBox.Show("لا توجد بيانات لهذا المشترك", "النظام", MessageBoxButtons.OK, MessageBoxIcon.None);
+                            ////else
+                            ////{
+                            ////    WebReference.CrService Getinfo = new WebReference.CrService();
 
-                                this.AcceptButton = null;
+                            ////    string Str11 = Getinfo.GetNifData(TXTSearch.Text);
 
-                                this.Cursor = Cursors.Default;
-                            }
-                        }
+                            ////    // MsgBox(Str11)
+
+                            ////    string str = Str11.Replace("\"\"[", "").ToString();
+
+                            ////    string str1 = str.Replace("]\"\"", "").ToString();
+
+                            ////    string str3 = str1.ToString().Replace("\\", "");
+
+                            ////    string str4 = str3.ToString().Replace("\\", "");
+
+                            ////    string str6 = str4.Replace("\"[{", "{").ToString();
+
+                            ////    string str7 = str6.Replace("}]\"", "}").ToString();
+
+                            ////    if (Convert.IsDBNull(str7) == true)
+                            ////    {
+
+                            ////        str7 = null;
+
+                            ////    }
 
 
+                            ////    if (str7 == "\"[]\"")
+                            ////    {
 
-                        else
-                        {
-                            this.Cursor = Cursors.Default;
-                            FRMAddStudent.Default.card_no.Text = card_no.Text;
-                            FRMAddStudent.Default.ful_name.Clear();
-                            FRMAddStudent.Default.Age.Clear();
-                            FRMAddStudent.Default.Sex.SelectedIndex = -1;
-                            FRMAddStudent.Default.University.SelectedIndex = -1;
-                            FRMAddStudent.Default.ShowDialog();
+                            ////        str7 = null;
+
+                            ////    }
+
+                            ////    //dim obj as JObject = JObject.Parse(str).tostring
+
+                            ////    //dim d = JArray.Parse(obj(0)).tostring
+
+
+                            ////    //MessageBox.Show(str7)            
+
+                            ////    if (!(string.IsNullOrEmpty(str7)))
+                            ////    {
+
+                            ////        var result = JsonConvert.DeserializeObject<Class2>(str7);
+
+                            ////        //Dim strDay As String = Mid(result.BirthDate, 1, 2)
+
+                            ////        //Dim strMonth As String = Mid(result.BirthDate, 4, 2)
+
+                            ////        //Dim strYear As String = Mid(result.BirthDate, 7, 2)
+
+                            ////        // str1 = strYear & "/" & strMonth & "/" & strDay
+
+                            ////        // BirthDate.Value = New DateTime(Convert.ToInt32(strYear), Convert.ToInt32(strMonth), Convert.ToInt32(strDay))
+
+                            ////        BirthDate.Value = JsonConvert.DeserializeObject<Class2>(str7).BirthDate;
+
+                            ////        int ag = Convert.ToInt32(Simulate.DateDiff(Simulate.DateInterval.Year, BirthDate.Value, getdate));
+
+                            ////        if (ag > 0)
+                            ////        {
+
+                            ////            LblAge.Text = ag.ToString();
+
+                            ////        }
+                            ////        else
+                            ////        {
+
+                            ////            LblAge.Text = "1";
+
+                            ////        }
+
+                            ////        // Phone.Text = result.phone
+
+                            ////        Address.Text = result.StateName;
+
+                            ////        FulName.Text = result.FullName;
+
+                            ////        if (result.Gender == "True")
+                            ////        {
+
+                            ////            Gender.Text = "ذكر";
+
+                            ////        }
+                            ////        else
+                            ////        {
+
+                            ////            Gender.Text = "انثى";
+
+                            ////        }
+
+
+                            ////        Server = "الصندوق القومي";
+
+                            ////        this.Cursor = Cursors.Default;
+
+                            ////    }
+                            ////    else
+                            ////    {
+
+                            ////        MessageBox.Show("لا توجد بيانات لهذا المشترك", "النظام", MessageBoxButtons.OK, MessageBoxIcon.None);
+
+                            ////        this.AcceptButton = null;
+
+                            ////        this.Cursor = Cursors.Default;
+
+                            ////        return;
+
+                            ////    }
+
+                            //}
                         }
                     }
+
+
+
+
+                    else
+                    {
+                        this.Cursor = Cursors.Default;
+                        FRMAddStudent.Default.card_no.Text = card_no.Text;
+                        FRMAddStudent.Default.ful_name.Clear();
+                        FRMAddStudent.Default.Age.Clear();
+                        FRMAddStudent.Default.Sex.SelectedIndex = -1;
+                        FRMAddStudent.Default.University.SelectedIndex = -1;
+                        FRMAddStudent.Default.ShowDialog();
+                    }
                 }
-
-
             }
-                    catch (Exception ex)
-            {
 
-                MessageBox.Show("توجد مشلكلة في جلب البيانات" + (char)13 + "تأكد من الرقم الصحيح" + (char)13 + ex.Message, "النظام", MessageBoxButtons.OK, MessageBoxIcon.None);
 
-                this.AcceptButton = null;
 
-                this.Cursor = Cursors.Default;
+            //}
+            //        catch (Exception ex)
+            //{
 
-                return;
+            //    MessageBox.Show("توجد مشلكلة في جلب البيانات" + (char)13 + "تأكد من الرقم الصحيح" + (char)13 + ex.Message, "النظام", MessageBoxButtons.OK, MessageBoxIcon.None);
 
-            }
-        }
+            //    this.AcceptButton = null;
+
+            //    this.Cursor = Cursors.Default;
+
+            //    return;
+
+            //}
+
         }
 
         private void dwalist_SelectedIndexChanged(object sender, Telerik.WinControls.UI.Data.PositionChangedEventArgs e)
@@ -924,7 +991,7 @@ namespace MedicalServiceSystem.Reclaims
         private void FRMmedicine_Load(object sender, EventArgs e)
         {
             UserId = LoginForm.Default.UserId;
-            LocalityId = LoginForm.Default.LocalityId;
+            LocalityId = PLC.LocalityId;
 
             LoadData();
 
@@ -1062,8 +1129,8 @@ namespace MedicalServiceSystem.Reclaims
 
             using (dbContext db = new dbContext())
             {
-                var ChkSub = db.Subscribers.Where(p => p.InsurNo == card_no.Text).ToList();
-                if (SubscriberType.SelectedIndex == 0 && ChkSub.Count == 0 && card_no.Text.Length == 11 && !card_no.Text.Contains("/"))
+                // var ChkSub = dbs.Where(p => p.InsurNo == card_no.Text).ToList();
+               if (SubscriberType.SelectedIndex == 0 && ChkSearch==false && card_no.Text.Length == 11 && !card_no.Text.Contains("/"))
                 {
                     if (CustName.Text.Length == 0)
                     {
@@ -1089,7 +1156,7 @@ namespace MedicalServiceSystem.Reclaims
                         conNat.Close();
                     }
                     int ClientId = Convert.ToInt32(card_no.Text.Substring(0, 2));
-
+                    Rec_No = ClientId.ToString();
                     conNat.Open();
                     SqlDataAdapter da = new SqlDataAdapter("select * FROM [card_natoinal].[dbo].[States] where StateId=" + ClientId + "", conNat);
                     DataTable dt = new DataTable();
@@ -1099,43 +1166,43 @@ namespace MedicalServiceSystem.Reclaims
                     {
                         ServerName.Text = dt.Rows[0]["StateName"].ToString();
                     }
-                    conNat.Close();
-                    DateTime Birthdate = PLC.getdate().AddYears(-Convert.ToInt32(Age.Text));
-                    Subscriber Sc = new Subscriber();
-                    Sc.PhoneNo = "";
-                    Sc.InsurNo = card_no.Text.Trim();
-                    Sc.InsurName = CustName.Text;
-                    Sc.Gender = Sex.Text;
-                    Sc.Server = ServerName.Text;
-                    Sc.ClientId = ClientId.ToString();
-                    Sc.BirthDate = Birthdate;
-                    Sc.localityId = LocalityId;
-                    Sc.IsStoped = false;
-                    Sc.StopCard = new DateTime(1900, 1, 1);
-
-                    db.Subscribers.Add(Sc);
-                    db.SaveChanges();
+                    BirthDate = PLC.getdate().AddYears(-Convert.ToInt32(Age.Text));
+                   
+                    //Subscriber Sc = new Subscriber();
+                    //Sc.PhoneNo = "";
+                    //Sc.InsurNo = card_no.Text.Trim();
+                    //Sc.InsurName = CustName.Text;
+                    //Sc.Gender = Sex.Text;
+                    //Sc.Server = ServerName.Text;
+                    //Sc.ClientId = ClientId.ToString();
+                    //Sc.BirthDate = Birthdate;
+                    //Sc.LocalityId = PLC.LocalityId;
+                    //Sc.IsStoped = false;
+                    //Sc.StopCard = new DateTime(1900, 1, 1);
                 }
-                if (GrdDwa.RowCount == 0)
-                {
-
-                    GrdDwa.Rows.Add(GrdDwa.RowCount + 1, dwalist.Text, quantity.Text, ApprovedQuantity.Text, "0", dwalist.SelectedValue.ToString(), ApproveDuration.Text);
-                }
-                else
-                {
-
-                    for (int i = 0; i < GrdDwa.RowCount; i++)
-                    {
-                        if (GrdDwa.Rows[i].Cells["Generic_name"].Value.ToString() == dwalist.Text)
-                        {
-                            return;
-                        }
-                    }
-                    GrdDwa.Rows.Add(GrdDwa.RowCount + 1, dwalist.Text, quantity.Text, ApprovedQuantity.Text, "0", dwalist.SelectedValue.ToString(), ApproveDuration.Text);
-
-                }
-                NewMedical();
+                //dbs.Add(Sc);
+                //db.SaveChanges();
             }
+            if (GrdDwa.RowCount == 0)
+            {
+
+                GrdDwa.Rows.Add(GrdDwa.RowCount + 1, dwalist.Text, quantity.Text, ApprovedQuantity.Text, "0", dwalist.SelectedValue.ToString(), ApproveDuration.Text);
+            }
+            else
+            {
+
+                for (int i = 0; i < GrdDwa.RowCount; i++)
+                {
+                    if (GrdDwa.Rows[i].Cells["Generic_name"].Value.ToString() == dwalist.Text)
+                    {
+                        return;
+                    }
+                }
+                GrdDwa.Rows.Add(GrdDwa.RowCount + 1, dwalist.Text, quantity.Text, ApprovedQuantity.Text, "0", dwalist.SelectedValue.ToString(), ApproveDuration.Text);
+
+            }
+            NewMedical();
+
         }
 
         private void Button2_Click(object sender, EventArgs e)
@@ -1274,19 +1341,19 @@ namespace MedicalServiceSystem.Reclaims
                         var GetApp = db.ApproveMedicines.Where(p => p.Id == ApproveNo && p.RowStatus != RowStatus.Deleted).ToList();
                         if (GetApp.Count > 0)
                         {
-                            card_no.Text = GetApp[0].Subscriber.InsurNo;
+                            card_no.Text = GetApp[0].InsurNo;
                             OperationDate.Value = GetApp[0].ApproveDate;
                             RouchitaNo.Text = GetApp[0].RouchitaNo.ToString();
-                            Sex.Text = GetApp[0].Subscriber.Gender;
-                            CustName.Text = GetApp[0].Subscriber.InsurName;
-                            ServerName.Text = GetApp[0].Subscriber.Server;
+                            Sex.Text = GetApp[0].Gender;
+                            CustName.Text = GetApp[0].InsurName;
+                            ServerName.Text = GetApp[0].Server;
                             RequistingParty.SelectedValue = GetApp[0].ReqCenterId;
                             ExcutingParty.SelectedValue = GetApp[0].ExcCenterId;
                             Diagnosis.SelectedValue = GetApp[0].DiagnosisId;
                             pharmacist.SelectedValue = GetApp[0].pharmacistId;
                             ApproveType.SelectedValue = GetApp[0].ApproveTypeId;
                             Atachment.Text = GetApp[0].Atachment;
-                            Age.Text = DateAndTime.DateDiff(DateInterval.Year, GetApp[0].Subscriber.BirthDate, PLC.getdate()).ToString();
+                            Age.Text = DateAndTime.DateDiff(DateInterval.Year, GetApp[0].BirthDate, PLC.getdate()).ToString();
                             Saved = true;
                             ApprovementId.Text = "كود التصديق" + ":   " + GetApp[0].ApproveCode.ToString();
                             FillGrid();
@@ -1483,6 +1550,104 @@ namespace MedicalServiceSystem.Reclaims
             {
                 InputLanguage.CurrentInputLanguage = InputLanguage.InstalledInputLanguages[0];
             }
+        }
+
+        private void RadButton2_Click(object sender, EventArgs e)
+        {
+            if (card_no.Text.Length == 0)
+            {
+                MessageBox.Show("يجب ادخال بيانات المشترك", "النظام", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                card_no.Focus();
+                return;
+            }
+            if (RequistingParty.SelectedIndex == -1)
+            {
+                MessageBox.Show("يجب اختيار المركز المقدم للخدمة", "النظام", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                RequistingParty.Focus();
+                return;
+            }
+            if (ExcutingParty.SelectedIndex == -1)
+            {
+                MessageBox.Show("يجب اختيار الصيدلية المقدمة للخدمة", "النظام", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                ExcutingParty.Focus();
+                return;
+            }
+            FrmRefuseMedicine Fr = new FrmRefuseMedicine();
+            Fr.ApproveId = 0;
+            Fr.ReqId = Convert.ToInt32(RequistingParty.SelectedValue);
+            Fr.ExcuId = Convert.ToInt32(ExcutingParty.SelectedValue);
+            Fr.Phone = Phone;
+            Fr.CustName = CustName.Text;
+            Fr.Sex = Sex.Text;
+            Fr.ServerName = ServerName.Text;
+            Fr.Rec_No = Rec_No;
+            using (dbContext db = new dbContext())
+            {
+                //var ChkSub = dbs.Where(p => p.InsurNo == card_no.Text).ToList();
+                //if (SubscriberType.SelectedIndex == 0 && ChkSub.Count == 0 && card_no.Text.Length == 11 && !card_no.Text.Contains("/"))
+                //{
+                if (CustName.Text.Length == 0)
+                {
+                    MessageBox.Show(" يجب ادخال اسم المشترك يدويا ان لم يوجد", "النظام", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    CustName.Focus();
+                    return;
+                }
+                if (Age.Text.Length == 0)
+                {
+                    MessageBox.Show("يجب ادخال عمر المشترك يدويا ان لم يوجد", "النظام", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    Age.Focus();
+                    return;
+                }
+                if (Sex.SelectedIndex == -1)
+                {
+                    MessageBox.Show("يجب اختيار نوع المشترك", "النظام", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    Sex.Focus();
+                    return;
+                }
+                SqlConnection conNat = new SqlConnection("Data Source=192.168.100.4;Initial Catalog=card_natoinal;User ID=sa;Password=123;Trusted_Connection=False");
+                if (conNat.State == ConnectionState.Open)
+                {
+                    conNat.Close();
+                }
+                int ClientId = Convert.ToInt32(card_no.Text.Substring(0, 2));
+
+                conNat.Open();
+                SqlDataAdapter da = new SqlDataAdapter("select * FROM [card_natoinal].[dbo].[States] where StateId=" + ClientId + "", conNat);
+                DataTable dt = new DataTable();
+                dt.Clear();
+                da.Fill(dt);
+                if (dt.Rows.Count > 0)
+                {
+                    ServerName.Text = dt.Rows[0]["StateName"].ToString();
+                }
+                conNat.Close();
+                BirthDate = PLC.getdate().AddYears(-Convert.ToInt32(Age.Text));
+                //Subscriber Sc = new Subscriber();
+                //Sc.PhoneNo = "";
+                //Sc.InsurNo = card_no.Text.Trim();
+                //Sc.InsurName = CustName.Text;
+                //Sc.Gender = Sex.Text;
+                //Sc.Server = ServerName.Text;
+                //Sc.ClientId = ClientId.ToString();
+                //Sc.BirthDate = Birthdate;
+                //Sc.LocalityId = PLC.LocalityId;
+                //Sc.IsStoped = false;
+                //Sc.StopCard = new DateTime(1900, 1, 1);
+
+                //dbs.Add(Sc);
+                db.SaveChanges();
+
+
+            
+                // var FId = dbs.Where(p => p.InsurNo == card_no.Text).ToList()[0].Id;
+                Fr.InsurId = card_no.Text;
+            }
+            Fr.ShowDialog();
+        }
+
+        private void GrdDwa_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

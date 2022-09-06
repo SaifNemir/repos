@@ -38,15 +38,11 @@ namespace MedicalServiceSystem.Reclaims
             Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn6 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
             Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn7 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
             Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn8 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition1 = new Telerik.WinControls.UI.TableViewDefinition();
             Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn9 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
             Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn10 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
             Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn11 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
             Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn12 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition1 = new Telerik.WinControls.UI.TableViewDefinition();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn13 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn14 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn15 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn16 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
             Telerik.WinControls.UI.TableViewDefinition tableViewDefinition2 = new Telerik.WinControls.UI.TableViewDefinition();
             this.Grid_service = new Telerik.WinControls.UI.RadGridView();
             this.grid_transfer = new Telerik.WinControls.UI.RadGridView();
@@ -78,7 +74,6 @@ namespace MedicalServiceSystem.Reclaims
             // 
             this.Grid_service.MasterTemplate.AllowAddNewRow = false;
             this.Grid_service.MasterTemplate.AllowDeleteRow = false;
-            gridViewTextBoxColumn1.DataType = typeof(int);
             gridViewTextBoxColumn1.EnableExpressionEditor = false;
             gridViewTextBoxColumn1.HeaderText = "م";
             gridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1";
@@ -92,52 +87,30 @@ namespace MedicalServiceSystem.Reclaims
             gridViewTextBoxColumn3.HeaderText = "الخدمة";
             gridViewTextBoxColumn3.Name = "ServiceName";
             gridViewTextBoxColumn3.Width = 250;
-            gridViewTextBoxColumn4.AutoEllipsis = false;
-            gridViewTextBoxColumn4.FieldName = "Quantity";
-            gridViewTextBoxColumn4.HeaderText = "المطلوب";
-            gridViewTextBoxColumn4.IsVisible = false;
-            gridViewTextBoxColumn4.Name = "Quantity";
-            gridViewTextBoxColumn4.Width = 60;
-            gridViewTextBoxColumn5.FieldName = "ApprovedQuantity";
-            gridViewTextBoxColumn5.HeaderText = "المصدق";
-            gridViewTextBoxColumn5.IsVisible = false;
-            gridViewTextBoxColumn5.Name = "ApprovedQuantity";
-            gridViewTextBoxColumn5.Width = 60;
-            gridViewTextBoxColumn6.EnableExpressionEditor = false;
-            gridViewTextBoxColumn6.FieldName = "ReclaimCost";
-            gridViewTextBoxColumn6.HeaderText = "التكلفة";
-            gridViewTextBoxColumn6.Name = "ReclaimCost";
-            gridViewTextBoxColumn6.ReadOnly = true;
-            gridViewTextBoxColumn6.Width = 78;
-            gridViewTextBoxColumn7.DataType = typeof(System.DateTime);
-            gridViewTextBoxColumn7.EnableExpressionEditor = false;
-            gridViewTextBoxColumn7.FieldName = "ReclaimDate";
-            gridViewTextBoxColumn7.HeaderText = "التاريخ";
-            gridViewTextBoxColumn7.Name = "ReclaimDate";
-            gridViewTextBoxColumn7.ReadOnly = true;
-            gridViewTextBoxColumn7.Width = 100;
-            gridViewTextBoxColumn8.FieldName = "UserName";
-            gridViewTextBoxColumn8.HeaderText = "الطبيب";
-            gridViewTextBoxColumn8.IsVisible = false;
-            gridViewTextBoxColumn8.Name = "UserName";
-            gridViewTextBoxColumn8.Width = 120;
-            gridViewTextBoxColumn9.FieldName = "ApproveReason";
-            gridViewTextBoxColumn9.HeaderText = "سبب الاسترداد";
-            gridViewTextBoxColumn9.Name = "ApproveReason";
-            gridViewTextBoxColumn9.Width = 200;
-            gridViewTextBoxColumn10.FieldName = "RequestParty";
-            gridViewTextBoxColumn10.HeaderText = "الجهة الطالبة";
-            gridViewTextBoxColumn10.Name = "RequestParty";
-            gridViewTextBoxColumn10.Width = 150;
-            gridViewTextBoxColumn11.FieldName = "ExcuteParty";
-            gridViewTextBoxColumn11.HeaderText = "الجهة المنفذة";
-            gridViewTextBoxColumn11.Name = "ExcuteParty";
-            gridViewTextBoxColumn11.Width = 150;
-            gridViewTextBoxColumn12.FieldName = "Atachment";
-            gridViewTextBoxColumn12.HeaderText = "ملاحظات";
-            gridViewTextBoxColumn12.IsVisible = false;
-            gridViewTextBoxColumn12.Name = "Atachment";
-            gridViewTextBoxColumn12.Width = 120;
+            gridViewTextBoxColumn4.EnableExpressionEditor = false;
+            gridViewTextBoxColumn4.FieldName = "ReclaimCost";
+            gridViewTextBoxColumn4.HeaderText = "التكلفة";
+            gridViewTextBoxColumn4.Name = "ReclaimCost";
+            gridViewTextBoxColumn4.ReadOnly = true;
+            gridViewTextBoxColumn4.Width = 78;
+            gridViewTextBoxColumn5.EnableExpressionEditor = false;
+            gridViewTextBoxColumn5.FieldName = "ReclaimDate";
+            gridViewTextBoxColumn5.HeaderText = "التاريخ";
+            gridViewTextBoxColumn5.Name = "ReclaimDate";
+            gridViewTextBoxColumn5.ReadOnly = true;
+            gridViewTextBoxColumn5.Width = 100;
+            gridViewTextBoxColumn6.FieldName = "ApproveReason";
+            gridViewTextBoxColumn6.HeaderText = "سبب الاسترداد";
+            gridViewTextBoxColumn6.Name = "ApproveReason";
+            gridViewTextBoxColumn6.Width = 200;
+            gridViewTextBoxColumn7.FieldName = "RequestParty";
+            gridViewTextBoxColumn7.HeaderText = "الجهة الطالبة";
+            gridViewTextBoxColumn7.Name = "RequestParty";
+            gridViewTextBoxColumn7.Width = 150;
+            gridViewTextBoxColumn8.FieldName = "ExcuteParty";
+            gridViewTextBoxColumn8.HeaderText = "الجهة المنفذة";
+            gridViewTextBoxColumn8.Name = "ExcuteParty";
+            gridViewTextBoxColumn8.Width = 150;
             this.Grid_service.MasterTemplate.Columns.AddRange(new Telerik.WinControls.UI.GridViewDataColumn[] {
             gridViewTextBoxColumn1,
             gridViewTextBoxColumn2,
@@ -146,11 +119,7 @@ namespace MedicalServiceSystem.Reclaims
             gridViewTextBoxColumn5,
             gridViewTextBoxColumn6,
             gridViewTextBoxColumn7,
-            gridViewTextBoxColumn8,
-            gridViewTextBoxColumn9,
-            gridViewTextBoxColumn10,
-            gridViewTextBoxColumn11,
-            gridViewTextBoxColumn12});
+            gridViewTextBoxColumn8});
             this.Grid_service.MasterTemplate.EnableFiltering = true;
             this.Grid_service.MasterTemplate.ViewDefinition = tableViewDefinition1;
             this.Grid_service.Name = "Grid_service";
@@ -170,26 +139,26 @@ namespace MedicalServiceSystem.Reclaims
             // 
             this.grid_transfer.MasterTemplate.AllowAddNewRow = false;
             this.grid_transfer.MasterTemplate.AllowDeleteRow = false;
-            gridViewTextBoxColumn13.HeaderText = "م";
-            gridViewTextBoxColumn13.Name = "Column5";
-            gridViewTextBoxColumn13.ReadOnly = true;
-            gridViewTextBoxColumn14.HeaderText = "رقم الخدمة";
-            gridViewTextBoxColumn14.Name = "DataGridViewTextBoxColumn5";
-            gridViewTextBoxColumn14.ReadOnly = true;
-            gridViewTextBoxColumn14.Width = 250;
-            gridViewTextBoxColumn15.HeaderText = "التكلفة";
-            gridViewTextBoxColumn15.Name = "Column6";
-            gridViewTextBoxColumn15.ReadOnly = true;
-            gridViewTextBoxColumn15.Width = 200;
-            gridViewTextBoxColumn16.HeaderText = "التاريخ";
-            gridViewTextBoxColumn16.Name = "DataGridViewTextBoxColumn6";
-            gridViewTextBoxColumn16.ReadOnly = true;
-            gridViewTextBoxColumn16.Width = 150;
+            gridViewTextBoxColumn9.HeaderText = "م";
+            gridViewTextBoxColumn9.Name = "Column5";
+            gridViewTextBoxColumn9.ReadOnly = true;
+            gridViewTextBoxColumn10.HeaderText = "رقم الخدمة";
+            gridViewTextBoxColumn10.Name = "DataGridViewTextBoxColumn5";
+            gridViewTextBoxColumn10.ReadOnly = true;
+            gridViewTextBoxColumn10.Width = 250;
+            gridViewTextBoxColumn11.HeaderText = "التكلفة";
+            gridViewTextBoxColumn11.Name = "Column6";
+            gridViewTextBoxColumn11.ReadOnly = true;
+            gridViewTextBoxColumn11.Width = 200;
+            gridViewTextBoxColumn12.HeaderText = "التاريخ";
+            gridViewTextBoxColumn12.Name = "DataGridViewTextBoxColumn6";
+            gridViewTextBoxColumn12.ReadOnly = true;
+            gridViewTextBoxColumn12.Width = 150;
             this.grid_transfer.MasterTemplate.Columns.AddRange(new Telerik.WinControls.UI.GridViewDataColumn[] {
-            gridViewTextBoxColumn13,
-            gridViewTextBoxColumn14,
-            gridViewTextBoxColumn15,
-            gridViewTextBoxColumn16});
+            gridViewTextBoxColumn9,
+            gridViewTextBoxColumn10,
+            gridViewTextBoxColumn11,
+            gridViewTextBoxColumn12});
             this.grid_transfer.MasterTemplate.ViewDefinition = tableViewDefinition2;
             this.grid_transfer.Name = "grid_transfer";
             this.grid_transfer.ReadOnly = true;

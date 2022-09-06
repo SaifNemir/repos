@@ -100,7 +100,7 @@ namespace MedicalServiceSystem.Reclaims
             this.textBox32.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Center;
             this.textBox32.Style.VerticalAlign = Telerik.Reporting.Drawing.VerticalAlign.Middle;
             this.textBox32.StyleName = "Normal.TableBody";
-            this.textBox32.Value = "=sum([ReclaimTotal]) ";
+            this.textBox32.Value = "=sum([ReclaimCost]) ";
             // 
             // textBox34
             // 
@@ -295,7 +295,7 @@ namespace MedicalServiceSystem.Reclaims
             this.textBox28.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Center;
             this.textBox28.Style.VerticalAlign = Telerik.Reporting.Drawing.VerticalAlign.Middle;
             this.textBox28.StyleName = "Normal.TableBody";
-            this.textBox28.Value = "=ReclaimCost ";
+            this.textBox28.Value = "=ReclaimTotal";
             // 
             // textBox29
             // 
@@ -321,7 +321,7 @@ namespace MedicalServiceSystem.Reclaims
             this.textBox30.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Center;
             this.textBox30.Style.VerticalAlign = Telerik.Reporting.Drawing.VerticalAlign.Middle;
             this.textBox30.StyleName = "Normal.TableBody";
-            this.textBox30.Value = "=ReclaimTotal ";
+            this.textBox30.Value = "=ReclaimCost ";
             // 
             // textBox31
             // 
@@ -935,7 +935,7 @@ namespace MedicalServiceSystem.Reclaims
             this.textBox33.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Center;
             this.textBox33.Style.VerticalAlign = Telerik.Reporting.Drawing.VerticalAlign.Middle;
             this.textBox33.StyleName = "Normal.TableBody";
-            this.textBox33.Value = "=sum([ReclaimTotal]) ";
+            this.textBox33.Value = "=sum([ReclaimCost]) ";
             this.textBox33.ItemDataBound += new System.EventHandler(this.TextBox33_ItemDataBound);
             // 
             // textBox37

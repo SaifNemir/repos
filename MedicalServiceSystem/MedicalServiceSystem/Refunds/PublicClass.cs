@@ -11,7 +11,7 @@ internal static class PLC
 {
 	static dbContext db=new dbContext() ;
 	public static SqlConnection conClame = new SqlConnection("Data Source=192.168.100.4;Initial Catalog=cntr;User ID=sa;Password=123;Trusted_Connection=False");
-	public static SqlConnection conNew = new SqlConnection("Data Source=192.168.100.200;Initial Catalog=InsuranceSystem;User ID=sa;Password=123;Trusted_Connection=False");
+	public static SqlConnection conNew = new SqlConnection("Data Source=192.168.100.10;Initial Catalog=InsuranceSystem;User ID=sa;Password=123;Trusted_Connection=False");
 	public static SqlConnection conOld = new SqlConnection("Data Source=192.168.100.4;Initial Catalog=NewSubData;User ID=sa;Password=123;Trusted_Connection=False");
     //Get The date Of The Main Server:
 	public static DateTime getdate()
@@ -294,4 +294,9 @@ internal static class PLC
 	}
     public static string Opr { get; set; }
     public static int Flag { get; set; }
+    public static string SubId { get; set; }
+    public static int FlagMedical { get; set; }
+    public static int FlagMedicine { get; set; }
+    public static int LocalityId { get; set; }
+    public static string InsurNo { get; set; }
 }

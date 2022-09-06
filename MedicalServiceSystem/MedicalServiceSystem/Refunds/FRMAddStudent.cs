@@ -85,29 +85,29 @@ namespace MedicalServiceSystem.Reclaims
             }
             using (dbContext db = new dbContext())
             {
-                var Ssc = db.Subscribers.Where(p => p.InsurNo == card_no.Text).ToList();
-                if (Ssc.Count == 0)
-                {
-                    DateTime Birthdate = PLC.getdate().AddYears(-Convert.ToInt32(Age.Text));
-                    Subscriber Sc = new Subscriber();
-                    Sc.PhoneNo = "";
-                    Sc.InsurNo = card_no.Text.Trim();
-                    Sc.InsurName = ful_name.Text.Trim();
-                    Sc.Gender = Sex.Text;
-                    Sc.Server = University.Text.Trim();
-                    Sc.ClientId =University.SelectedValue.ToString();
-                    Sc.BirthDate = Birthdate;
-                    Sc.localityId = LocalityId;
-                    Sc.IsStoped = false;
-                    db.Subscribers.Add(Sc);
-                    db.SaveChanges();
+                //var Ssc = dbs.Where(p => p.InsurNo == card_no.Text).ToList();
+                //if (Ssc.Count == 0)
+                //{
+                //    DateTime Birthdate = PLC.getdate().AddYears(-Convert.ToInt32(Age.Text));
+                //    Subscriber Sc = new Subscriber();
+                //    Sc.PhoneNo = "";
+                //    Sc.InsurNo = card_no.Text.Trim();
+                //    Sc.InsurName = ful_name.Text.Trim();
+                //    Sc.Gender = Sex.Text;
+                //    Sc.Server = University.Text.Trim();
+                //    Sc.ClientId =University.SelectedValue.ToString();
+                //    Sc.BirthDate = Birthdate;
+                //    Sc.LocalityId = PLC.LocalityId;
+                //    Sc.IsStoped = false;
+                //    dbs.Add(Sc);
+                //    db.SaveChanges();
                     FRMApproveMedicine.Default.card_no.Text = card_no.Text.Trim();
                     FRMApproveMedicine.Default.CustName.Text = ful_name.Text.Trim();
                     FRMApproveMedicine.Default.Sex.SelectedIndex = Sex.SelectedIndex;
                     FRMApproveMedicine.Default.ServerName.Text = University.Text.Trim();
                     FRMApproveMedicine.Default.Age.Text = Age.Text.Trim();
 
-                }
+               // }
             }
             
                 this.Close();

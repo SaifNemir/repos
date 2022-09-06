@@ -69,7 +69,7 @@ namespace MedicalServiceSystem
             d_start.Value = PLC.getdate();
             d_end.Value = PLC.getdate();
             UserId = SystemSetting.LoginForm.Default.UserId;
-            LocalityId = SystemSetting.LoginForm.Default.LocalityId;
+            LocalityId = PLC.LocalityId;
             using (dbContext db = new dbContext())
             {
 
@@ -98,7 +98,7 @@ namespace MedicalServiceSystem
                 ExcutingParty.DisplayMember = "CenterName";
                 ExcutingParty.DropDownListElement.AutoCompleteSuggest.SuggestMode = Telerik.WinControls.UI.SuggestMode.Contains;
                 ExcutingParty.SelectedIndex = -1;
-                StrRPT = "SELECT  dbo.Users.Id, dbo.Subscribers.InsurNo AS Row6, dbo.Subscribers.InsurName AS Row7, dbo.ApproveMedicines.ApproveDate AS Row13, dbo.ApproveMedicineTypes.ApproveType AS Row8, dbo.Diagnosis.DiagnosisName AS Row9, dbo.Pharmacists.pharmacistName AS Row10, dbo.CenterInfoes.CenterName AS Row15, CenterInfoes_1.CenterName AS Row16, dbo.Subscribers.Server AS Row17 , dbo.MedicineForReclaims.Generic_name AS Row18, dbo.ApproveMedicineDetails.ApprovedQuantity AS Row2, dbo.ApproveMedicineDetails.Quantity AS Row3 FROM dbo.ApproveMedicines INNER JOIN  dbo.ApproveMedicineTypes ON dbo.ApproveMedicines.ApproveTypeId = dbo.ApproveMedicineTypes.Id INNER JOIN dbo.Diagnosis ON dbo.ApproveMedicines.DiagnosisId = dbo.Diagnosis.Id INNER JOIN dbo.Pharmacists ON dbo.ApproveMedicines.pharmacistId = dbo.Pharmacists.Id INNER JOIN dbo.Subscribers ON dbo.ApproveMedicines.InsurId = dbo.Subscribers.Id INNER JOIN dbo.CenterInfoes ON dbo.ApproveMedicines.ExcCenterId = dbo.CenterInfoes.Id INNER JOIN dbo.CenterInfoes AS CenterInfoes_1 ON dbo.ApproveMedicines.ReqCenterId = CenterInfoes_1.Id INNER JOIN dbo.Users ON dbo.ApproveMedicines.UserId = dbo.Users.Id INNER JOIN dbo.ApproveMedicineDetails ON dbo.ApproveMedicines.Id = dbo.ApproveMedicineDetails.ApproveMedicineId INNER JOIN dbo.MedicineForReclaims ON dbo.ApproveMedicineDetails.ServiceId = dbo.MedicineForReclaims.Id where dbo.ApproveMedicines.Rowstatus<>2 ";
+                StrRPT = "SELECT  dbo.Users.Id, dbo.ApproveMedicines.InsurNo AS Row6, dbo.ApproveMedicines.InsurName AS Row7, dbo.ApproveMedicines.ApproveDate AS Row13, dbo.ApproveMedicineTypes.ApproveType AS Row8, dbo.Diagnosis.DiagnosisName AS Row9, dbo.Pharmacists.pharmacistName AS Row10, dbo.CenterInfoes.CenterName AS Row15, CenterInfoes_1.CenterName AS Row16, dbo.ApproveMedicines.Server AS Row17 , dbo.MedicineForReclaims.Generic_name AS Row18, dbo.ApproveMedicineDetails.ApprovedQuantity AS Row2, dbo.ApproveMedicineDetails.Quantity AS Row3 FROM dbo.ApproveMedicines INNER JOIN  dbo.ApproveMedicineTypes ON dbo.ApproveMedicines.ApproveTypeId = dbo.ApproveMedicineTypes.Id INNER JOIN dbo.Diagnosis ON dbo.ApproveMedicines.DiagnosisId = dbo.Diagnosis.Id INNER JOIN dbo.Pharmacists ON dbo.ApproveMedicines.pharmacistId = dbo.Pharmacists.Id INNER JOIN dbo.CenterInfoes ON dbo.ApproveMedicines.ExcCenterId = dbo.CenterInfoes.Id INNER JOIN dbo.CenterInfoes AS CenterInfoes_1 ON dbo.ApproveMedicines.ReqCenterId = CenterInfoes_1.Id INNER JOIN dbo.Users ON dbo.ApproveMedicines.UserId = dbo.Users.Id INNER JOIN dbo.ApproveMedicineDetails ON dbo.ApproveMedicines.Id = dbo.ApproveMedicineDetails.ApproveMedicineId INNER JOIN dbo.MedicineForReclaims ON dbo.ApproveMedicineDetails.ServiceId = dbo.MedicineForReclaims.Id where dbo.ApproveMedicines.Rowstatus<>2 ";
             }
 
         }
@@ -124,7 +124,7 @@ namespace MedicalServiceSystem
                         Cursor = Cursors.WaitCursor;
                         RPTِApproveMedicineDetails Rdet = new RPTِApproveMedicineDetails();
                         Rdet.DataSource = GetDet;
-                        Rdet.Locality.Value = db.Localities.Where(p => p.Id == LocalityId).ToList()[0].LocalityName;
+                        Rdet.Locality.Value = db.Localities.Where(p => p.Id == PLC.LocalityId).ToList()[0].LocalityName;
                         Rdet.StartDate.Value = d_start.Value.Date.ToShortDateString();
                         Rdet.EndDate.Value = d_end.Value.Date.ToShortDateString();
                         Rdet.ApproveCnt.Value = db.ApproveMedicines.Where(p => p.RowStatus != RowStatus.Deleted && (p.ApproveDate >= d_start.Value && p.ApproveDate <= d_end.Value)).ToList().Count.ToString();
@@ -171,11 +171,11 @@ namespace MedicalServiceSystem
                         Cursor = Cursors.WaitCursor;
                         RPTِApproveMedicineDetails Rdet = new RPTِApproveMedicineDetails();
                         Rdet.DataSource = GetDet;
-                        Rdet.Locality.Value = db.Localities.Where(p => p.Id == LocalityId).ToList()[0].LocalityName;
+                        Rdet.Locality.Value = db.Localities.Where(p => p.Id == PLC.LocalityId).ToList()[0].LocalityName;
                         Rdet.StartDate.Value = d_start.Value.Date.ToShortDateString();
                         Rdet.EndDate.Value = d_end.Value.Date.ToShortDateString();
                         Rdet.ReportTitle.Value = "تقرير تفاصيل التصاديق الدوائية" + " " + "حسب المشترك" + " " + GetDet[0].Row7;
-                        Rdet.ApproveCnt.Value = db.ApproveMedicines.Where(p => p.RowStatus != RowStatus.Deleted && (p.ApproveDate >= d_start.Value && p.ApproveDate <= d_end.Value) && p.Subscriber.InsurNo == card_no.Text).ToList().Count.ToString();
+                        Rdet.ApproveCnt.Value = db.ApproveMedicines.Where(p => p.RowStatus != RowStatus.Deleted && (p.ApproveDate >= d_start.Value && p.ApproveDate <= d_end.Value) && p.InsurNo == card_no.Text).ToList().Count.ToString();
                         Rdet.DwaCNT.Value = GetDet.Count.ToString();
                         RptiewChronics.ReportSource = Rdet;
                         RptiewChronics.RefreshReport();
@@ -223,7 +223,7 @@ namespace MedicalServiceSystem
                         Cursor = Cursors.WaitCursor;
                         RPTِApproveMedicineDetails Rdet = new RPTِApproveMedicineDetails();
                         Rdet.DataSource = GetDet;
-                        Rdet.Locality.Value = db.Localities.Where(p => p.Id == LocalityId).ToList()[0].LocalityName;
+                        Rdet.Locality.Value = db.Localities.Where(p => p.Id == PLC.LocalityId).ToList()[0].LocalityName;
                         Rdet.StartDate.Value = d_start.Value.Date.ToShortDateString();
                         Rdet.EndDate.Value = d_end.Value.Date.ToShortDateString();
                         Rdet.ReportTitle.Value = "تقرير تفاصيل التصاديق الدوائية" + " " + "حسب التشخيص" + " " + Diagnosis.Text;
@@ -271,7 +271,7 @@ namespace MedicalServiceSystem
                         Cursor = Cursors.WaitCursor;
                         RPTِApproveMedicineDetails Rdet = new RPTِApproveMedicineDetails();
                         Rdet.DataSource = GetDet;
-                        Rdet.Locality.Value = db.Localities.Where(p => p.Id == LocalityId).ToList()[0].LocalityName;
+                        Rdet.Locality.Value = db.Localities.Where(p => p.Id == PLC.LocalityId).ToList()[0].LocalityName;
                         Rdet.StartDate.Value = d_start.Value.Date.ToShortDateString();
                         Rdet.EndDate.Value = d_end.Value.Date.ToShortDateString();
                         Rdet.ReportTitle.Value = "تقرير تفاصيل التصاديق الدوائية" + " " + "حسب الصيدلي" + " " + pharmacist.Text;
@@ -319,7 +319,7 @@ namespace MedicalServiceSystem
                         Cursor = Cursors.WaitCursor;
                         RPTِApproveMedicineDetails Rdet = new RPTِApproveMedicineDetails();
                         Rdet.DataSource = GetDet;
-                        Rdet.Locality.Value = db.Localities.Where(p => p.Id == LocalityId).ToList()[0].LocalityName;
+                        Rdet.Locality.Value = db.Localities.Where(p => p.Id == PLC.LocalityId).ToList()[0].LocalityName;
                         Rdet.StartDate.Value = d_start.Value.Date.ToShortDateString();
                         Rdet.EndDate.Value = d_end.Value.Date.ToShortDateString();
                         Rdet.ReportTitle.Value = "تقرير تفاصيل التصاديق الدوائية" + " " + "حسب الصيدلية" + " " + ExcutingParty.Text;
@@ -367,7 +367,7 @@ namespace MedicalServiceSystem
                         Cursor = Cursors.WaitCursor;
                         RPTِApproveMedicineDetails Rdet = new RPTِApproveMedicineDetails();
                         Rdet.DataSource = GetDet;
-                        Rdet.Locality.Value = db.Localities.Where(p => p.Id == LocalityId).ToList()[0].LocalityName;
+                        Rdet.Locality.Value = db.Localities.Where(p => p.Id == PLC.LocalityId).ToList()[0].LocalityName;
                         Rdet.StartDate.Value = d_start.Value.Date.ToShortDateString();
                         Rdet.EndDate.Value = d_end.Value.Date.ToShortDateString();
                         Rdet.ReportTitle.Value = "تقرير تفاصيل التصاديق الدوائية" + " " + "حسب مقدم الخدمة" + " " + RequistingParty.Text;
@@ -408,7 +408,7 @@ namespace MedicalServiceSystem
                     {
                         RPTِApproveMedicineCount Rdet = new RPTِApproveMedicineCount();
                         Rdet.DataSource = GetCent;
-                        Rdet.Locality.Value = db.Localities.Where(p => p.Id == LocalityId).ToList()[0].LocalityName;
+                        Rdet.Locality.Value = db.Localities.Where(p => p.Id == PLC.LocalityId).ToList()[0].LocalityName;
                         Rdet.StartDate.Value = d_start.Value.Date.ToShortDateString();
                         Rdet.EndDate.Value = d_end.Value.Date.ToShortDateString();
                         Rdet.ReportTitle.Value = "عدد التصاديق حسب" + " " + RDUser.Text;
@@ -443,7 +443,7 @@ namespace MedicalServiceSystem
                     {
                         RPTِApproveMedicineCount Rdet = new RPTِApproveMedicineCount();
                         Rdet.DataSource = GetCent;
-                        Rdet.Locality.Value = db.Localities.Where(p => p.Id == LocalityId).ToList()[0].LocalityName;
+                        Rdet.Locality.Value = db.Localities.Where(p => p.Id == PLC.LocalityId).ToList()[0].LocalityName;
                         Rdet.StartDate.Value = d_start.Value.Date.ToShortDateString();
                         Rdet.EndDate.Value = d_end.Value.Date.ToShortDateString();
                         Rdet.ReportTitle.Value = "عدد التصاديق حسب" + " " + RDDios.Text;
@@ -478,7 +478,7 @@ namespace MedicalServiceSystem
                     {
                         RPTِApproveMedicineCount Rdet = new RPTِApproveMedicineCount();
                         Rdet.DataSource = GetCent;
-                        Rdet.Locality.Value = db.Localities.Where(p => p.Id == LocalityId).ToList()[0].LocalityName;
+                        Rdet.Locality.Value = db.Localities.Where(p => p.Id == PLC.LocalityId).ToList()[0].LocalityName;
                         Rdet.StartDate.Value = d_start.Value.Date.ToShortDateString();
                         Rdet.EndDate.Value = d_end.Value.Date.ToShortDateString();
                         Rdet.ReportTitle.Value = "عدد التصاديق حسب" + " " + RDpharm.Text;
@@ -513,7 +513,7 @@ namespace MedicalServiceSystem
                     {
                         RPTِApproveMedicineCount Rdet = new RPTِApproveMedicineCount();
                         Rdet.DataSource = GetCent;
-                        Rdet.Locality.Value = db.Localities.Where(p => p.Id == LocalityId).ToList()[0].LocalityName;
+                        Rdet.Locality.Value = db.Localities.Where(p => p.Id == PLC.LocalityId).ToList()[0].LocalityName;
                         Rdet.StartDate.Value = d_start.Value.Date.ToShortDateString();
                         Rdet.EndDate.Value = d_end.Value.Date.ToShortDateString();
                         Rdet.ReportTitle.Value = "عدد التصاديق حسب" + " " + RDPharamcy.Text;
@@ -548,7 +548,7 @@ namespace MedicalServiceSystem
                     {
                         RPTِApproveMedicineCount Rdet = new RPTِApproveMedicineCount();
                         Rdet.DataSource = GetCent;
-                        Rdet.Locality.Value = db.Localities.Where(p => p.Id == LocalityId).ToList()[0].LocalityName;
+                        Rdet.Locality.Value = db.Localities.Where(p => p.Id == PLC.LocalityId).ToList()[0].LocalityName;
                         Rdet.StartDate.Value = d_start.Value.Date.ToShortDateString();
                         Rdet.EndDate.Value = d_end.Value.Date.ToShortDateString();
                         Rdet.ReportTitle.Value = "عدد التصاديق حسب" + " " + RDCenter.Text;
@@ -583,7 +583,7 @@ namespace MedicalServiceSystem
                     {
                         RPTِApproveMedicineCount Rdet = new RPTِApproveMedicineCount();
                         Rdet.DataSource = GetCent;
-                        Rdet.Locality.Value = db.Localities.Where(p => p.Id == LocalityId).ToList()[0].LocalityName;
+                        Rdet.Locality.Value = db.Localities.Where(p => p.Id == PLC.LocalityId).ToList()[0].LocalityName;
                         Rdet.StartDate.Value = d_start.Value.Date.ToShortDateString();
                         Rdet.EndDate.Value = d_end.Value.Date.ToShortDateString();
                         Rdet.ReportTitle.Value = "عدد التصاديق حسب" + " " + RDAppType.Text;
@@ -613,12 +613,12 @@ namespace MedicalServiceSystem
                 using (dbContext db = new dbContext())
                 {
                     db.Database.CommandTimeout = 0;
-                    var GetCent = db.Database.SqlQuery<ReportForAll>("SELECT dbo.Subscribers.Server AS Row6, COUNT(dbo.ApproveMedicines.Id) AS Row1 FROM dbo.ApproveMedicines INNER JOIN  dbo.Subscribers ON dbo.ApproveMedicines.InsurId = dbo.Subscribers.Id WHERE dbo.ApproveMedicines.ApproveDate BETWEEN '" + d_start.Value + "' and '" + d_end.Value + "' and dbo.ApproveMedicines.RowStatus<>2 GROUP BY dbo.Subscribers.Server ORDER BY Row1 DESC").ToList();
+                    var GetCent = db.Database.SqlQuery<ReportForAll>("SELECT dbo.ApproveMedicines.Server AS Row6, COUNT(dbo.ApproveMedicines.Id) AS Row1 FROM dbo.ApproveMedicines WHERE dbo.ApproveMedicines.ApproveDate BETWEEN '" + d_start.Value + "' and '" + d_end.Value + "' and dbo.ApproveMedicines.RowStatus<>2 GROUP BY dbo.ApproveMedicines.Server ORDER BY Row1 DESC").ToList();
                     if (GetCent.Count > 0)
                     {
                         RPTِApproveMedicineCount Rdet = new RPTِApproveMedicineCount();
                         Rdet.DataSource = GetCent;
-                        Rdet.Locality.Value = db.Localities.Where(p => p.Id == LocalityId).ToList()[0].LocalityName;
+                        Rdet.Locality.Value = db.Localities.Where(p => p.Id == PLC.LocalityId).ToList()[0].LocalityName;
                         Rdet.StartDate.Value = d_start.Value.Date.ToShortDateString();
                         Rdet.EndDate.Value = d_end.Value.Date.ToShortDateString();
                         Rdet.ReportTitle.Value = "عدد التصاديق حسب" + " " + RDServerCNT.Text;
@@ -653,7 +653,7 @@ namespace MedicalServiceSystem
                     {
                         RPTِEstrdadCount Rdet = new RPTِEstrdadCount();
                         Rdet.DataSource = GetCent;
-                        Rdet.Locality.Value = db.Localities.Where(p => p.Id == LocalityId).ToList()[0].LocalityName;
+                        Rdet.Locality.Value = db.Localities.Where(p => p.Id == PLC.LocalityId).ToList()[0].LocalityName;
                         Rdet.StartDate.Value = d_start.Value.Date.ToShortDateString();
                         Rdet.EndDate.Value = d_end.Value.Date.ToShortDateString();
                         Rdet.ReportTitle.Value = "عدد التصاديق حسب" + " " + RDDwaCNT.Text;

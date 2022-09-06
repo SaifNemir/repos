@@ -7,9 +7,7 @@ namespace ModelDB
 	{
 		public int Id { get; set; }
 		public string ApproveNo { get; set; }
-		public int InsurId { get; set; }
-		[ForeignKey("InsurId")]
-		public virtual Subscriber Subscriber { get; set; }
+
 		public int ReqCenterId { get; set; }
 		public int ExcCenterId { get; set; }
 		public int UserId { get; set; }

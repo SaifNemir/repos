@@ -69,7 +69,7 @@ namespace MedicalServiceSystem
             d_start.Value = PLC.getdate();
             d_end.Value = PLC.getdate();
             UserId = SystemSetting.LoginForm.Default.UserId;
-            LocalityId = SystemSetting.LoginForm.Default.LocalityId;
+            LocalityId = PLC.LocalityId;
             using (dbContext db = new dbContext())
             {
                 var GetUser = db.Users.Where(p => p.Id == UserId).ToList();
@@ -93,14 +93,14 @@ namespace MedicalServiceSystem
             {
                 using (dbContext db = new dbContext())
                 {
-                    var GetDet = db.Database.SqlQuery<ReportForAll>("SELECT dbo.ChronicsBooks.BookNo AS Row1, dbo.ChronicsBooks.BookDate AS Row13, dbo.ChronicsBooks.DocNo AS Row2, dbo.Subscribers.InsurName AS Row6, dbo.Subscribers.InsurNo AS Row7,  dbo.CenterInfoes.CenterName AS Row8, dbo.ChronicBookTypes.BookType AS Row9 FROM  dbo.ChronicsBooks INNER JOIN dbo.CenterInfoes ON dbo.ChronicsBooks.CenterId = dbo.CenterInfoes.Id INNER JOIN dbo.Chronics INNER JOIN dbo.ChronicBooksDetails ON dbo.Chronics.Id = dbo.ChronicBooksDetails.ChronicId ON dbo.ChronicsBooks.Id = dbo.ChronicBooksDetails.BookId INNER JOIN dbo.Subscribers ON dbo.ChronicsBooks.SubscriberId = dbo.Subscribers.Id INNER JOIN dbo.Localities ON dbo.ChronicsBooks.LocalityId = dbo.Localities.Id INNER JOIN dbo.Users ON dbo.ChronicsBooks.UserId = dbo.Users.Id INNER JOIN  dbo.ChronicBookTypes ON dbo.ChronicsBooks.BookTypeId = dbo.ChronicBookTypes.Id where "+ LocalityName + " dbo.ChronicsBooks.BookDate between '" + d_start.Value + "' and '" + d_end.Value + "'  GROUP BY dbo.ChronicsBooks.BookNo, dbo.ChronicsBooks.BookDate, dbo.ChronicsBooks.DocNo, dbo.Subscribers.InsurName, dbo.Subscribers.InsurNo, dbo.CenterInfoes.CenterName, dbo.ChronicBookTypes.BookType").ToList();
+                    var GetDet = db.Database.SqlQuery<ReportForAll>("SELECT dbo.ChronicsBooks.BookNo AS Row1, dbo.ChronicsBooks.BookDate AS Row13, dbo.ChronicsBooks.DocNo AS Row2, dbo.ChronicsBooks.InsurName AS Row6, dbo.ChronicsBooks.InsurNo AS Row7,  dbo.CenterInfoes.CenterName AS Row8, dbo.ChronicBookTypes.BookType AS Row9 FROM  dbo.ChronicsBooks INNER JOIN dbo.CenterInfoes ON dbo.ChronicsBooks.CenterId = dbo.CenterInfoes.Id INNER JOIN dbo.Chronics INNER JOIN dbo.ChronicBooksDetails ON dbo.Chronics.Id = dbo.ChronicBooksDetails.ChronicId ON dbo.ChronicsBooks.Id = dbo.ChronicBooksDetails.BookId INNER JOIN dbo.Localities ON dbo.ChronicsBooks.LocalityId = dbo.Localities.Id INNER JOIN dbo.Users ON dbo.ChronicsBooks.UserId = dbo.Users.Id INNER JOIN  dbo.ChronicBookTypes ON dbo.ChronicsBooks.BookTypeId = dbo.ChronicBookTypes.Id where " + LocalityName + " dbo.ChronicsBooks.BookDate between '" + d_start.Value + "' and '" + d_end.Value + "'  GROUP BY dbo.ChronicsBooks.BookNo, dbo.ChronicsBooks.BookDate, dbo.ChronicsBooks.DocNo, dbo.ChronicsBooks.InsurName, dbo.ChronicsBooks.InsurNo, dbo.CenterInfoes.CenterName, dbo.ChronicBookTypes.BookType").ToList();
                     //MessageBox.Show(GetDet.Count.ToString());
                     if (GetDet.Count > 0)
                     {
 
                         RPTChronicBooksDetails Rdet = new RPTChronicBooksDetails();
                         Rdet.DataSource = GetDet;
-                        Rdet.Locality.Value = db.Localities.Where(p => p.Id == LocalityId).ToList()[0].LocalityName;
+                        Rdet.Locality.Value = db.Localities.Where(p => p.Id == PLC.LocalityId).ToList()[0].LocalityName;
                         Rdet.StartDate.Value = d_start.Value.Date.ToShortDateString();
                         Rdet.EndDate.Value = d_end.Value.Date.ToShortDateString();
                         RptiewChronics.ReportSource = Rdet;
@@ -124,7 +124,7 @@ namespace MedicalServiceSystem
 
                         RPTChronicAll Rdet = new RPTChronicAll();
                         Rdet.DataSource = GetCent;
-                        Rdet.Locality.Value = db.Localities.Where(p => p.Id == LocalityId).ToList()[0].LocalityName;
+                        Rdet.Locality.Value = db.Localities.Where(p => p.Id == PLC.LocalityId).ToList()[0].LocalityName;
                         Rdet.StartDate.Value = d_start.Value.Date.ToShortDateString();
                         Rdet.EndDate.Value = d_end.Value.Date.ToShortDateString();
                         Rdet.ReportTitle.Value = rd_center.Text;
@@ -152,7 +152,7 @@ namespace MedicalServiceSystem
 
                         RPTChronicAll Rdet = new RPTChronicAll();
                         Rdet.DataSource = GetCent;
-                        Rdet.Locality.Value = db.Localities.Where(p => p.Id == LocalityId).ToList()[0].LocalityName;
+                        Rdet.Locality.Value = db.Localities.Where(p => p.Id == PLC.LocalityId).ToList()[0].LocalityName;
                         Rdet.StartDate.Value = d_start.Value.Date.ToShortDateString();
                         Rdet.EndDate.Value = d_end.Value.Date.ToShortDateString();
                         Rdet.ReportTitle.Value = rd_chronic.Text;
@@ -180,7 +180,7 @@ namespace MedicalServiceSystem
 
                         RPTChronicAll Rdet = new RPTChronicAll();
                         Rdet.DataSource = GetCent;
-                        Rdet.Locality.Value = db.Localities.Where(p => p.Id == LocalityId).ToList()[0].LocalityName;
+                        Rdet.Locality.Value = db.Localities.Where(p => p.Id == PLC.LocalityId).ToList()[0].LocalityName;
                         Rdet.StartDate.Value = d_start.Value.Date.ToShortDateString();
                         Rdet.EndDate.Value = d_end.Value.Date.ToShortDateString();
                         Rdet.ReportTitle.Value = RDLocal.Text;
@@ -209,7 +209,7 @@ namespace MedicalServiceSystem
 
                         RPTChronicAll Rdet = new RPTChronicAll();
                         Rdet.DataSource = GetCent;
-                        Rdet.Locality.Value = db.Localities.Where(p => p.Id == LocalityId).ToList()[0].LocalityName;
+                        Rdet.Locality.Value = db.Localities.Where(p => p.Id == PLC.LocalityId).ToList()[0].LocalityName;
                         Rdet.StartDate.Value = d_start.Value.Date.ToShortDateString();
                         Rdet.EndDate.Value = d_end.Value.Date.ToShortDateString();
                         Rdet.ReportTitle.Value = RDUsers.Text;
@@ -238,7 +238,7 @@ namespace MedicalServiceSystem
 
                         RPTChronicAll Rdet = new RPTChronicAll();
                         Rdet.DataSource = GetCent;
-                        Rdet.Locality.Value = db.Localities.Where(p => p.Id == LocalityId).ToList()[0].LocalityName;
+                        Rdet.Locality.Value = db.Localities.Where(p => p.Id == PLC.LocalityId).ToList()[0].LocalityName;
                         Rdet.StartDate.Value = d_start.Value.Date.ToShortDateString();
                         Rdet.EndDate.Value = d_end.Value.Date.ToShortDateString();
                         Rdet.ReportTitle.Value = RDUsers.Text;

@@ -59,14 +59,15 @@ namespace MedicalServiceSystem
         {
             using (dbContext db = new dbContext())
             {
-                var Tlist = db.ApproveMedicineTypes.Select(p => new { p.Id, p.ApproveType, p.Activated }).ToList();
+                var Tlist = db.RefuseMedicineDetails.Where(p=>p.RefuseId==ApproveId).ToList();
 
-                ApproveType.DataSource = Tlist;
-                ApproveType.DisplayMember = "ApproveType";
-                ApproveType.ValueMember = "Id";
-                ApproveType.SelectedIndex = -1;
-                ApproveType.DropDownListElement.AutoCompleteSuggest.SuggestMode = Telerik.WinControls.UI.SuggestMode.Contains;
-                GRDApproveType.DataSource = Tlist;
+                if (Tlist.Count > 0)
+                {
+                    for (int i = 0; i < Tlist.Count; i++)
+                    {
+                        GRDApproveType.Rows.Add(Tlist[i].Id, Tlist[i].RefuseReason);
+                    }
+                }
             }
         }
 

@@ -24,7 +24,6 @@ namespace ModelDB
         public DbSet<ReclaimMedicalReasonsList> ReclaimMedicalReasonsLists { get; set; }
         public DbSet<ReclaimMedicine> ReclaimMedicines { get; set; }
         public DbSet<ReclaimMedicineReasonsList> ReclaimMedicineReasonsLists { get; set; }
-        public DbSet<Subscriber> Subscribers { get; set; }
         public DbSet<SysForm> SysForms { get; set; }
         public DbSet<Systems> Systems { get; set; }
         public DbSet<Upload> Uploads { get; set; }
@@ -56,5 +55,8 @@ namespace ModelDB
         public DbSet<ChronicBooksDetails> ChronicBooksDetails { get; set; }
         public DbSet<ApproveMedicineType > ApproveMedicineTypes { get; set; }
         public DbSet<ChronicBookType> ChronicBookTypes { get; set; }
+        public DbSet<RefuseMedicine> RefuseMedicines { get; set; }
+        public DbSet<RefuseMedicineDetails> RefuseMedicineDetails { get; set; }
+        public DbSet<StopSubsriber> StopSubsribers { get; set; }
     }
 }

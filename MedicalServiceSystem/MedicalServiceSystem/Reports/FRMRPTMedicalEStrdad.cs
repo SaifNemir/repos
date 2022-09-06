@@ -73,7 +73,7 @@ namespace MedicalServiceSystem
             d_start.Value = PLC.getdate();
             d_end.Value = PLC.getdate();
             UserId = SystemSetting.LoginForm.Default.UserId;
-            LocalityId = SystemSetting.LoginForm.Default.LocalityId;
+            LocalityId = PLC.LocalityId;
             DrGrouping.SelectedIndex = 0;
             GroupingBy.SelectedIndex = 0;
             using (dbContext db = new dbContext())
@@ -109,7 +109,7 @@ namespace MedicalServiceSystem
                 ExcutingParty.DropDownListElement.AutoCompleteSuggest.SuggestMode = Telerik.WinControls.UI.SuggestMode.Contains;
                 ExcutingParty.SelectedIndex = -1;
                 BillStatus.DataSource = Enum.GetValues(typeof(ReclaimStatus));
-                StrRPT = "SELECT dbo.Subscribers.InsurNo AS Row6, dbo.Subscribers.InsurName AS Row7, dbo.Reclaims.ReclaimDate AS Row13, dbo.ReclaimMedicineReasonsLists.MedicineReason AS Row8,  dbo.ReclaimMedicalReasonsLists.MedicalReason AS Row10, CenterInfoes_3.CenterName AS Row9, CenterInfoes_2.CenterName AS Row15, CenterInfoes_1.CenterName AS Row16, dbo.CenterInfoes.CenterName AS Row18,  dbo.Reclaims.MedicalTotal AS Row11, dbo.Reclaims.MedicineTotal AS Row12, dbo.Reclaims.ReclaimTotal AS Row21,dbo.Reclaims.ReclaimStatus AS Row2 FROM dbo.Reclaims INNER JOIN dbo.ReclaimMedicineReasonsLists ON dbo.Reclaims.ReclaimMedicineResonId = dbo.ReclaimMedicineReasonsLists.Id INNER JOIN dbo.ReclaimMedicalReasonsLists ON dbo.Reclaims.ReclaimMedicalResonId = dbo.ReclaimMedicalReasonsLists.Id INNER JOIN dbo.CenterInfoes ON dbo.Reclaims.RefMedicineExcCenterId = dbo.CenterInfoes.Id INNER JOIN   dbo.CenterInfoes AS CenterInfoes_1 ON dbo.Reclaims.RefMedicineReqCenterId = CenterInfoes_1.Id INNER JOIN  dbo.CenterInfoes AS CenterInfoes_2 ON dbo.Reclaims.RefMedicalExcCenterId = CenterInfoes_2.Id INNER JOIN dbo.CenterInfoes AS CenterInfoes_3 ON dbo.Reclaims.RefMedicalReqCenterId = CenterInfoes_3.Id INNER JOIN dbo.Subscribers ON dbo.Reclaims.SubscriberId = dbo.Subscribers.Id WHERE " + LocalityName + "  (dbo.Reclaims.RowStatus <> 2)";
+                StrRPT = "SELECT dbo.Reclaims.InsurNo AS Row6, dbo.Reclaims.InsurName AS Row7, dbo.Reclaims.ReclaimDate AS Row13, dbo.ReclaimMedicineReasonsLists.MedicineReason AS Row8,  dbo.ReclaimMedicalReasonsLists.MedicalReason AS Row10, CenterInfoes_3.CenterName AS Row9, CenterInfoes_2.CenterName AS Row15, CenterInfoes_1.CenterName AS Row16, dbo.CenterInfoes.CenterName AS Row18,  dbo.Reclaims.MedicalTotal AS Row11, dbo.Reclaims.MedicineTotal AS Row12, dbo.Reclaims.ReclaimTotal AS Row21,convert(decimal,dbo.Reclaims.ReclaimStatus) AS Row2 FROM dbo.Reclaims INNER JOIN dbo.ReclaimMedicineReasonsLists ON dbo.Reclaims.ReclaimMedicineResonId = dbo.ReclaimMedicineReasonsLists.Id INNER JOIN dbo.ReclaimMedicalReasonsLists ON dbo.Reclaims.ReclaimMedicalResonId = dbo.ReclaimMedicalReasonsLists.Id INNER JOIN dbo.CenterInfoes ON dbo.Reclaims.RefMedicineExcCenterId = dbo.CenterInfoes.Id INNER JOIN   dbo.CenterInfoes AS CenterInfoes_1 ON dbo.Reclaims.RefMedicineReqCenterId = CenterInfoes_1.Id INNER JOIN  dbo.CenterInfoes AS CenterInfoes_2 ON dbo.Reclaims.RefMedicalExcCenterId = CenterInfoes_2.Id INNER JOIN dbo.CenterInfoes AS CenterInfoes_3 ON dbo.Reclaims.RefMedicalReqCenterId = CenterInfoes_3.Id  WHERE " + LocalityName + "  (dbo.Reclaims.RowStatus <> 2)";
             }
 
         }
@@ -135,7 +135,7 @@ namespace MedicalServiceSystem
                         Cursor = Cursors.WaitCursor;
                         RPTِEstrdadMedicineDetails Rdet = new RPTِEstrdadMedicineDetails();
                         Rdet.DataSource = GetDet;
-                        Rdet.Locality.Value = db.Localities.Where(p => p.Id == LocalityId).ToList()[0].LocalityName;
+                        Rdet.Locality.Value = db.Localities.Where(p => p.Id == PLC.LocalityId).ToList()[0].LocalityName;
                         Rdet.StartDate.Value = d_start.Value.Date.ToShortDateString();
                         Rdet.EndDate.Value = d_end.Value.Date.ToShortDateString();
                         Rdet.ApproveCnt.Value = db.Reclaims.Where(p => p.RowStatus != RowStatus.Deleted && (p.ReclaimDate >= d_start.Value && p.ReclaimDate <= d_end.Value)).ToList().Count.ToString();
@@ -182,11 +182,11 @@ namespace MedicalServiceSystem
                         Cursor = Cursors.WaitCursor;
                         RPTِEstrdadMedicineDetails Rdet = new RPTِEstrdadMedicineDetails();
                         Rdet.DataSource = GetDet;
-                        Rdet.Locality.Value = db.Localities.Where(p => p.Id == LocalityId).ToList()[0].LocalityName;
+                        Rdet.Locality.Value = db.Localities.Where(p => p.Id == PLC.LocalityId).ToList()[0].LocalityName;
                         Rdet.StartDate.Value = d_start.Value.Date.ToShortDateString();
                         Rdet.EndDate.Value = d_end.Value.Date.ToShortDateString();
                         Rdet.ReportTitle.Value = "تقرير تفاصيل التصاديق الدوائية" + " " + "حسب المشترك" + " " + GetDet[0].Row7;
-                        Rdet.ApproveCnt.Value = db.ApproveMedicines.Where(p => p.RowStatus != RowStatus.Deleted && (p.ApproveDate >= d_start.Value && p.ApproveDate <= d_end.Value) && p.Subscriber.InsurNo == card_no.Text).ToList().Count.ToString();
+                        Rdet.ApproveCnt.Value = db.ApproveMedicines.Where(p => p.RowStatus != RowStatus.Deleted && (p.ApproveDate >= d_start.Value && p.ApproveDate <= d_end.Value) && p.InsurNo == card_no.Text).ToList().Count.ToString();
                         //Rdet.DwaCNT.Value = GetDet.Count.ToString();
                         RptiewChronics.ReportSource = Rdet;
                         RptiewChronics.RefreshReport();
@@ -234,7 +234,7 @@ namespace MedicalServiceSystem
                         Cursor = Cursors.WaitCursor;
                         RPTِEstrdadMedicineDetails Rdet = new RPTِEstrdadMedicineDetails();
                         Rdet.DataSource = GetDet;
-                        Rdet.Locality.Value = db.Localities.Where(p => p.Id == LocalityId).ToList()[0].LocalityName;
+                        Rdet.Locality.Value = db.Localities.Where(p => p.Id == PLC.LocalityId).ToList()[0].LocalityName;
                         Rdet.StartDate.Value = d_start.Value.Date.ToShortDateString();
                         Rdet.EndDate.Value = d_end.Value.Date.ToShortDateString();
                         Rdet.ReportTitle.Value = "تقرير تفاصيل الاسترداد" + " " + "حسب سبب الاسترداد" + " " + ApproveReason.Text;
@@ -282,7 +282,7 @@ namespace MedicalServiceSystem
                         Cursor = Cursors.WaitCursor;
                         RPTِEstrdadMedicineDetails Rdet = new RPTِEstrdadMedicineDetails();
                         Rdet.DataSource = GetDet;
-                        Rdet.Locality.Value = db.Localities.Where(p => p.Id == LocalityId).ToList()[0].LocalityName;
+                        Rdet.Locality.Value = db.Localities.Where(p => p.Id == PLC.LocalityId).ToList()[0].LocalityName;
                         Rdet.StartDate.Value = d_start.Value.Date.ToShortDateString();
                         Rdet.EndDate.Value = d_end.Value.Date.ToShortDateString();
                         Rdet.ReportTitle.Value = "تقرير تفاصيل الاسترداد" + " " + "حسب نوع الوصفة" + " " + BillStatus.Text;
@@ -331,7 +331,7 @@ namespace MedicalServiceSystem
                         Cursor = Cursors.WaitCursor;
                         RPTِEstrdadMedicineDetails Rdet = new RPTِEstrdadMedicineDetails();
                         Rdet.DataSource = GetDet;
-                        Rdet.Locality.Value = db.Localities.Where(p => p.Id == LocalityId).ToList()[0].LocalityName;
+                        Rdet.Locality.Value = db.Localities.Where(p => p.Id == PLC.LocalityId).ToList()[0].LocalityName;
                         Rdet.StartDate.Value = d_start.Value.Date.ToShortDateString();
                         Rdet.EndDate.Value = d_end.Value.Date.ToShortDateString();
                         Rdet.ReportTitle.Value = "تقرير تفاصيل الاسترداد" + " " + "حسب الجهة المقدمة للخدمة" + " " + ExcutingParty.Text;
@@ -379,7 +379,7 @@ namespace MedicalServiceSystem
                         Cursor = Cursors.WaitCursor;
                         RPTِEstrdadMedicineDetails Rdet = new RPTِEstrdadMedicineDetails();
                         Rdet.DataSource = GetDet;
-                        Rdet.Locality.Value = db.Localities.Where(p => p.Id == LocalityId).ToList()[0].LocalityName;
+                        Rdet.Locality.Value = db.Localities.Where(p => p.Id == PLC.LocalityId).ToList()[0].LocalityName;
                         Rdet.StartDate.Value = d_start.Value.Date.ToShortDateString();
                         Rdet.EndDate.Value = d_end.Value.Date.ToShortDateString();
                         Rdet.ReportTitle.Value = "تقرير تفاصيل الاسترداد" + " " + "حسب الجهة المقدمة للخدمة" + " " + RequistingParty.Text;
@@ -418,11 +418,11 @@ namespace MedicalServiceSystem
                     string StrQuery = "";
                     if (DrGrouping.SelectedIndex == 0)
                     {
-                        StrQuery = "SELECT  dbo.Users.FullName AS Row6, COUNT(DISTINCT dbo.ReclaimMedicals.ReclaimId) AS Row2, SUM(dbo.ReclaimMedicals.ReclaimCost) AS Row12 FROM  dbo.ReclaimMedicals INNER JOIN dbo.Users ON dbo.ReclaimMedicals.UserId = dbo.Users.Id WHERE " + LocalityName2 + " (dbo.ReclaimMedicals.DateIn BETWEEN '" + d_start.Value + "' AND '" + d_end.Value + "') GROUP BY dbo.Users.FullName ORDER BY  " + OrderedBy; ;
+                        StrQuery = "SELECT  dbo.Users.FullName AS Row6,convert(decimal, COUNT(DISTINCT dbo.ReclaimMedicals.ReclaimId)) AS Row2, SUM(dbo.ReclaimMedicals.ReclaimCost) AS Row12,(select convert(decimal, COUNT(DISTINCT dbo.ReclaimMedicals.ReclaimId)) from dbo.ReclaimMedicals WHERE " + LocalityName2 + " ReclaimId in ( select Id from dbo.Reclaims Where dbo.Reclaims.ReclaimDate BETWEEN '" + d_start.Value + "' AND '" + d_end.Value + "' and Reclaims.RowStatus<>2)) as Row3 ,(select SUM(dbo.ReclaimMedicals.ReclaimCost) from dbo.ReclaimMedicals WHERE " + LocalityName2 + " ReclaimId in ( select Id from dbo.Reclaims Where dbo.Reclaims.ReclaimDate BETWEEN '" + d_start.Value + "' AND '" + d_end.Value + "' and Reclaims.RowStatus<>2)) as Row21  FROM  dbo.ReclaimMedicals INNER JOIN dbo.Users ON dbo.ReclaimMedicals.UserId = dbo.Users.Id WHERE " + LocalityName2 + " ReclaimId in ( select Id from dbo.Reclaims Where dbo.Reclaims.ReclaimDate BETWEEN '" + d_start.Value + "' AND '" + d_end.Value + "' and Reclaims.RowStatus<>2) GROUP BY dbo.Users.FullName ORDER BY  " + OrderedBy; ;
                     }
                     else
                     {
-                        StrQuery = "SELECT dbo.Localities.LocalityName AS Row7, dbo.Users.FullName AS Row6, COUNT(DISTINCT dbo.ReclaimMedicals.ReclaimId) AS Row2, SUM(dbo.ReclaimMedicals.ReclaimCost) AS Row12 FROM dbo.ReclaimMedicals INNER JOIN dbo.Users ON dbo.ReclaimMedicals.UserId = dbo.Users.Id INNER JOIN  dbo.Localities ON dbo.ReclaimMedicals.LocalityId = dbo.Localities.Id WHERE " + LocalityName2 + " (dbo.ReclaimMedicals.DateIn BETWEEN '" + d_start.Value + "' AND '" + d_end.Value + "') GROUP BY dbo.Users.FullName, dbo.Localities.LocalityName " + OrderedBy;
+                        StrQuery = "SELECT dbo.Localities.LocalityName AS Row7, dbo.Users.FullName AS Row6,convert(decimal, COUNT(DISTINCT dbo.ReclaimMedicals.ReclaimId)) AS Row2, SUM(dbo.ReclaimMedicals.ReclaimCost) AS Row12,(select convert(decimal, COUNT(DISTINCT dbo.ReclaimMedicals.ReclaimId)) from dbo.ReclaimMedicals WHERE " + LocalityName2 + " ReclaimId in ( select Id from dbo.Reclaims Where dbo.Reclaims.ReclaimDate BETWEEN '" + d_start.Value + "' AND '" + d_end.Value + "' and Reclaims.RowStatus<>2)) as Row3 ,(select SUM(dbo.ReclaimMedicals.ReclaimCost) from dbo.ReclaimMedicals WHERE " + LocalityName2 + " ReclaimId in ( select Id from dbo.Reclaims Where dbo.Reclaims.ReclaimDate BETWEEN '" + d_start.Value + "' AND '" + d_end.Value + "' and Reclaims.RowStatus<>2)) as Row21 FROM dbo.ReclaimMedicals INNER JOIN dbo.Users ON dbo.ReclaimMedicals.UserId = dbo.Users.Id INNER JOIN  dbo.Localities ON dbo.ReclaimMedicals.LocalityId = dbo.Localities.Id WHERE " + LocalityName2 + " ReclaimId in ( select Id from dbo.Reclaims Where dbo.Reclaims.ReclaimDate BETWEEN '" + d_start.Value + "' AND '" + d_end.Value + "' and Reclaims.RowStatus<>2) GROUP BY dbo.Users.FullName, dbo.Localities.LocalityName order by " + OrderedBy;
                     }
                     var GetCent = db.Database.SqlQuery<ReportForAll>(StrQuery).ToList();
                     if (GetCent.Count > 0)
@@ -431,7 +431,7 @@ namespace MedicalServiceSystem
                         {
                             RPTِEstrdadCount Rdet = new RPTِEstrdadCount();
                             Rdet.DataSource = GetCent;
-                            Rdet.Locality.Value = db.Localities.Where(p => p.Id == LocalityId).ToList()[0].LocalityName;
+                            Rdet.Locality.Value = db.Localities.Where(p => p.Id == PLC.LocalityId).ToList()[0].LocalityName;
                             Rdet.StartDate.Value = d_start.Value.Date.ToShortDateString();
                             Rdet.EndDate.Value = d_end.Value.Date.ToShortDateString();
                             Rdet.ReportTitle.Value = "عدد التصاديق حسب" + " " + RDUser.Text;
@@ -441,13 +441,17 @@ namespace MedicalServiceSystem
                             Rdet.Frequency1.Value = "التردد";
                             Rdet.textBox3.Value = "التكلفة";
                             Rdet.textBox7.Value = "التكلفة";
+                            Rdet.NisbahCost.Value = "نسبة التكلفة";
+                            Rdet.NisbahCostH.Value = "نسبة التكلفة";
+                            Rdet.NisbahFreq.Value = "نسبة التردد";
+                            Rdet.NisbahFreqH.Value = "نسبة التردد";
                             RptiewChronics.ReportSource = Rdet;
                         }
                         else
                         {
                             RPTِEstrdadCountLoc Rdet = new RPTِEstrdadCountLoc();
                             Rdet.DataSource = GetCent;
-                            Rdet.Locality.Value = db.Localities.Where(p => p.Id == LocalityId).ToList()[0].LocalityName;
+                            Rdet.Locality.Value = db.Localities.Where(p => p.Id == PLC.LocalityId).ToList()[0].LocalityName;
                             Rdet.StartDate.Value = d_start.Value.Date.ToShortDateString();
                             Rdet.EndDate.Value = d_end.Value.Date.ToShortDateString();
                             Rdet.ReportTitle.Value = "عدد التصاديق حسب" + " " + RDUser.Text;
@@ -457,6 +461,10 @@ namespace MedicalServiceSystem
                             Rdet.Frequency1.Value = "التردد";
                             Rdet.textBox3.Value = "التكلفة";
                             Rdet.textBox7.Value = "التكلفة";
+                            Rdet.NisbahCost.Value = "نسبة التكلفة";
+                            Rdet.NisbahCostH.Value = "نسبة التكلفة";
+                            Rdet.NisbahFreq.Value = "نسبة التردد";
+                            Rdet.NisbahFreqH.Value = "نسبة التردد";
                             RptiewChronics.ReportSource = Rdet;
                         }
                         RptiewChronics.RefreshReport();
@@ -485,7 +493,7 @@ namespace MedicalServiceSystem
             //        {
             //            RPTِEstrdadCount Rdet = new RPTِEstrdadCount();
             //            Rdet.DataSource = GetCent;
-            //            Rdet.Locality.Value = db.Localities.Where(p => p.Id == LocalityId).ToList()[0].LocalityName;
+            //            Rdet.Locality.Value = db.Localities.Where(p => p.Id == PLC.LocalityId).ToList()[0].LocalityName;
             //            Rdet.StartDate.Value = d_start.Value.Date.ToShortDateString();
             //            Rdet.EndDate.Value = d_end.Value.Date.ToShortDateString();
             //            Rdet.ReportTitle.Value = "عدد التصاديق حسب" + " " + RDDios.Text;
@@ -518,11 +526,11 @@ namespace MedicalServiceSystem
                     string StrQuery = "";
                     if (DrGrouping.SelectedIndex == 0)
                     {
-                        StrQuery = "SELECT  dbo.ReclaimMedicalReasonsLists.MedicalReason as Row6, COUNT(dbo.Reclaims.Id) AS Row2, SUM(dbo.Reclaims.MedicalTotal) AS Row12 FROM dbo.Reclaims INNER JOIN  dbo.ReclaimMedicalReasonsLists ON dbo.Reclaims.ReclaimMedicalResonId = dbo.ReclaimMedicalReasonsLists.Id WHERE " + LocalityName + " dbo.Reclaims.RowStatus<>2 and  dbo.Reclaims.ReclaimDate BETWEEN '" + d_start.Value + "' and '" + d_end.Value + "' and MedicalTotal>0  GROUP BY dbo.ReclaimMedicalReasonsLists.MedicalReason ORDER BY  " + OrderedBy;
+                        StrQuery = "SELECT  dbo.ReclaimMedicalReasonsLists.MedicalReason as Row6,convert(decimal, COUNT(dbo.Reclaims.Id)) AS Row2, SUM(dbo.Reclaims.MedicalTotal) AS Row12,(select convert(decimal, COUNT(dbo.Reclaims.Id)) from dbo.Reclaims WHERE " + LocalityName + " dbo.Reclaims.RowStatus<>2 and  dbo.Reclaims.ReclaimDate BETWEEN '" + d_start.Value + "' and '" + d_end.Value + "' and MedicalTotal>0 ) as Row3,(select SUM(dbo.Reclaims.MedicalTotal) from dbo.Reclaims WHERE " + LocalityName + " dbo.Reclaims.RowStatus<>2 and  dbo.Reclaims.ReclaimDate BETWEEN '" + d_start.Value + "' and '" + d_end.Value + "' and MedicalTotal>0 ) as Row21 FROM dbo.Reclaims INNER JOIN  dbo.ReclaimMedicalReasonsLists ON dbo.Reclaims.ReclaimMedicalResonId = dbo.ReclaimMedicalReasonsLists.Id WHERE " + LocalityName + " dbo.Reclaims.RowStatus<>2 and  dbo.Reclaims.ReclaimDate BETWEEN '" + d_start.Value + "' and '" + d_end.Value + "' and MedicalTotal>0  GROUP BY dbo.ReclaimMedicalReasonsLists.MedicalReason ORDER BY  " + OrderedBy;
                     }
                     else
                     {
-                        StrQuery = "SELECT  dbo.Localities.LocalityName AS Row7,  dbo.ReclaimMedicalReasonsLists.MedicalReason as Row6, COUNT(dbo.Reclaims.Id) AS Row2, SUM(dbo.Reclaims.MedicalTotal) AS Row12 FROM dbo.Reclaims INNER JOIN  dbo.ReclaimMedicalReasonsLists ON dbo.Reclaims.ReclaimMedicalResonId = dbo.ReclaimMedicalReasonsLists.Id INNER JOIN dbo.Localities ON dbo.Reclaims.LocalityId = dbo.Localities.Id  WHERE " + LocalityName + " dbo.Reclaims.RowStatus<>2 and  dbo.Reclaims.ReclaimDate BETWEEN '" + d_start.Value + "' and '" + d_end.Value + "'   and MedicalTotal>0    GROUP BY dbo.ReclaimMedicalReasonsLists.MedicalReason, dbo.Localities.LocalityName   ORDER BY  " + OrderedBy;
+                        StrQuery = "SELECT  dbo.Localities.LocalityName AS Row7,  dbo.ReclaimMedicalReasonsLists.MedicalReason as Row6, convert(decimal, COUNT(dbo.Reclaims.Id)) AS Row2, SUM(dbo.Reclaims.MedicalTotal) AS Row12,(select convert(decimal, COUNT(dbo.Reclaims.Id)) from dbo.Reclaims WHERE " + LocalityName + " dbo.Reclaims.RowStatus<>2 and  dbo.Reclaims.ReclaimDate BETWEEN '" + d_start.Value + "' and '" + d_end.Value + "' and MedicalTotal>0 ) as Row3,(select SUM(dbo.Reclaims.MedicalTotal) from dbo.Reclaims WHERE " + LocalityName + " dbo.Reclaims.RowStatus<>2 and  dbo.Reclaims.ReclaimDate BETWEEN '" + d_start.Value + "' and '" + d_end.Value + "' and MedicalTotal>0 ) as Row21 FROM dbo.Reclaims INNER JOIN  dbo.ReclaimMedicalReasonsLists ON dbo.Reclaims.ReclaimMedicalResonId = dbo.ReclaimMedicalReasonsLists.Id INNER JOIN dbo.Localities ON dbo.Reclaims.LocalityId = dbo.Localities.Id  WHERE " + LocalityName + " dbo.Reclaims.RowStatus<>2 and  dbo.Reclaims.ReclaimDate BETWEEN '" + d_start.Value + "' and '" + d_end.Value + "'   and MedicalTotal>0    GROUP BY dbo.ReclaimMedicalReasonsLists.MedicalReason, dbo.Localities.LocalityName   ORDER BY  " + OrderedBy;
                     }
                     var GetCent = db.Database.SqlQuery<ReportForAll>(StrQuery).ToList();
                     if (GetCent.Count > 0)
@@ -531,7 +539,7 @@ namespace MedicalServiceSystem
                         {
                             RPTِEstrdadCount Rdet = new RPTِEstrdadCount();
                             Rdet.DataSource = GetCent;
-                            Rdet.Locality.Value = db.Localities.Where(p => p.Id == LocalityId).ToList()[0].LocalityName;
+                            Rdet.Locality.Value = db.Localities.Where(p => p.Id == PLC.LocalityId).ToList()[0].LocalityName;
                             Rdet.StartDate.Value = d_start.Value.Date.ToShortDateString();
                             Rdet.EndDate.Value = d_end.Value.Date.ToShortDateString();
                             Rdet.ReportTitle.Value = "عدد التصاديق حسب" + " " + RDpharm.Text;
@@ -541,13 +549,17 @@ namespace MedicalServiceSystem
                             Rdet.Frequency1.Value = "التردد";
                             Rdet.textBox3.Value = "التكلفة";
                             Rdet.textBox7.Value = "التكلفة";
+                            Rdet.NisbahCost.Value = "نسبة التكلفة";
+                            Rdet.NisbahCostH.Value = "نسبة التكلفة";
+                            Rdet.NisbahFreq.Value = "نسبة التردد";
+                            Rdet.NisbahFreqH.Value = "نسبة التردد";
                             RptiewChronics.ReportSource = Rdet;
                         }
                         else 
                         {
                             RPTِEstrdadCountLoc Rdet = new RPTِEstrdadCountLoc();
                             Rdet.DataSource = GetCent;
-                            Rdet.Locality.Value = db.Localities.Where(p => p.Id == LocalityId).ToList()[0].LocalityName;
+                            Rdet.Locality.Value = db.Localities.Where(p => p.Id == PLC.LocalityId).ToList()[0].LocalityName;
                             Rdet.StartDate.Value = d_start.Value.Date.ToShortDateString();
                             Rdet.EndDate.Value = d_end.Value.Date.ToShortDateString();
                             Rdet.ReportTitle.Value = "عدد التصاديق حسب" + " " + RDpharm.Text;
@@ -557,6 +569,10 @@ namespace MedicalServiceSystem
                             Rdet.Frequency1.Value = "التردد";
                             Rdet.textBox3.Value = "التكلفة";
                             Rdet.textBox7.Value = "التكلفة";
+                            Rdet.NisbahCost.Value = "نسبة التكلفة";
+                            Rdet.NisbahCostH.Value = "نسبة التكلفة";
+                            Rdet.NisbahFreq.Value = "نسبة التردد";
+                            Rdet.NisbahFreqH.Value = "نسبة التردد";
                             RptiewChronics.ReportSource = Rdet;
                         }
 
@@ -585,11 +601,11 @@ namespace MedicalServiceSystem
                     string StrQuery = "";
                     if (DrGrouping.SelectedIndex == 0)
                     {
-                        StrQuery = "SELECT  dbo.CenterInfoes.CenterName AS Row6, COUNT(dbo.Reclaims.Id) AS Row2, SUM(dbo.Reclaims.MedicalTotal) AS Row12 FROM dbo.Reclaims INNER JOIN  dbo.CenterInfoes ON dbo.Reclaims.RefMedicalExcCenterId = dbo.CenterInfoes.Id WHERE " + LocalityName + " dbo.Reclaims.ReclaimDate BETWEEN '" + d_start.Value + "' and '" + d_end.Value + "' and dbo.Reclaims.RowStatus<>2  and MedicalTotal>0  GROUP BY dbo.CenterInfoes.CenterName ORDER BY  " + OrderedBy;
+                        StrQuery = "SELECT  dbo.CenterInfoes.CenterName AS Row6, convert(decimal, COUNT(dbo.Reclaims.Id)) AS Row2, SUM(dbo.Reclaims.MedicalTotal) AS Row12,(select convert(decimal, COUNT(dbo.Reclaims.Id)) from dbo.Reclaims WHERE " + LocalityName + " dbo.Reclaims.RowStatus<>2 and  dbo.Reclaims.ReclaimDate BETWEEN '" + d_start.Value + "' and '" + d_end.Value + "' and MedicalTotal>0 ) as Row3,(select SUM(dbo.Reclaims.MedicalTotal) from dbo.Reclaims WHERE " + LocalityName + " dbo.Reclaims.RowStatus<>2 and  dbo.Reclaims.ReclaimDate BETWEEN '" + d_start.Value + "' and '" + d_end.Value + "' and MedicalTotal>0 ) as Row21 FROM dbo.Reclaims INNER JOIN  dbo.CenterInfoes ON dbo.Reclaims.RefMedicalExcCenterId = dbo.CenterInfoes.Id WHERE " + LocalityName + " dbo.Reclaims.ReclaimDate BETWEEN '" + d_start.Value + "' and '" + d_end.Value + "' and dbo.Reclaims.RowStatus<>2  and MedicalTotal>0  GROUP BY dbo.CenterInfoes.CenterName ORDER BY  " + OrderedBy;
                     }
                     else
                     {
-                        StrQuery = "SELECT dbo.Localities.LocalityName AS Row7,dbo.CenterInfoes.CenterName AS Row6, COUNT(dbo.Reclaims.Id) AS Row2, SUM(dbo.Reclaims.MedicalTotal) AS Row12 FROM dbo.Reclaims INNER JOIN  dbo.CenterInfoes ON dbo.Reclaims.RefMedicalExcCenterId = dbo.CenterInfoes.Id INNER JOIN dbo.Localities ON dbo.Reclaims.LocalityId = dbo.Localities.Id   WHERE " + LocalityName + " dbo.Reclaims.ReclaimDate BETWEEN '" + d_start.Value + "' and '" + d_end.Value + "' and dbo.Reclaims.RowStatus<>2 and MedicalTotal>0  GROUP BY dbo.CenterInfoes.CenterName, dbo.Localities.LocalityName ORDER BY  " + OrderedBy;
+                        StrQuery = "SELECT dbo.Localities.LocalityName AS Row7,dbo.CenterInfoes.CenterName AS Row6,convert(decimal, COUNT(dbo.Reclaims.Id)) AS Row2, SUM(dbo.Reclaims.MedicalTotal) AS Row12,(select convert(decimal, COUNT(dbo.Reclaims.Id)) from dbo.Reclaims WHERE " + LocalityName + " dbo.Reclaims.RowStatus<>2 and  dbo.Reclaims.ReclaimDate BETWEEN '" + d_start.Value + "' and '" + d_end.Value + "' and MedicalTotal>0 ) as Row3,(select SUM(dbo.Reclaims.MedicalTotal) from dbo.Reclaims WHERE " + LocalityName + " dbo.Reclaims.RowStatus<>2 and  dbo.Reclaims.ReclaimDate BETWEEN '" + d_start.Value + "' and '" + d_end.Value + "' and MedicalTotal>0 ) as Row21 FROM dbo.Reclaims INNER JOIN  dbo.CenterInfoes ON dbo.Reclaims.RefMedicalExcCenterId = dbo.CenterInfoes.Id INNER JOIN dbo.Localities ON dbo.Reclaims.LocalityId = dbo.Localities.Id   WHERE " + LocalityName + " dbo.Reclaims.ReclaimDate BETWEEN '" + d_start.Value + "' and '" + d_end.Value + "' and dbo.Reclaims.RowStatus<>2 and MedicalTotal>0  GROUP BY dbo.CenterInfoes.CenterName, dbo.Localities.LocalityName ORDER BY  " + OrderedBy;
                     }
                     var GetCent = db.Database.SqlQuery<ReportForAll>(StrQuery).ToList();
                     if (GetCent.Count > 0)
@@ -598,7 +614,7 @@ namespace MedicalServiceSystem
                         {
                             RPTِEstrdadCount Rdet = new RPTِEstrdadCount();
                             Rdet.DataSource = GetCent;
-                            Rdet.Locality.Value = db.Localities.Where(p => p.Id == LocalityId).ToList()[0].LocalityName;
+                            Rdet.Locality.Value = db.Localities.Where(p => p.Id == PLC.LocalityId).ToList()[0].LocalityName;
                             Rdet.StartDate.Value = d_start.Value.Date.ToShortDateString();
                             Rdet.EndDate.Value = d_end.Value.Date.ToShortDateString();
                             Rdet.ReportTitle.Value = "عدد تصاديق الاسترداد حسب" + " " + RDPharamcy.Text;
@@ -608,13 +624,17 @@ namespace MedicalServiceSystem
                             Rdet.Frequency1.Value = "التردد";
                             Rdet.textBox3.Value = "التكلفة";
                             Rdet.textBox7.Value = "التكلفة";
+                            Rdet.NisbahCost.Value = "نسبة التكلفة";
+                            Rdet.NisbahCostH.Value = "نسبة التكلفة";
+                            Rdet.NisbahFreq.Value = "نسبة التردد";
+                            Rdet.NisbahFreqH.Value = "نسبة التردد";
                             RptiewChronics.ReportSource = Rdet;
                         }
                         else
                         {
                             RPTِEstrdadCountLoc Rdet = new RPTِEstrdadCountLoc();
                             Rdet.DataSource = GetCent;
-                            Rdet.Locality.Value = db.Localities.Where(p => p.Id == LocalityId).ToList()[0].LocalityName;
+                            Rdet.Locality.Value = db.Localities.Where(p => p.Id == PLC.LocalityId).ToList()[0].LocalityName;
                             Rdet.StartDate.Value = d_start.Value.Date.ToShortDateString();
                             Rdet.EndDate.Value = d_end.Value.Date.ToShortDateString();
                             Rdet.ReportTitle.Value = "عدد تصاديق الاسترداد حسب" + " " + RDPharamcy.Text;
@@ -624,6 +644,11 @@ namespace MedicalServiceSystem
                             Rdet.Frequency1.Value = "التردد";
                             Rdet.textBox3.Value = "التكلفة";
                             Rdet.textBox7.Value = "التكلفة";
+
+                            Rdet.NisbahCost.Value = "نسبة التكلفة";
+                            Rdet.NisbahCostH.Value = "نسبة التكلفة";
+                            Rdet.NisbahFreq.Value = "نسبة التردد";
+                            Rdet.NisbahFreqH.Value = "نسبة التردد";
                             RptiewChronics.ReportSource = Rdet;
                         }
                         RptiewChronics.RefreshReport();
@@ -650,11 +675,11 @@ namespace MedicalServiceSystem
                     string StrQuery = "";
                     if (DrGrouping.SelectedIndex == 0)
                     {
-                        StrQuery = "SELECT  dbo.CenterInfoes.CenterName AS Row6, COUNT(dbo.Reclaims.Id) AS Row2, SUM(dbo.Reclaims.MedicalTotal) AS Row12 FROM dbo.Reclaims INNER JOIN  dbo.CenterInfoes ON dbo.Reclaims.RefMedicalReqCenterId = dbo.CenterInfoes.Id WHERE " + LocalityName + " dbo.Reclaims.ReclaimDate BETWEEN '" + d_start.Value + "' and '" + d_end.Value + "' and dbo.Reclaims.RowStatus<>2 and MedicalTotal>0 GROUP BY dbo.CenterInfoes.CenterName ORDER BY  " + OrderedBy;
+                        StrQuery = "SELECT  dbo.CenterInfoes.CenterName AS Row6, convert(decimal, COUNT(dbo.Reclaims.Id)) AS Row2, SUM(dbo.Reclaims.MedicalTotal) AS Row12,(select convert(decimal, COUNT(dbo.Reclaims.Id)) from dbo.Reclaims WHERE " + LocalityName + " dbo.Reclaims.RowStatus<>2 and  dbo.Reclaims.ReclaimDate BETWEEN '" + d_start.Value + "' and '" + d_end.Value + "' and MedicalTotal>0 ) as Row3,(select SUM(dbo.Reclaims.MedicalTotal) from dbo.Reclaims WHERE " + LocalityName + " dbo.Reclaims.RowStatus<>2 and  dbo.Reclaims.ReclaimDate BETWEEN '" + d_start.Value + "' and '" + d_end.Value + "' and MedicalTotal>0 ) as Row21 FROM dbo.Reclaims INNER JOIN  dbo.CenterInfoes ON dbo.Reclaims.RefMedicalReqCenterId = dbo.CenterInfoes.Id WHERE " + LocalityName + " dbo.Reclaims.ReclaimDate BETWEEN '" + d_start.Value + "' and '" + d_end.Value + "' and dbo.Reclaims.RowStatus<>2 and MedicalTotal>0 GROUP BY dbo.CenterInfoes.CenterName ORDER BY  " + OrderedBy;
                     }
                     else
                     {
-                        StrQuery = "SELECT dbo.Localities.LocalityName AS Row7,  dbo.CenterInfoes.CenterName AS Row6, COUNT(dbo.Reclaims.Id) AS Row2, SUM(dbo.Reclaims.MedicalTotal) AS Row12 FROM dbo.Reclaims INNER JOIN  dbo.CenterInfoes ON dbo.Reclaims.RefMedicalReqCenterId = dbo.CenterInfoes.Id INNER JOIN dbo.Localities ON dbo.Reclaims.LocalityId = dbo.Localities.Id    WHERE " + LocalityName + " dbo.Reclaims.ReclaimDate BETWEEN '" + d_start.Value + "' and '" + d_end.Value + "' and dbo.Reclaims.RowStatus<>2 and MedicalTotal>0 GROUP BY dbo.CenterInfoes.CenterName, dbo.Localities.LocalityName  ORDER BY  " + OrderedBy;
+                        StrQuery = "SELECT dbo.Localities.LocalityName AS Row7,  dbo.CenterInfoes.CenterName AS Row6, convert(decimal, COUNT(dbo.Reclaims.Id)) AS Row2, SUM(dbo.Reclaims.MedicalTotal) AS Row12,(select convert(decimal, COUNT(dbo.Reclaims.Id)) from dbo.Reclaims WHERE " + LocalityName + " dbo.Reclaims.RowStatus<>2 and  dbo.Reclaims.ReclaimDate BETWEEN '" + d_start.Value + "' and '" + d_end.Value + "' and MedicalTotal>0 ) as Row3,(select SUM(dbo.Reclaims.MedicalTotal) from dbo.Reclaims WHERE " + LocalityName + " dbo.Reclaims.RowStatus<>2 and  dbo.Reclaims.ReclaimDate BETWEEN '" + d_start.Value + "' and '" + d_end.Value + "' and MedicalTotal>0 ) as Row21 FROM dbo.Reclaims INNER JOIN  dbo.CenterInfoes ON dbo.Reclaims.RefMedicalReqCenterId = dbo.CenterInfoes.Id INNER JOIN dbo.Localities ON dbo.Reclaims.LocalityId = dbo.Localities.Id    WHERE " + LocalityName + " dbo.Reclaims.ReclaimDate BETWEEN '" + d_start.Value + "' and '" + d_end.Value + "' and dbo.Reclaims.RowStatus<>2 and MedicalTotal>0 GROUP BY dbo.CenterInfoes.CenterName, dbo.Localities.LocalityName  ORDER BY  " + OrderedBy;
                     }
                     var GetCent = db.Database.SqlQuery<ReportForAll>(StrQuery).ToList();
                     if (GetCent.Count > 0)
@@ -663,7 +688,7 @@ namespace MedicalServiceSystem
                         {
                             RPTِEstrdadCount Rdet = new RPTِEstrdadCount();
                             Rdet.DataSource = GetCent;
-                            Rdet.Locality.Value = db.Localities.Where(p => p.Id == LocalityId).ToList()[0].LocalityName;
+                            Rdet.Locality.Value = db.Localities.Where(p => p.Id == PLC.LocalityId).ToList()[0].LocalityName;
                             Rdet.StartDate.Value = d_start.Value.Date.ToShortDateString();
                             Rdet.EndDate.Value = d_end.Value.Date.ToShortDateString();
                             Rdet.ReportTitle.Value = "عدد تصاديق الاسترداد حسب" + " " + RDCenter.Text;
@@ -673,13 +698,17 @@ namespace MedicalServiceSystem
                             Rdet.Frequency1.Value = "التردد";
                             Rdet.textBox3.Value = "التكلفة";
                             Rdet.textBox7.Value = "التكلفة";
+                            Rdet.NisbahCost.Value = "نسبة التكلفة";
+                            Rdet.NisbahCostH.Value = "نسبة التكلفة";
+                            Rdet.NisbahFreq.Value = "نسبة التردد";
+                            Rdet.NisbahFreqH.Value = "نسبة التردد";
                             RptiewChronics.ReportSource = Rdet;
                         }
                         else
                         {
                             RPTِEstrdadCountLoc Rdet = new RPTِEstrdadCountLoc();
                             Rdet.DataSource = GetCent;
-                            Rdet.Locality.Value = db.Localities.Where(p => p.Id == LocalityId).ToList()[0].LocalityName;
+                            Rdet.Locality.Value = db.Localities.Where(p => p.Id == PLC.LocalityId).ToList()[0].LocalityName;
                             Rdet.StartDate.Value = d_start.Value.Date.ToShortDateString();
                             Rdet.EndDate.Value = d_end.Value.Date.ToShortDateString();
                             Rdet.ReportTitle.Value = "عدد تصاديق الاسترداد حسب" + " " + RDCenter.Text;
@@ -689,6 +718,10 @@ namespace MedicalServiceSystem
                             Rdet.Frequency1.Value = "التردد";
                             Rdet.textBox3.Value = "التكلفة";
                             Rdet.textBox7.Value = "التكلفة";
+                            Rdet.NisbahCost.Value = "نسبة التكلفة";
+                            Rdet.NisbahCostH.Value = "نسبة التكلفة";
+                            Rdet.NisbahFreq.Value = "نسبة التردد";
+                            Rdet.NisbahFreqH.Value = "نسبة التردد";
                             RptiewChronics.ReportSource = Rdet;
                         }
                         RptiewChronics.RefreshReport();
@@ -717,7 +750,7 @@ namespace MedicalServiceSystem
             //        {
             //            RPTِEstrdadCount Rdet = new RPTِEstrdadCount();
             //            Rdet.DataSource = GetCent;
-            //            Rdet.Locality.Value = db.Localities.Where(p => p.Id == LocalityId).ToList()[0].LocalityName;
+            //            Rdet.Locality.Value = db.Localities.Where(p => p.Id == PLC.LocalityId).ToList()[0].LocalityName;
             //            Rdet.StartDate.Value = d_start.Value.Date.ToShortDateString();
             //            Rdet.EndDate.Value = d_end.Value.Date.ToShortDateString();
             //            Rdet.ReportTitle.Value = "عدد التصاديق حسب" + " " + RDAppType.Text;
@@ -750,11 +783,11 @@ namespace MedicalServiceSystem
                     string StrQuery = "";
                     if (DrGrouping.SelectedIndex == 0)
                     {
-                        StrQuery = "SELECT  dbo.Subscribers.Server AS Row6, COUNT(dbo.Reclaims.Id) AS Row2, SUM(dbo.Reclaims.ReclaimCost) AS Row12 FROM  dbo.Reclaims INNER JOIN dbo.Subscribers ON dbo.Reclaims.SubscriberId = dbo.Subscribers.Id  WHERE " + LocalityName + " dbo.Reclaims.ReclaimDate BETWEEN '" + d_start.Value + "' and '" + d_end.Value + "' and dbo.Reclaims.RowStatus<>2  GROUP BY dbo.Subscribers.Server ORDER BY  " + OrderedBy;
+                        StrQuery = "SELECT  dbo.Reclaims.Server AS Row6, convert(decimal, COUNT(dbo.Reclaims.Id)) AS Row2, SUM(dbo.Reclaims.ReclaimTotal) AS Row12,(select convert(decimal, COUNT(dbo.Reclaims.Id)) from dbo.Reclaims WHERE " + LocalityName + " dbo.Reclaims.RowStatus<>2 and  dbo.Reclaims.ReclaimDate BETWEEN '" + d_start.Value + "' and '" + d_end.Value + "' and ReclaimTotal>0 ) as Row3,(select SUM(dbo.Reclaims.ReclaimTotal) from dbo.Reclaims WHERE " + LocalityName + " dbo.Reclaims.RowStatus<>2 and  dbo.Reclaims.ReclaimDate BETWEEN '" + d_start.Value + "' and '" + d_end.Value + "' and ReclaimTotal>0 ) as Row21 FROM  dbo.Reclaims WHERE " + LocalityName + " dbo.Reclaims.ReclaimDate BETWEEN '" + d_start.Value + "' and '" + d_end.Value + "' and dbo.Reclaims.RowStatus<>2 and dbo.Reclaims.ReclaimTotal>0 GROUP BY dbo.Reclaims.Server ORDER BY  " + OrderedBy;
                     }
                     else
                     {
-                        StrQuery = "SELECT  dbo.Localities.LocalityName AS Row7,   dbo.Subscribers.Server AS Row6, COUNT(dbo.Reclaims.Id) AS Row2, SUM(dbo.Reclaims.ReclaimCost) AS Row12 FROM  dbo.Reclaims INNER JOIN dbo.Subscribers ON dbo.Reclaims.SubscriberId = dbo.Subscribers.Id INNER JOIN dbo.Localities ON dbo.Reclaims.LocalityId = dbo.Localities.Id WHERE " + LocalityName + " dbo.Reclaims.ReclaimDate BETWEEN '" + d_start.Value + "' and '" + d_end.Value + "' and dbo.Reclaims.RowStatus<>2 GROUP BY dbo.Subscribers.Server, dbo.Localities.LocalityName ORDER BY  " + OrderedBy;
+                        StrQuery = "SELECT  dbo.Localities.LocalityName AS Row7,   dbo.Reclaims.Server AS Row6, convert(decimal, COUNT(dbo.Reclaims.Id)) AS Row2, SUM(dbo.Reclaims.ReclaimTotal) AS Row12,(select convert(decimal, COUNT(dbo.Reclaims.Id)) from dbo.Reclaims WHERE " + LocalityName + " dbo.Reclaims.RowStatus<>2 and  dbo.Reclaims.ReclaimDate BETWEEN '" + d_start.Value + "' and '" + d_end.Value + "' and ReclaimTotal>0 ) as Row3,(select SUM(dbo.Reclaims.ReclaimTotal) from dbo.Reclaims WHERE " + LocalityName + " dbo.Reclaims.RowStatus<>2 and  dbo.Reclaims.ReclaimDate BETWEEN '" + d_start.Value + "' and '" + d_end.Value + "' and ReclaimTotal>0 ) as Row21 FROM  dbo.Reclaims INNER JOIN dbo.Localities ON dbo.Reclaims.LocalityId = dbo.Localities.Id WHERE " + LocalityName + " dbo.Reclaims.ReclaimDate BETWEEN '" + d_start.Value + "' and '" + d_end.Value + "' and dbo.Reclaims.RowStatus<>2 and dbo.Reclaims.ReclaimTotal>0 GROUP BY dbo.Reclaims.Server, dbo.Localities.LocalityName ORDER BY  " + OrderedBy;
                     }
                     var GetCent = db.Database.SqlQuery<ReportForAll>(StrQuery).ToList();
                     if (GetCent.Count > 0)
@@ -763,7 +796,7 @@ namespace MedicalServiceSystem
                         {
                             RPTِEstrdadCount Rdet = new RPTِEstrdadCount();
                             Rdet.DataSource = GetCent;
-                            Rdet.Locality.Value = db.Localities.Where(p => p.Id == LocalityId).ToList()[0].LocalityName;
+                            Rdet.Locality.Value = db.Localities.Where(p => p.Id == PLC.LocalityId).ToList()[0].LocalityName;
                             Rdet.StartDate.Value = d_start.Value.Date.ToShortDateString();
                             Rdet.EndDate.Value = d_end.Value.Date.ToShortDateString();
                             Rdet.ReportTitle.Value = "عدد التصاديق حسب" + " " + RDServerCNT.Text;
@@ -773,13 +806,17 @@ namespace MedicalServiceSystem
                             Rdet.Frequency1.Value = "التردد";
                             Rdet.textBox3.Value = "التكلفة";
                             Rdet.textBox7.Value = "التكلفة";
+                            Rdet.NisbahCost.Value = "نسبة التكلفة";
+                            Rdet.NisbahCostH.Value = "نسبة التكلفة";
+                            Rdet.NisbahFreq.Value = "نسبة التردد";
+                            Rdet.NisbahFreqH.Value = "نسبة التردد";
                             RptiewChronics.ReportSource = Rdet;
                         }
                         else
                         {
                             RPTِEstrdadCountLoc Rdet = new RPTِEstrdadCountLoc();
                             Rdet.DataSource = GetCent;
-                            Rdet.Locality.Value = db.Localities.Where(p => p.Id == LocalityId).ToList()[0].LocalityName;
+                            Rdet.Locality.Value = db.Localities.Where(p => p.Id == PLC.LocalityId).ToList()[0].LocalityName;
                             Rdet.StartDate.Value = d_start.Value.Date.ToShortDateString();
                             Rdet.EndDate.Value = d_end.Value.Date.ToShortDateString();
                             Rdet.ReportTitle.Value = "عدد التصاديق حسب" + " " + RDServerCNT.Text;
@@ -789,6 +826,10 @@ namespace MedicalServiceSystem
                             Rdet.Frequency1.Value = "التردد";
                             Rdet.textBox3.Value = "التكلفة";
                             Rdet.textBox7.Value = "التكلفة";
+                            Rdet.NisbahCost.Value = "نسبة التكلفة";
+                            Rdet.NisbahCostH.Value = "نسبة التكلفة";
+                            Rdet.NisbahFreq.Value = "نسبة التردد";
+                            Rdet.NisbahFreqH.Value = "نسبة التردد";
                             RptiewChronics.ReportSource = Rdet;
                         }
                         RptiewChronics.RefreshReport();
@@ -815,11 +856,11 @@ namespace MedicalServiceSystem
                     string StrQuery = "";
                     if (DrGrouping.SelectedIndex == 0)
                     {
-                        StrQuery = "SELECT  dbo.MedicalServices.ServiceAName AS Row6, Sum(dbo.ReclaimMedicals.Quantity) AS Row2, SUM(dbo.ReclaimMedicals.ReclaimCost) AS Row12 FROM dbo.ReclaimMedicals INNER JOIN  dbo.MedicalServices ON dbo.ReclaimMedicals.MedicalId = dbo.MedicalServices.Id WHERE " + LocalityName + " (dbo.ReclaimMedicals.DateIn BETWEEN '" + d_start.Value + "' AND '" + d_end.Value + "') and MedicalServices.ListType=0  GROUP BY dbo.MedicalServices.ServiceAName ORDER BY "+OrderedBy;
+                        StrQuery = "SELECT  dbo.MedicalServices.ServiceAName AS Row6, Sum(Convert(decimal,dbo.ReclaimMedicals.Quantity)) AS Row2, SUM(dbo.ReclaimMedicals.ReclaimCost) As Row12,(select SUM(Convert(decimal,dbo.ReclaimMedicals.Quantity)) from dbo.ReclaimMedicals WHERE  " + LocalityName1 + " ReclaimId in ( select Id from dbo.Reclaims Where dbo.Reclaims.ReclaimDate BETWEEN '" + d_start.Value + "' AND '" + d_end.Value + "' and Reclaims.RowStatus<>2)) as Row3,(select SUM(dbo.ReclaimMedicals.ReclaimCost) from dbo.ReclaimMedicals WHERE  " + LocalityName1 + "  ReclaimId in ( select Id from dbo.Reclaims Where dbo.Reclaims.ReclaimDate BETWEEN '" + d_start.Value + "' AND '" + d_end.Value + "' and Reclaims.RowStatus<>2)) as Row21 FROM dbo.ReclaimMedicals INNER JOIN  dbo.MedicalServices ON dbo.ReclaimMedicals.MedicalId = dbo.MedicalServices.Id WHERE " + LocalityName2 + " ReclaimId in ( select Id from dbo.Reclaims Where dbo.Reclaims.ReclaimDate BETWEEN '" + d_start.Value + "' AND '" + d_end.Value + "' and Reclaims.RowStatus<>2) and MedicalServices.ListType=0  GROUP BY dbo.MedicalServices.ServiceAName ORDER BY "+OrderedBy;
                     }
                     else
                     {
-                        StrQuery = "SELECT   dbo.Localities.LocalityName AS Row7,  dbo.MedicalServices.ServiceAName AS Row6, Sum(dbo.ReclaimMedicals.Quantity) AS Row2, SUM(dbo.ReclaimMedicals.ReclaimCost) AS Row12 FROM dbo.ReclaimMedicals INNER JOIN  dbo.MedicalServices ON dbo.ReclaimMedicals.MedicalId = dbo.MedicalServices.Id   INNER JOIN dbo.Localities ON dbo.ReclaimMedicals.LocalityId = dbo.Localities.Id WHERE " + LocalityName + " (dbo.ReclaimMedicals.DateIn BETWEEN '" + d_start.Value + "' AND '" + d_end.Value + "')  and MedicalServices.ListType=0 GROUP BY dbo.MedicalServices.ServiceAName , dbo.Localities.LocalityName ORDER BY " + OrderedBy; ;
+                        StrQuery = "SELECT   dbo.Localities.LocalityName AS Row7,  dbo.MedicalServices.ServiceAName AS Row6, Sum(Convert(decimal,dbo.ReclaimMedicals.Quantity)) AS Row2, SUM(dbo.ReclaimMedicals.ReclaimCost) As Row12,(select SUM(Convert(decimal,dbo.ReclaimMedicals.Quantity)) from dbo.ReclaimMedicals WHERE  " + LocalityName1 + "  ReclaimId in ( select Id from dbo.Reclaims Where dbo.Reclaims.ReclaimDate BETWEEN '" + d_start.Value + "' AND '" + d_end.Value + "' and Reclaims.RowStatus<>2)) as Row3,(select SUM(dbo.ReclaimMedicals.ReclaimCost) from dbo.ReclaimMedicals WHERE  " + LocalityName1 + "  ReclaimId in ( select Id from dbo.Reclaims Where dbo.Reclaims.ReclaimDate BETWEEN '" + d_start.Value + "' AND '" + d_end.Value + "' and Reclaims.RowStatus<>2)) as Row21 FROM dbo.ReclaimMedicals INNER JOIN  dbo.MedicalServices ON dbo.ReclaimMedicals.MedicalId = dbo.MedicalServices.Id   INNER JOIN dbo.Localities ON dbo.ReclaimMedicals.LocalityId = dbo.Localities.Id WHERE " + LocalityName2 + " ReclaimId in ( select Id from dbo.Reclaims Where dbo.Reclaims.ReclaimDate BETWEEN '" + d_start.Value + "' AND '" + d_end.Value + "' and Reclaims.RowStatus<>2)  and MedicalServices.ListType=0 GROUP BY dbo.MedicalServices.ServiceAName , dbo.Localities.LocalityName ORDER BY " + OrderedBy; ;
                     }
                     var GetCent = db.Database.SqlQuery<ReportForAll>(StrQuery).ToList();
                     if (GetCent.Count > 0)
@@ -828,7 +869,7 @@ namespace MedicalServiceSystem
                         {
                             RPTِEstrdadCount Rdet = new RPTِEstrdadCount();
                             Rdet.DataSource = GetCent;
-                            Rdet.Locality.Value = db.Localities.Where(p => p.Id == LocalityId).ToList()[0].LocalityName;
+                            Rdet.Locality.Value = db.Localities.Where(p => p.Id == PLC.LocalityId).ToList()[0].LocalityName;
                             Rdet.StartDate.Value = d_start.Value.Date.ToShortDateString();
                             Rdet.EndDate.Value = d_end.Value.Date.ToShortDateString();
                             Rdet.ReportTitle.Value = "استرداد الخدمات الطبية";
@@ -839,6 +880,10 @@ namespace MedicalServiceSystem
                             Rdet.Frequency1.Value = "التردد";
                             Rdet.textBox3.Value = "التكلفة";
                             Rdet.textBox7.Value = "التكلفة";
+                            Rdet.NisbahCost.Value = "نسبة التكلفة";
+                            Rdet.NisbahCostH.Value = "نسبة التكلفة";
+                            Rdet.NisbahFreq.Value = "نسبة التردد";
+                            Rdet.NisbahFreqH.Value = "نسبة التردد";
                             RptiewChronics.ReportSource = Rdet;
                             RptiewChronics.RefreshReport();
                             RptiewChronics.Show();
@@ -848,7 +893,7 @@ namespace MedicalServiceSystem
                         {
                             RPTِEstrdadCountLoc Rdet = new RPTِEstrdadCountLoc();
                             Rdet.DataSource = GetCent;
-                            Rdet.Locality.Value = db.Localities.Where(p => p.Id == LocalityId).ToList()[0].LocalityName;
+                            Rdet.Locality.Value = db.Localities.Where(p => p.Id == PLC.LocalityId).ToList()[0].LocalityName;
                             Rdet.StartDate.Value = d_start.Value.Date.ToShortDateString();
                             Rdet.EndDate.Value = d_end.Value.Date.ToShortDateString();
                             Rdet.ReportTitle.Value = "استرداد الخدمات الطبية";
@@ -859,6 +904,10 @@ namespace MedicalServiceSystem
                             Rdet.Frequency1.Value = "التردد";
                             Rdet.textBox3.Value = "التكلفة";
                             Rdet.textBox7.Value = "التكلفة";
+                            Rdet.NisbahCost.Value = "نسبة التكلفة";
+                            Rdet.NisbahCostH.Value = "نسبة التكلفة";
+                            Rdet.NisbahFreq.Value = "نسبة التردد";
+                            Rdet.NisbahFreqH.Value = "نسبة التردد";
                             RptiewChronics.ReportSource = Rdet;
                             RptiewChronics.RefreshReport();
                             RptiewChronics.Show();
@@ -885,11 +934,11 @@ namespace MedicalServiceSystem
                     string StrQuery = "";
                     if (DrGrouping.SelectedIndex == 0)
                     {
-                        StrQuery = "SELECT N'الاسترداد خدمة دوائية' as Row6, Count(ReclaimMedicines.Id) as Row2, sum(ReclaimCost) as Row12 FROM [MedicalServiceDb].[dbo].ReclaimMedicines where " + LocalityName1 + " RowStatus<>2 AND (datein BETWEEN '" + d_start.Value + "' AND '" + d_end.Value + "' ) union SELECT N'الاسترداد خدمة طبية' as Row6,Count(ReclaimMedicals.Id) as Row2,sum(ReclaimCost) as Row12 FROM[MedicalServiceDb].[dbo].ReclaimMedicals where " + LocalityName2 + " RowStatus<>2  AND (datein BETWEEN '" + d_start.Value + "' AND '" + d_end.Value + "' )";
+                        StrQuery = "SELECT N'الاسترداد خدمة دوائية' as Row6,Convert(decimal,Count(dbo.Reclaims.Id)) AS Row2, SUM(dbo.Reclaims.MedicineTotal) As Row12,(select Convert(decimal,Count(dbo.Reclaims.Id)) from dbo.Reclaims WHERE  " + LocalityName + "   dbo.Reclaims.ReclaimDate BETWEEN '" + d_start.Value + "' AND '" + d_end.Value + "' and Reclaims.RowStatus<>2) as Row3,(select SUM(dbo.Reclaims.ReclaimTotal) from dbo.Reclaims WHERE  " + LocalityName + "  dbo.Reclaims.ReclaimDate BETWEEN '" + d_start.Value + "' AND '" + d_end.Value + "' and Reclaims.RowStatus<>2) as Row21 FROM [MedicalServiceDb].[dbo].Reclaims where " + LocalityName1 + "  dbo.Reclaims.ReclaimDate BETWEEN '" + d_start.Value + "' AND '" + d_end.Value + "' and Reclaims.RowStatus<>2 and Reclaims.MedicineTotal>0 union SELECT N'الاسترداد خدمة طبية' as Row6,Convert(decimal,Count(dbo.Reclaims.Id)) AS Row2, SUM(dbo.Reclaims.MedicalTotal) As Row12,(select Convert(decimal,Count(dbo.Reclaims.Id)) from dbo.Reclaims WHERE  " + LocalityName1 + "  (dbo.Reclaims.ReclaimDate BETWEEN '" + d_start.Value + "' AND '" + d_end.Value + "') And RowStatus<>2) as Row3,(select SUM(dbo.Reclaims.ReclaimTotal) from dbo.Reclaims WHERE  " + LocalityName1 + "  (dbo.Reclaims.ReclaimDate BETWEEN '" + d_start.Value + "' AND '" + d_end.Value + "') And RowStatus<>2) as Row21 FROM [MedicalServiceDb].[dbo].Reclaims where " + LocalityName + " dbo.Reclaims.ReclaimDate BETWEEN '" + d_start.Value + "' AND '" + d_end.Value + "' and Reclaims.RowStatus<>2 and Reclaims.MedicalTotal>0";
                     }
                     else
                     {
-                        StrQuery = "SELECT  dbo.Localities.LocalityName AS Row7,    N'الاسترداد خدمة دوائية' as Row6, Count(ReclaimMedicines.Id) as Row2, sum(ReclaimMedicines.ReclaimCost) as Row12 FROM [MedicalServiceDb].[dbo].ReclaimMedicines  INNER JOIN dbo.Localities ON dbo.ReclaimMedicines.LocalityId = dbo.Localities.Id where  " + LocalityName1 + " RowStatus<>2 AND (datein BETWEEN '" + d_start.Value + "' AND '" + d_end.Value + "' ) group by  dbo.Localities.LocalityName union SELECT  dbo.Localities.LocalityName AS Row7, N'الاسترداد خدمة طبية' as Row6,Count(ReclaimMedicals.Id) as Row2,sum(ReclaimMedicals.ReclaimCost) as Row12 FROM [MedicalServiceDb].[dbo].ReclaimMedicals   INNER JOIN dbo.Localities ON dbo.ReclaimMedicals.LocalityId = dbo.Localities.Id  where " + LocalityName2 + " RowStatus<>2  AND (datein BETWEEN '" + d_start.Value + "' AND '" + d_end.Value + "') group by dbo.Localities.LocalityName  ";
+                        StrQuery = "SELECT  dbo.Localities.LocalityName AS Row7, N'الاسترداد خدمة دوائية' as Row6,Convert(decimal,Count(dbo.Reclaims.Id)) AS Row2, SUM(dbo.Reclaims.MedicineTotal) As Row12,(select Convert(decimal,Count(dbo.Reclaims.Id)) from dbo.Reclaims WHERE  " + LocalityName1 + "   dbo.Reclaims.ReclaimDate BETWEEN '" + d_start.Value + "' AND '" + d_end.Value + "' and Reclaims.RowStatus<>2) as Row3,(select SUM(dbo.Reclaims.ReclaimTotal) from dbo.Reclaims WHERE  " + LocalityName1 + "  dbo.Reclaims.ReclaimDate BETWEEN '" + d_start.Value + "' AND '" + d_end.Value + "' and Reclaims.RowStatus<>2) as Row21 FROM [MedicalServiceDb].[dbo].Reclaims   INNER JOIN dbo.Localities ON dbo.Reclaims.LocalityId = dbo.Localities.Id where " + LocalityName1 + "  dbo.Reclaims.ReclaimDate BETWEEN '" + d_start.Value + "' AND '" + d_end.Value + "' and Reclaims.RowStatus<>2 and Reclaims.MedicineTotal>0 group by  dbo.Localities.LocalityName union SELECT  dbo.Localities.LocalityName AS Row7, N'الاسترداد خدمة طبية' as Row6,Convert(decimal,Count(dbo.Reclaims.Id)) AS Row2, SUM(dbo.Reclaims.MedicalTotal) As Row12,(select Convert(decimal,Count(dbo.Reclaims.Id)) from dbo.Reclaims WHERE  " + LocalityName1 + "  (dbo.Reclaims.ReclaimDate BETWEEN '" + d_start.Value + "' AND '" + d_end.Value + "') And RowStatus<>2) as Row3,(select SUM(dbo.Reclaims.ReclaimTotal) from dbo.Reclaims WHERE  " + LocalityName1 + "  (dbo.Reclaims.ReclaimDate BETWEEN '" + d_start.Value + "' AND '" + d_end.Value + "') And RowStatus<>2) as Row21 FROM [MedicalServiceDb].[dbo].Reclaims INNER JOIN dbo.Localities ON dbo.Reclaims.LocalityId = dbo.Localities.Id where " + LocalityName + " dbo.Reclaims.ReclaimDate BETWEEN '" + d_start.Value + "' AND '" + d_end.Value + "' and Reclaims.RowStatus<>2 and Reclaims.MedicalTotal>0  group by dbo.Localities.LocalityName  ";
                     }
                     var GetCent = db.Database.SqlQuery<ReportForAll>(StrQuery).ToList();
                    
@@ -899,7 +948,7 @@ namespace MedicalServiceSystem
                         {
                             RPTِEstrdadCount Rdet = new RPTِEstrdadCount();
                             Rdet.DataSource = GetCent;
-                            Rdet.Locality.Value = db.Localities.Where(p => p.Id == LocalityId).ToList()[0].LocalityName;
+                            Rdet.Locality.Value = db.Localities.Where(p => p.Id == PLC.LocalityId).ToList()[0].LocalityName;
                             Rdet.StartDate.Value = d_start.Value.Date.ToShortDateString();
                             Rdet.EndDate.Value = d_end.Value.Date.ToShortDateString();
                             Rdet.ReportTitle.Value = radioButton1.Text;
@@ -909,6 +958,10 @@ namespace MedicalServiceSystem
                             Rdet.Frequency1.Value = "التردد";
                             Rdet.textBox3.Value = "التكلفة";
                             Rdet.textBox7.Value = "التكلفة";
+                            Rdet.NisbahCost.Value = "نسبة التكلفة";
+                            Rdet.NisbahCostH.Value = "نسبة التكلفة";
+                            Rdet.NisbahFreq.Value = "نسبة التردد";
+                            Rdet.NisbahFreqH.Value = "نسبة التردد";
                             RptiewChronics.ReportSource = Rdet;
                             RptiewChronics.RefreshReport();
                             RptiewChronics.Show();
@@ -918,7 +971,7 @@ namespace MedicalServiceSystem
                         {
                             RPTِEstrdadCountLoc Rdet = new RPTِEstrdadCountLoc();
                             Rdet.DataSource = GetCent;
-                            Rdet.Locality.Value = db.Localities.Where(p => p.Id == LocalityId).ToList()[0].LocalityName;
+                            Rdet.Locality.Value = db.Localities.Where(p => p.Id == PLC.LocalityId).ToList()[0].LocalityName;
                             Rdet.StartDate.Value = d_start.Value.Date.ToShortDateString();
                             Rdet.EndDate.Value = d_end.Value.Date.ToShortDateString();
                             Rdet.ReportTitle.Value = radioButton1.Text;
@@ -928,6 +981,10 @@ namespace MedicalServiceSystem
                             Rdet.Frequency1.Value = "التردد";
                             Rdet.textBox3.Value = "التكلفة";
                             Rdet.textBox7.Value = "التكلفة";
+                            Rdet.NisbahCost.Value = "نسبة التكلفة";
+                            Rdet.NisbahCostH.Value = "نسبة التكلفة";
+                            Rdet.NisbahFreq.Value = "نسبة التردد";
+                            Rdet.NisbahFreqH.Value = "نسبة التردد";
                             RptiewChronics.ReportSource = Rdet;
                             RptiewChronics.RefreshReport();
                             RptiewChronics.Show();
@@ -954,11 +1011,11 @@ namespace MedicalServiceSystem
                     string StrQuery = "";
                     if (DrGrouping.SelectedIndex == 0)
                     {
-                        StrQuery = "SELECT case when ReclaimStatus= 0 then N'مرت بالتأمين'  else N'لم تمر بالتأمين' end as Row6, COUNT(Id) AS Row2, SUM(MedicalTotal) AS Row12 FROM dbo.Reclaims WHERE " + LocalityName + " dbo.Reclaims.ReclaimDate BETWEEN '" + d_start.Value + "' and '" + d_end.Value + "' And (RowStatus <> 2) and MedicalTotal>0  GROUP BY case when ReclaimStatus= 0 then N'مرت بالتأمين'  else N'لم تمر بالتأمين' end ORDER BY  " + OrderedBy;
+                        StrQuery = "SELECT case when ReclaimStatus= 0 then N'مرت بالتأمين'  else N'لم تمر بالتأمين' end as Row6, convert(decimal, COUNT(dbo.Reclaims.Id)) AS Row2, SUM(dbo.Reclaims.MedicalTotal) AS Row12,(select convert(decimal, COUNT(dbo.Reclaims.Id)) from dbo.Reclaims WHERE " + LocalityName + " dbo.Reclaims.RowStatus<>2 and  dbo.Reclaims.ReclaimDate BETWEEN '" + d_start.Value + "' and '" + d_end.Value + "' and MedicalTotal>0 ) as Row3,(select SUM(dbo.Reclaims.MedicalTotal) from dbo.Reclaims WHERE " + LocalityName + " dbo.Reclaims.RowStatus<>2 and  dbo.Reclaims.ReclaimDate BETWEEN '" + d_start.Value + "' and '" + d_end.Value + "' and MedicalTotal>0 ) as Row21 FROM dbo.Reclaims WHERE " + LocalityName + " dbo.Reclaims.ReclaimDate BETWEEN '" + d_start.Value + "' and '" + d_end.Value + "' And (RowStatus <> 2) and MedicalTotal>0  GROUP BY case when ReclaimStatus= 0 then N'مرت بالتأمين'  else N'لم تمر بالتأمين' end ORDER BY  " + OrderedBy;
                     }
                     else
                     {
-                        StrQuery = "SELECT  dbo.Localities.LocalityName AS Row7, case when ReclaimStatus= 0 then N'مرت بالتأمين'  else N'لم تمر بالتأمين' end as Row6, COUNT(Reclaims.Id) AS Row2, SUM(MedicalTotal) AS Row12 FROM dbo.Reclaims  INNER JOIN dbo.Localities ON dbo.Reclaims.LocalityId = dbo.Localities.Id WHERE " + LocalityName + " dbo.Reclaims.ReclaimDate BETWEEN '" + d_start.Value + "' and '" + d_end.Value + "' And (RowStatus <> 2) and MedicalTotal>0 GROUP BY case when ReclaimStatus= 0 then N'مرت بالتأمين'  else N'لم تمر بالتأمين' end , dbo.Localities.LocalityName ORDER BY  " + OrderedBy;
+                        StrQuery = "SELECT  dbo.Localities.LocalityName AS Row7, case when ReclaimStatus= 0 then N'مرت بالتأمين'  else N'لم تمر بالتأمين' end as Row6, convert(decimal, COUNT(dbo.Reclaims.Id)) AS Row2, SUM(dbo.Reclaims.MedicalTotal) AS Row12,(select convert(decimal, COUNT(dbo.Reclaims.Id)) from dbo.Reclaims WHERE " + LocalityName + " dbo.Reclaims.RowStatus<>2 and  dbo.Reclaims.ReclaimDate BETWEEN '" + d_start.Value + "' and '" + d_end.Value + "' and MedicalTotal>0 ) as Row3,(select SUM(dbo.Reclaims.MedicalTotal) from dbo.Reclaims WHERE " + LocalityName + " dbo.Reclaims.RowStatus<>2 and  dbo.Reclaims.ReclaimDate BETWEEN '" + d_start.Value + "' and '" + d_end.Value + "' and MedicalTotal>0 ) as Row21 FROM dbo.Reclaims  INNER JOIN dbo.Localities ON dbo.Reclaims.LocalityId = dbo.Localities.Id WHERE " + LocalityName + " dbo.Reclaims.ReclaimDate BETWEEN '" + d_start.Value + "' and '" + d_end.Value + "' And (RowStatus <> 2) and MedicalTotal>0 GROUP BY case when ReclaimStatus= 0 then N'مرت بالتأمين'  else N'لم تمر بالتأمين' end , dbo.Localities.LocalityName ORDER BY  " + OrderedBy;
                     }
                     var GetCent = db.Database.SqlQuery<ReportForAll>(StrQuery).ToList();
                     if (GetCent.Count > 0)
@@ -967,7 +1024,7 @@ namespace MedicalServiceSystem
                         {
                             RPTِEstrdadCount Rdet = new RPTِEstrdadCount();
                             Rdet.DataSource = GetCent;
-                            Rdet.Locality.Value = db.Localities.Where(p => p.Id == LocalityId).ToList()[0].LocalityName;
+                            Rdet.Locality.Value = db.Localities.Where(p => p.Id == PLC.LocalityId).ToList()[0].LocalityName;
                             Rdet.StartDate.Value = d_start.Value.Date.ToShortDateString();
                             Rdet.EndDate.Value = d_end.Value.Date.ToShortDateString();
                             Rdet.ReportTitle.Value = "عدد التصاديق حسب" + " " + radioButton2.Text;
@@ -977,6 +1034,10 @@ namespace MedicalServiceSystem
                             Rdet.Frequency1.Value = "التردد";
                             Rdet.textBox3.Value = "التكلفة";
                             Rdet.textBox7.Value = "التكلفة";
+                            Rdet.NisbahCost.Value = "نسبة التكلفة";
+                            Rdet.NisbahCostH.Value = "نسبة التكلفة";
+                            Rdet.NisbahFreq.Value = "نسبة التردد";
+                            Rdet.NisbahFreqH.Value = "نسبة التردد";
                             RptiewChronics.ReportSource = Rdet;
 
                         }
@@ -984,7 +1045,7 @@ namespace MedicalServiceSystem
                         {
                             RPTِEstrdadCountLoc Rdet = new RPTِEstrdadCountLoc();
                             Rdet.DataSource = GetCent;
-                            Rdet.Locality.Value = db.Localities.Where(p => p.Id == LocalityId).ToList()[0].LocalityName;
+                            Rdet.Locality.Value = db.Localities.Where(p => p.Id == PLC.LocalityId).ToList()[0].LocalityName;
                             Rdet.StartDate.Value = d_start.Value.Date.ToShortDateString();
                             Rdet.EndDate.Value = d_end.Value.Date.ToShortDateString();
                             Rdet.ReportTitle.Value = "عدد التصاديق حسب" + " " + radioButton2.Text;
@@ -994,6 +1055,10 @@ namespace MedicalServiceSystem
                             Rdet.Frequency1.Value = "التردد";
                             Rdet.textBox3.Value = "التكلفة";
                             Rdet.textBox7.Value = "التكلفة";
+                            Rdet.NisbahCost.Value = "نسبة التكلفة";
+                            Rdet.NisbahCostH.Value = "نسبة التكلفة";
+                            Rdet.NisbahFreq.Value = "نسبة التردد";
+                            Rdet.NisbahFreqH.Value = "نسبة التردد";
                             RptiewChronics.ReportSource = Rdet;
                         }
                         RptiewChronics.RefreshReport();
@@ -1020,11 +1085,11 @@ namespace MedicalServiceSystem
                     string StrQuery = "";
                     if (DrGrouping.SelectedIndex == 0)
                     {
-                        StrQuery = "SELECT  dbo.MedicalServices.ServiceAName AS Row6, COUNT(dbo.ReclaimMedicals.Id) AS Row2, SUM(dbo.ReclaimMedicals.ReclaimCost) AS Row12 FROM dbo.ReclaimMedicals INNER JOIN  dbo.MedicalServices ON dbo.ReclaimMedicals.MedicalId = dbo.MedicalServices.Id WHERE " + LocalityName + " (dbo.ReclaimMedicals.DateIn BETWEEN '" + d_start.Value + "' AND '" + d_end.Value + "') and MedicalServices.ListType=1  GROUP BY dbo.MedicalServices.ServiceAName ORDER BY  " + OrderedBy;
+                        StrQuery = "SELECT  dbo.MedicalServices.ServiceAName AS Row6,convert(decimal, COUNT(DISTINCT dbo.ReclaimMedicals.ReclaimId)) AS Row2, SUM(dbo.ReclaimMedicals.ReclaimCost) AS Row12,(select convert(decimal, COUNT(DISTINCT dbo.ReclaimMedicals.ReclaimId)) from dbo.ReclaimMedicals INNER JOIN  dbo.MedicalServices ON dbo.ReclaimMedicals.MedicalId = dbo.MedicalServices.Id WHERE " + LocalityName2 + " ReclaimId in ( select Id from dbo.Reclaims Where dbo.Reclaims.ReclaimDate BETWEEN '" + d_start.Value + "' AND '" + d_end.Value + "' and Reclaims.RowStatus<>2)  and MedicalServices.ListType=1) as Row3 ,(select SUM(dbo.ReclaimMedicals.ReclaimCost) from dbo.ReclaimMedicals INNER JOIN  dbo.MedicalServices ON dbo.ReclaimMedicals.MedicalId = dbo.MedicalServices.Id WHERE " + LocalityName2 + " ReclaimId in ( select Id from dbo.Reclaims Where dbo.Reclaims.ReclaimDate BETWEEN '" + d_start.Value + "' AND '" + d_end.Value + "' and Reclaims.RowStatus<>2)  and MedicalServices.ListType=1) as Row21 FROM dbo.ReclaimMedicals INNER JOIN  dbo.MedicalServices ON dbo.ReclaimMedicals.MedicalId = dbo.MedicalServices.Id WHERE " + LocalityName2 + " ReclaimId in ( select Id from dbo.Reclaims Where dbo.Reclaims.ReclaimDate BETWEEN '" + d_start.Value + "' AND '" + d_end.Value + "' and Reclaims.RowStatus<>2) and MedicalServices.ListType=1  GROUP BY dbo.MedicalServices.ServiceAName ORDER BY  " + OrderedBy;
                     }
                     else
                     {
-                        StrQuery = "SELECT   dbo.Localities.LocalityName AS Row7,  dbo.MedicalServices.ServiceAName AS Row6, COUNT(dbo.ReclaimMedicals.Id) AS Row2, SUM(dbo.ReclaimMedicals.ReclaimCost) AS Row12 FROM dbo.ReclaimMedicals INNER JOIN  dbo.MedicalServices ON dbo.ReclaimMedicals.MedicalId = dbo.MedicalServices.Id   INNER JOIN dbo.Localities ON dbo.ReclaimMedicals.LocalityId = dbo.Localities.Id WHERE " + LocalityName + " (dbo.ReclaimMedicals.DateIn BETWEEN '" + d_start.Value + "' AND '" + d_end.Value + "')  and MedicalServices.ListType=1 GROUP BY dbo.MedicalServices.ServiceAName , dbo.Localities.LocalityName ORDER BY  " + OrderedBy;
+                        StrQuery = "SELECT   dbo.Localities.LocalityName AS Row7,  dbo.MedicalServices.ServiceAName AS Row6, convert(decimal, COUNT(DISTINCT dbo.ReclaimMedicals.ReclaimId)) AS Row2, SUM(dbo.ReclaimMedicals.ReclaimCost) AS Row12,(select convert(decimal, COUNT(DISTINCT dbo.ReclaimMedicals.ReclaimId)) from dbo.ReclaimMedicals INNER JOIN  dbo.MedicalServices ON dbo.ReclaimMedicals.MedicalId = dbo.MedicalServices.Id WHERE " + LocalityName2 + " ReclaimId in ( select Id from dbo.Reclaims Where dbo.Reclaims.ReclaimDate BETWEEN '" + d_start.Value + "' AND '" + d_end.Value + "' and Reclaims.RowStatus<>2)  and MedicalServices.ListType=1) as Row3 ,(select SUM(dbo.ReclaimMedicals.ReclaimCost) from dbo.ReclaimMedicals INNER JOIN  dbo.MedicalServices ON dbo.ReclaimMedicals.MedicalId = dbo.MedicalServices.Id WHERE " + LocalityName2 + " ReclaimId in ( select Id from dbo.Reclaims Where dbo.Reclaims.ReclaimDate BETWEEN '" + d_start.Value + "' AND '" + d_end.Value + "' and Reclaims.RowStatus<>2)  and MedicalServices.ListType=1) as Row21 FROM dbo.ReclaimMedicals INNER JOIN  dbo.MedicalServices ON dbo.ReclaimMedicals.MedicalId = dbo.MedicalServices.Id   INNER JOIN dbo.Localities ON dbo.ReclaimMedicals.LocalityId = dbo.Localities.Id WHERE " + LocalityName2 + " ReclaimId in ( select Id from dbo.Reclaims Where dbo.Reclaims.ReclaimDate BETWEEN '" + d_start.Value + "' AND '" + d_end.Value + "' and Reclaims.RowStatus<>2)  and MedicalServices.ListType=1 GROUP BY dbo.MedicalServices.ServiceAName , dbo.Localities.LocalityName ORDER BY  " + OrderedBy;
                     }
                     var GetCent = db.Database.SqlQuery<ReportForAll>(StrQuery).ToList();
                     if (GetCent.Count > 0)
@@ -1033,7 +1098,7 @@ namespace MedicalServiceSystem
                         {
                             RPTِEstrdadCount Rdet = new RPTِEstrdadCount();
                             Rdet.DataSource = GetCent;
-                            Rdet.Locality.Value = db.Localities.Where(p => p.Id == LocalityId).ToList()[0].LocalityName;
+                            Rdet.Locality.Value = db.Localities.Where(p => p.Id == PLC.LocalityId).ToList()[0].LocalityName;
                             Rdet.StartDate.Value = d_start.Value.Date.ToShortDateString();
                             Rdet.EndDate.Value = d_end.Value.Date.ToShortDateString();
                             Rdet.ReportTitle.Value = "استرداد الخدمات الطبية مساهمات";
@@ -1044,6 +1109,10 @@ namespace MedicalServiceSystem
                             Rdet.Frequency1.Value = "التردد";
                             Rdet.textBox3.Value = "التكلفة";
                             Rdet.textBox7.Value = "التكلفة";
+                            Rdet.NisbahCost.Value = "نسبة التكلفة";
+                            Rdet.NisbahCostH.Value = "نسبة التكلفة";
+                            Rdet.NisbahFreq.Value = "نسبة التردد";
+                            Rdet.NisbahFreqH.Value = "نسبة التردد";
                             RptiewChronics.ReportSource = Rdet;
                             RptiewChronics.RefreshReport();
                             RptiewChronics.Show();
@@ -1053,7 +1122,7 @@ namespace MedicalServiceSystem
                         {
                             RPTِEstrdadCountLoc Rdet = new RPTِEstrdadCountLoc();
                             Rdet.DataSource = GetCent;
-                            Rdet.Locality.Value = db.Localities.Where(p => p.Id == LocalityId).ToList()[0].LocalityName;
+                            Rdet.Locality.Value = db.Localities.Where(p => p.Id == PLC.LocalityId).ToList()[0].LocalityName;
                             Rdet.StartDate.Value = d_start.Value.Date.ToShortDateString();
                             Rdet.EndDate.Value = d_end.Value.Date.ToShortDateString();
                             Rdet.ReportTitle.Value = "استرداد الخدمات الطبية مساهمات";
@@ -1064,6 +1133,10 @@ namespace MedicalServiceSystem
                             Rdet.Frequency1.Value = "التردد";
                             Rdet.textBox3.Value = "التكلفة";
                             Rdet.textBox7.Value = "التكلفة";
+                            Rdet.NisbahCost.Value = "نسبة التكلفة";
+                            Rdet.NisbahCostH.Value = "نسبة التكلفة";
+                            Rdet.NisbahFreq.Value = "نسبة التردد";
+                            Rdet.NisbahFreqH.Value = "نسبة التردد";
                             RptiewChronics.ReportSource = Rdet;
                             RptiewChronics.RefreshReport();
                             RptiewChronics.Show();
@@ -1091,12 +1164,12 @@ namespace MedicalServiceSystem
                     
                     if (DrGrouping.SelectedIndex == 0)
                     {
-                        StrQuery = "SELECT dbo.MedicalServices.ServiceAName AS Row6, COUNT(dbo.ReclaimMedicals.Id) AS Row2, SUM(dbo.ReclaimMedicals.ReclaimCost) AS Row12, SUM(dbo.MedicalServices.ServicePrice) AS Row11,  SUM(dbo.ReclaimMedicals.ReclaimCost) - SUM(dbo.MedicalServices.ServicePrice) AS Row21, dbo.ReclaimMedicalReasonsLists.Id FROM  dbo.ReclaimMedicals INNER JOIN  dbo.MedicalServices ON dbo.ReclaimMedicals.MedicalId = dbo.MedicalServices.Id INNER JOIN dbo.Reclaims ON dbo.ReclaimMedicals.ReclaimId = dbo.Reclaims.Id INNER JOIN  dbo.ReclaimMedicalReasonsLists ON dbo.Reclaims.ReclaimMedicalResonId = dbo.ReclaimMedicalReasonsLists.Id WHERE    " + LocalityName + " (dbo.ReclaimMedicals.DateIn BETWEEN '" + d_start.Value + "' AND '" + d_end.Value + "')     and   (dbo.MedicalServices.ListType = 1) and (dbo.MedicalServices.ListType = 1) GROUP BY dbo.MedicalServices.ServiceAName, dbo.ReclaimMedicalReasonsLists.Id HAVING        (dbo.ReclaimMedicalReasonsLists.Id = 36) ORDER BY " + OrderedBy;
+                        StrQuery = "SELECT dbo.MedicalServices.ServiceAName AS Row6, COUNT(dbo.ReclaimMedicals.Id) AS Row2, SUM(dbo.ReclaimMedicals.ReclaimCost) AS Row12, SUM(dbo.MedicalServices.ServicePrice) AS Row11,  SUM(dbo.ReclaimMedicals.ReclaimCost) - SUM(dbo.MedicalServices.ServicePrice) AS Row21, dbo.ReclaimMedicalReasonsLists.Id FROM  dbo.ReclaimMedicals INNER JOIN  dbo.MedicalServices ON dbo.ReclaimMedicals.MedicalId = dbo.MedicalServices.Id INNER JOIN dbo.Reclaims ON dbo.ReclaimMedicals.ReclaimId = dbo.Reclaims.Id INNER JOIN  dbo.ReclaimMedicalReasonsLists ON dbo.Reclaims.ReclaimMedicalResonId = dbo.ReclaimMedicalReasonsLists.Id WHERE    " + LocalityName2 + " ReclaimId in ( select Id from dbo.Reclaims Where dbo.Reclaims.ReclaimDate BETWEEN '" + d_start.Value + "' AND '" + d_end.Value + "' and Reclaims.RowStatus<>2)     and   (dbo.MedicalServices.ListType = 1) and (dbo.MedicalServices.ListType = 1) GROUP BY dbo.MedicalServices.ServiceAName, dbo.ReclaimMedicalReasonsLists.Id HAVING        (dbo.ReclaimMedicalReasonsLists.Id = 36) ORDER BY " + OrderedBy;
                        
                     }
                     else
                     {
-                        StrQuery = "SELECT dbo.Localities.LocalityName AS Row7, dbo.MedicalServices.ServiceAName AS Row6, COUNT(dbo.ReclaimMedicals.Id) AS Row2, SUM(dbo.ReclaimMedicals.ReclaimCost) AS Row12, SUM(dbo.MedicalServices.ServicePrice) AS Row11,  SUM(dbo.ReclaimMedicals.ReclaimCost) - SUM(dbo.MedicalServices.ServicePrice) AS Row21, dbo.ReclaimMedicalReasonsLists.Id FROM  dbo.ReclaimMedicals INNER JOIN  dbo.MedicalServices ON dbo.ReclaimMedicals.MedicalId = dbo.MedicalServices.Id INNER JOIN dbo.Reclaims ON dbo.ReclaimMedicals.ReclaimId = dbo.Reclaims.Id INNER JOIN  dbo.ReclaimMedicalReasonsLists ON dbo.Reclaims.ReclaimMedicalResonId = dbo.ReclaimMedicalReasonsLists.Id    INNER JOIN dbo.Localities ON dbo.ReclaimMedicals.LocalityId = dbo.Localities.Id  WHERE    " + LocalityName + " (dbo.ReclaimMedicals.DateIn BETWEEN '" + d_start.Value + "' AND '" + d_end.Value + "')     and   (dbo.MedicalServices.ListType = 1) and (dbo.MedicalServices.ListType = 1) GROUP BY dbo.MedicalServices.ServiceAName, dbo.ReclaimMedicalReasonsLists.Id , dbo.Localities.LocalityName HAVING        (dbo.ReclaimMedicalReasonsLists.Id = 36) ORDER BY " + OrderedBy;
+                        StrQuery = "SELECT dbo.Localities.LocalityName AS Row7, dbo.MedicalServices.ServiceAName AS Row6, COUNT(dbo.ReclaimMedicals.Id) AS Row2, SUM(dbo.ReclaimMedicals.ReclaimCost) AS Row12, SUM(dbo.MedicalServices.ServicePrice) AS Row11,  SUM(dbo.ReclaimMedicals.ReclaimCost) - SUM(dbo.MedicalServices.ServicePrice) AS Row21, dbo.ReclaimMedicalReasonsLists.Id FROM  dbo.ReclaimMedicals INNER JOIN  dbo.MedicalServices ON dbo.ReclaimMedicals.MedicalId = dbo.MedicalServices.Id INNER JOIN dbo.Reclaims ON dbo.ReclaimMedicals.ReclaimId = dbo.Reclaims.Id INNER JOIN  dbo.ReclaimMedicalReasonsLists ON dbo.Reclaims.ReclaimMedicalResonId = dbo.ReclaimMedicalReasonsLists.Id    INNER JOIN dbo.Localities ON dbo.ReclaimMedicals.LocalityId = dbo.Localities.Id  WHERE    " + LocalityName + " ReclaimId in ( select Id from dbo.Reclaims Where dbo.Reclaims.ReclaimDate BETWEEN '" + d_start.Value + "' AND '" + d_end.Value + "' and Reclaims.RowStatus<>2)     and   (dbo.MedicalServices.ListType = 1) and (dbo.MedicalServices.ListType = 1) GROUP BY dbo.MedicalServices.ServiceAName, dbo.ReclaimMedicalReasonsLists.Id , dbo.Localities.LocalityName HAVING        (dbo.ReclaimMedicalReasonsLists.Id = 36) ORDER BY " + OrderedBy;
                     }
                     var GetCent = db.Database.SqlQuery<ReportForAll>(StrQuery).ToList();
                     if (GetCent.Count > 0)
@@ -1105,7 +1178,7 @@ namespace MedicalServiceSystem
                         {
                             RPTِEstrdadCommittee Rdet = new RPTِEstrdadCommittee();
                             Rdet.DataSource = GetCent;
-                            Rdet.Locality.Value = db.Localities.Where(p => p.Id == LocalityId).ToList()[0].LocalityName;
+                            Rdet.Locality.Value = db.Localities.Where(p => p.Id == PLC.LocalityId).ToList()[0].LocalityName;
                             Rdet.StartDate.Value = d_start.Value.Date.ToShortDateString();
                             Rdet.EndDate.Value = d_end.Value.Date.ToShortDateString();
                             Rdet.ReportTitle.Value = "استرداد الخدمات الطبية مساهمات";
@@ -1120,6 +1193,7 @@ namespace MedicalServiceSystem
                             Rdet.textBox15.Value = "سقف الاسترداد";
                             Rdet.textBox14.Value = "مساهمة اللجنة";
                             Rdet.textBox17.Value = "مساهمة اللجنة";
+                         
                             RptiewChronics.ReportSource = Rdet;
                             RptiewChronics.RefreshReport();
                             RptiewChronics.Show();
@@ -1149,6 +1223,167 @@ namespace MedicalServiceSystem
                 OrderedBy = "Row12 DESC";
             }
             
+        }
+
+        private void Label7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void DrGrouping_SelectedIndexChanged(object sender, Telerik.WinControls.UI.Data.PositionChangedEventArgs e)
+        {
+
+        }
+
+        private void RDGroups_CheckedChanged(object sender, EventArgs e)
+        {
+            if (RDGroups.Checked == true)
+            {
+                using (dbContext db = new dbContext())
+                {
+                    db.Database.CommandTimeout = 0;
+                    string StrQuery = "";
+                    if (DrGrouping.SelectedIndex == 0)
+                    {
+                        StrQuery = "SELECT   dbo.MedicalSubGroups.SubgroupAName AS Row6, convert(decimal, COUNT(DISTINCT dbo.ReclaimMedicals.ReclaimId)) AS Row2, SUM(dbo.ReclaimMedicals.ReclaimCost) AS Row12,(select convert(decimal, COUNT(DISTINCT dbo.ReclaimMedicals.ReclaimId)) from dbo.ReclaimMedicals WHERE " + LocalityName2 + " ReclaimId in ( select Id from dbo.Reclaims Where dbo.Reclaims.ReclaimDate BETWEEN '" + d_start.Value + "' AND '" + d_end.Value + "' and Reclaims.RowStatus<>2)) as Row3 ,(select SUM(dbo.ReclaimMedicals.ReclaimCost) from dbo.ReclaimMedicals WHERE " + LocalityName2 + " ReclaimId in ( select Id from dbo.Reclaims Where dbo.Reclaims.ReclaimDate BETWEEN '" + d_start.Value + "' AND '" + d_end.Value + "' and Reclaims.RowStatus<>2)) as Row21 FROM   dbo.ReclaimMedicals INNER JOIN  dbo.MedicalServices ON dbo.ReclaimMedicals.MedicalId = dbo.MedicalServices.Id INNER JOIN   dbo.MedicalSubGroups ON dbo.MedicalServices.SubGroupID = dbo.MedicalSubGroups.Id WHERE " + LocalityName2 + " ReclaimId in ( select Id from dbo.Reclaims Where dbo.Reclaims.ReclaimDate BETWEEN '" + d_start.Value + "' AND '" + d_end.Value + "' and Reclaims.RowStatus<>2) GROUP BY dbo.MedicalSubGroups.SubgroupAName  ORDER BY " + OrderedBy;
+                    }
+                    else
+                    {
+                        StrQuery = "SELECT   dbo.Localities.LocalityName AS Row7, dbo.MedicalSubGroups.SubgroupAName AS Row6, convert(decimal, COUNT(DISTINCT dbo.ReclaimMedicals.ReclaimId)) AS Row2, SUM(dbo.ReclaimMedicals.ReclaimCost) AS Row12,(select convert(decimal, COUNT(DISTINCT dbo.ReclaimMedicals.ReclaimId)) from dbo.ReclaimMedicals WHERE " + LocalityName2 + " ReclaimId in ( select Id from dbo.Reclaims Where dbo.Reclaims.ReclaimDate BETWEEN '" + d_start.Value + "' AND '" + d_end.Value + "' and Reclaims.RowStatus<>2)) as Row3 ,(select SUM(dbo.ReclaimMedicals.ReclaimCost) from dbo.ReclaimMedicals WHERE " + LocalityName2 + " ReclaimId in ( select Id from dbo.Reclaims Where dbo.Reclaims.ReclaimDate BETWEEN '" + d_start.Value + "' AND '" + d_end.Value + "' and Reclaims.RowStatus<>2)) as Row21 FROM dbo.ReclaimMedicals INNER JOIN dbo.MedicalServices ON dbo.ReclaimMedicals.MedicalId = dbo.MedicalServices.Id INNER JOIN  dbo.Localities ON dbo.ReclaimMedicals.LocalityId = dbo.Localities.Id INNER JOIN  dbo.MedicalSubGroups ON dbo.MedicalServices.SubGroupID = dbo.MedicalSubGroups.Id WHERE " + LocalityName2 + " ReclaimId in ( select Id from dbo.Reclaims Where dbo.Reclaims.ReclaimDate BETWEEN '" + d_start.Value + "' AND '" + d_end.Value + "' and Reclaims.RowStatus<>2)   GROUP BY dbo.MedicalSubGroups.SubgroupAName  , dbo.Localities.LocalityName ORDER BY " + OrderedBy; ;
+                    }
+                    var GetCent = db.Database.SqlQuery<ReportForAll>(StrQuery).ToList();
+                    if (GetCent.Count > 0)
+                    {
+                        if (DrGrouping.SelectedIndex == 0)
+                        {
+                            RPTِEstrdadCount Rdet = new RPTِEstrdadCount();
+                            Rdet.DataSource = GetCent;
+                            Rdet.Locality.Value = db.Localities.Where(p => p.Id == PLC.LocalityId).ToList()[0].LocalityName;
+                            Rdet.StartDate.Value = d_start.Value.Date.ToShortDateString();
+                            Rdet.EndDate.Value = d_end.Value.Date.ToShortDateString();
+                            Rdet.ReportTitle.Value = "استرداد الخدمات الطبية";
+                            Rdet.ReportٍSubject.Value = "استرداد الخدمات الطبية";
+                            Rdet.ReportٍSubject1.Value = "استرداد الخدمات الطبية";
+                            Rdet.RowCNT.Value = "عدد الخدمات الطبية";
+                            Rdet.Frequency.Value = "التردد";
+                            Rdet.Frequency1.Value = "التردد";
+                            Rdet.textBox3.Value = "التكلفة";
+                            Rdet.textBox7.Value = "التكلفة";
+                            Rdet.NisbahCost.Value = "نسبة التكلفة";
+                            Rdet.NisbahCostH.Value = "نسبة التكلفة";
+                            Rdet.NisbahFreq.Value = "نسبة التردد";
+                            Rdet.NisbahFreqH.Value = "نسبة التردد";
+                            RptiewChronics.ReportSource = Rdet;
+                            RptiewChronics.RefreshReport();
+                            RptiewChronics.Show();
+                            RDGroups.Checked = false;
+                        }
+                        else
+                        {
+                            RPTِEstrdadCountLoc Rdet = new RPTِEstrdadCountLoc();
+                            Rdet.DataSource = GetCent;
+                            Rdet.Locality.Value = db.Localities.Where(p => p.Id == PLC.LocalityId).ToList()[0].LocalityName;
+                            Rdet.StartDate.Value = d_start.Value.Date.ToShortDateString();
+                            Rdet.EndDate.Value = d_end.Value.Date.ToShortDateString();
+                            Rdet.ReportTitle.Value = "استرداد الخدمات الطبية";
+                            Rdet.ReportٍSubject.Value = "استرداد الخدمات الطبية";
+                            Rdet.ReportٍSubject1.Value = "استرداد الخدمات الطبية";
+                            Rdet.RowCNT.Value = "عدد الخدمات الطبية";
+                            Rdet.Frequency.Value = "التردد";
+                            Rdet.Frequency1.Value = "التردد";
+                            Rdet.textBox3.Value = "التكلفة";
+                            Rdet.textBox7.Value = "التكلفة";
+                            Rdet.NisbahCost.Value = "نسبة التكلفة";
+                            Rdet.NisbahCostH.Value = "نسبة التكلفة";
+                            Rdet.NisbahFreq.Value = "نسبة التردد";
+                            Rdet.NisbahFreqH.Value = "نسبة التردد";
+                            RptiewChronics.ReportSource = Rdet;
+                            RptiewChronics.RefreshReport();
+                            RptiewChronics.Show();
+                            RDGroups.Checked = false;
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("لا توجد بيانات خلال الفترة المحددة", "النظام", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        RDGroups.Checked = false;
+                        return;
+                    }
+                }
+            }
+        }
+
+        private void RadioButton5_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButton5.Checked == true)
+            {
+                using (dbContext db = new dbContext())
+                {
+                    db.Database.CommandTimeout = 0;
+                    string StrQuery = "";
+                    if (DrGrouping.SelectedIndex == 0)
+                    {
+                        StrQuery = "SELECT  dbo.Reclaims.SectorName AS Row6, convert(decimal, COUNT(dbo.Reclaims.Id)) AS Row2, SUM(dbo.Reclaims.ReclaimTotal) AS Row12,(select convert(decimal, COUNT(dbo.Reclaims.Id)) from dbo.Reclaims WHERE " + LocalityName + " dbo.Reclaims.RowStatus<>2 and  dbo.Reclaims.ReclaimDate BETWEEN '" + d_start.Value + "' and '" + d_end.Value + "' and ReclaimTotal>0 ) as Row3,(select SUM(dbo.Reclaims.ReclaimTotal) from dbo.Reclaims WHERE " + LocalityName + " dbo.Reclaims.RowStatus<>2 and  dbo.Reclaims.ReclaimDate BETWEEN '" + d_start.Value + "' and '" + d_end.Value + "' and ReclaimTotal>0 ) as Row21 FROM  dbo.Reclaims WHERE " + LocalityName + " dbo.Reclaims.ReclaimDate BETWEEN '" + d_start.Value + "' and '" + d_end.Value + "' and dbo.Reclaims.RowStatus<>2 and dbo.Reclaims.ReclaimTotal>0 GROUP BY dbo.Reclaims.SectorName ORDER BY  " + OrderedBy;
+                    }
+                    else
+                    {
+                        StrQuery = "SELECT  dbo.Localities.LocalityName AS Row7,   dbo.Reclaims.SectorName AS Row6, convert(decimal, COUNT(dbo.Reclaims.Id)) AS Row2, SUM(dbo.Reclaims.ReclaimTotal) AS Row12,(select convert(decimal, COUNT(dbo.Reclaims.Id)) from dbo.Reclaims WHERE " + LocalityName + " dbo.Reclaims.RowStatus<>2 and  dbo.Reclaims.ReclaimDate BETWEEN '" + d_start.Value + "' and '" + d_end.Value + "' and ReclaimTotal>0 ) as Row3,(select SUM(dbo.Reclaims.ReclaimTotal) from dbo.Reclaims WHERE " + LocalityName + " dbo.Reclaims.RowStatus<>2 and  dbo.Reclaims.ReclaimDate BETWEEN '" + d_start.Value + "' and '" + d_end.Value + "' and ReclaimTotal>0 ) as Row21 FROM  dbo.Reclaims INNER JOIN dbo.Localities ON dbo.Reclaims.LocalityId = dbo.Localities.Id WHERE " + LocalityName + " dbo.Reclaims.ReclaimDate BETWEEN '" + d_start.Value + "' and '" + d_end.Value + "' and dbo.Reclaims.RowStatus<>2 and dbo.Reclaims.ReclaimTotal>0 GROUP BY dbo.Reclaims.SectorName, dbo.Localities.LocalityName ORDER BY  " + OrderedBy;
+                    }
+                    var GetCent = db.Database.SqlQuery<ReportForAll>(StrQuery).ToList();
+                    if (GetCent.Count > 0)
+                    {
+                        if (DrGrouping.SelectedIndex == 0)
+                        {
+                            RPTِEstrdadCount Rdet = new RPTِEstrdadCount();
+                            Rdet.DataSource = GetCent;
+                            Rdet.Locality.Value = db.Localities.Where(p => p.Id == PLC.LocalityId).ToList()[0].LocalityName;
+                            Rdet.StartDate.Value = d_start.Value.Date.ToShortDateString();
+                            Rdet.EndDate.Value = d_end.Value.Date.ToShortDateString();
+                            Rdet.ReportTitle.Value = "عدد التصاديق حسب القطاعات" ;
+                            Rdet.ReportٍSubject.Value = "اسم القطاع";
+                            Rdet.ReportٍSubject1.Value = "اسم القطاع";
+                            Rdet.Frequency.Value = "التردد";
+                            Rdet.Frequency1.Value = "التردد";
+                            Rdet.textBox3.Value = "التكلفة";
+                            Rdet.textBox7.Value = "التكلفة";
+                            Rdet.NisbahCost.Value = "نسبة التكلفة";
+                            Rdet.NisbahCostH.Value = "نسبة التكلفة";
+                            Rdet.NisbahFreq.Value = "نسبة التردد";
+                            Rdet.NisbahFreqH.Value = "نسبة التردد";
+                            RptiewChronics.ReportSource = Rdet;
+                        }
+                        else
+                        {
+                            RPTِEstrdadCountLoc Rdet = new RPTِEstrdadCountLoc();
+                            Rdet.DataSource = GetCent;
+                            Rdet.Locality.Value = db.Localities.Where(p => p.Id == PLC.LocalityId).ToList()[0].LocalityName;
+                            Rdet.StartDate.Value = d_start.Value.Date.ToShortDateString();
+                            Rdet.EndDate.Value = d_end.Value.Date.ToShortDateString();
+                            Rdet.ReportTitle.Value = "عدد التصاديق حسب القطاعات"; 
+                            Rdet.ReportٍSubject.Value = "اسم القطاع";
+                            Rdet.ReportٍSubject1.Value = "اسم القطاع";
+                            Rdet.Frequency.Value = "التردد";
+                            Rdet.Frequency1.Value = "التردد";
+                            Rdet.textBox3.Value = "التكلفة";
+                            Rdet.textBox7.Value = "التكلفة";
+                            Rdet.NisbahCost.Value = "نسبة التكلفة";
+                            Rdet.NisbahCostH.Value = "نسبة التكلفة";
+                            Rdet.NisbahFreq.Value = "نسبة التردد";
+                            Rdet.NisbahFreqH.Value = "نسبة التردد";
+                            RptiewChronics.ReportSource = Rdet;
+                        }
+                        RptiewChronics.RefreshReport();
+                        RptiewChronics.Show();
+                       radioButton5.Checked = false;
+                    }
+                    else
+                    {
+                        MessageBox.Show("لا توجد بيانات خلال الفترة المحددة", "النظام", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        radioButton5.Checked = false;
+                        return;
+                    }
+                }
+            }
         }
     }
 }
