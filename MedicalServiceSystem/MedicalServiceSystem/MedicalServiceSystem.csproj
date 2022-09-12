@@ -28,7 +28,7 @@
     <MapFileExtensions>true</MapFileExtensions>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>133</ApplicationRevision>
+    <ApplicationRevision>127</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -54,10 +54,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>713B642D171C2EB4147FDED3FFE78C4B9F288087</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>5D5E0E49862D7E241E071DC6AE4AD254BDE52D12</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>MedicalServiceSystem_1_TemporaryKey.pfx</ManifestKeyFile>
+    <ManifestKeyFile>MedicalServiceSystem_2_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
     <GenerateManifests>true</GenerateManifests>
@@ -72,14 +72,15 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Interop.WIA">
+      <HintPath>..\..\..\..\..\Interop.WIA.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Office.Interop.Excel.15.0.4795.1000\lib\net20\Microsoft.Office.Interop.Excel.dll</HintPath>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
     <Reference Include="Microsoft.VisualBasic" />
-    <Reference Include="ModelDB">
-      <HintPath>..\ModelDB\bin\Debug\ModelDB.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
@@ -100,6 +101,10 @@
     <Reference Include="Telerik.WinControls.Themes.Office2010Blue, Version=2020.1.113.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
     <Reference Include="Telerik.WinControls.UI, Version=2020.1.113.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
     <Reference Include="Telerik.WinControls.UI.Design, Version=2020.1.113.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
+    <Reference Include="TelerikExport, Version=2020.1.113.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Entering Medicines\EnteringMedicines\WindowsFormsApp2\bin\x86\Debug\TelerikExport.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Chronics\FRMBookInfo.cs">
@@ -549,18 +554,6 @@
     <Compile Include="Reports\RPTChronicAll.Designer.cs">
       <DependentUpon>RPTChronicAll.cs</DependentUpon>
     </Compile>
-    <Compile Include="Reports\RPTِEstrdadCountSecLoc.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Reports\RPTِEstrdadCountSecLoc.Designer.cs">
-      <DependentUpon>RPTِEstrdadCountSecLoc.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Reports\RPTِEstrdadCountSec.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Reports\RPTِEstrdadCountSec.Designer.cs">
-      <DependentUpon>RPTِEstrdadCountSec.cs</DependentUpon>
-    </Compile>
     <Compile Include="Reports\RPTِEstrdadMedicineDetails.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -867,12 +860,6 @@
     <EmbeddedResource Include="Reports\RPTChronicAll.resx">
       <DependentUpon>RPTChronicAll.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reports\RPTِEstrdadCountSecLoc.resx">
-      <DependentUpon>RPTِEstrdadCountSecLoc.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Reports\RPTِEstrdadCountSec.resx">
-      <DependentUpon>RPTِEstrdadCountSec.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Reports\RPTِEstrdadMedicineDetails.resx">
       <DependentUpon>RPTِEstrdadMedicineDetails.cs</DependentUpon>
     </EmbeddedResource>
@@ -909,8 +896,7 @@
     <EmbeddedResource Include="SystemSetting\UserPermissionsFRM.resx">
       <DependentUpon>UserPermissionsFRM.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="MedicalServiceSystem_1_TemporaryKey.pfx" />
-    <None Include="MedicalServiceSystem_TemporaryKey.pfx" />
+    <None Include="MedicalServiceSystem_2_TemporaryKey.pfx" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -926,7 +912,12 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\ModelDB\ModelDB.csproj">
+      <Project>{3fe9389c-1468-4345-bc6d-fa5db4a5dc68}</Project>
+      <Name>ModelDB</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.6">
       <Visible>False</Visible>
