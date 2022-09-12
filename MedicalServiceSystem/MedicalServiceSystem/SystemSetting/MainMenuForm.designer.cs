@@ -144,6 +144,11 @@
             this.radRibbonBarGroup8 = new Telerik.WinControls.UI.RadRibbonBarGroup();
             this.printCardBTN = new Telerik.WinControls.UI.RadButtonElement();
             this.radStatusStrip1 = new Telerik.WinControls.UI.RadStatusStrip();
+            this.ExportClms = new Telerik.WinControls.UI.RadButtonElement();
+            this.AppoveClaims = new Telerik.WinControls.UI.RadButtonElement();
+            this.ClmReceipt = new Telerik.WinControls.UI.RadButtonElement();
+            this.EnableClms = new Telerik.WinControls.UI.RadButtonElement();
+            this.SendClm = new Telerik.WinControls.UI.RadButtonElement();
             ((System.ComponentModel.ISupportInitialize)(this.radRibbonBar1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radMenuComboItem1.ComboBoxElement)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radStatusStrip1)).BeginInit();
@@ -474,6 +479,7 @@
             // 
             // ribbonTab8
             // 
+            this.ribbonTab8.IsSelected = true;
             this.ribbonTab8.Items.AddRange(new Telerik.WinControls.RadItem[] {
             this.radRibbonBarGroup36,
             this.radRibbonBarGroup37,
@@ -486,32 +492,42 @@
             // 
             // radRibbonBarGroup36
             // 
+            this.radRibbonBarGroup36.Items.AddRange(new Telerik.WinControls.RadItem[] {
+            this.ExportClms});
             this.radRibbonBarGroup36.Name = "radRibbonBarGroup36";
             this.radRibbonBarGroup36.Text = "تصدير المطالبة";
             // 
             // radRibbonBarGroup37
             // 
+            this.radRibbonBarGroup37.Items.AddRange(new Telerik.WinControls.RadItem[] {
+            this.AppoveClaims});
             this.radRibbonBarGroup37.Name = "radRibbonBarGroup37";
             this.radRibbonBarGroup37.Text = "اعتماد المطالبة المؤقتة";
             // 
             // radRibbonBarGroup38
             // 
+            this.radRibbonBarGroup38.Items.AddRange(new Telerik.WinControls.RadItem[] {
+            this.ClmReceipt});
             this.radRibbonBarGroup38.Name = "radRibbonBarGroup38";
             this.radRibbonBarGroup38.Text = "ايصال الاستلام";
             // 
             // radRibbonBarGroup39
             // 
+            this.radRibbonBarGroup39.Items.AddRange(new Telerik.WinControls.RadItem[] {
+            this.EnableClms});
             this.radRibbonBarGroup39.Name = "radRibbonBarGroup39";
             this.radRibbonBarGroup39.Text = "تصريح المطالبة";
             // 
             // radRibbonBarGroup40
             // 
+            this.radRibbonBarGroup40.Items.AddRange(new Telerik.WinControls.RadItem[] {
+            this.SendClm});
             this.radRibbonBarGroup40.Name = "radRibbonBarGroup40";
             this.radRibbonBarGroup40.Text = "ارسال المطالبة";
             // 
             // ribbonTab2
             // 
-            this.ribbonTab2.IsSelected = true;
+            this.ribbonTab2.IsSelected = false;
             this.ribbonTab2.Items.AddRange(new Telerik.WinControls.RadItem[] {
             this.radRibbonBarGroup41,
             this.radRibbonBarGroup42,
@@ -1187,6 +1203,36 @@
             this.radStatusStrip1.TabIndex = 1;
             this.radStatusStrip1.ThemeName = "Breeze";
             // 
+            // ExportClms
+            // 
+            this.ExportClms.Name = "ExportClms";
+            this.ExportClms.Text = "تصدير المطالبة";
+            this.ExportClms.Click += new System.EventHandler(this.ExportClms_Click);
+            // 
+            // AppoveClaims
+            // 
+            this.AppoveClaims.Name = "AppoveClaims";
+            this.AppoveClaims.Text = "اعتماد المطالبة المؤقتة";
+            this.AppoveClaims.Click += new System.EventHandler(this.AppoveClaims_Click);
+            // 
+            // ClmReceipt
+            // 
+            this.ClmReceipt.Name = "ClmReceipt";
+            this.ClmReceipt.Text = "ايصال استلام";
+            this.ClmReceipt.Click += new System.EventHandler(this.ClmReceipt_Click);
+            // 
+            // EnableClms
+            // 
+            this.EnableClms.Name = "EnableClms";
+            this.EnableClms.Text = "تصريح المطالبة";
+            this.EnableClms.Click += new System.EventHandler(this.EnableClms_Click);
+            // 
+            // SendClm
+            // 
+            this.SendClm.Name = "SendClm";
+            this.SendClm.Text = "ارسال المطالبة";
+            this.SendClm.Click += new System.EventHandler(this.SendClm_Click);
+            // 
             // MainMenuForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1331,5 +1377,10 @@
         private Telerik.WinControls.UI.RadButtonElement FillterData;
         private Telerik.WinControls.UI.RadButtonElement CenterListNonConfirm;
         private Telerik.WinControls.UI.RadButtonElement LastClaimsCenter;
+        private Telerik.WinControls.UI.RadButtonElement ExportClms;
+        private Telerik.WinControls.UI.RadButtonElement AppoveClaims;
+        private Telerik.WinControls.UI.RadButtonElement ClmReceipt;
+        private Telerik.WinControls.UI.RadButtonElement EnableClms;
+        private Telerik.WinControls.UI.RadButtonElement SendClm;
     }
 }

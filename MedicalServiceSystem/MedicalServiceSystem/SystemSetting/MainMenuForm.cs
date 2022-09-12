@@ -579,5 +579,45 @@ namespace MedicalServiceSystem
             form.WindowState = FormWindowState.Maximized;
             form.Show();
         }
+
+        private void ExportClms_Click(object sender, EventArgs e)
+        {
+            Claims.ImportFileFrm form = new Claims.ImportFileFrm();
+            form.MdiParent = this;
+            form.WindowState = FormWindowState.Maximized;
+            form.Show();
+        }
+
+        private void AppoveClaims_Click(object sender, EventArgs e)
+        {
+            Claims.ClmApproveAndDelFrm form = new Claims.ClmApproveAndDelFrm();
+            form.MdiParent = this;
+            form.WindowState = FormWindowState.Maximized;
+            form.Show();
+        }
+
+        private void ClmReceipt_Click(object sender, EventArgs e)
+        {
+            Claims.ClmReceiptFrm form = new Claims.ClmReceiptFrm();
+            form.MdiParent = this;
+            form.WindowState = FormWindowState.Maximized;
+            form.Show();
+        }
+
+        private void EnableClms_Click(object sender, EventArgs e)
+        {
+            Claims.ClmEnableFrm form = new Claims.ClmEnableFrm();
+            form.MdiParent = this;
+            form.WindowState = FormWindowState.Maximized;
+            form.Show();
+        }
+
+        private void SendClm_Click(object sender, EventArgs e)
+        {
+            Claims.ClmSendFrm form = new Claims.ClmSendFrm();
+            form.MdiParent = this;
+            form.WindowState = FormWindowState.Maximized;
+            form.Show();
+        }
     }
 }
