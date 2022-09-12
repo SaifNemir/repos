@@ -6,10 +6,11 @@ using System.Linq;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
-using ModelDB;
+
 using Telerik.WinControls.UI;
 using MedicalServiceSystem.SystemSetting;
 using MedicalServiceSystem.Reclaims;
+using ModelDB;
 
 namespace MedicalServiceSystem
 {
@@ -502,6 +503,118 @@ namespace MedicalServiceSystem
         private void FRMApproveMedicineReorts_Click(object sender, EventArgs e)
         {
             FRMreportApproveMedicine form = new FRMreportApproveMedicine();
+            form.MdiParent = this;
+            form.WindowState = FormWindowState.Maximized;
+            form.Show();
+        }
+
+        private void RequestClm_Click(object sender, EventArgs e)
+        {
+            Claims.ClmRequestFrm form = new Claims.ClmRequestFrm();
+            form.MdiParent = this;
+            form.WindowState = FormWindowState.Maximized;
+            form.Show();
+        }
+
+        private void AllocationClm_Click(object sender, EventArgs e)
+        {
+            Claims.AllocationFrm form = new Claims.AllocationFrm();
+            form.MdiParent = this;
+            form.WindowState = FormWindowState.Maximized;
+            form.Show();
+        }
+
+        private void MedicenReview_Click(object sender, EventArgs e)
+        {
+            Claims.ClmReviewFrm form = new Claims.ClmReviewFrm();
+            form.MdiParent = this;
+            form.WindowState = FormWindowState.Maximized;
+            form.Show();
+        }
+
+        private void ClmConfirm_Click(object sender, EventArgs e)
+        {
+            Claims.ClmConfirmReviewFrm form = new Claims.ClmConfirmReviewFrm();
+            form.MdiParent = this;
+            form.WindowState = FormWindowState.Maximized;
+            form.Show();
+        }
+
+        private void CenterNonConRep_Click(object sender, EventArgs e)
+        {
+            Claims.ViewCenterNonConfirmFrm form = new Claims.ViewCenterNonConfirmFrm();
+            form.MdiParent = this;
+            form.WindowState = FormWindowState.Maximized;
+            form.Show();
+        }
+
+        private void NonConfirmReport_Click(object sender, EventArgs e)
+        {
+            Claims.AdvanceFillterFrm form = new Claims.AdvanceFillterFrm();
+            form.MdiParent = this;
+            form.WindowState = FormWindowState.Maximized;
+            form.Show();
+        }
+
+        private void FillterData_Click(object sender, EventArgs e)
+        {
+            Claims.AdvanceFillterFrm form = new Claims.AdvanceFillterFrm();
+            form.MdiParent = this;
+            form.WindowState = FormWindowState.Maximized;
+            form.Show();
+        }
+
+        private void CenterListNonConfirm_Click(object sender, EventArgs e)
+        {
+            Claims.ViewCenterListNonConfirmRepFrm form = new Claims.ViewCenterListNonConfirmRepFrm();
+            form.MdiParent = this;
+            form.WindowState = FormWindowState.Maximized;
+            form.Show();
+        }
+
+        private void LastClaimsCenter_Click(object sender, EventArgs e)
+        {
+            Claims.LastClaimsCenterRepFrm form = new Claims.LastClaimsCenterRepFrm();
+            form.MdiParent = this;
+            form.WindowState = FormWindowState.Maximized;
+            form.Show();
+        }
+
+        private void ExportClms_Click(object sender, EventArgs e)
+        {
+            Claims.ImportFileFrm form = new Claims.ImportFileFrm();
+            form.MdiParent = this;
+            form.WindowState = FormWindowState.Maximized;
+            form.Show();
+        }
+
+        private void AppoveClaims_Click(object sender, EventArgs e)
+        {
+            Claims.ClmApproveAndDelFrm form = new Claims.ClmApproveAndDelFrm();
+            form.MdiParent = this;
+            form.WindowState = FormWindowState.Maximized;
+            form.Show();
+        }
+
+        private void ClmReceipt_Click(object sender, EventArgs e)
+        {
+            Claims.ClmReceiptFrm form = new Claims.ClmReceiptFrm();
+            form.MdiParent = this;
+            form.WindowState = FormWindowState.Maximized;
+            form.Show();
+        }
+
+        private void EnableClms_Click(object sender, EventArgs e)
+        {
+            Claims.ClmEnableFrm form = new Claims.ClmEnableFrm();
+            form.MdiParent = this;
+            form.WindowState = FormWindowState.Maximized;
+            form.Show();
+        }
+
+        private void SendClm_Click(object sender, EventArgs e)
+        {
+            Claims.ClmSendFrm form = new Claims.ClmSendFrm();
             form.MdiParent = this;
             form.WindowState = FormWindowState.Maximized;
             form.Show();
