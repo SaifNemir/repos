@@ -6,10 +6,11 @@ using System.Linq;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
-using ModelDB;
+
 using Telerik.WinControls.UI;
 using MedicalServiceSystem.SystemSetting;
 using MedicalServiceSystem.Reclaims;
+using ModelDB;
 
 namespace MedicalServiceSystem
 {

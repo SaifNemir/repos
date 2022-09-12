@@ -1,4 +1,4 @@
-﻿using ModelDB;
+﻿
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,6 +14,8 @@ using System.IO;
 using System.Data.SqlClient;
 using Microsoft.VisualBasic;
 using MedicalServiceSystem.SystemSetting;
+using ModelDB;
+
 namespace MedicalServiceSystem.Reclaims
 {
     public partial class FRMBookInfo : Telerik.WinControls.UI.RadForm

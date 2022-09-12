@@ -49,9 +49,9 @@ namespace MedicalServiceSystem.Claims
         {
             try
             {
-                double _insNo = Convert.ToDouble(InsuranceNoTxt.Text);
+                string  _insNo = InsuranceNoTxt.Text;
                 dbContext db = new dbContext();
-                var q = db.ReclaimMedicines.Where(p => p.Reclaim.SubscriberId == _insNo && p.RowStatus != RowStatus.Deleted).Select(p => new
+                var q = db.ReclaimMedicines.Where(p => p.Reclaim.InsurNo == _insNo && p.RowStatus != RowStatus.Deleted).Select(p => new
                 {
                     CenterName = db.ReclaimMedicineReasonsLists.Where(c => c.Id == p.Reclaim.ReclaimMedicalResonId).Select(c => c.MedicineReason).FirstOrDefault(),
                     Month = p.Reclaim.ReclaimDate.Month,
@@ -63,7 +63,8 @@ namespace MedicalServiceSystem.Claims
                 }).ToList();
 
                 //ReClaims
-                var q1 = db.ClmDetailsData.Where(p => p.ClmMasterData.InsuranceNo == _insNo && p.RowStatus != RowStatus.Deleted).Select(p => new
+                double InsNo1 = Convert.ToDouble(InsuranceNoTxt.Text);
+                var q1 = db.ClmDetailsData.Where(p => p.ClmMasterData.InsuranceNo ==InsNo1 && p.RowStatus != RowStatus.Deleted).Select(p => new
                 {
                     CenterName = p.ClmMasterData.CenterInfo.CenterName,
                     Month = p.ClmMasterData.Months,
