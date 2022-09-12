@@ -299,7 +299,7 @@ namespace MedicalServiceSystem.Reports
             this.textBox30.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(12D);
             this.textBox30.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Center;
             this.textBox30.Style.VerticalAlign = Telerik.Reporting.Drawing.VerticalAlign.Middle;
-            this.textBox30.Value = "= Count([Row1])";
+            this.textBox30.Value = "= Sum([Row1])";
             // 
             // CompanyLogo
             // 

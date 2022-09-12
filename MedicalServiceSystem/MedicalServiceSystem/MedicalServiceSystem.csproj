@@ -28,7 +28,7 @@
     <MapFileExtensions>true</MapFileExtensions>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>127</ApplicationRevision>
+    <ApplicationRevision>133</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -411,6 +411,18 @@
     <Compile Include="Reports\RPTChronicAll.Designer.cs">
       <DependentUpon>RPTChronicAll.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reports\RPTِEstrdadCountSecLoc.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\RPTِEstrdadCountSecLoc.Designer.cs">
+      <DependentUpon>RPTِEstrdadCountSecLoc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\RPTِEstrdadCountSec.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\RPTِEstrdadCountSec.Designer.cs">
+      <DependentUpon>RPTِEstrdadCountSec.cs</DependentUpon>
+    </Compile>
     <Compile Include="Reports\RPTِEstrdadMedicineDetails.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -647,6 +659,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\RPTChronicAll.resx">
       <DependentUpon>RPTChronicAll.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\RPTِEstrdadCountSecLoc.resx">
+      <DependentUpon>RPTِEstrdadCountSecLoc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\RPTِEstrdadCountSec.resx">
+      <DependentUpon>RPTِEstrdadCountSec.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\RPTِEstrdadMedicineDetails.resx">
       <DependentUpon>RPTِEstrdadMedicineDetails.cs</DependentUpon>

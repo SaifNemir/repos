@@ -580,12 +580,14 @@ namespace MedicalServiceSystem.Reclaims
             {
                 using (dbContext db = new dbContext())
                 {
-                    var FrHistoryMc = db.ReclaimMedicines.Where(p => p.Reclaim.ReclaimNo == OperationNo.Text.Trim() && p.RowStatus != RowStatus.Deleted).Select(p => new { p.Reclaim.ReclaimNo, ServiceName = p.MedicineForReclaim.Generic_name, p.Reclaim.InsurNo, p.Reclaim.InsurName, p.Reclaim.ReclaimDate, p.Percentages, p.ReclaimCost, p.ReclaimTotal, p.Reclaim.BillsTotal, p.Reclaim.Server, p.Reclaim.ClientId, InContract = (p.MedicineForReclaim.InContract == true ? "داخل العقد" : "خارج العقد"), ServiceGroup = "أدوية" }).ToList();
-                    var FrHistoryMd = db.ReclaimMedicals.Where(p => p.Reclaim.ReclaimNo == OperationNo.Text.Trim() && p.RowStatus != RowStatus.Deleted).Select(p => new { p.Reclaim.ReclaimNo, ServiceName = p.MedicalServices.ServiceAName, p.Reclaim.InsurNo, p.Reclaim.InsurName, p.Reclaim.ReclaimDate, p.Percentages, p.ReclaimCost, p.ReclaimTotal, p.Reclaim.BillsTotal, p.Reclaim.Server, p.Reclaim.ClientId, InContract = (p.MedicalServices.InContract == true ? "داخل العقد" : "خارج العقد"), ServiceGroup = "خدمات طبية" }).ToList();
+                   // MessageBox.Show(ReclaimId.ToString());
+                    var FrHistoryMc = db.ReclaimMedicines.Where(p => p.ReclaimId==ReclaimId && p.RowStatus != RowStatus.Deleted).Select(p => new {p.Id, p.Reclaim.ReclaimNo, ServiceName = p.MedicineForReclaim.Generic_name, p.Reclaim.InsurNo, p.Reclaim.InsurName, p.Reclaim.ReclaimDate, p.Percentages, p.ReclaimCost, p.ReclaimTotal, p.Reclaim.BillsTotal, p.Reclaim.Server, p.Reclaim.ClientId, InContract = (p.MedicineForReclaim.InContract == true ? "داخل العقد" : "خارج العقد"), ServiceGroup = "أدوية" }).ToList();
+                    var FrHistoryMd = db.ReclaimMedicals.Where(p => p.ReclaimId==ReclaimId && p.RowStatus != RowStatus.Deleted).Select(p => new {p.Id, p.Reclaim.ReclaimNo, ServiceName = p.MedicalServices.ServiceAName, p.Reclaim.InsurNo, p.Reclaim.InsurName, p.Reclaim.ReclaimDate, p.Percentages, p.ReclaimCost, p.ReclaimTotal, p.Reclaim.BillsTotal, p.Reclaim.Server, p.Reclaim.ClientId, InContract = (p.MedicalServices.InContract == true ? "داخل العقد" : "خارج العقد"), ServiceGroup = "خدمات طبية" }).ToList();
                     var FrHistory = FrHistoryMc.Union(FrHistoryMd).ToList();
                     if (FrHistory.Count > 0)
                     {
-                        var Frec = db.Reclaims.Where(p => p.ReclaimNo == OperationNo.Text).ToList();
+                        //MessageBox.Show(FrHistory.Count.ToString());
+                        var Frec = db.Reclaims.Where(p => p.Id==ReclaimId).ToList();
                         if (Frec.Count > 0)
                         {
                             Frec[0].ReclaimTotal = Frec[0].MedicalTotal + Frec[0].MedicineTotal;
