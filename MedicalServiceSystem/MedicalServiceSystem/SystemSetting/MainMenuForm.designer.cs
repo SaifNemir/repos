@@ -62,10 +62,15 @@
             this.ChangePassFrm = new Telerik.WinControls.UI.RadButtonElement();
             this.ribbonTab8 = new Telerik.WinControls.UI.RibbonTab();
             this.radRibbonBarGroup36 = new Telerik.WinControls.UI.RadRibbonBarGroup();
+            this.ExportClms = new Telerik.WinControls.UI.RadButtonElement();
             this.radRibbonBarGroup37 = new Telerik.WinControls.UI.RadRibbonBarGroup();
+            this.AppoveClaims = new Telerik.WinControls.UI.RadButtonElement();
             this.radRibbonBarGroup38 = new Telerik.WinControls.UI.RadRibbonBarGroup();
+            this.ClmReceipt = new Telerik.WinControls.UI.RadButtonElement();
             this.radRibbonBarGroup39 = new Telerik.WinControls.UI.RadRibbonBarGroup();
+            this.EnableClms = new Telerik.WinControls.UI.RadButtonElement();
             this.radRibbonBarGroup40 = new Telerik.WinControls.UI.RadRibbonBarGroup();
+            this.SendClm = new Telerik.WinControls.UI.RadButtonElement();
             this.ribbonTab2 = new Telerik.WinControls.UI.RibbonTab();
             this.radRibbonBarGroup41 = new Telerik.WinControls.UI.RadRibbonBarGroup();
             this.RequestClm = new Telerik.WinControls.UI.RadButtonElement();
@@ -144,11 +149,6 @@
             this.radRibbonBarGroup8 = new Telerik.WinControls.UI.RadRibbonBarGroup();
             this.printCardBTN = new Telerik.WinControls.UI.RadButtonElement();
             this.radStatusStrip1 = new Telerik.WinControls.UI.RadStatusStrip();
-            this.ExportClms = new Telerik.WinControls.UI.RadButtonElement();
-            this.AppoveClaims = new Telerik.WinControls.UI.RadButtonElement();
-            this.ClmReceipt = new Telerik.WinControls.UI.RadButtonElement();
-            this.EnableClms = new Telerik.WinControls.UI.RadButtonElement();
-            this.SendClm = new Telerik.WinControls.UI.RadButtonElement();
             ((System.ComponentModel.ISupportInitialize)(this.radRibbonBar1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radMenuComboItem1.ComboBoxElement)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radStatusStrip1)).BeginInit();
@@ -479,7 +479,7 @@
             // 
             // ribbonTab8
             // 
-            this.ribbonTab8.IsSelected = true;
+            this.ribbonTab8.IsSelected = false;
             this.ribbonTab8.Items.AddRange(new Telerik.WinControls.RadItem[] {
             this.radRibbonBarGroup36,
             this.radRibbonBarGroup37,
@@ -497,12 +497,36 @@
             this.radRibbonBarGroup36.Name = "radRibbonBarGroup36";
             this.radRibbonBarGroup36.Text = "تصدير المطالبة";
             // 
+            // ExportClms
+            // 
+            this.ExportClms.AutoSize = false;
+            this.ExportClms.Bounds = new System.Drawing.Rectangle(0, 0, 80, 66);
+            this.ExportClms.DisplayStyle = Telerik.WinControls.DisplayStyle.Image;
+            this.ExportClms.Enabled = false;
+            this.ExportClms.Image = global::MedicalServiceSystem.Properties.Resources.file_download_FILL0_wght400_GRAD0_opsz48;
+            this.ExportClms.ImageAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.ExportClms.Name = "ExportClms";
+            this.ExportClms.Text = "تصدير المطالبة";
+            this.ExportClms.Click += new System.EventHandler(this.ExportClms_Click);
+            // 
             // radRibbonBarGroup37
             // 
             this.radRibbonBarGroup37.Items.AddRange(new Telerik.WinControls.RadItem[] {
             this.AppoveClaims});
             this.radRibbonBarGroup37.Name = "radRibbonBarGroup37";
             this.radRibbonBarGroup37.Text = "اعتماد المطالبة المؤقتة";
+            // 
+            // AppoveClaims
+            // 
+            this.AppoveClaims.AutoSize = false;
+            this.AppoveClaims.Bounds = new System.Drawing.Rectangle(0, 0, 110, 66);
+            this.AppoveClaims.DisplayStyle = Telerik.WinControls.DisplayStyle.Image;
+            this.AppoveClaims.Enabled = false;
+            this.AppoveClaims.Image = global::MedicalServiceSystem.Properties.Resources.fact_check_FILL0_wght400_GRAD0_opsz48;
+            this.AppoveClaims.ImageAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.AppoveClaims.Name = "AppoveClaims";
+            this.AppoveClaims.Text = "اعتماد المطالبة المؤقتة";
+            this.AppoveClaims.Click += new System.EventHandler(this.AppoveClaims_Click);
             // 
             // radRibbonBarGroup38
             // 
@@ -511,12 +535,36 @@
             this.radRibbonBarGroup38.Name = "radRibbonBarGroup38";
             this.radRibbonBarGroup38.Text = "ايصال الاستلام";
             // 
+            // ClmReceipt
+            // 
+            this.ClmReceipt.AutoSize = false;
+            this.ClmReceipt.Bounds = new System.Drawing.Rectangle(0, 0, 75, 66);
+            this.ClmReceipt.DisplayStyle = Telerik.WinControls.DisplayStyle.Image;
+            this.ClmReceipt.Enabled = false;
+            this.ClmReceipt.Image = global::MedicalServiceSystem.Properties.Resources.sticky_note_2_FILL0_wght400_GRAD0_opsz48;
+            this.ClmReceipt.ImageAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.ClmReceipt.Name = "ClmReceipt";
+            this.ClmReceipt.Text = "ايصال استلام";
+            this.ClmReceipt.Click += new System.EventHandler(this.ClmReceipt_Click);
+            // 
             // radRibbonBarGroup39
             // 
             this.radRibbonBarGroup39.Items.AddRange(new Telerik.WinControls.RadItem[] {
             this.EnableClms});
             this.radRibbonBarGroup39.Name = "radRibbonBarGroup39";
             this.radRibbonBarGroup39.Text = "تصريح المطالبة";
+            // 
+            // EnableClms
+            // 
+            this.EnableClms.AutoSize = false;
+            this.EnableClms.Bounds = new System.Drawing.Rectangle(0, 0, 80, 66);
+            this.EnableClms.DisplayStyle = Telerik.WinControls.DisplayStyle.Image;
+            this.EnableClms.Enabled = false;
+            this.EnableClms.Image = global::MedicalServiceSystem.Properties.Resources.offline_pin_FILL0_wght400_GRAD0_opsz48;
+            this.EnableClms.ImageAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.EnableClms.Name = "EnableClms";
+            this.EnableClms.Text = "تصريح المطالبة";
+            this.EnableClms.Click += new System.EventHandler(this.EnableClms_Click);
             // 
             // radRibbonBarGroup40
             // 
@@ -525,9 +573,20 @@
             this.radRibbonBarGroup40.Name = "radRibbonBarGroup40";
             this.radRibbonBarGroup40.Text = "ارسال المطالبة";
             // 
+            // SendClm
+            // 
+            this.SendClm.AutoSize = false;
+            this.SendClm.Bounds = new System.Drawing.Rectangle(0, 0, 77, 66);
+            this.SendClm.DisplayStyle = Telerik.WinControls.DisplayStyle.Image;
+            this.SendClm.Image = global::MedicalServiceSystem.Properties.Resources.send_FILL0_wght400_GRAD0_opsz48;
+            this.SendClm.ImageAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.SendClm.Name = "SendClm";
+            this.SendClm.Text = "ارسال المطالبة";
+            this.SendClm.Click += new System.EventHandler(this.SendClm_Click);
+            // 
             // ribbonTab2
             // 
-            this.ribbonTab2.IsSelected = false;
+            this.ribbonTab2.IsSelected = true;
             this.ribbonTab2.Items.AddRange(new Telerik.WinControls.RadItem[] {
             this.radRibbonBarGroup41,
             this.radRibbonBarGroup42,
@@ -551,6 +610,12 @@
             // 
             // RequestClm
             // 
+            this.RequestClm.AutoSize = false;
+            this.RequestClm.Bounds = new System.Drawing.Rectangle(0, 0, 71, 66);
+            this.RequestClm.DisplayStyle = Telerik.WinControls.DisplayStyle.Image;
+            this.RequestClm.Enabled = false;
+            this.RequestClm.Image = global::MedicalServiceSystem.Properties.Resources.receipt_long_FILL0_wght400_GRAD0_opsz48;
+            this.RequestClm.ImageAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.RequestClm.Name = "RequestClm";
             this.RequestClm.Text = "طلب المطالبة";
             this.RequestClm.Click += new System.EventHandler(this.RequestClm_Click);
@@ -564,6 +629,12 @@
             // 
             // AllocationClm
             // 
+            this.AllocationClm.AutoSize = false;
+            this.AllocationClm.Bounds = new System.Drawing.Rectangle(0, 0, 112, 66);
+            this.AllocationClm.DisplayStyle = Telerik.WinControls.DisplayStyle.Image;
+            this.AllocationClm.Enabled = false;
+            this.AllocationClm.Image = global::MedicalServiceSystem.Properties.Resources.tenancy_FILL0_wght400_GRAD0_opsz48;
+            this.AllocationClm.ImageAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.AllocationClm.Name = "AllocationClm";
             this.AllocationClm.Text = "استلام وتوزيع المطالبة";
             this.AllocationClm.Click += new System.EventHandler(this.AllocationClm_Click);
@@ -577,6 +648,12 @@
             // 
             // MedicenReview
             // 
+            this.MedicenReview.AutoSize = false;
+            this.MedicenReview.Bounds = new System.Drawing.Rectangle(0, 0, 100, 66);
+            this.MedicenReview.DisplayStyle = Telerik.WinControls.DisplayStyle.Image;
+            this.MedicenReview.Enabled = false;
+            this.MedicenReview.Image = global::MedicalServiceSystem.Properties.Resources.menu_book_FILL0_wght400_GRAD0_opsz48;
+            this.MedicenReview.ImageAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.MedicenReview.Name = "MedicenReview";
             this.MedicenReview.Text = "المراجعة الدوائية";
             this.MedicenReview.Click += new System.EventHandler(this.MedicenReview_Click);
@@ -590,6 +667,12 @@
             // 
             // ClmConfirm
             // 
+            this.ClmConfirm.AutoSize = false;
+            this.ClmConfirm.Bounds = new System.Drawing.Rectangle(0, 0, 88, 66);
+            this.ClmConfirm.DisplayStyle = Telerik.WinControls.DisplayStyle.Image;
+            this.ClmConfirm.Enabled = false;
+            this.ClmConfirm.Image = global::MedicalServiceSystem.Properties.Resources.task_alt_FILL0_wght400_GRAD0_opsz48;
+            this.ClmConfirm.ImageAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.ClmConfirm.Name = "ClmConfirm";
             this.ClmConfirm.Text = "اعتماد المطالبات";
             this.ClmConfirm.Click += new System.EventHandler(this.ClmConfirm_Click);
@@ -603,6 +686,12 @@
             // 
             // CenterNonConRep
             // 
+            this.CenterNonConRep.AutoSize = false;
+            this.CenterNonConRep.Bounds = new System.Drawing.Rectangle(0, 0, 74, 66);
+            this.CenterNonConRep.DisplayStyle = Telerik.WinControls.DisplayStyle.Image;
+            this.CenterNonConRep.Enabled = false;
+            this.CenterNonConRep.Image = global::MedicalServiceSystem.Properties.Resources.event_busy_FILL0_wght400_GRAD0_opsz48;
+            this.CenterNonConRep.ImageAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.CenterNonConRep.Name = "CenterNonConRep";
             this.CenterNonConRep.Text = "اشعار مخالفة";
             this.CenterNonConRep.Click += new System.EventHandler(this.CenterNonConRep_Click);
@@ -616,6 +705,12 @@
             // 
             // NonConfirmReport
             // 
+            this.NonConfirmReport.AutoSize = false;
+            this.NonConfirmReport.Bounds = new System.Drawing.Rectangle(0, 0, 91, 66);
+            this.NonConfirmReport.DisplayStyle = Telerik.WinControls.DisplayStyle.Image;
+            this.NonConfirmReport.Enabled = false;
+            this.NonConfirmReport.Image = global::MedicalServiceSystem.Properties.Resources.filter_alt_FILL0_wght400_GRAD0_opsz48;
+            this.NonConfirmReport.ImageAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.NonConfirmReport.Name = "NonConfirmReport";
             this.NonConfirmReport.Text = "تصفية المخالفات";
             this.NonConfirmReport.Click += new System.EventHandler(this.NonConfirmReport_Click);
@@ -629,6 +724,12 @@
             // 
             // FillterData
             // 
+            this.FillterData.AutoSize = false;
+            this.FillterData.Bounds = new System.Drawing.Rectangle(0, 0, 82, 66);
+            this.FillterData.DisplayStyle = Telerik.WinControls.DisplayStyle.Image;
+            this.FillterData.Enabled = false;
+            this.FillterData.Image = global::MedicalServiceSystem.Properties.Resources.flash_auto_FILL0_wght400_GRAD0_opsz48;
+            this.FillterData.ImageAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.FillterData.Name = "FillterData";
             this.FillterData.Text = "تصفية البيانات";
             this.FillterData.Click += new System.EventHandler(this.FillterData_Click);
@@ -642,6 +743,12 @@
             // 
             // CenterListNonConfirm
             // 
+            this.CenterListNonConfirm.AutoSize = false;
+            this.CenterListNonConfirm.Bounds = new System.Drawing.Rectangle(0, 0, 117, 66);
+            this.CenterListNonConfirm.DisplayStyle = Telerik.WinControls.DisplayStyle.Image;
+            this.CenterListNonConfirm.Enabled = false;
+            this.CenterListNonConfirm.Image = global::MedicalServiceSystem.Properties.Resources.fact_check_FILL0_wght400_GRAD0_opsz48__1_;
+            this.CenterListNonConfirm.ImageAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.CenterListNonConfirm.Name = "CenterListNonConfirm";
             this.CenterListNonConfirm.Text = "قائمة مخالفات المراكز";
             this.CenterListNonConfirm.Click += new System.EventHandler(this.CenterListNonConfirm_Click);
@@ -655,6 +762,12 @@
             // 
             // LastClaimsCenter
             // 
+            this.LastClaimsCenter.AutoSize = false;
+            this.LastClaimsCenter.Bounds = new System.Drawing.Rectangle(0, 0, 72, 66);
+            this.LastClaimsCenter.DisplayStyle = Telerik.WinControls.DisplayStyle.Image;
+            this.LastClaimsCenter.Enabled = false;
+            this.LastClaimsCenter.Image = global::MedicalServiceSystem.Properties.Resources.assignment_FILL0_wght400_GRAD0_opsz48;
+            this.LastClaimsCenter.ImageAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.LastClaimsCenter.Name = "LastClaimsCenter";
             this.LastClaimsCenter.Text = "التقرير النهائي";
             this.LastClaimsCenter.Click += new System.EventHandler(this.LastClaimsCenter_Click);
@@ -1202,36 +1315,6 @@
             this.radStatusStrip1.SizingGrip = false;
             this.radStatusStrip1.TabIndex = 1;
             this.radStatusStrip1.ThemeName = "Breeze";
-            // 
-            // ExportClms
-            // 
-            this.ExportClms.Name = "ExportClms";
-            this.ExportClms.Text = "تصدير المطالبة";
-            this.ExportClms.Click += new System.EventHandler(this.ExportClms_Click);
-            // 
-            // AppoveClaims
-            // 
-            this.AppoveClaims.Name = "AppoveClaims";
-            this.AppoveClaims.Text = "اعتماد المطالبة المؤقتة";
-            this.AppoveClaims.Click += new System.EventHandler(this.AppoveClaims_Click);
-            // 
-            // ClmReceipt
-            // 
-            this.ClmReceipt.Name = "ClmReceipt";
-            this.ClmReceipt.Text = "ايصال استلام";
-            this.ClmReceipt.Click += new System.EventHandler(this.ClmReceipt_Click);
-            // 
-            // EnableClms
-            // 
-            this.EnableClms.Name = "EnableClms";
-            this.EnableClms.Text = "تصريح المطالبة";
-            this.EnableClms.Click += new System.EventHandler(this.EnableClms_Click);
-            // 
-            // SendClm
-            // 
-            this.SendClm.Name = "SendClm";
-            this.SendClm.Text = "ارسال المطالبة";
-            this.SendClm.Click += new System.EventHandler(this.SendClm_Click);
             // 
             // MainMenuForm
             // 

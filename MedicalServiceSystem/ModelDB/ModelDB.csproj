@@ -61,9 +61,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Migrations\202209120832168_ggg.cs" />
-    <Compile Include="Migrations\202209120832168_ggg.designer.cs">
-      <DependentUpon>202209120832168_ggg.cs</DependentUpon>
+    <Compile Include="Migrations\202209190841367_2222.cs" />
+    <Compile Include="Migrations\202209190841367_2222.designer.cs">
+      <DependentUpon>202209190841367_2222.cs</DependentUpon>
     </Compile>
     <Compile Include="StopSubsriber.cs" />
     <Compile Include="RefuseMedicineDetails.cs" />
@@ -144,8 +144,8 @@
     <!--<Fakes Include="Fakes\EntityFramework.fakes" />-->
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202209120832168_ggg.resx">
-      <DependentUpon>202209120832168_ggg.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202209190841367_2222.resx">
+      <DependentUpon>202209190841367_2222.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <!--<Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

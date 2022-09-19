@@ -27,7 +27,7 @@ namespace MedicalServiceSystem.Claims
         private void ClmConfirmReviewFrm_Load(object sender, EventArgs e)
         {
             dbContext db = new dbContext();
-            var q = db.CenterInfos.Where(p => p.IsEnabled  == true ).Select(p => new { Id = p.Id, CenterName = p.CenterName }).ToList();
+            var q = db.CenterInfos.Where(p => p.IsEnabled  == true && p.HasContract== true  ).Select(p => new { Id = p.Id, CenterName = p.CenterName }).ToList();
             if (q.Count > 0)
             {
                 CenterName.DataSource = q;
