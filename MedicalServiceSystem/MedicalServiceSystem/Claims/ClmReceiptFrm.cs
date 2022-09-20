@@ -258,7 +258,7 @@ namespace MedicalServiceSystem.Claims
                 //
                
             }
-            var qError = db.ClmErrorType.Select(p => new { Id = p.Id, Name = p.ErrorName }).ToList();
+            var qError = db.ClmSortedDeg.Select(p => new { Id = p.Id, Name = p.Name }).ToList();
             if (qError.Count > 0)
             {
                 DataErrorDrp.DataSource = qError;
