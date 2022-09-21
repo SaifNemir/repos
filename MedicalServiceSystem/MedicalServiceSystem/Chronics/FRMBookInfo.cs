@@ -1,4 +1,4 @@
-﻿using ModelDB;
+﻿
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,6 +14,8 @@ using System.IO;
 using System.Data.SqlClient;
 using Microsoft.VisualBasic;
 using MedicalServiceSystem.SystemSetting;
+using ModelDB;
+
 namespace MedicalServiceSystem.Reclaims
 {
     public partial class FRMBookInfo : Telerik.WinControls.UI.RadForm
@@ -774,12 +776,12 @@ namespace MedicalServiceSystem.Reclaims
                     ChronicLst.Focus();
                     return;
                 }
-                //if (PhoneNo.Text.Length == 0)
-                //{
-                //    MessageBox.Show("يجب ادخال رقم هاتف المشترك", "النظام", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                //    PhoneNo.Focus();
-                //    return;
-                //}
+                if (PhoneNo.Text.Length == 0)
+                {
+                    MessageBox.Show("يجب ادخال رقم هاتف المشترك", "النظام", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    PhoneNo.Focus();
+                    return;
+                }
                 if (DocumentNo.Text.Length == 0)
                 {
                     MessageBox.Show("يجب ادخال رقم الايصال المادي", "النظام", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
