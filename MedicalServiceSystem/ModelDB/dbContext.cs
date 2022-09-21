@@ -4,9 +4,9 @@ namespace ModelDB
 {
     public class dbContext : DbContext
     {
-      //  public DbSet<HICKS_DC> HICKS_DCs { get; set; }
+        //  public DbSet<HICKS_DC> HICKS_DCs { get; set; }
         public DbSet<Medicine> Medicines { get; set; }
-       // public DbSet<Prescription_Level> Prescription_Levels { get; set; }
+        // public DbSet<Prescription_Level> Prescription_Levels { get; set; }
         public DbSet<Approve> Approves { get; set; }
         public DbSet<ApproveDetails> ApproveDetails { get; set; }
         public DbSet<ApprovePictures> ApprovePictures { get; set; }
@@ -31,7 +31,7 @@ namespace ModelDB
         public DbSet<UserGroup> UserGroups { get; set; }
         public DbSet<UserPermission> UserPermissions { get; set; }
         public DbSet<GroupPermission> GroupPermissions { get; set; }
-        public DbSet <ATCclassification> ATCclassifications { get; set; }
+        public DbSet<ATCclassification> ATCclassifications { get; set; }
         public DbSet<MedicineLevel> MedicineLevels { get; set; }
         public DbSet<MedicineList> MedicineLists { get; set; }
         public DbSet<MedicineListPrice> MedicineListPrices { get; set; }
@@ -53,11 +53,23 @@ namespace ModelDB
         public DbSet<Chronics> Chronics { get; set; }
         public DbSet<ChronicsBooks> ChronicsBooks { get; set; }
         public DbSet<ChronicBooksDetails> ChronicBooksDetails { get; set; }
-        public DbSet<ApproveMedicineType > ApproveMedicineTypes { get; set; }
+        public DbSet<ApproveMedicineType> ApproveMedicineTypes { get; set; }
         public DbSet<ChronicBookType> ChronicBookTypes { get; set; }
+        public DbSet<ClmContractType> ClmContractType { get; set; }
+        public DbSet<ClmDetailsData> ClmDetailsData { get; set; }
+        public DbSet<ClmImpFile> ClmImpFile { get; set; }
+        public DbSet<ClmMasterData> ClmMasterData { get; set; }
+        public DbSet<ClmReceiptClaims> ClmReceiptClaims { get; set; }
+        public DbSet<ClmReceiptClaimsDet> ClmReceiptClaimsDet { get; set; }
+        public DbSet<ClmTempDet> ClmTempDet { get; set; }
+        public DbSet<ClmTempMaster> ClmTempMaster { get; set; }
+        public DbSet<ClmNonConfirmDet> ClmNonConfirmDet { get; set; }
+        public DbSet<ClmNonConfirmType> ClmNonConfirmType { get; set; }
+        public DbSet<ClmErrorType> ClmErrorType { get; set; }
+        public DbSet<ClmSortedDeg> ClmSortedDeg { get; set; }
+        public DbSet<ClmErrorDataEnter> ClmErrorDataEnter { get; set; }
         public DbSet<RefuseMedicine> RefuseMedicines { get; set; }
         public DbSet<RefuseMedicineDetails> RefuseMedicineDetails { get; set; }
         public DbSet<StopSubsriber> StopSubsribers { get; set; }
-
     }
 }

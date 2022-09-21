@@ -11,7 +11,7 @@ namespace ModelDB
     {
         public int Id { get; set; }
         public int BookNo { get; set; }
-        public int DocNo { get; set; }
+        public decimal DocNo { get; set; }
         public int BookTypeId { get; set; }
         [ForeignKey("BookTypeId")]
         public virtual ChronicBookType ChronicBookType { get; set; }

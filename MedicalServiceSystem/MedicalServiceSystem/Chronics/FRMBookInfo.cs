@@ -116,13 +116,76 @@ namespace MedicalServiceSystem.Reclaims
                 card_no.Focus();
                 return;
             }
+            if (BookNo.Text.Length == 0)
+            {
+                MessageBox.Show("يجب ادخال رقم الدفتر", "النظام", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                BookNo.Focus();
+                return;
+            }
+            if (BookType.SelectedIndex == -1)
+            {
+                MessageBox.Show("يجب اختيار نوع العملية", "النظام", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                BookType.Focus();
+                return;
+
+            }
+            else if (BookType.SelectedIndex == 0)
+            {
+                using (dbContext db = new dbContext())
+                {
+                    var Fhis = db.ChronicsBooks.Where(p => p.InsurNo == card_no.Text && p.RowStatus != RowStatus.Deleted).ToList();
+                    if (Fhis.Count > 0)
+                    {
+                        if (flag == 0)
+                        {
+
+                            BookType.SelectedIndex = 1;
+
+                        }
+                    }
+                }
+
+            }
+
+
+            if (RequistingParty.SelectedIndex == -1)
+            {
+                MessageBox.Show("يجب اختيار المركز الذي كتب فيه التشخيص", "النظام", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                RequistingParty.Focus();
+                return;
+            }
             if (GrdDwa.RowCount == 0)
             {
                 MessageBox.Show("لا توجد بيانات لأمراض مزمنة مدخلة", "النظام", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 NewMedical();
                 return;
             }
+            if (flag == 0)
+            {
+                using (dbContext db = new dbContext())
+                {
+                    int bkNo = Convert.ToInt32(BookNo.Text);
+                    //int DcNo = Convert.ToInt32(DocumentNo.Text);
+                    var Fhis1 = db.ChronicsBooks.Where(p => p.BookNo == bkNo && p.RowStatus != RowStatus.Deleted).ToList();
+                    if (Fhis1.Count > 0)
+                    {
 
+                        MessageBox.Show("رقم الدفتر مكرر", "النظام", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        BookNo.Clear();
+                        BookNo.Focus();
+                        return;
+                    }
+                    //var Fhis2 = db.ChronicsBooks.Where(p => p.DocNo == DcNo && p.RowStatus != RowStatus.Deleted).ToList();
+                    //if (Fhis2.Count > 0)
+                    //{
+
+                    //    MessageBox.Show("لا يمكن اضافة تشخيص رقم الايصال مكرر", "النظام", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    //    DocumentNo.Clear();
+                    //    DocumentNo.Focus();
+                    //    return;
+                    //}
+                }
+            }
 
             if (ApproveNo == 0)
             {
@@ -157,7 +220,7 @@ namespace MedicalServiceSystem.Reclaims
                     apv.LocalityId = PLC.LocalityId;
                     apv.DateIn = BookDate.Value;
                     apv.RowStatus = RowStatus.NewRow;
-                    apv.DocNo = Convert.ToInt32(DocumentNo.Text);
+                    apv.DocNo = Convert.ToDecimal(DocumentNo.Text);
                     apv.Status = Status.Active;
                     apv.Notes = Notes.Text.Trim();
                     apv.LocalityId = PLC.LocalityId;
@@ -208,7 +271,7 @@ namespace MedicalServiceSystem.Reclaims
                         GetAppv[0].UpdateUser = UserId;
                         GetAppv[0].LocalityId = PLC.LocalityId;
                         GetAppv[0].DateIn = BookDate.Value;
-                        GetAppv[0].DocNo = Convert.ToInt32(DocumentNo.Text);
+                        GetAppv[0].DocNo = Convert.ToDecimal(DocumentNo.Text);
                         GetAppv[0].RowStatus = RowStatus.Edited;
                         GetAppv[0].Status = Status.Active;
                         GetAppv[0].Notes = Notes.Text.Trim();
@@ -703,41 +766,7 @@ namespace MedicalServiceSystem.Reclaims
                     card_no.Focus();
                     return;
                 }
-                if (BookNo.Text.Length == 0)
-                {
-                    MessageBox.Show("يجب ادخال رقم الدفتر", "النظام", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    BookNo.Focus();
-                    return;
-                }
-                if (BookType.SelectedIndex == -1)
-                {
-                    MessageBox.Show("يجب اختيار نوع العملية", "النظام", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    BookType.Focus();
-                    return;
-
-                }
-                else if (BookType.SelectedIndex == 0)
-                {
-                    var Fhis = db.ChronicsBooks.Where(p => p.InsurNo == card_no.Text && p.RowStatus != RowStatus.Deleted).ToList();
-                    if (Fhis.Count > 0)
-                    {
-                        if (flag == 0)
-                        {
-
-                            BookType.SelectedIndex = 1;
-
-                        }
-                    }
-
-                }
-
-
-                if (RequistingParty.SelectedIndex == -1)
-                {
-                    MessageBox.Show("يجب اختيار المركز الذي كتب فيه التشخيص", "النظام", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    RequistingParty.Focus();
-                    return;
-                }
+               
 
                 if (ChronicLst.SelectedIndex == -1)
                 {
@@ -758,29 +787,7 @@ namespace MedicalServiceSystem.Reclaims
                     return;
                 }
 
-                if (flag == 0)
-                {
-                    int bkNo = Convert.ToInt32(BookNo.Text);
-                    int DcNo = Convert.ToInt32(DocumentNo.Text);
-                    var Fhis1 = db.ChronicsBooks.Where(p => p.BookNo == bkNo && p.RowStatus != RowStatus.Deleted).ToList();
-                    if (Fhis1.Count > 0)
-                    {
-
-                        MessageBox.Show("لا يمكن اضافة تشخيص رقم الدفتر مكرر", "النظام", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                        BookNo.Clear();
-                        BookNo.Focus();
-                        return;
-                    }
-                    var Fhis2 = db.ChronicsBooks.Where(p => p.DocNo == DcNo && p.RowStatus != RowStatus.Deleted).ToList();
-                    if (Fhis2.Count > 0)
-                    {
-
-                        MessageBox.Show("لا يمكن اضافة تشخيص رقم الايصال مكرر", "النظام", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                        DocumentNo.Clear();
-                        DocumentNo.Focus();
-                        return;
-                    }
-                }
+              
                 if (GrdDwa.RowCount == 0)
                 {
 

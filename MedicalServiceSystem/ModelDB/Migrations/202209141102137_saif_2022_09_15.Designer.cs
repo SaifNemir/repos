@@ -7,13 +7,13 @@ namespace ModelDB.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class Saif20_08_2022 : IMigrationMetadata
+    public sealed partial class saif_2022_09_15 : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Saif20_08_2022));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(saif_2022_09_15));
         
         string IMigrationMetadata.Id
         {
-            get { return "202208200818414_Saif20_08_2022"; }
+            get { return "202209141102137_saif_2022_09_15"; }
         }
         
         string IMigrationMetadata.Source
