@@ -375,6 +375,18 @@
     <Compile Include="Reports\FRMreportChronics.designer.cs">
       <DependentUpon>FRMreportChronics.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reports\RPTِEstrdadCountSec.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\RPTِEstrdadCountSec.Designer.cs">
+      <DependentUpon>RPTِEstrdadCountSec.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\RPTِEstrdadCountSecLoc.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\RPTِEstrdadCountSecLoc.Designer.cs">
+      <DependentUpon>RPTِEstrdadCountSecLoc.cs</DependentUpon>
+    </Compile>
     <Compile Include="Reports\RPTِApproveDWACount.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -410,18 +422,6 @@
     </Compile>
     <Compile Include="Reports\RPTChronicAll.Designer.cs">
       <DependentUpon>RPTChronicAll.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Reports\RPTِEstrdadCountSecLoc.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Reports\RPTِEstrdadCountSecLoc.Designer.cs">
-      <DependentUpon>RPTِEstrdadCountSecLoc.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Reports\RPTِEstrdadCountSec.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Reports\RPTِEstrdadCountSec.Designer.cs">
-      <DependentUpon>RPTِEstrdadCountSec.cs</DependentUpon>
     </Compile>
     <Compile Include="Reports\RPTِEstrdadMedicineDetails.cs">
       <SubType>Component</SubType>
@@ -660,11 +660,11 @@
     <EmbeddedResource Include="Reports\RPTChronicAll.resx">
       <DependentUpon>RPTChronicAll.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reports\RPTِEstrdadCountSecLoc.resx">
-      <DependentUpon>RPTِEstrdadCountSecLoc.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Reports\RPTِEstrdadCountSec.resx">
       <DependentUpon>RPTِEstrdadCountSec.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\RPTِEstrdadCountSecLoc.resx">
+      <DependentUpon>RPTِEstrdadCountSecLoc.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\RPTِEstrdadMedicineDetails.resx">
       <DependentUpon>RPTِEstrdadMedicineDetails.cs</DependentUpon>
