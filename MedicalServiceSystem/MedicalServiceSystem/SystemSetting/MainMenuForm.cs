@@ -615,6 +615,7 @@ namespace MedicalServiceSystem
         private void SendClm_Click(object sender, EventArgs e)
         {
             Claims.ClmSendFrm form = new Claims.ClmSendFrm();
+
             form.MdiParent = this;
             form.WindowState = FormWindowState.Maximized;
             form.Show();
