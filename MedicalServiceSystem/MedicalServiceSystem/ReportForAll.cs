@@ -19,6 +19,7 @@ namespace MedicalServiceSystem
         public decimal? Row11 { get; set; }
 		public decimal? Row12 { get; set; }
         public decimal? Row21 { get; set; }
+        public decimal? Row22 { get; set; }
         public DateTime? Row13 { get; set; }
         public DateTime? Row14 { get; set; }
         public string Row15 { get; set; }

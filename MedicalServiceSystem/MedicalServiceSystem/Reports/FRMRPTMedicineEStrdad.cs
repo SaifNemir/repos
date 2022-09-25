@@ -242,7 +242,7 @@ namespace MedicalServiceSystem
                         Rdet.ReportTitle.Value = "تقرير تفاصيل الاسترداد" + " " + "حسب سبب الاسترداد" + " " + ApproveReason.Text;
                         int DioId = Convert.ToInt32(ApproveReason.SelectedValue.ToString());
                         Rdet.ApproveCnt.Value = db.Reclaims.Where(p => p.RowStatus != RowStatus.Deleted && (p.ReclaimDate >= d_start.Value && p.ReclaimDate <= d_end.Value) && p.ReclaimMedicalResonId == DioId).ToList().Count.ToString();
-                       // Rdet.DwaCNT.Value = GetDet.Count.ToString();
+                        // Rdet.DwaCNT.Value = GetDet.Count.ToString();
                         RptiewChronics.ReportSource = Rdet;
                         RptiewChronics.RefreshReport();
                         RptiewChronics.Show();
@@ -290,7 +290,7 @@ namespace MedicalServiceSystem
                         Rdet.ReportTitle.Value = "تقرير تفاصيل الاسترداد" + " " + "حسب نوع الوصفة" + " " + BillStatus.Text;
                         int BillStatusId = Convert.ToInt32(BillStatus.SelectedIndex.ToString());
                         Rdet.ApproveCnt.Value = GetDet.ToList().Count.ToString();
-                       // Rdet.DwaCNT.Value = GetDet.Count.ToString();
+                        // Rdet.DwaCNT.Value = GetDet.Count.ToString();
                         RptiewChronics.ReportSource = Rdet;
                         RptiewChronics.RefreshReport();
                         RptiewChronics.Show();
@@ -339,7 +339,7 @@ namespace MedicalServiceSystem
                         Rdet.ReportTitle.Value = "تقرير تفاصيل الاسترداد" + " " + "حسب الجهة المقدمة للخدمة" + " " + ExcutingParty.Text;
                         int ExcutingPartyId = Convert.ToInt32(ExcutingParty.SelectedValue.ToString());
                         Rdet.ApproveCnt.Value = GetDet.Count.ToString();
-                       // Rdet.DwaCNT.Value = GetDet.Count.ToString();
+                        // Rdet.DwaCNT.Value = GetDet.Count.ToString();
                         RptiewChronics.ReportSource = Rdet;
                         RptiewChronics.RefreshReport();
                         RptiewChronics.Show();
@@ -1098,7 +1098,7 @@ namespace MedicalServiceSystem
         {
             if (ForNum.Text.Length > 0)
             {
-                if(Convert.ToInt32(ForNum.Text) == 0)
+                if (Convert.ToInt32(ForNum.Text) == 0)
                 {
                     TopSelect = "";
                 }
